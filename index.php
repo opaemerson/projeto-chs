@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Oswald:wght@300&family=Playfair+Display:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body class="amarelo-papel">
   <span id="conteudo"></span>
@@ -15,7 +16,7 @@
 <!-- Campo de Botões-->
 <div class="fundo-marrom">
 <div class="title-holder">
-<h1 class="txt-preto">Puddng</h1>
+<h1 class="txt-preto">CHS</h1>
 <img src="Images/pudimx.png" alt="10" width="75" style="margin-top: 5px;">
 </div>
   <div class="nav-bar">
