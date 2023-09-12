@@ -1,1 +1,1 @@
-Projeto inicializado. ATUALIZEI NOVAMENTE DE
+Projeto Inicializado.
