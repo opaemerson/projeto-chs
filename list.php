@@ -10,7 +10,7 @@ if (!empty($pagina)) {
     $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
     
 
-    $query_usuarios = "SELECT id, tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia FROM heads ORDER BY id ASC LIMIT $inicio, $qnt_result_pg";
+    $query_usuarios = "SELECT id, tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia, manutencao FROM heads ORDER BY id ASC LIMIT $inicio, $qnt_result_pg";
     $result_usuarios = mysqli_query($conn, $query_usuarios);
 
     $dados = "<div class='table-responsive'>
@@ -25,6 +25,7 @@ if (!empty($pagina)) {
                         <th>Previsao de Retorno</th>
                         <th>Data_Retorno</th>
                         <th>Garantia</th>
+                        <th>Qtd. Manutenção</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -49,6 +50,7 @@ if (!empty($pagina)) {
                     <td>$previsao</td>
                     <td>$retorno</td>
                     <td>$garantia</td>
+                    <td>$manutencao</td>
                     <td class='td-center'>
                         <div class='btn-center'>
                             <button type='button' class='btn btn-link' data-bs-toggle='modal' data-bs-target='#editModal' onclick=\"lerUsuario(" . $row_usuario["id"] . ")\">
