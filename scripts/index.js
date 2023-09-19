@@ -153,105 +153,106 @@ function editarUsuario() {
   });
 }
 
-function pesquisar(){
+function pesquisar() {
+  const procurarPalavra = $('#searchInput').val();
 
-    const procurarPalavra = $('#searchInput').val();
+  if (procurarPalavra === '') return;
 
-    if (procurarPalavra == '')
-      return;
-  
-    const form = new FormData();
-    form.append('procurarPalavra', procurarPalavra);
-  
-    const url = "http://127.0.0.1:80/chs/pesquisar.php";
-  
-    $.ajax({
-      url: url,
-      method: 'POST',
-      data: form,
-      processData: false,
-      contentType: false,
-      success: function (resultado) {
-        resultado = JSON.parse(resultado)
-        console.log(resultado);
+  const form = new FormData();
+  form.append('procurarPalavra', procurarPalavra);
 
-        $('.listar_usuarios').empty();
+  const url = "http://127.0.0.1:80/chs/pesquisar.php";
 
-        resultado.forEach(function (obj){
-          const tag = obj['tag'];
-          const marcaOption = $('select[name="modelo"]').find(`option[value="${obj['modelo']}"]`);
-          const marca = marcaOption.text();
-          const problemaOption = $('select[name="problema"]').find(`option[value="${obj['problema']}"]`);
-          const problema = problemaOption.text();
-          const data_envio = obj['data_envio'];
-          const situacaoOption = $('select[name="situacao"]').find(`option[value="${obj['situacao']}"]`);
-          const situacao = situacaoOption.text();
-          const previsao = obj['previsao'];
-          const retorno = obj['retorno'];
-          const garantia = obj['garantia'];
+  $.ajax({
+    url: url,
+    method: 'POST',
+    data: form,
+    processData: false,
+    contentType: false,
+    success: function (resultado) {
+      resultado = JSON.parse(resultado);
+      console.log(resultado);
 
-          const cabecalho = $("<tr>");
-          cabecalho.append("<th>Tag</th>");
-          cabecalho.append("<th>Marca</th>");
-          cabecalho.append("<th>Problema</th>");
-          cabecalho.append("<th>Data de Envio</th>");
-          cabecalho.append("<th>Situacao</th>");
-          cabecalho.append("<th>Previsao</th>");
-          cabecalho.append("<th>Retorno</th>");
-          cabecalho.append("<th>Garantia</th>");
-          cabecalho.append("<th>Acoes</th>");
-              
-          const novaLista = $("<tr>");
-          novaLista.append(`<td>${tag}</td>`);
-          novaLista.append(`<td>${marca}</td>`);
-          novaLista.append(`<td>${problema}</td>`);
-          novaLista.append(`<td>${data_envio}</td>`);
-          novaLista.append(`<td>${situacao} </td>`);
-          novaLista.append(`<td>${previsao} </td>`);
-          novaLista.append(`<td>${retorno} </td>`);
-          novaLista.append(`<td>${garantia} </td>`);    
-         
-          const editButton = $("<button>", {
-            type: "button",
-            class: "btn btn-success",
-            "data-bs-toggle": "modal",
-            "data-bs-target": "#editModal",
-            text: "Editar",
-            click: function() {
-              lerUsuario(obj.id);
-            }
-          });
+      // Limpar a lista de usuários antes de adicionar novos
+      $('.listar_usuarios').empty();
 
-          const deleteButton = $("<button>", {
-            type: "button",
-            class: "btn btn-danger",
-            text: "Excluir",
-            click: function() {
-              remove(obj.id);
-            }
-          });
+      // Criação da tabela e do cabeçalho
+      const table = $("<table>").addClass("table table-striped table-bordered amarelo-papel borda-preta");
+      const thead = $("<thead>").appendTo(table);
+      const tbody = $("<tbody>").appendTo(table);
+      const headerRow = $("<tr>").appendTo(thead);
+      $("<th>").text("TAG").appendTo(headerRow);
+      $("<th>").text("Marca").appendTo(headerRow);
+      $("<th>").text("Problema").appendTo(headerRow);
+      $("<th>").text("Data de Envio").appendTo(headerRow);
+      $("<th>").text("Situacao").appendTo(headerRow);
+      $("<th>").text("Previsao de Retorno").appendTo(headerRow);
+      $("<th>").text("Data_Retorno").appendTo(headerRow);
+      $("<th>").text("Garantia").appendTo(headerRow);
+      $("<th>").text("Manutencao").appendTo(headerRow);
+      $("<th>").text("Acoes").appendTo(headerRow);
 
-          editButton.css("marginRight", "5px");
+      resultado.forEach(function (obj) {
+        const tag = obj['tag'];
+        const marcaOption = $('select[name="modelo"]').find(`option[value="${obj['modelo']}"]`);
+        const marca = marcaOption.text();
+        const problemaOption = $('select[name="problema"]').find(`option[value="${obj['problema']}"]`);
+        const problema = problemaOption.text();
+        const data_envio = obj['data_envio'];
+        let situacao = obj['situacao'];
+        const previsao = obj['previsao'];
+        const retorno = obj['retorno'];
+        const garantia = obj['garantia'];
+        const manutencao = obj['manutencao'];
 
-          const actionsColumn = $("<td>");
-          actionsColumn.append(editButton);
-          actionsColumn.append(deleteButton);
-          novaLista.append(actionsColumn);
-          
-          // Adicionando o cabeçalho e a nova lista na tabela
-          const novaTabela = $("<table>");
-          const novoCorpo = $("<tbody>");
-          
-          novaTabela.append(cabecalho);
-          novoCorpo.append(novaLista);
-          novaTabela.append(novoCorpo);
-          $('.listar_usuarios').append(novaTabela);
+        const novaLista = $("<tr>");
+        novaLista.append(`<td>${tag}</td>`);
+        novaLista.append(`<td>${marca}</td>`);
+        novaLista.append(`<td>${problema}</td>`);
+        novaLista.append(`<td>${data_envio}</td>`);
+        novaLista.append(`<td>${situacao} </td>`);
+        novaLista.append(`<td>${previsao} </td>`);
+        novaLista.append(`<td>${retorno} </td>`);
+        novaLista.append(`<td>${garantia} </td>`);
+        novaLista.append(`<td>${manutencao} </td>`);
+
+        const editButton = $("<button>", {
+          type: "button",
+          class: "btn btn-link",
+          "data-bs-toggle": "modal",
+          "data-bs-target": "#editModal",
+          html: `<img src='Images/editar.png' width='30' height='30' alt='Editar'>`,
+          click: function () {
+            lerUsuario(obj.id);
+          },
         });
-      },
-      error: function (erro) {
-        console.log(erro);
-      }
-    });
+
+        const deleteButton = $("<button>", {
+          type: "button",
+          class: "btn btn-link",
+          html: `<img src='Images/excluir.png' width='30' height='30'alt='Excluir'>`,
+          click: function () {
+            remove(obj.id);
+          },
+        });
+
+        editButton.css("marginRight", "5px");
+
+        const actionsCell = $("<td>");
+        actionsCell.append(editButton);
+        actionsCell.append(deleteButton);
+        novaLista.append(actionsCell);
+
+        tbody.append(novaLista);
+      });
+
+      // Adicionando a tabela à div com a classe "listar_usuarios"
+      $('.listar_usuarios').append(table);
+    },
+    error: function (erro) {
+      console.log(erro);
+    },
+  });
 }
 
 function filtrar() {
@@ -287,6 +288,21 @@ function filtrar() {
       if (resultado.length === 0) {
         corpoTabela.append("<tr><td colspan='5'>Nenhum resultado encontrado.</td></tr>");
       } else {
+        const table = $("<table>").addClass("table table-striped table-bordered amarelo-papel borda-preta");
+        const thead = $("<thead>").appendTo(table);
+        const tbody = $("<tbody>").appendTo(table);
+        const headerRow = $("<tr>").appendTo(thead);
+        $("<th>").text("TAG").appendTo(headerRow);
+        $("<th>").text("Marca").appendTo(headerRow);
+        $("<th>").text("Problema").appendTo(headerRow);
+        $("<th>").text("Data de Envio").appendTo(headerRow);
+        $("<th>").text("Situacao").appendTo(headerRow);
+        $("<th>").text("Previsao de Retorno").appendTo(headerRow);
+        $("<th>").text("Data_Retorno").appendTo(headerRow);
+        $("<th>").text("Garantia").appendTo(headerRow);
+        $("<th>").text("Manutencao").appendTo(headerRow);
+        $("<th>").text("Acoes").appendTo(headerRow);
+
         // Iterar sobre os resultados filtrados e criar as novas linhas da tabela
         resultado.forEach(function (obj) {
           const tag = obj['tag'];
@@ -295,16 +311,52 @@ function filtrar() {
           const problemaOption = $('select[name="problema"]').find(`option[value="${obj['problema']}"]`);
           const problema = problemaOption.text();
           const data_envio = obj['data_envio'];
-          const situacaoOption = $('select[name="situacao"]').find(`option[value="${obj['situacao']}"]`);
-          const situacao = situacaoOption.text();
+          let situacao = obj['situacao'];
+          const previsao = obj['previsao'];
+          const retorno = obj['retorno'];
+          const garantia = obj['garantia'];
+          const manutencao = obj['manutencao'];
+  
 
           const novaLista = $("<tr>");
           novaLista.append(`<td>${tag}</td>`);
           novaLista.append(`<td>${marca}</td>`);
           novaLista.append(`<td>${problema}</td>`);
           novaLista.append(`<td>${data_envio}</td>`);
-          novaLista.append(`<td>${situacao}</td>`);
+          novaLista.append(`<td>${situacao} </td>`);
+          novaLista.append(`<td>${previsao} </td>`);
+          novaLista.append(`<td>${retorno} </td>`);
+          novaLista.append(`<td>${garantia} </td>`);
+          novaLista.append(`<td>${manutencao} </td>`);
 
+          const editButton = $("<button>", {
+            type: "button",
+            class: "btn btn-link",
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#editModal",
+            html: `<img src='Images/editar.png' width='30' height='30' alt='Editar'>`,
+            click: function () {
+              lerUsuario(obj.id);
+            },
+          });
+  
+          const deleteButton = $("<button>", {
+            type: "button",
+            class: "btn btn-link",
+            html: `<img src='Images/excluir.png' width='30' height='30'alt='Excluir'>`,
+            click: function () {
+              remove(obj.id);
+            },
+          });
+  
+          editButton.css("marginRight", "5px");
+  
+          const actionsCell = $("<td>");
+          actionsCell.append(editButton);
+          actionsCell.append(deleteButton);
+          novaLista.append(actionsCell);
+  
+          tbody.append(novaLista);
           corpoTabela.append(novaLista);
         });
       }
@@ -314,8 +366,4 @@ function filtrar() {
     }
   }).done(function (resultado) {
     resultado = JSON.parse(resultado)});
-}
-
-function lerArquivo(){
-
 }

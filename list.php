@@ -20,12 +20,12 @@ if (!empty($pagina)) {
                         <th>TAG</th>
                         <th>Marca</th>
                         <th>Problema</th>
-                        <th>Data_Envio</th>
+                        <th>Data de Envio</th>
                         <th>Situacao</th>
                         <th>Previsao de Retorno</th>
                         <th>Data_Retorno</th>
                         <th>Garantia</th>
-                        <th>Qtd. Manutenção</th>
+                        <th>Manutencao</th>
                         <th>Ações</th>
                     </tr>
                 </thead>

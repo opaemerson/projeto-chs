@@ -47,6 +47,8 @@ if (empty($tag) || empty($modelo)) {
             } else {
                 echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
             }
+        } else {
+            echo "<script>alert('Não foi possível inserir dados.');</script>";
         }
 
         }else{
