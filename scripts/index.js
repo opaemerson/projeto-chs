@@ -1,7 +1,7 @@
 const tbody = document.querySelector(".listar_usuarios");
 
 const listarUsuarios = async (pagina) => {
-  const dados = await fetch("./list.php?pagina=" + pagina, {
+  const dados = await fetch("./listar.php?pagina=" + pagina, {
     method: "GET",
   });
   const resposta = await dados.text();

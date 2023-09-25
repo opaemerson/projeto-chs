@@ -8,16 +8,14 @@ $modelo = $_POST['modelo'];
 $problema = $_POST['problema'];
 $data_envio = $_POST['data_envio'];
 $situacao = $_POST['situacao'];
-$previsao = $_POST['previsao'];
-$retorno = $_POST['retorno'];
-$garantia = $_POST['garantia'];
+
 
 if (empty($id)) {
   echo json_encode(["message" => "Sem ID válido"]);
 } else {
-  // Verifica se a variável $data_envio é undefined
+
   if ($data_envio === 'undefined/undefined/') {
-    $data_envio = date('d-m-Y'); // Obtém a data atual no formato "dd-mm-yyyy"
+    $data_envio = date('d-m-Y');
   } 
 
   if ($situacao === 'Enviado') {
@@ -25,6 +23,11 @@ if (empty($id)) {
     $data_previsao = date('d-m-Y', strtotime($data_envio . ' +7 days'));
     $data_retorno = ('Pendente');
     $data_garantia = ('Nao');
+    $manutencaoExistente = "SELECT manutencao FROM heads WHERE tag = '$tag'";
+    $resultadoExistente = $conn->query($manutencaoExistente);
+    $row = $resultadoExistente->fetch_assoc();
+    $manutencao = $row["manutencao"];
+    $manutencao_novo = $manutencao + 1;
     
     $sql = "UPDATE heads SET 
     tag = '".$tag."', 
@@ -34,7 +37,8 @@ if (empty($id)) {
     situacao = '".$situacao."', 
     previsao = '".$data_previsao."', 
     retorno = '".$data_retorno."', 
-    garantia = '".$data_garantia."'
+    garantia = '".$data_garantia."',
+    manutencao = '".$manutencao_novo."'
     WHERE id = ".$id;
   }
 
