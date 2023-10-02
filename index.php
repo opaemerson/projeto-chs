@@ -26,7 +26,7 @@ include('protecao.php');
     <div class="">
     <button type="button">
       <a href="inicial.php">
-        <img width="30" height="30" src="Images/sair.png">
+        <img width="30" height="30" src="Images/volte.png">
       </a>
     </button>
       <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#modalColetivo">Registro Coletivo</button>
@@ -34,7 +34,6 @@ include('protecao.php');
       <button type="button" class="btn-preto" onclick="listarUsuarios(1)">Listagem</button>
       <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#filtroModal">Filtragem</button>
       <?php echo $_SESSION['nome']; ?>
-      <a href="sair.php">Sair</a>
     </div>
     <div class="coluna-pesquisar">
         <input type="text" class="" id="searchInput" placeholder="Pesquise a tag">

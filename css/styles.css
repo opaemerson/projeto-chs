@@ -103,4 +103,14 @@
     margin: 0 5px; /* Espaçamento horizontal entre os itens da páginação */
   }
   
+  .botao-sair {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #9c1515; /* Cor de fundo vermelha (altere conforme necessário) */
+    color: #ffffff; /* Cor do texto (altere conforme necessário) */
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 

@@ -1,6 +1,7 @@
 <?php
 if(!isset($_SESSION)){
     session_start();
+    $usuarioExiste = true;
 }
 
 if (!isset($_SESSION['id'])){
