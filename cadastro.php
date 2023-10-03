@@ -1,6 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 require_once('config.php');
+session_start();
 
 $tag = $_POST['tag'];
 $modelo = $_POST['modelo'];
@@ -10,6 +11,8 @@ $situacao = $_POST['situacao'];
 $previsao = $_POST['previsao'];
 $retorno = $_POST['retorno'];
 $garantia = $_POST['garantia'];
+$usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
+
 
 if (empty($tag) || empty($modelo)) {
     echo "<script>alert('Todos os campos precisam ser preenchidos');</script>";
@@ -71,10 +74,27 @@ if (empty($tag) || empty($modelo)) {
     
               if ($conn->query($sql) === TRUE) {
                 echo "<script>alert('Salvo no banco de dados!');</script>";
-                $conn->close();
             } else {
+                echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
+            }
+
+            $consulta_id = "SELECT id FROM heads WHERE tag = '$tag'";
+            $resultado_consulta = $conn->query($consulta_id);
+            if ($resultado_consulta->num_rows > 0){
+
+                $row_resultado = $resultado_consulta->fetch_assoc();
+                $id = $row_resultado['id'];
+
+                $sql_dois = "INSERT INTO historico (tag_id, usuario_id) VALUES ('".$id."', '".$usuario."')";
+                $resultado_dois = $conn->query($sql_dois);
+
+
+            if ($conn->query($sql_dois) === TRUE){
+                echo "<script>alert('Salvo no banco de dados!');</script>";
+            }else {
                 echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
             }
         }
     }
+}
 $conn->close();

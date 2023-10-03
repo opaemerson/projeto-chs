@@ -33,7 +33,8 @@ include('protecao.php');
       <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#myModal">Registro Unico</button>
       <button type="button" class="btn-preto" onclick="listarUsuarios(1)">Listagem</button>
       <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#filtroModal">Filtragem</button>
-      <?php echo $_SESSION['nome']; ?>
+      <?php echo "Nome: " . $_SESSION['nome']; ?>
+      <?php echo "| ID: " . $_SESSION['id']; ?>
     </div>
     <div class="coluna-pesquisar">
         <input type="text" class="" id="searchInput" placeholder="Pesquise a tag">
@@ -57,10 +58,12 @@ include('protecao.php');
       </div>
       <div class="modal-body">
         <form id="myForm">
+          <input type="hidden" id="id" class="form-control">
           <input type="hidden" id="data_envio" class="form-control">
           <input type="hidden" id="previsao" class="form-control">
           <input type="hidden" id="retorno" class="form-control">
           <input type="hidden" id="garantia" class="form-control">
+          <input type="hidden" id="usuario" value="<?php echo isset($_SESSION['id']) ? $_SESSION['id'] : ''; ?>">
           <div class="mb-3">
             <label class="form-label">TAG</label>
             <input type="text" class="form-control" id="tag">

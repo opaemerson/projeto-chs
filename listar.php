@@ -10,8 +10,9 @@ if (!empty($pagina)) {
     $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
     
 
-    $query_usuarios = "SELECT id, tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia, manutencao FROM heads ORDER BY id ASC LIMIT $inicio, $qnt_result_pg";
-    $result_usuarios = mysqli_query($conn, $query_usuarios);
+    $query_registros = "SELECT a.*,(SELECT u.nome FROM historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as nome FROM heads a
+    ORDER BY a.id ASC LIMIT $inicio, $qnt_result_pg";
+    $result_registros = mysqli_query($conn, $query_registros);
 
     $dados = "<div class='table-responsive'>
             <table class='table table-striped table-bordered amarelo-papel borda-preta'>
@@ -26,11 +27,12 @@ if (!empty($pagina)) {
                         <th>Data_Retorno</th>
                         <th>Garantia</th>
                         <th>Manutencao</th>
+                        <th>Usuario</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>";
-    while ($row_usuario = mysqli_fetch_assoc($result_usuarios)) {
+    while ($row_usuario = mysqli_fetch_assoc($result_registros)) {
         extract($row_usuario);
         $situacaoTd = $situacao;
 
@@ -51,6 +53,7 @@ if (!empty($pagina)) {
                     <td>$retorno</td>
                     <td>$garantia</td>
                     <td>$manutencao</td>
+                    <td>$nome</td>
                     <td class='td-center'>
                         <div class='btn-center'>
                             <button type='button' class='btn btn-link' data-bs-toggle='modal' data-bs-target='#editModal' onclick=\"lerUsuario(" . $row_usuario["id"] . ")\">

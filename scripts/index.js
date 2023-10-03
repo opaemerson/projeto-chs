@@ -29,6 +29,7 @@ function createUser() {
   const previsao = $('#previsao').val();
   const retorno = $('#retorno').val();
   const garantia = $('#garantia').val();
+  const usuario = $('#usuario').val();
 
   const form = new FormData();
   form.append('tag', tag);
@@ -39,7 +40,9 @@ function createUser() {
   form.append('previsao', previsao);
   form.append('retorno', retorno);
   form.append('garantia', garantia);
-  
+  form.append('usuario', usuario);
+
+  console.log(usuario);
 
   const url = "http://127.0.0.1:80/chs/cadastro.php";
 
