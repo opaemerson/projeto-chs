@@ -86,8 +86,6 @@ if (empty($tag) || empty($modelo)) {
                 $id = $row_resultado['id'];
 
                 $sql_dois = "INSERT INTO historico (tag_id, usuario_id) VALUES ('".$id."', '".$usuario."')";
-                $resultado_dois = $conn->query($sql_dois);
-
 
             if ($conn->query($sql_dois) === TRUE){
                 echo "<script>alert('Salvo no banco de dados!');</script>";

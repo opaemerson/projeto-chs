@@ -1,22 +1,47 @@
 <?php
+session_start();
 header('Access-Control-Allow-Origin: *');
-// Código de conexão ao banco de dados
 require_once('config.php');
 
-// Verificar se o ID foi fornecido
+
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
-
-    // Query para remover o item do banco de dados
-    $sql = "DELETE FROM heads WHERE id = '$id'";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Item removido com sucesso!');</script>";
+    $usuario = $_POST['idUsuario'];
+    $usuarioSessao = $_POST['usuarioSessao'];
+    $permissaoSessao = $_POST['permissaoSessao'];
+    $sql = "SELECT * FROM historico WHERE tag_id = '$id' order by id DESC";
+    $resultado = $conn->query($sql) or die("Falha na execucao do codigo SQL: " . $conn->error);
+    $row = $resultado->fetch_assoc();
+    $usuarioConsultado = $row['usuario_id'];
+    $idHistorico= $row['id'];
+    $permissaoUsuario = 'Usuario';
+    
+    if ($usuarioConsultado === $usuarioSessao || $permissaoSessao === 'Admin'){
+        $sqlDeleteHistorico = "DELETE FROM historico WHERE tag_id = $id";
+        
+        $response = [];
+        
+        if ($conn->query($sqlDeleteHistorico) === TRUE) {
+            $response['historico'] = ['erro' => 0,'mensagem' => "ok"];
+        } else {
+            $response['historico'] = ['erro' => 1,'mensagem' => "Erro ao remover o item"];
+        }
+        
+        $sqlDelete = "DELETE FROM heads WHERE id = $id";
+        
+        if ($conn->query($sqlDelete) === TRUE) {
+            $response['heads'] = ['erro' => 0,'mensagem' => "ok"];
+        } else {
+            $response['heads'] = ['erro' => 1,'mensagem' => "Erro ao remover o item"];
+        }
+        
+        echo json_encode($response);
     } else {
-        echo "<script>alert('Erro ao remover o item: " . $conn->error . "');</script>";
+        echo json_encode(['erro' => 1,'mensagem' => "Você não tem permissão para remover este item"]);
     }
-} else {
-    echo "<script>alert('ID não fornecido');</script>";
+}
+ else {
+    echo json_encode(['erro' => 1,'mensagem' => "deu ruim"]);
 }
 
 $conn->close();

@@ -63,17 +63,27 @@ function createUser() {
 
 }
 
-function remove(id) {
+function remove(id, idUsuario, usuarioSessao, permissaoSessao) {
   if (confirm('Deseja realmente excluir este item?')){
     const url = 'http://127.0.0.1:80/chs/remove.php';
   
     $.ajax({
       url: url,
       method: 'POST',
-      data: { id: id },
+      data: { id: id ,
+            idUsuario: idUsuario,
+            usuarioSessao: usuarioSessao,
+            permissaoSessao: permissaoSessao
+            },
+      dataType: 'json',
       success: function (resultado) {
-        console.log(resultado);
-        location.reload();
+        if(resultado.erro){
+          alert(resultado.mensagem)
+        } else{
+          alert("Sucesso")
+          location.reload();
+        }
+
       },
       error: function (erro) {
         console.log(erro);

@@ -1,16 +1,25 @@
 <?php
+session_start();
 include_once "config.php";
+
+if(isset($_SESSION['id'])){
+    $usuarioSessao = $_SESSION['id'];
+    $permissaoSessao = $_SESSION['permissao'];
+}
 
 $pagina = filter_input(INPUT_GET, "pagina", FILTER_SANITIZE_NUMBER_INT);
 
 if (!empty($pagina)) {
 
     // Calcular o início da visualização
-    $qnt_result_pg = 15; // Quantidade de registros por página
+    $qnt_result_pg = 15;
     $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
     
 
-    $query_registros = "SELECT a.*,(SELECT u.nome FROM historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as nome FROM heads a
+    $query_registros = "SELECT a.*,
+    (SELECT u.nome FROM historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as usuario,
+    (SELECT u.id FROM historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as idUsuario
+     FROM heads a
     ORDER BY a.id ASC LIMIT $inicio, $qnt_result_pg";
     $result_registros = mysqli_query($conn, $query_registros);
 
@@ -53,13 +62,13 @@ if (!empty($pagina)) {
                     <td>$retorno</td>
                     <td>$garantia</td>
                     <td>$manutencao</td>
-                    <td>$nome</td>
+                    <td>$usuario</td>
                     <td class='td-center'>
                         <div class='btn-center'>
                             <button type='button' class='btn btn-link' data-bs-toggle='modal' data-bs-target='#editModal' onclick=\"lerUsuario(" . $row_usuario["id"] . ")\">
                             <img src='Images/editar.png' width='30' height='30'>
                             </button>
-                            <button type='button' class='btn btn-link' onclick=\"remove($id)\">
+                            <button type='button' class='btn btn-link' onclick=\"remove(" . $row_usuario["id"] . ", '" . $idUsuario .  "', '" . $usuarioSessao . "', '" . $permissaoSessao . "')\">
                             <img src='Images/excluir.png' width='30' height='30'>
                             </button>
                         </div>
