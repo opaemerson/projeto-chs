@@ -7,7 +7,9 @@ $procurarModelo = $_POST['procurarModelo'];
 if (empty($procurarModelo)) {
     echo json_encode(["message" => "Não encontrado!"]);
   } else {
-    $sql = "SELECT * FROM heads WHERE modelo LIKE '%$procurarModelo%'";
+    $sql = "SELECT a.*,
+    (SELECT u.nome FROM historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as usuario
+     FROM heads a WHERE modelo LIKE '%$procurarModelo%'";
     
     $response = $conn->query($sql);
   

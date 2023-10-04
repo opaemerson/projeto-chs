@@ -203,6 +203,7 @@ function pesquisar() {
       $("<th>").text("Data_Retorno").appendTo(headerRow);
       $("<th>").text("Garantia").appendTo(headerRow);
       $("<th>").text("Manutencao").appendTo(headerRow);
+      $("<th>").text("Usuario").appendTo(headerRow);
       $("<th>").text("Acoes").appendTo(headerRow);
 
       resultado.forEach(function (obj) {
@@ -217,6 +218,8 @@ function pesquisar() {
         const retorno = obj['retorno'];
         const garantia = obj['garantia'];
         const manutencao = obj['manutencao'];
+        const usuario = obj['usuario'];
+
 
         const novaLista = $("<tr>");
         novaLista.append(`<td>${tag}</td>`);
@@ -228,6 +231,7 @@ function pesquisar() {
         novaLista.append(`<td>${retorno} </td>`);
         novaLista.append(`<td>${garantia} </td>`);
         novaLista.append(`<td>${manutencao} </td>`);
+        novaLista.append(`<td>${usuario} </td>`);
 
         const editButton = $("<button>", {
           type: "button",
@@ -291,11 +295,7 @@ function filtrar() {
     success: function (resultado) {
       resultado = JSON.parse(resultado);
 
-      // Seletor para o corpo da tabela onde queremos adicionar as linhas
-      const corpoTabela = $('.listar_usuarios');
-
-      // Limpar o conteúdo anterior da tabela antes de adicionar os novos dados
-      corpoTabela.empty();
+      $('.listar_usuarios').empty();
 
       // Verificar se existem resultados
       if (resultado.length === 0) {
@@ -314,9 +314,9 @@ function filtrar() {
         $("<th>").text("Data_Retorno").appendTo(headerRow);
         $("<th>").text("Garantia").appendTo(headerRow);
         $("<th>").text("Manutencao").appendTo(headerRow);
+        $("<th>").text("Usuario").appendTo(headerRow);
         $("<th>").text("Acoes").appendTo(headerRow);
-
-        // Iterar sobre os resultados filtrados e criar as novas linhas da tabela
+  
         resultado.forEach(function (obj) {
           const tag = obj['tag'];
           const marcaOption = $('select[name="modelo"]').find(`option[value="${obj['modelo']}"]`);
@@ -329,8 +329,8 @@ function filtrar() {
           const retorno = obj['retorno'];
           const garantia = obj['garantia'];
           const manutencao = obj['manutencao'];
+          const usuario = obj['usuario'];
   
-
           const novaLista = $("<tr>");
           novaLista.append(`<td>${tag}</td>`);
           novaLista.append(`<td>${marca}</td>`);
@@ -341,7 +341,8 @@ function filtrar() {
           novaLista.append(`<td>${retorno} </td>`);
           novaLista.append(`<td>${garantia} </td>`);
           novaLista.append(`<td>${manutencao} </td>`);
-
+          novaLista.append(`<td>${usuario} </td>`);
+  
           const editButton = $("<button>", {
             type: "button",
             class: "btn btn-link",
@@ -370,8 +371,10 @@ function filtrar() {
           novaLista.append(actionsCell);
   
           tbody.append(novaLista);
-          corpoTabela.append(novaLista);
         });
+  
+        // Adicionando a tabela à div com a classe "listar_usuarios"
+        $('.listar_usuarios').append(table);
       }
     },
     error: function (erro) {
