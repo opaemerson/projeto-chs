@@ -15,11 +15,7 @@
     <h1>Projeto C.E.E</h1>
     <p><b>Objetivo:</b> fazer fkjsadogfh hgiuf fgjhdiu hfireu kpf.</p>
 
-    <?php
-        if (isset($_SESSION['nome'])) {
-            echo '<h2>Bem-Vindo(a), ' . $_SESSION['nome'] . '</h2>';
-        }
-    ?>
+
 
     <script>
         var usuarioLogado = <?php echo isset($_SESSION['nome']) ? 'true' : 'false'; ?>;
@@ -35,11 +31,19 @@
 
     <button type="button" onclick="verificarLogin()">Acessar</button>
     
-    <?php
+
+    
+        <?php
+        if (isset($_SESSION['nome'])) {
+            echo '<h2>Bem-Vindo(a), <br> </h2>'; 
+            echo '<h3>Nome: ' . $_SESSION['nome'] . '</h1>';
+            echo '<h3>ID:' . $_SESSION['id'] .'<br>';
+            echo '<h3>Permissao:'. $_SESSION['permissao'] . '<br>';
+            echo '<br>';
+        }
         if (isset($_SESSION['nome'])) {
             echo '<a href="sair.php" class="botao-sair">Sair</a>';
         }
     ?>
-    
 </body>
 </html>
