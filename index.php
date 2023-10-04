@@ -72,17 +72,17 @@ include('protecao.php');
           <div class="mb-3">
             <label  class="form-label">Marca</label>
             <select class="form-select" id="exampleSelect" name="modelo" aria-label="Default select example">
-              <option value="One">One</option>
-              <option value="Two">Two</option>
-              <option value="Three">Three</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
             </select>
           </div>
           <div class="mb-3">
             <label class="form-label">Problema</label>
             <select class="form-select" id="problema" name="problema" aria-label="Default select example">
-              <option value="One">One</option>
-              <option value="Two">Two</option>
-              <option value="Three">Three</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
             </select>
           </div>
           <label class="form-label">Situacao</label>
@@ -182,9 +182,9 @@ include('protecao.php');
           <div class="mb-3">
             <label class="form-label">Marca</label>
             <select class="form-select" id="exampleSelect" name="editModeloFiltro" aria-label="Default select example">
-              <option value="One">One</option>
-              <option value="Two">Two</option>
-              <option value="Three">Three</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
             </select>
           <!-- Botão de Salvar -->
           <button type="button" class="btn btn-primary" onclick="filtrar()">Filtrar</button>
