@@ -275,14 +275,17 @@ function pesquisar() {
 function filtrar() {
   const marcaOption = $('select[name="editModeloFiltro"]');
   const procurarModelo = marcaOption.val();
+  const problemaOption = $('select[name="problemaFiltro"]');
+  const procurarProblema = problemaOption.val();
 
-  if (procurarModelo === '') {
+  if (procurarModelo === '' || procurarProblema) {
     return;
   }
 
   const form = new FormData();
   form.append('procurarModelo', procurarModelo);
-  console.log(procurarModelo);
+  form.append('procurarProblema', procurarProblema);
+
 
   const url = "http://127.0.0.1:80/chs/filtrar.php";
 

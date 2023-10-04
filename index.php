@@ -181,8 +181,16 @@ include('protecao.php');
         <input type="hidden" id="filtroId" value="">
           <div class="mb-3">
             <label class="form-label">Marca</label>
-            <select class="form-select" id="exampleSelect" name="editModeloFiltro" aria-label="Default select example">
-              <option value="A">A</option>
+            <select class="form-select" id="exampleSelect" name="editModeloFiltro" >
+            <option value="">Selecione uma opcao</option>  
+            <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+            </select>
+            <label class="form-label">Problema</label>
+            <select class="form-select" id="exampleSelect" name="problemaFiltro" >
+            <option value="">Selecione uma opcao</option>  
+            <option value="A">A</option>
               <option value="B">B</option>
               <option value="C">C</option>
             </select>

@@ -3,6 +3,7 @@ header('Access-Control-Allow-Origin: *');
 require_once('config.php');
 
 $procurarModelo = $_POST['procurarModelo'];
+$procurarProblema = $_POST['procurarProblema'];
 
 if (empty($procurarModelo)) {
     echo json_encode(["message" => "Não encontrado!"]);
