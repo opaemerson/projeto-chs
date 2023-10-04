@@ -35,6 +35,7 @@ include('protecao.php');
       <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#filtroModal">Filtragem</button>
       <?php echo "Nome: " . $_SESSION['nome']; ?>
       <?php echo "| ID: " . $_SESSION['id']; ?>
+      <?php echo "| Permissao: " . $_SESSION['permissao']; ?>
     </div>
     <div class="coluna-pesquisar">
         <input type="text" class="" id="searchInput" placeholder="Pesquise a tag">

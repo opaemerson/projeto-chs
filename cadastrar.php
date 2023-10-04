@@ -5,12 +5,13 @@ require_once('config.php');
 if (isset($_POST['cadastro'])) {
     $nome = $_POST['nome'];
     $senha = $_POST['senha'];
+    $permissao = 'Usuario';
     $usuarioExiste = "SELECT nome FROM usuarios WHERE nome = '$nome'";
     $resultadoExistente = $conn->query($usuarioExiste);
     if ($resultadoExistente->num_rows > 0){
         echo "Ja existe esse mano.";
     }else{
-        $sql = "INSERT INTO usuarios (nome, senha) VALUES ('$nome', '$senha')";
+        $sql = "INSERT INTO usuarios (nome, senha, permissao) VALUES ('$nome', '$senha', '$permissao')";
         if ($conn->query($sql) === TRUE) {
             header('Location: index.php'); 
             exit;
