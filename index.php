@@ -191,8 +191,15 @@ include('protecao.php');
             <select class="form-select" id="exampleSelect" name="problemaFiltro" >
             <option value="">Selecione uma opcao</option>  
             <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            </select>
+            <label class="form-label">Situacao</label>
+            <select class="form-select" id="exampleSelect" name="situacaoFiltro" >
+            <option value="">Selecione uma opcao</option>  
+            <option value="Pendente">Pendente</option>
+            <option value="Enviado">Enviado</option>
+            <option value="Concluido">Concluido</option>
             </select>
           <!-- Botão de Salvar -->
           <button type="button" class="btn btn-primary" onclick="filtrar()">Filtrar</button>
