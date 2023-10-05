@@ -13,7 +13,7 @@ if (!empty($procurarModelo)) {
 }
 
 if (!empty($procurarProblema)) {
-  if (!empty($condicao)) {a
+  if (!empty($condicao)) {
     $condicao .= " AND ";
   }
   $condicao .= "problema LIKE '%$procurarProblema%'";
