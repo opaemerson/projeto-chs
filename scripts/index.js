@@ -64,22 +64,23 @@ function createUser() {
 }
 
 function remove(id, idUsuario, usuarioSessao, permissaoSessao) {
-  if (confirm('Deseja realmente excluir este item?')){
+  if (confirm('Deseja realmente excluir este item?')) {
     const url = 'http://127.0.0.1:80/chs/remove.php';
-  
+
     $.ajax({
       url: url,
       method: 'POST',
-      data: { id: id ,
-            idUsuario: idUsuario,
-            usuarioSessao: usuarioSessao,
-            permissaoSessao: permissaoSessao
-            },
+      data: {
+        id: id,
+        idUsuario: idUsuario,
+        usuarioSessao: usuarioSessao,
+        permissaoSessao: permissaoSessao
+      },
       dataType: 'json',
       success: function (resultado) {
-        if(resultado.erro){
+        if (resultado.erro) {
           alert(resultado.mensagem)
-        } else{
+        } else {
           alert("Sucesso")
           location.reload();
         }
@@ -117,7 +118,7 @@ function abrirModalEdicao() {
   userData = JSON.parse(userData); // Faz o parsing adicional (se necessário) para o objeto userData
   var editIdInput = document.getElementById('editId'); //Obtém o elemento de input com o ID "editID"
   var editTagInput = document.getElementById('editTag'); // Obtém o elemento de input com o ID "editTag"
-  var editModeloInput= document.getElementById('editModelo'); // Obtém o elemento de select com o atributo name igual a "editModelo" usando jQuery
+  var editModeloInput = document.getElementById('editModelo'); // Obtém o elemento de select com o atributo name igual a "editModelo" usando jQuery
   var editProblemaInput = document.getElementById('editProblema');
   var editDataEnvio = document.getElementById('editDataEnvio');
   var editSituacao = $('select[name="editSituacao"]');
@@ -321,7 +322,7 @@ function filtrar() {
         $("<th>").text("Manutencao").appendTo(headerRow);
         $("<th>").text("Usuario").appendTo(headerRow);
         $("<th>").text("Acoes").appendTo(headerRow);
-  
+
         resultado.forEach(function (obj) {
           const tag = obj['tag'];
           const marcaOption = $('select[name="modelo"]').find(`option[value="${obj['modelo']}"]`);
@@ -335,7 +336,7 @@ function filtrar() {
           const garantia = obj['garantia'];
           const manutencao = obj['manutencao'];
           const usuario = obj['usuario'];
-  
+
           const novaLista = $("<tr>");
           novaLista.append(`<td>${tag}</td>`);
           novaLista.append(`<td>${marca}</td>`);
@@ -347,7 +348,7 @@ function filtrar() {
           novaLista.append(`<td>${garantia} </td>`);
           novaLista.append(`<td>${manutencao} </td>`);
           novaLista.append(`<td>${usuario} </td>`);
-  
+
           const editButton = $("<button>", {
             type: "button",
             class: "btn btn-link",
@@ -358,7 +359,7 @@ function filtrar() {
               lerUsuario(obj.id);
             },
           });
-  
+
           const deleteButton = $("<button>", {
             type: "button",
             class: "btn btn-link",
@@ -367,17 +368,17 @@ function filtrar() {
               remove(obj.id);
             },
           });
-  
+
           editButton.css("marginRight", "5px");
-  
+
           const actionsCell = $("<td>");
           actionsCell.append(editButton);
           actionsCell.append(deleteButton);
           novaLista.append(actionsCell);
-  
+
           tbody.append(novaLista);
         });
-  
+
         // Adicionando a tabela à div com a classe "listar_usuarios"
         $('.listar_usuarios').append(table);
       }
@@ -386,5 +387,31 @@ function filtrar() {
       console.log("Erro na requisição: ", erro);
     }
   }).done(function (resultado) {
-    resultado = JSON.parse(resultado)});
+    resultado = JSON.parse(resultado)
+  });
 }
+
+function criarMarca() {
+    const nomeMarca = $('#nomeMarca').val();
+  
+    const form = new FormData();
+    form.append('nomeMarca', nomeMarca);
+  
+    const url = "http://127.0.0.1:80/chs/cadastro_marca.php";
+  
+    $.ajax({
+      url: url, 
+      method: 'POST',
+      data: form, 
+      processData: false, 
+      contentType: false, 
+      success: function (resultado) { 
+        console.log(resultado); 
+        location.reload();
+      },
+      error: function (erro) { 
+        console.log(erro); 
+      }
+    });
+  
+  }

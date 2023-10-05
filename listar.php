@@ -110,7 +110,7 @@ if (!empty($pagina)) {
 
     $dados .= "<li class='page-item'><a class='btn-navegar' href='#' onclick='listarUsuarios($quantidade_pg)'>Última</a></li>";
     $dados .=   '</ul></nav>';
-
+    
     echo $dados;
 } else {
     echo "<div class='alert alert-danger' role='alert'>Erro: Nenhum usuário encontrado!</div>";

@@ -33,6 +33,8 @@ include('protecao.php');
       <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#myModal">Registro Unico</button>
       <button type="button" class="btn-preto" onclick="listarUsuarios(1)">Listagem</button>
       <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#filtroModal">Filtragem</button>
+      <a href="incluir_categoria.php" type="button" class="btn-preto">Incluir</a>
+      <a href="estatisticas.php" type="button" class="btn-preto">Estatisticas</a>
       <?php echo "Nome: " . $_SESSION['nome']; ?>
       <?php echo "| ID: " . $_SESSION['id']; ?>
       <?php echo "| Permissao: " . $_SESSION['permissao']; ?>
@@ -44,7 +46,7 @@ include('protecao.php');
   </div>
 <div>
   
-  <!-- Campo Exibição -->
+<!-- Campo Exibição -->
 <div class="amarelo-papel">
   <span class="listar_usuarios"></span>
 </div>
@@ -71,7 +73,7 @@ include('protecao.php');
           </div>
           <div class="mb-3">
             <label  class="form-label">Marca</label>
-            <select class="form-select" id="exampleSelect" name="modelo" aria-label="Default select example">
+            <select class="form-select" id="modelo" name="modelo" aria-label="Default select example">
               <option value="A">A</option>
               <option value="B">B</option>
               <option value="C">C</option>
@@ -91,7 +93,7 @@ include('protecao.php');
             <option value="Enviado">Enviado</option>
           </select>
         </div>
-          <button type="submit" class="btn btn-primary" value="cadastrar" onclick="createUser()">Submit</button>
+          <button type="submit" class="btn btn-primary" value="cadastrar" onclick="createUser()">Enviar</button>
         </form>
       </div>
     </div>
@@ -200,7 +202,8 @@ include('protecao.php');
             <option value="Pendente">Pendente</option>
             <option value="Enviado">Enviado</option>
             <option value="Concluido">Concluido</option>
-            </select>
+            </select> 
+            <br>
           <!-- Botão de Salvar -->
           <button type="button" class="btn btn-primary" onclick="filtrar()">Filtrar</button>
         </form>
@@ -212,6 +215,5 @@ include('protecao.php');
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="./scripts/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
 </body>
 </html>
