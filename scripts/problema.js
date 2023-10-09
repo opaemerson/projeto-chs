@@ -1,10 +1,10 @@
-function criarMarca() {
-    const nomeMarca = $('#nomeMarca').val();
+function criarProblema() {
+    const nomeProblema = $('#nomeProblema').val();
   
     const form = new FormData();
-    form.append('nomeMarca', nomeMarca);
+    form.append('nomeProblema', nomeProblema);
   
-    const url = "http://127.0.0.1:80/chs/cadastro_marca.php";
+    const url = "http://127.0.0.1:80/chs/cadastro_problema.php";
   
     $.ajax({
       url: url, 

@@ -5,7 +5,7 @@ require_once('config.php');
 
 $nomeMarca = $_POST['nomeMarca'];
 
-if(isset($nomeMarca)){ 
+if(isset($nomeMarca) && $nomeMarca !== ''){ 
     $marcaExistente = "SELECT * FROM marca WHERE nome = '$nomeMarca'";
     $resultado = $conn->query($marcaExistente);
 
