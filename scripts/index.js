@@ -81,7 +81,7 @@ function remove(id, idUsuario, usuarioSessao, permissaoSessao) {
         if (resultado.erro) {
           alert(resultado.mensagem)
         } else {
-          alert("Sucesso")
+          alert("Item removido")
           location.reload();
         }
 
