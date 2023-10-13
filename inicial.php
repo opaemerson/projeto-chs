@@ -120,17 +120,5 @@
         }
     </script>
     
-        <?php
-        if (isset($_SESSION['nome'])) {
-            echo '<h2>Bem-Vindo(a), <br> </h2>'; 
-            echo '<h3>Nome: ' . $_SESSION['nome'] . '</h1>';
-            echo '<h3>ID:' . $_SESSION['id'] .'<br>';
-            echo '<h3>Permissao:'. $_SESSION['permissao'] . '<br>';
-            echo '<br>';
-        }
-        if (isset($_SESSION['nome'])) {
-            echo '<a href="sair.php" class="botao-sair">Sair</a>';
-        }
-    ?>
 </body>
 </html>
