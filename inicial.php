@@ -17,6 +17,7 @@
     session_start();
     ?>
 
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="#">Empresa XYZ</a>
@@ -38,6 +39,18 @@
                     <a class="nav-link" href="#projeto-ganolia">Projeto Ganolia</a>
                 </li>
             </ul>
+            <?php
+                if (isset($_SESSION['nome'])) {
+                    echo '<ul class="navbar-nav ml-auto">';
+                    echo '<li class="nav-item">';
+                    echo '<p class="text-light">Bem-Vindo, ' . $_SESSION['nome'] . '</p>';
+                    echo '</li>';
+                    echo '<li class="nav-item">';
+                    echo '<a class="nav-link" href="sair.php">Sair</a>';
+                    echo '</li>';
+                    echo '</ul>';
+                }
+            ?>
         </div>
     </div>
 </nav>
