@@ -1,183 +1,192 @@
-Princípios de Ganolia
-===============================================================
-+ Estilo do Jogo: RPG Online + Build deck ✅
-+ Build deck - Cartas possíveis em sua mão durante o jogo.
-:: Cartas de Moedas ✅
-:: Cartas de Itens ✅
-:: Cartas de Equipamentos (Armadura & Armas)
-:: Cartas de Receitas
+Características de Ganolia
+🔴 Qual será a Categoria? 
+➡️ Build deck + Dungeon Crawler
 
-+ Moedas ✅
-:: Obter - Drop de Inimigos.
-:: Obter - Conclusão de Quests.
-:: Aquisição - Itens em Lojas (Online e Off-line).
-:: Cartas - Unidades simbolizando números (Célula $2, Célula $5)
-:: Usabilidade - Realizar a junção de células necessárias para troca de itens em loja, realizar a ação de compra gastará uma ação em sua rodada.
-+ Lojas ✅
-::
-::
-::
-+ Itens ✅
-::
-::
-::
-+ Receitas ✅
-:: Item para fabricar item
-:: Receita - Petrificação ('Eternizar item' para evitar sentimento de perca após conquista.)
+🔴 Qual será o formato do jogo?
+➡️ Formato Hibrido (Boardgame + Aplicativo)
+➡️ Tabuleiro Físico.
+➡️ Miniaturas Físicas.
+➡️ Dados Físicos.
+➡️ Cartas Virtuais.
 
-+ Eventos Nativos ✅
-:: 12:00 Evento de Bicho inexistente - Dados virtuais.
+🔴 Como funciona após a compra do jogo?
+➡️ O jogo contará com miniaturas representando tanto os personagens jogáveis quanto os temíveis monstros que servirão como desafios para os jogadores. Além disso, ao adquirir o jogo, os compradores receberão um serial único e válido que deverão inserir ao baixar o aplicativo. Uma vez validado, eles terão a oportunidade de criar novas partidas, com um limite de até seis jogadores por sala.
+➡️ Cada jogador, ao ingressar na partida, será atribuído com um conjunto inicial de cartas, ajustado de acordo com a classe do personagem que tenham escolhido para a aventura.
+➡️ O jogo irá conter um mapa pré-definido, desenhado sob um gradiente, que servirá como casas para as miniaturas.
+➡️ O jogo segue uma mecânica já estabelecida, que, em sua essência, envolve rolagem de dados para determinar eventos, como o causamento de dano. Quando um jogador causa dano, ele seleciona a carta correspondente no aplicativo e aplica-a ao monstro em questão.
 
-+ Packs de personagens ✅
-::  Cartas de jogadores incluídas através de packs
-:: Personagem
-:: Monstros
-:: Receita de Equipamentos
+🔴 O jogo terá final?
+Sim, o jogo terá uma progressão com final, definindo cada partida como uma sessão de Galonia.
 
-+ Jogabilidade de movimentação
-+ Personagem únicos ✅
-+ Itens Especiais ✅
+🔴 Diferenciais do jogo
+➡️ Toda partida tende a ser diferente.
+➡️ Quests utilizando inteligência para tornar-se únicas.
+➡️ É possível encantar itens durante partidas anteriores, de modo que possam ser utilizados em partidas futuras.
+➡️Ao adquirir um pacote, seja de miniaturas físicas ou virtuais, você enriquecerá a sua 'biblioteca', o que proporcionará uma experiência imersiva em qualquer jogo que você escolher jogar. Com base nas cartas disponíveis em sua biblioteca, agora você e o grupo terá a capacidade de adquirir novos itens em qualquer partida. Além disso, os jogadores do grupo têm a possibilidade de adquirir o item, aplicar encantamentos para aprimorar e personalizar os itens em suas bibliotecas.
+➡️ Eventos Nativos Dungeons, que apresentam uma variedade de monstros aleatórios, poderão emergir a cada X números de turnos. Esses eventos ocorrerão exclusivamente no ambiente online. Quando uma dungeon aparecer no mapa, os jogadores terão a chance de participar. No entanto, o formato deste evento é distinto, incluindo um mapa exclusivo e dados serão virtuais no formato online.
 
-Mapa
-===============================================================
-Territórios (Spawn de Monstros)
+🔴 O que são pacotes?
+➡️ A ideia é dar inicio a uma comercialização fora do jogo padrão, desta maneira, busco encontrar uma história tão rica que faça união sobre a maioria dos personagens e monstros, deste modo é possível realizar a comercialização de miniaturas que estão fora do jogo padrão.
+O pacote pode ser adquirido de duas maneiras:
+Pacote de Miniatura
+➡️ Este pacote incluirá uma miniatura e algumas cartas aleatórias de equipamentos ou receitas.
 
-Lojas - Pode comprar se obtiver o item de loja no território (NPC - Venda de Itens, NPC - quests, melhor descanso)
+Pacote Tradicional
+➡️ Este pacote é uma recompensa que os jogadores receberão após concluírem a missão final do jogo. Ele concede três cartas exclusivamente relacionadas a equipamentos ou receitas. Quando um jogador recebe um equipamento, ele é automaticamente adicionado à sua biblioteca, podendo ser usado nas partidas com amigos ou em aventuras individuais.
 
-Campo de Batalha (simulação de espaços de acordo com seu território, monstros de outros territórios não fazem invasão a territórios vizinhos)
+🔴 O que seria a Biblioteca?
+1. Armazenamento de Cartas
+  ➡️ Este é o local onde você guarda tanto as cartas de monstros quanto as de personagens que adquiriu por pacotes.
 
-Inimigos
-===============================================================
+2. Biblioteca de Colecionáveis
+   ➡️ Sua biblioteca funciona como um catálogo de colecionáveis, permitindo que você utilize suas conquistas em qualquer partida que iniciar.
 
-Status
-Vida:
-Ataque: "fixo de monstro - o ataque é uma quantia de dano que subtrai direto do HP do jogador"
-Defesa: 
-Movimento: "fixo para todos monstro - 1 ou 2 espaços" 
-Poder especial: "tipo uma magia, único para cada inimigo".
-Recompensa: (moeda, material, equipamento especifico)
+3. Observação Importante sobre Perda de Cartas
+   ➡️ Lembre-se de que as cartas adquiridas por pacotes são consideradas permanentes, já as que foram "encantadas" podem ser perdidas em partidas sujeitas a riscos.
+Mapas
 
-Personagens
-===============================================================
+🔴Território Central 
+➡️ Essa parte do jogo é essencial, pois fornece um formato para posicionar as peças distintas. Geralmente, é nela que ocorre a centralização, reunindo todos os monstros dos territórios diferentes.
 
-Status:
-Vida: "fixo de personagem"
-Ataque: Equipamentos 
-Defesa: Armaduras 
-Movimento: "fixo de personagem"
+🔴Territórios Distintos 
+➡️ Essas são peças que se unem à parte central do mapa. Monstros de territórios distintos não têm a capacidade de invadir uns aos outros, mas podem coexistir no território central.
 
-Espaços Fixos:
-Pilha de Cartas de Privilégios (Equipamentos, Moedas, Pergaminhos)
+❓ Adiconar eventos que introduzem objetos ao mapa, estes podem ser interagidos tanto com os personagens como os monstros.
 
-Equipamentos:
-===============================================================
+Objetivo do Jogo
+🔴 Resolução da Quest - Principal
+➡️A ideia é fazer que uma inteligência que monte uma Quest para cada jogador, podendo mesclar as situações de:
+➡️ X Fabricação de Item normal, X fabricação de item raro.
+➡️ X Aniquilações de monstros.
+➡️ X Aniquilação de Chefe de Elite (Semi-Boss).
 
-Ataque: Adicione +1 Dado em sua rolagem
+🔴 Quest - "End Game"
+➡️ Após todos os jogadores finalizarem as quests, terá a oportunidade de resolver a Quest do End Game.
+➡️ A ideia é fazer que uma inteligência monte um final com um Boss especifico e aleatório para cada fim de jogo, equilibrando o poder do Boss de acordo com os números de jogadores. Todos os jogadores se juntam para tentar aniquilar este Boss Final.
+➡️ Ao derrotar o boss final você ganhará um pacote, que terá a oportunidade de aquisição de itens para somatória de sua biblioteca.
+➡️ Se você ou o seu grupo conseguirem derrotar o Boss Final, a Quest do End Game será concluída, e o jogo será considerado "100% Concluído".
+➡️ Caso vocês não consigam derrotar o Boss Final, a porcentagem de progresso no jogo será proporcional ao dano causado ao Boss. Isso pode resultar em porcentagens variando de 90% a 99% de conclusão, indicando que o Boss foi derrotado parcialmente, mas não completamente.
 
-Jogabilidade
-===============================================================
-Faça 03 Ações em campo de batalha, sendo:
+Cartas 
+🔴  Carta de Moedas
+➡️ Usabilidade - Realizar a junção de células necessárias para troca de itens em loja, realizar a ação de compra gastará uma ação em sua rodada.
+➡️ Formas de Obter - Drop de Inimigos.
+➡️ Formas de Obter - Conclusão de Quests.
+➡️ Formas de Obter - Venda de equipamento de Loja Online.
+➡️ Formas de Aquisição - Itens em Lojas (Online ou Hibrido).
+➡️ Formato da Carta - Unidades simbolizando números (Célula $2, Célula $5)
 
-01 Ação Obrigatória:
-+ Manipulação:
-Colete 05 Cartas aleatórias em mãos, destas cartas você pode fazer suas escolhas, podendo ser:
--> Aprendizagem/Fabricação - adquirir itens.
--> Gerir Moedas - (Podendo ser guardado na mochila para utilizar em Cidades).
--> Equipar-se (ocupar do slot vazio de armas e proteção)
+🔴  Carta de Receitas
+➡️Esta é uma carta com o poder de invocar um item, no entanto, é obrigatório realizar a fusão dos itens descritos na receita para criar o item.
 
-02 Ações Selecionadas
-+ Atacar (atacar as criaturas em campo de batalha).
-+ Descansar (recuperação de 01 ponto de vida).
-+ Andar (andar no território de Campo de Batalha).
-+ Fuga (Sair de campo de batalha com 50% de chance).
-+ Compra (só pode ser feita fora do campo de batalha).
-+ Ingressar (Entrar em campo de batalha com alvo sortido).
+🔴  Carta de Equipamentos
+➡️ Os equipamentos estão divididos em diferentes categorias de raridade, e essa raridade pode influenciar os atributos do equipamento.
+➡️ Os equipamentos possuem suas classificações diante seu preço, haverá uma escala de preços de acordo com sua raridade.
+➡️ Cada personagem utiliza o item de acordo com sua classe.
+➡️ Cada carta possui uma indicação que especifica quantos dados ou que tipo de dado o equipamento utiliza, podendo variar de um D6 até um D12.
+➡️ Os equipamentos se diferenciam por sua utilidade, podendo ser usados para defesa ou ataque, como armaduras e machados, que são variações das classes de equipamentos comuns, tais como espadas, arcos, cajados, trajes e túnicas, entre outros.
+
+🔴Carta de Itens
+🔸 Exemplo de item - Eternal
+➡️É um feitiço que permite vincular um item a ele. Quando este encantamento é aplicado a um item, ele é transferido para a sua biblioteca. No entanto, como o item não faz parte dos seus pertences permanentes de biblioteca, se o seu personagem morrer no jogo enquanto estiver usando o equipamento, o encantamento será desfeito, resultando na perda total do item.
+🔸 Itens - Materiais Comuns
+➡️ A combinação de materiais comuns geralmente resulta na criação de equipamento, que pode ser utilizado para proteção ou ataque.
+
+Lojas 
+🔴Loja Comum
+➡️ 05 itens disponíveis para aquisição, podendo ser embaralhada a cada X rodadas.
+
+🔴Loja Online - Especial
+➡️Um cardápio de itens especiais.
+➡️ Itens exclusivos que são referentes a datas comemorativas e situações eventuais, podendo ser adquirido com algumas condiçoes.
+
+Monstros
+🔴Monstros únicos
+➡️Nomeado como monstros, estes são os adversários que os personagens enfrentam durante o jogo.
+
+🔴Raridade
+➡️Os monstros estão divididos em diferentes categorias de raridade, e essa raridade pode influenciar em seus atributos.
+
+Personagens 
+🔴 Personagem únicos
+➡️ Conjunto de habilidades únicas
+➡️ Todo personagem faz parte de uma classe
+
+🔴Classes de personagens
+🔸Mago [Magias]
+➡️Habilidades mágicas: Excelente.
+➡️Poder de ataque: Normal.
+➡️Ataque a distância: Sim.
+➡️Taxa de defesa: Normal.
+
+🔸Arqueiro [Distância]
+➡️Habilidades mágicas: Normal.
+➡️Poder de ataque: Normal.
+➡️Ataque a distância: Sim, com potência aumentada.
+➡️Taxa de defesa: Ruim.
+
+🔸Guerreiro [Hibrido]
+➡️Habilidades mágicas: Normal.
+➡️Poder de ataque: Normal.
+➡️Ataque a distância: Não.
+➡️Taxa de defesa: Excelente.
+
+🔸Berserk [Ataque]
+➡️Habilidades mágicas: Normal.
+➡️Poder de ataque: Excelente.
+➡️Ataque a distância: Não.
+➡️Taxa de defesa: Normal.
+
+🔸Sacerdote [Suporte]
+➡️Habilidades mágicas: Normal.
+➡️Poder de ataque: Excelente.
+➡️Ataque a distância: Sim.
+➡️Taxa de defesa: Excelente.
+
+Manual
+🔴 Movimentação
+➡️A movimentação ocorre de acordo com cada personagem podendo ser em círculo, cruz ou X.
+➡️A movimentação é quantidade de casas que o personagem é capaz de andar na tabuleiro gradiente.
+➡️A movimentação do adversário é disposta ao alvo que é selecionado, andando apenas e formato de cruz.
+
+🔴 Ciclo de turno
+➡️ Seguindo a ordem da pessoa mais nova até a mais velha, os personagens começam jogando primeiro do que os monstros.
+➡️ Todos jogadores devem realizar suas ações, as ações será explicada mais tarde na categoria do Mecanismo de Jogabilidade.
+➡️ Após todos os jogadores realizarem suas ações, é a hora das ações dos monstros, estes agora, jogará um de cada vez, indicando na tela do aplicativo qual jogador ele está seguindo e caso estiver em seu alcance, lançar ataques ao jogador alvo.
+
+🔴 Ações
+➡️ Faça Três Ações, sendo uma ação obrigatória e duas opcionais.
+🔸Ação Obrigatória - Manipulação: 
+➡️Coletar 05 cartas de seu baralho de privilégios, destas cartas você pode fazer as manipulações que é:
+➡️Fabricação - Combinação de itens para formação de algum equipamento.
+➡️Equipar-se - Inserir cartas nos slots de Ataque/Defesa.
+➡️Aprendizado - Inserir receitas no seu caderno de aprendizado.
+➡️Banir - Exclusão de qualquer item indesejado do seu baralho.
+
+🔸Ação Opcional - Atacar: Caso você tenha se equipado de algum item, você pode selecionar o monstro em seu alcance e realizar o ataque.
+🔸Ação Opcional - Descansar: Caso você estiver com o HP baixo, você pode realizar essa ação para recuperar X de vida de seu personagem.
+🔸Ação Opcional - Andar: Essa ação é de acordo com número de movimento do seu personagem, permitirá que você chegue mais perto do seu alvo ou recue de algum adversário
+🔸Ação Opcional – Compra: Com as moedas combinadas em sua mão, você poderá realizar a compra na loja.
+
+➡️ Após suas Ações, todos seus itens irá para pilha de descarte e pegue novas 05 cartas. Quando sua pilha de Privilégios acabar, embaralhe e comece o ciclo novamente.
+
+🔴Recompensa de Monstro
+➡️ A recompensa é concedida após a aniquilação de um monstro, ou seja, quando o HP do monstro é reduzido a zero.
+➡️ Existem dois tipos de recompensa: a recompensa por dano final e a recompensa por dano maior. Isso significa que o jogador que causar mais dano ao monstro também receberá a recompensa associada a ele. Se o jogador que causou o dano final for o mesmo que causou o dano maior, ele receberá duas recompensas.
+
+🔴 Combate - Atacando
+➡️ O jogador apenas ataca se ele tiver utilizando pelo menos um equipamento com poder de ataque e um monstro estiver em seu alcance, caso ele tenha disposto três equipamentos, serão três ataques diferentes.
+➡️As cartas de ataque contém uma marcação de dados que representa a probabilidade de sucesso do ataque. Ou seja, se o resultado do dado ultrapassar esse valor, o ataque é bem-sucedido."
+➡️Além disso, existe a chance de causar dano máximo quando se obtém o número mais alto que o dado oferece. Isso é considerado um sucesso milagroso e pode resultar na ativação de efeitos especiais provenientes do equipamento ou habilidade do seu personagem.
+➡️Para que um ataque tenha sucesso, a taxa de acerto deve superar a taxa de defesa do inimigo. Suponha que você tenha três equipamentos à sua disposição; isso lhe permite realizar até três ataques. Em cada ataque, você rola dados, podendo variar de um D6 à um D12.
+➡️Cada equipamento possui sua própria taxa de acerto. Por exemplo, se uma espada tem uma taxa de acerto de 5 ou mais em um dado D6, isso significa que ela só causará dano se o resultado do dado for 5 ou superior. Além disso, o dano causado é indicado e calculado pelo aplicativo, e a faixa de dano que o equipamento pode infligir é descrita na carta correspondente.
 
 
-Após suas 02 Ações, descarte todos itens na pilha de descarte e pegue novas 05 cartas. Quando sua pilha de Privilégios acabar, embaralhe e comece o ciclo novamente.
+➡️Para frisar, imagine três ataques, cada um usando um dado de seis lados. O primeiro ataque resulta em 4, o segundo em 2, e o terceiro em 5. A defesa do oponente também envolve o lançamento de um dado de seis lados. Suponha que a carta de defesa do inimigo indique uma probabilidade de defesa de 3. Neste cenário, dois ataques são bem-sucedidos. Em seguida, o aplicativo calcula o poder de ataque de cada equipamento que obteve êxito, variando de acordo com os equipamentos. Além disso, as cartas também fornecem informações sobre o dano máximo que um equipamento pode causar diretamente à vida do alvo.
 
-Mecanismo de Combate
-===============================================================
-Jogador Atacando:
+🔴 Combate - Defendendo
+➡️A diferença entre o ataque e a defesa é a seguinte: quando se trata de defesa, você escolhe qual equipamento defensivo usar na batalha, e essa vestimenta representa você em todas as suas tentativas de defesa. A cada ataque do adversário, o aplicativo automaticamente calcula se resultará em dano ou não, da mesma forma que ocorre com o ataque.
 
-  Soma-se ATAQUE de Equipamento
+➡️A batalha é resolvida subtraindo o valor de ataque do valor de defesa. Se a defesa for maior, o ataque não é bem-sucedido. No entanto, se a defesa não for suficiente, o ataque é realizado aleatoriamente, utilizando o poder de ataque indicado na carta do inimigo.
 
-Os equipamentos são representados por dados. Em outras palavras, durante um ataque, o ataque é o resultado do dado rolado. Se a soma ultrapassar a defesa do dado do oponente isso resulta em X ponto de dano sendo aplicado à vida do inimigo.
-
-Além disso, existe a oportunidade de aumentar o dano ao obter o número 06 ou maior no dado. Isso é considerado um acerto crítico, infligindo algum maleficio à vida do inimigo. 
-
-A rolagem de dados é de acordo com a quantidade de cartas de ataque você tiver, o mesmo se aplica para os dados de defesa do oponente, a soma de dados defensivos está fixada em cada carta.
-
-Um exemplo de ataque, seria o jogador jogar 3 ataques sendo:
-1 > 4
-2 > 5
-3 > 3
-
-Contra Oponente:
-1 > 4
-2 > 6
-
-O oponente obteve duas defesas consolidadas, porém o terceiro ataque fez com que ele tivesse tido um dano.
-
-O dano é perante a estatística da arma, por exemplo:
-Espada Luwo:
-1 = 0 padrão.
-2 ~ 3 = 1 dano.
-4 ~ 5 = 2 dano.
-6 = 2 dano + uma rolagem se tirar 4 concede +2 dano.
-
-Defendendo:
-
-DEFESA de Equipamento
-
-...
-
-
-Quando a pessoa matar o monstro ela recebe os benefícios ou quando a pessoa enfrenta também recebe
-
-Mecanismo de Descanso
-===============================================================
-Jogador recupera 01 ponto de vida nesta rodada.
-Caso ele estiver em uma cidade a recuperação de pontos de vida será total.
-Mecanismo de Movimento
-===============================================================
-Ganolia
-+ Movimenta-se através do teletransporte (pergaminho) para qualquer lugar do mapa que foi deixado o token.
-  
-Campo de Batalha
-+ Movimenta-se de acordo com sua jogabilidade de CLASSE, sendo em CRUZ ou CIRCULAR.
-
-Mecanismo de Eventos
-===============================================================
-Cartas de eventos podem ser disponibilizadas.
-+ Boss - spawn de boss com marcação do território spawnado.
-
-Tipos de Magias - Vínculo ao equipamento.
-===============================================================
-+ Magia Ofensiva 
-::Magia própria: conceder ATÉ +3 de DANO na VIDA do alvo
-::Magia para aliado: conceder ATÉ +2 de DANO na VIDA do alvo
-::Magia própria: conceder ATÉ 2 FIXO no ataque (aumenta valor no dado).
-::Magia para aliado: conceder ATÉ 3 FIXO no ataque (aumenta valor no dado).
-::Magia de alvo: conceder +1 de DANO em um espaço específico.
-::Magia de Mapa: conceder +1 de DANO em um espaço específico do mapa.
-::Magia de Expulsão: expulsar o alvo mais próximo do campo de batalha.
-
-+ Magia Defensiva
-::Magia de Blindagem (proteger de qualquer ataque)
-::Magia de Cura (curar em batalha, +hp)
-
-Magias Especiais:
-::Absorção de atributos
-::Golpes Duplos
-::Rerolagem em dados
-::Dados especiais (cair 04, tornar 08)
-::Dados especiais (rolar 02 dados e escolher o melhor)
-::Mesclagem (Cura+Defesa , Ataque+sorte, etc...)
-::Vinculo com a vida (Golpe retorna em HP)
-::Recompensa imediata (escolher recompensa do inimigo)
-::Atoradoação
-
-Magias Integração com Ambiente:
-:: No escuro
-:: Em cima
+➡️Quando a pessoa matar o monstro ela recebe os benefícios ou quando a pessoa enfrenta também recebe
