@@ -18,7 +18,26 @@ if (empty($id)) {
     $data_envio = date('d-m-Y');
   }
   
-  if ($situacao === 'Enviado') {
+  $queryEnviadoExiste = "SELECT situacao FROM heads WHERE tag = '$tag'";
+  $consultaEnviadoExiste = $conn->query($queryEnviadoExiste);
+  $rowEnviado = $consultaEnviadoExiste->fetch_assoc();
+  $situacaoAtual = $rowEnviado["situacao"];
+  if ($situacaoAtual === 'Enviado'){
+    $data_envio = date('d-m-Y');
+    $data_previsao = date('d-m-Y', strtotime($data_envio . ' +7 days'));
+    $data_retorno = ('Pendente');
+    $data_garantia = ('Nao');
+    $sql = "UPDATE heads SET 
+    tag = '".$tag."', 
+    modelo = '".$modelo."', 
+    problema = '".$problema."', 
+    data_envio = '".$data_envio."', 
+    situacao = '".$situacao."', 
+    previsao = '".$data_previsao."', 
+    retorno = '".$data_retorno."', 
+    garantia = '".$data_garantia."'
+    WHERE id = ".$id;
+  } else{
     $data_envio = date('d-m-Y');
     $data_previsao = date('d-m-Y', strtotime($data_envio . ' +7 days'));
     $data_retorno = ('Pendente');
@@ -42,7 +61,7 @@ if (empty($id)) {
     WHERE id = ".$id;
   }
 
-  else if ($situacao === 'Concluido'){
+  if ($situacao === 'Concluido'){
     $data_previsao = ('Concluido');
     $data_retorno = date('d-m-Y');
     $data_envio = $_POST['data_envio'];
@@ -51,11 +70,9 @@ if (empty($id)) {
       $data_envio = 'Nao obteve Envio';
     }
     
-    //Calcula a diferença em dias entre a data de envio e a data de retorno
-    $diferenca_dias = strtotime($data_retorno) - strtotime($data_envio);
+    $diferenca_dias = strtotime($data_retorno) - strtotime($data_envio); //Calcula a diferença em dias entre a data de envio e a data de retorno
     $diferenca_dias = floor($diferenca_dias / (60 * 60 * 24)); // converte para dias
     $garantia = ($diferenca_dias > 30) ? 'Nao' : 'Sim';
-
 
     $sql = "UPDATE heads SET 
     tag = '".$tag."', 
@@ -69,7 +86,8 @@ if (empty($id)) {
     WHERE id = ".$id;
 
   } 
-  else {
+
+  if($situacao === 'Pendente') {
     $data_previsao = ('Pendente');
     $data_retorno = ('Pendente');
     $data_garantia = ('Nao');
