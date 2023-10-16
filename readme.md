@@ -19,11 +19,10 @@ Características de Ganolia
 Sim, o jogo terá uma progressão com final, definindo cada partida como uma sessão de Galonia.
 
 🔴 Diferenciais do jogo
-➡️ Toda partida tende a ser diferente.
-➡️ Quests utilizando inteligência para tornar-se únicas.
-➡️ É possível encantar itens durante partidas anteriores, de modo que possam ser utilizados em partidas futuras.
-➡️Ao adquirir um pacote, seja de miniaturas físicas ou virtuais, você enriquecerá a sua 'biblioteca', o que proporcionará uma experiência imersiva em qualquer jogo que você escolher jogar. Com base nas cartas disponíveis em sua biblioteca, agora você e o grupo terá a capacidade de adquirir novos itens em qualquer partida. Além disso, os jogadores do grupo têm a possibilidade de adquirir o item, aplicar encantamentos para aprimorar e personalizar os itens em suas bibliotecas.
-➡️ Eventos Nativos Dungeons, que apresentam uma variedade de monstros aleatórios, poderão emergir a cada X números de turnos. Esses eventos ocorrerão exclusivamente no ambiente online. Quando uma dungeon aparecer no mapa, os jogadores terão a chance de participar. No entanto, o formato deste evento é distinto, incluindo um mapa exclusivo e dados serão virtuais no formato online.
+➡️ Cada partida é propensa a ser única, utilizando de uma inteligência para quests para garantir a diversidade de experiência.
+➡️ Há a possibilidade de encantamento de itens durante partidas atuais, de modo que possam ser utilizados em partidas futuras.
+➡️Ao comprar um pacote fisico, você enriquecerá a sua 'biblioteca', o que proporcionará uma experiência imersiva em qualquer jogo que você escolher jogar. O jogo será enriquecido com base nas cartas disponíveis de sua biblioteca, oferecendo ao grupo oportunidade de obte-las também.
+➡️ Eventos Nativos: Dungeons, que apresentam uma variedade de monstros aleatórios, poderão emergir a cada X números de turnos. Esses eventos ocorrerão exclusivamente no ambiente online. Quando uma dungeon aparecer no mapa, os jogadores terão a chance de participar. No entanto, o formato deste evento é distinto, incluindo um mapa exclusivo e dados serão virtuais em um formato online.
 
 🔴 O que são pacotes?
 ➡️ A ideia é dar inicio a uma comercialização fora do jogo padrão, desta maneira, busco encontrar uma história tão rica que faça união sobre a maioria dos personagens e monstros, deste modo é possível realizar a comercialização de miniaturas que estão fora do jogo padrão.
@@ -35,20 +34,16 @@ Pacote Tradicional
 ➡️ Este pacote é uma recompensa que os jogadores receberão após concluírem a missão final do jogo. Ele concede três cartas exclusivamente relacionadas a equipamentos ou receitas. Quando um jogador recebe um equipamento, ele é automaticamente adicionado à sua biblioteca, podendo ser usado nas partidas com amigos ou em aventuras individuais.
 
 🔴 O que seria a Biblioteca?
-1. Armazenamento de Cartas
-  ➡️ Este é o local onde você guarda tanto as cartas de monstros quanto as de personagens que adquiriu por pacotes.
+➡️ Armazenamento de Cartas: Este é o local onde você guarda tanto as cartas de monstros quanto as de personagens que adquiriu por pacotes.
+➡️ Biblioteca de Colecionáveis: Sua biblioteca funciona como um catálogo de colecionáveis, permitindo que você utilize suas conquistas em qualquer partida que iniciar.
+➡️ Observação Importante sobre Perda de Cartas: Lembre-se de que as cartas adquiridas por pacotes são consideradas permanentes, já as que foram "encantadas" podem ser perdidas em partidas sujeitas a riscos.
 
-2. Biblioteca de Colecionáveis
-   ➡️ Sua biblioteca funciona como um catálogo de colecionáveis, permitindo que você utilize suas conquistas em qualquer partida que iniciar.
+🔴Mapas
 
-3. Observação Importante sobre Perda de Cartas
-   ➡️ Lembre-se de que as cartas adquiridas por pacotes são consideradas permanentes, já as que foram "encantadas" podem ser perdidas em partidas sujeitas a riscos.
-Mapas
-
-🔴Território Central 
+🔸Território Central 
 ➡️ Essa parte do jogo é essencial, pois fornece um formato para posicionar as peças distintas. Geralmente, é nela que ocorre a centralização, reunindo todos os monstros dos territórios diferentes.
 
-🔴Territórios Distintos 
+🔸Territórios Distintos 
 ➡️ Essas são peças que se unem à parte central do mapa. Monstros de territórios distintos não têm a capacidade de invadir uns aos outros, mas podem coexistir no território central.
 
 ❓ Adiconar eventos que introduzem objetos ao mapa, estes podem ser interagidos tanto com os personagens como os monstros.
