@@ -16,8 +16,8 @@ if (empty($id)) {
 
   if ($data_envio === 'undefined/undefined/') {
     $data_envio = date('d-m-Y');
-  } 
-
+  }
+  
   if ($situacao === 'Enviado') {
     $data_envio = date('d-m-Y');
     $data_previsao = date('d-m-Y', strtotime($data_envio . ' +7 days'));

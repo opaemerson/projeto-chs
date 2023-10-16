@@ -141,6 +141,7 @@ function editarUsuario() {
   const data_envio = document.getElementById('editDataEnvio').value;
   const situacao = $('select[name="editSituacao"]').val();
 
+
   var form = new FormData();
   form.append('id', id);
   form.append('tag', tag);

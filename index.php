@@ -170,11 +170,39 @@ require_once('config.php');
                 </div>
                 <div class="mb-3">
                   <label for="editModelo" class="form-label">Marca</label>
-                  <input type="text" class="form-control" id="editModelo">
+                  <select class="form-select" id="editModelo" name="editModelo" aria-label="Default select example">
+                    <?php
+                    $sqlMarca = "SELECT nome FROM marca";
+                    $resultado = $conn->query($sqlMarca);
+                    if ($resultado) {
+                      while ($rowMarca = $resultado->fetch_assoc()) {
+                        $nomeMarca = $rowMarca["nome"];
+                        echo "<option value='$nomeMarca'>$nomeMarca</option>";
+                      }
+                      $resultado->close();
+                    } else {
+                      echo "Erro na consulta: " . $conn->error;
+                    }
+                    ?>
+                  </select>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Problema</label>
-                  <input type="text" class="form-control" id="editProblema">
+                  <select class="form-select" id="editProblema" name="editProblema" aria-label="Default select example">
+                      <?php
+                      $sql = "SELECT nome FROM problema";
+                      $result = $conn->query($sql);
+                      if ($result) {
+                        while ($row = $result->fetch_assoc()) {
+                          $nomeProblema = $row["nome"];
+                          echo "<option value='$nomeProblema'>$nomeProblema</option>";
+                        }
+                        $result->close();
+                      } else {
+                        echo "Erro na consulta: " . $conn->error;
+                      }
+                      ?>
+                    </select>
                 </div>
                 <div class="mb-3">
                   <label for="editDataEnvio" class="form-label">Data-Envio</label>
