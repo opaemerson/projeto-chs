@@ -390,3 +390,11 @@ function filtrar() {
     resultado = JSON.parse(resultado)
   });
 }
+
+function validaPermissaoCategoria(permissao) {
+  if (permissao === "Admin") {
+    window.location.href = "incluir_categoria.php";
+  } else {
+    alert("Voce nao tem permissao para executar esta acao.");
+  }
+}

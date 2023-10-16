@@ -19,6 +19,9 @@ require_once('config.php');
 
 <body class="amarelo-papel">
   <span id="conteudo"></span>
+  <?php
+  $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
+  ?>
 
   <!-- Campo de Botões-->
   <div class="fundo-marrom">
@@ -36,7 +39,7 @@ require_once('config.php');
         <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#myModal">Registro Unico</button>
         <button type="button" class="btn-preto" onclick="listarUsuarios(1)">Listagem</button>
         <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#filtroModal">Filtragem</button>
-        <a href="incluir_categoria.php" type="button" class="btn-preto">Incluir</a>
+        <?php echo '<button type="button" class="btn-preto" onclick="validaPermissaoCategoria(\'' . $permissao . '\')">Incluir</button>'; ?>
         <a href="estatisticas.php" type="button" class="btn-preto">Estatisticas</a>
         <?php echo "Nome: " . $_SESSION['nome']; ?>
         <?php echo "| ID: " . $_SESSION['id']; ?>
