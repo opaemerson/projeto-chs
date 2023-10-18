@@ -12,6 +12,7 @@ $previsao = $_POST['previsao'];
 $retorno = $_POST['retorno'];
 $garantia = $_POST['garantia'];
 $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
+$id_equip = $_POST['id_equip'];
 
 
 if (empty($tag) || empty($modelo)) {
@@ -62,14 +63,14 @@ if (empty($tag) || empty($modelo)) {
                 $data_retorno = ('Pendente');
                 $data_garantia = ('Nao');
                 $manutencao = 1;
-                $sql = "INSERT INTO heads (tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia, manutencao) VALUES ('".$tag."', '".$modelo."', '".$problema."', '".$data_envio."', '".$situacao."', '".$data_previsao."', '".$data_retorno."', '".$data_garantia."', '".$manutencao."')";
+                $sql = "INSERT INTO heads (equipamento_id, tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia, manutencao) VALUES ('".$id_equip."', '".$tag."', '".$modelo."', '".$problema."', '".$data_envio."', '".$situacao."', '".$data_previsao."', '".$data_retorno."', '".$data_garantia."', '".$manutencao."')";
               } 
               else {
                 $data_envio = ('Pendente');
                 $data_previsao = ('Pendente');
                 $data_retorno = ('Pendente');
                 $data_garantia = ('Nao');
-                $sql = "INSERT INTO heads (tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia) VALUES ('".$tag."', '".$modelo."', '".$problema."', '".$data_envio."', '".$situacao."', '".$data_previsao."', '".$data_retorno."', '".$data_garantia."')";
+                $sql = "INSERT INTO heads (equipamento_id, tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia) VALUES ('".$id_equip."', '".$tag."', '".$modelo."', '".$problema."', '".$data_envio."', '".$situacao."', '".$data_previsao."', '".$data_retorno."', '".$data_garantia."')";
               }
     
               if ($conn->query($sql) === TRUE) {

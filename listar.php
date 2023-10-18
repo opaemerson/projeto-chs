@@ -22,7 +22,7 @@ if (!empty($pagina)) {
     e.nome as equipamento
     FROM heads a
     LEFT JOIN equipamento e
-     N e.id = a.equipamento_id
+    ON e.id = a.equipamento_id
     ORDER BY a.id ASC LIMIT $inicio, $qnt_result_pg";
     $result_registros = mysqli_query($conn, $query_registros);
 

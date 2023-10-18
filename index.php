@@ -74,6 +74,25 @@ require_once('config.php');
                 <input type="hidden" id="garantia" class="form-control">
                 <input type="hidden" id="usuario" value="<?php echo isset($_SESSION['id']) ? $_SESSION['id'] : ''; ?>">
                 <div class="mb-3">
+                  <label class="form-label">Equipamento</label>
+                  <select class="form-select" id="id_equip" name="id_equip" aria-label="Default select example">
+                    <?php
+                    $sqlEquipamento = "SELECT id, nome FROM equipamento";
+                    $resultadoEquip = $conn->query($sqlEquipamento);
+                    if ($resultadoEquip) {
+                      while ($rowEquip = $resultadoEquip->fetch_assoc()) {
+                        $idEquip = $rowEquip["id"];
+                        $nomeEquip = $rowEquip["nome"];
+                        echo "<option value='$idEquip'>$nomeEquip</option>";
+                      }
+                      $resultadoEquip->close();
+                    } else {
+                      echo "Erro na consulta: " . $conn->error;
+                    }
+                    ?>
+                  </select>
+                </div>
+                <div class="mb-3">
                   <label class="form-label">TAG</label>
                   <input type="text" class="form-control" id="tag">
                 </div>
