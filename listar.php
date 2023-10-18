@@ -18,8 +18,11 @@ if (!empty($pagina)) {
 
     $query_registros = "SELECT a.*,
     (SELECT u.nome FROM historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as usuario,
-    (SELECT u.id FROM historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as idUsuario
-     FROM heads a
+    (SELECT u.id FROM historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as idUsuario,
+    e.nome as equipamento
+    FROM heads a
+    LEFT JOIN equipamento e
+     N e.id = a.equipamento_id
     ORDER BY a.id ASC LIMIT $inicio, $qnt_result_pg";
     $result_registros = mysqli_query($conn, $query_registros);
 
@@ -27,6 +30,7 @@ if (!empty($pagina)) {
             <table class='table table-striped table-bordered amarelo-papel borda-preta'>
                 <thead>
                     <tr>
+                        <th>Equipamento</th>
                         <th>TAG</th>
                         <th>Marca</th>
                         <th>Problema</th>
@@ -53,6 +57,7 @@ if (!empty($pagina)) {
             $situacaoTd = "$situacao ".'<img src="Images/concluido.png" class="img-enviado" alt="Concluído" width="30" height="30">';
         }
         $dados .= "<tr>
+                    <td>$equipamento</td>
                     <td>$tag</td>
                     <td>$modelo</td>
                     <td>$problema</td>

@@ -74,7 +74,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="card-title">Projeto Geekzero</h1>
-                    <p class="card-text"><b>Objetivo:</b> Notas sobre SÉRIES | FILMES | JOGOS VIRTUAIS | BOARDGAMES</p>
+                    <p class="card-text"><b>Objetivo:</b> Notas sobre SERIES | FILMES | JOGOS VIRTUAIS | BOARDGAMES</p>
                 </div>
             </div>
         </div>
@@ -100,7 +100,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="card-title">Projeto Ganolia</h1>
-                    <p class="card-text"><b>Objetivo:</b> Boardgame único e híbrido</p>
+                    <p class="card-text"><b>Objetivo:</b> Boardgame unico e hibrido</p>
                 </div>
             </div>
         </div>
