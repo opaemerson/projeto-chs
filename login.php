@@ -44,21 +44,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/erro.css">
     <title>Login e Cadastro</title>
 </head>
 <body>
-    <h2>Login</h2>
-    <form method="POST" action="login.php">
-        <label for="nome">Nome de Usuario:</label>
-        <input type="text" id="nome" name="nome" required>
-        <br>
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" required>
-        <br>
-        <button type="submit" name="login">Entrar</button>
-    </form>
+<div class="container">
+  <form method="POST" action="login.php">
+    <div class="card">
+      <a class="login">Log in</a>
+      <div class="inputBox">
+        <input type="text" required="required" id="nome" name="nome">
+        <span class="user">Username</span>
+      </div>
 
-    <a href="cadastrar.php">Cadastrar</a>
-    <a href="inicial.php">Voltar</a>
+      <div class="inputBox">
+        <input type="password" required="required" id="senha" name="senha">
+        <span>Password</span>
+      </div>
+
+      <button type="submit" class="enter" name="login">Enter</button>
+      <a href="cadastrar.php">Cadastrar</a>
+      <a href="inicial.php">Voltar</a>
+    </div>
+  </form>
+</div>
+
+
 </body>
 </html>

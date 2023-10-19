@@ -183,6 +183,7 @@ require_once('config.php');
               <form id="editForm">
                 <input type="hidden" id="editId" value="">
                 <input type="hidden" id="editGarantia" class="form-control">
+                <input type="hidden" id="editDataEnvio" class="form-control">
                 <div class="mb-3">
                   <label for="editTag" class="form-label">Tag</label>
                   <input type="text" class="form-control" id="editTag">
@@ -223,10 +224,6 @@ require_once('config.php');
                       ?>
                     </select>
                 </div>
-                <div class="mb-3">
-                  <label for="editDataEnvio" class="form-label">Data-Envio</label>
-                  <input type="text" id="editDataEnvio" class="form-control">
-                </div>
                 <label class="form-label">Situacao</label>
                 <select class="form-select" id="editSituacao" name="editSituacao" aria-label="Default select example">
                   <option value="Pendente">Pendente</option>
@@ -256,19 +253,37 @@ require_once('config.php');
               <input type="hidden" id="filtroId" value="">
               <div class="mb-3">
                 <label class="form-label">Marca</label>
-                <select class="form-select" id="exampleSelect" name="editModeloFiltro">
-                  <option value="">Selecione uma opcao</option>
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
-                </select>
+                <select class="form-select" id="editModeloFiltro" name="editModeloFiltro" aria-label="Default select example">
+                    <?php
+                    $sqlMarca = "SELECT nome FROM marca";
+                    $resultado = $conn->query($sqlMarca);
+                    if ($resultado) {
+                      while ($rowMarca = $resultado->fetch_assoc()) {
+                        $nomeMarca = $rowMarca["nome"];
+                        echo "<option value='$nomeMarca'>$nomeMarca</option>";
+                      }
+                      $resultado->close();
+                    } else {
+                      echo "Erro na consulta: " . $conn->error;
+                    }
+                    ?>
+                  </select>
                 <label class="form-label">Problema</label>
-                <select class="form-select" id="exampleSelect" name="problemaFiltro">
-                  <option value="">Selecione uma opcao</option>
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
-                </select>
+                <select class="form-select" id="problemaFiltro" name="problemaFiltro" aria-label="Default select example">
+                      <?php
+                      $sql = "SELECT nome FROM problema";
+                      $result = $conn->query($sql);
+                      if ($result) {
+                        while ($row = $result->fetch_assoc()) {
+                          $nomeProblema = $row["nome"];
+                          echo "<option value='$nomeProblema'>$nomeProblema</option>";
+                        }
+                        $result->close();
+                      } else {
+                        echo "Erro na consulta: " . $conn->error;
+                      }
+                      ?>
+                    </select>
                 <label class="form-label">Situacao</label>
                 <select class="form-select" id="exampleSelect" name="situacaoFiltro">
                   <option value="">Selecione uma opcao</option>
