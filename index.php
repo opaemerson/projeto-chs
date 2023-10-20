@@ -15,6 +15,8 @@ require_once('config.php');
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Oswald:wght@300&family=Playfair+Display:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <style>
+</style>
 </head>
 
 <body class="amarelo-papel">
@@ -30,9 +32,9 @@ require_once('config.php');
     </div>
     <div class="nav-bar">
       <div class="">
-        <button type="button">
+        <button type="button" class="transparent-button">
           <a href="inicial.php">
-            <img width="30" height="30" src="Images/volte.png">
+            <img width="40" height="40" src="Images/arrow.png" >
           </a>
         </button>
         <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#modalColetivo">Registro Coletivo</button>

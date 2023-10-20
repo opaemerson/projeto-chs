@@ -13,7 +13,7 @@ if (isset($_POST['cadastro'])) {
     }else{
         $sql = "INSERT INTO usuarios (nome, senha, permissao) VALUES ('$nome', '$senha', '$permissao')";
         if ($conn->query($sql) === TRUE) {
-            header('Location: index.php'); 
+            header('Location: inicial.php'); 
             exit;
             }
         } 

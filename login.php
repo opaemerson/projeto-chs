@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['nome'] = $row['nome'];
             $_SESSION['permissao'] = $row['permissao'];
 
-            header('Location: index.php'); 
+            header('Location: inicial.php'); 
             exit;
         } else {
             $erro_login = 'Credenciais inválidas. Por favor, tente novamente.';

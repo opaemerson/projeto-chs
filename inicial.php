@@ -26,16 +26,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#projeto-cee">Projeto C.E.E</a>
+                    <a class="nav-link" href="#projeto-cee">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#projeto-geekzero">Projeto Geekzero</a>
+                    <a class="nav-link" href="#projeto-geekzero">Projetos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#projeto-dintask">Projeto Dintask</a>
+                    <a class="nav-link" href="#projeto-dintask">Contato</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#projeto-ganolia">Projeto Ganolia</a>
+                    <a class="nav-link" href="login.php">Entrar</a>
                 </li>
             </ul>
             <?php
