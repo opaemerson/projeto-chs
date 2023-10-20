@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['nome'] = $row['nome'];
             $_SESSION['permissao'] = $row['permissao'];
 
-            header('Location: inicial.php'); 
+            header('Location: index.php'); 
             exit;
         } else {
             $erro_login = 'Credenciais inválidas. Por favor, tente novamente.';
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       <button type="submit" class="enter" name="login">Enter</button>
       <a href="cadastrar.php">Cadastrar</a>
-      <a href="inicial.php">Voltar</a>
+      <a href="index.php">Voltar</a>
     </div>
   </form>
 </div>

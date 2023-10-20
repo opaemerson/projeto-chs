@@ -64,6 +64,6 @@ require_once('config.php');
       }
   ?>
   <br>
-<a href="index.php" type="button" class="btn-preto">Voltar</a>
+<a href="index_chs.php" type="button" class="btn-preto">Voltar</a>
 </body>
 </html>

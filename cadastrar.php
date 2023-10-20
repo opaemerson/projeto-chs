@@ -13,7 +13,7 @@ if (isset($_POST['cadastro'])) {
     }else{
         $sql = "INSERT INTO usuarios (nome, senha, permissao) VALUES ('$nome', '$senha', '$permissao')";
         if ($conn->query($sql) === TRUE) {
-            header('Location: inicial.php'); 
+            header('Location: index.php'); 
             exit;
             }
         } 
@@ -47,7 +47,7 @@ if (isset($_POST['cadastro'])) {
         </label>
         <br>
         <button type="submit" name="cadastro" class="enter">Cadastrar</button>
-        <a href="inicial.php">Voltar</a>
+        <a href="index.php">Voltar</a>
 </div>
     </form>
 

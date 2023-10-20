@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         }
                     }
                         fclose($file);
-                        header("Location: index.php");
+                        header("Location: index_chs.php");
                         echo "Arquivo enviado e dados inseridos com sucesso.";
                         exit();
         } else {

@@ -83,7 +83,7 @@
 
 <br>
 <br>
-<a href="index.php" type="button" class="btn-preto">Voltar</a>
+<a href="index_chs.php" type="button" class="btn-preto">Voltar</a>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="./scripts/marca.js"></script>
