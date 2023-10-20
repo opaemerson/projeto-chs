@@ -40,7 +40,7 @@ require_once('../config.php');
   <a class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#myModal">REGISTRO UNICO</a>
   <a class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="listarUsuarios(1)">LISTAGEM</a>
   <a class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#filtroModal">FILTRAGEM</a>
-  <?php echo '<a  class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="validaPermissaoCategoria(\'' . $permissao . '\')">INCLUIR CATEGORIAS</a>'; ?>
+  <?php echo '<a  class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="validaPermissaoCategoria(\'' . $permissao . '\')">INCLUIR</a>'; ?>
   <a href="estatisticas.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square">ESTATISTICAS</a>
   <div class="coluna-pesquisar">
         <input type="text" class="" id="searchInput" placeholder="Pesquise a tag">
