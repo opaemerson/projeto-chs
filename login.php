@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-require_once('../config.php');
+require_once('config.php');
 
 // Função para limpar e escapar dados do usuário
 function limparEntrada($entrada) {
