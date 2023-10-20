@@ -4,7 +4,7 @@ function criarProblema() {
     const form = new FormData();
     form.append('nomeProblema', nomeProblema);
   
-    const url = "http://127.0.0.1:80/chs/cadastro_problema.php";
+    const url = "http://127.0.0.1:80/chs/projeto_chs/cadastro_problema.php";
   
     $.ajax({
       url: url, 

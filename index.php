@@ -85,7 +85,7 @@ if (isset($_SESSION['nome'])) {
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h1 class="card-title">Projeto C.E.E</h1>
+                    <h1 class="card-title">Projeto CHS</h1>
                     <p class="card-text"><b>Objetivo:</b> Controle de Envio de Equipamentos.</p>
                     <button type="button" onclick="verificarLogin()">Acessar</button>
                 </div>
@@ -140,7 +140,7 @@ if (isset($_SESSION['nome'])) {
             if (!usuarioLogado) {
                 window.location.href = 'login.php';
             } else {
-                window.location.href = 'index_chs.php';
+                window.location.href = 'projeto_chs/index_chs.php';
             }
         }
 

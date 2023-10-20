@@ -44,7 +44,7 @@ function createUser() {
   form.append('usuario', usuario);
   form.append('id_equip', id_equip);
 
-  const url = "http://127.0.0.1:80/chs/cadastro.php";
+  const url = "http://127.0.0.1:80/chs/projeto_chs/cadastro.php";
 
   $.ajax({
     url: url, // URL da requisição
@@ -65,7 +65,7 @@ function createUser() {
 
 function remove(id, idUsuario, usuarioSessao, permissaoSessao) {
   if (confirm('Deseja realmente excluir este item?')) {
-    const url = 'http://127.0.0.1:80/chs/remove.php';
+    const url = 'http://127.0.0.1:80/chs/projeto_chs/remove.php';
 
     $.ajax({
       url: url,
@@ -97,7 +97,7 @@ function lerUsuario(id) {
   var form = new FormData(); // Cria um novo objeto FormData para enviar os dados
   form.append('id', id); // Adiciona o parâmetro 'id' ao FormData com o valor de 'id'
 
-  const url = "http://127.0.0.1:80/chs/ler.php"; // Define a URL do arquivo PHP para onde enviar a requisição
+  const url = "http://127.0.0.1:80/chs/projeto_chs/ler.php"; // Define a URL do arquivo PHP para onde enviar a requisição
 
   $.ajax({
     url: url, // Define a URL para a requisição AJAX
@@ -150,7 +150,7 @@ function editarUsuario() {
   form.append('data_envio', data_envio);
   form.append('situacao', situacao);
 
-  const url = "http://127.0.0.1:80/chs/editar.php";
+  const url = "http://127.0.0.1:80/chs/projeto_chs/editar.php";
 
   $.ajax({
     url: url,
@@ -176,7 +176,7 @@ function pesquisar() {
   const form = new FormData();
   form.append('procurarPalavra', procurarPalavra);
 
-  const url = "http://127.0.0.1:80/chs/pesquisar.php";
+  const url = "http://127.0.0.1:80/chs/projeto_chs/pesquisar.php";
 
   $.ajax({
     url: url,
@@ -291,7 +291,7 @@ function filtrar() {
   form.append('procurarProblema', procurarProblema);
   form.append('procurarSituacao', procurarSituacao);
 
-  const url = "http://127.0.0.1:80/chs/filtrar.php";
+  const url = "http://127.0.0.1:80/chs/projeto_chs/filtrar.php";
 
   $.ajax({
     url: url,

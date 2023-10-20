@@ -50,11 +50,11 @@ if (!empty($pagina)) {
         $situacaoTd = $situacao;
 
         if ($situacao === 'Enviado') {
-            $situacaoTd = "$situacao ".'<img src="Images/enviadow.png" class="img-enviado" alt="Enviado" width="30" height="30">';
+            $situacaoTd = "$situacao ".'<img src="../Images/enviadow.png" class="img-enviado" alt="Enviado" width="30" height="30">';
         } elseif ($situacao === 'Pendente') {
-            $situacaoTd = "$situacao ".'<img src="Images/pendente.png" class="img-enviado" alt="Pendente" width="30" height="30">';
+            $situacaoTd = "$situacao ".'<img src="../Images/pendente.png" class="img-enviado" alt="Pendente" width="30" height="30">';
         } elseif ($situacao === 'Concluido') {
-            $situacaoTd = "$situacao ".'<img src="Images/concluido.png" class="img-enviado" alt="Concluído" width="30" height="30">';
+            $situacaoTd = "$situacao ".'<img src="../Images/concluido.png" class="img-enviado" alt="Concluído" width="30" height="30">';
         }
         $dados .= "<tr>
                     <td>$equipamento</td>
@@ -71,10 +71,10 @@ if (!empty($pagina)) {
                     <td class='td-center'>
                         <div class='btn-center'>
                             <button type='button' class='btn btn-link' data-bs-toggle='modal' data-bs-target='#editModal' onclick=\"lerUsuario(" . $row_usuario["id"] . ")\">
-                            <img src='Images/editar.png' width='30' height='30'>
+                            <img src='../Images/editar.png' width='30' height='30'>
                             </button>
                             <button type='button' class='btn btn-link' onclick=\"remove(" . $row_usuario["id"] . ", '" . $idUsuario .  "', '" . $usuarioSessao . "', '" . $permissaoSessao . "')\">
-                            <img src='Images/excluir.png' width='30' height='30'>
+                            <img src='../Images/excluir.png' width='30' height='30'>
                             </button>
                         </div>
                     </td>
