@@ -12,11 +12,18 @@ require_once('config.php');
   <title>CHS</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/cabecalho.css">
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Oswald:wght@300&family=Playfair+Display:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-</style>
+  body {font-family: "Lato", sans-serif}
+  .mySlides {display: none}
+  
+  </style>
 </head>
 
 <body class="amarelo-papel">
@@ -25,34 +32,22 @@ require_once('config.php');
   $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
   ?>
 
-  <!-- Campo de Botões-->
-  <div class="fundo-marrom">
-    <div class="title-holder">
-      <h1 class="txt-preto">C.E.E</h1>
-    </div>
-    <div class="nav-bar">
-      <div class="">
-        <button type="button" class="transparent-button">
-          <a href="inicial.php">
-            <img width="40" height="40" src="Images/arrow.png" >
-          </a>
-        </button>
-        <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#modalColetivo">Registro Coletivo</button>
-        <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#myModal">Registro Unico</button>
-        <button type="button" class="btn-preto" onclick="listarUsuarios(1)">Listagem</button>
-        <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#filtroModal">Filtragem</button>
-        <?php echo '<button type="button" class="btn-preto" onclick="validaPermissaoCategoria(\'' . $permissao . '\')">Incluir</button>'; ?>
-        <a href="estatisticas.php" type="button" class="btn-preto">Estatisticas</a>
-        <?php echo "Nome: " . $_SESSION['nome']; ?>
-        <?php echo "| ID: " . $_SESSION['id']; ?>
-        <?php echo "| Permissao: " . $_SESSION['permissao']; ?>
-      </div>
-      <div class="coluna-pesquisar">
+
+<div class="w3-bar w3-black w3-card">
+  <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+  <a href="inicial.php" class="w3-bar-item w3-button w3-hover-red w3-padding-large custom-square">VOLTAR </a>
+  <a href="inicial.php" class="w3-bar-item w3-button w3-padding-large custom-square">REGISTRO COLETIVO </a>
+  <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square">REGISTRO UNICO</a>
+  <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="listarUsuarios(1)">LISTAGEM</a>
+  <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#filtroModal">FILTRAGEM</a>
+  <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square">INCLUIR CATEGORIAS</a>
+  <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square">ESTATISTICAS</a>
+  <div class="coluna-pesquisar">
         <input type="text" class="" id="searchInput" placeholder="Pesquise a tag">
         <button type="button" class="btn-preto" onclick="pesquisar()">Pesquisar</button>
       </div>
-    </div>
-    <div>
+</div>
+
 
       <!-- Campo Exibição -->
       <div class="amarelo-papel">

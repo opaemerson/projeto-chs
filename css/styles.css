@@ -2,8 +2,9 @@
     background-color: rgba(173, 82, 7, 0.7);
   }
 
+
   .amarelo-papel{
-    background-color: papayawhip;
+    background-color: rgb(255, 255, 255);
   }
 
   .borda-preta {
@@ -18,7 +19,7 @@
 
   .btn-preto{
     background-color: rgba(22, 22, 22, 0.9);
-    color: #fff9c4;
+    color: rgb(240, 239, 237);
     border-radius: 5px;
     border:none;
     padding: 10px 8px;
@@ -27,10 +28,11 @@
 
   .btn-navegar{
     background-color: rgba(22, 22, 22, 0.7);
-    color: #fff9c4;
+    color: rgb(240, 239, 237);
     border-radius: 8px;
     border:none;
     padding: 5px 3px;
+    text-decoration: none;
   }
 
   .btn-verde{

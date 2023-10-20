@@ -5,19 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Projeto C.E.E</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/cabecalho.css">
+    <title>Projeto</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Oswald:wght@300&family=Playfair+Display:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body {font-family: "Lato", sans-serif}
+    .mySlides {display: none}
+    </style>
 </head>
 <body>
     <?php
     session_start();
     ?>
 
+<div class="w3-bar w3-black w3-card">
+  <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+  <a href="inicial.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">HOME </a>
+  <a href="inicial.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">PROJETOS</a>
+  <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" style="text-decoration: none;">CONTATO</a>
+  <a href="login.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" id="loginLi" style="text-decoration: none;">ENTRAR</a>
+  <?php
+if (isset($_SESSION['nome'])) {
+    echo '<div class="w3-bar-item  w3-padding-large w3-hide-small w3-text-yellow"  style="text-decoration: none;">';
+    echo 'Bem-Vindo, ' . $_SESSION['nome'] . ' | Permissao: ' . $_SESSION['permissao'] . ' | ID: ' . $_SESSION['id'];
+    echo '</div>';
+    echo '<a href="sair.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hover-red custom-square" style="text-decoration: none;">SAIR</a>';
+}
+?>
+</div>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="#">GOBLINS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,24 +61,24 @@
                     <a class="nav-link" href="#projeto-dintask">Contato</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.php">Entrar</a>
+                    <a class="nav-link" href="login.php" id="loginLi">Entrar</a>
                 </li>
             </ul>
             <?php
-                if (isset($_SESSION['nome'])) {
-                    echo '<ul class="navbar-nav ml-auto">';
-                    echo '<li class="nav-item">';
-                    echo '<p class="text-light">Bem-Vindo, ' . $_SESSION['nome'] . '</p>';
-                    echo '</li>';
-                    echo '<li class="nav-item">';
-                    echo '<a class="nav-link" href="sair.php">Sair</a>';
-                    echo '</li>';
-                    echo '</ul>';
-                }
+            if (isset($_SESSION['nome'])) {
+                echo '<ul class="navbar-nav ml-auto">';
+                echo '<li class="nav-item">';
+                echo '<p class="text-light">Bem-Vindo, ' . $_SESSION['nome'] . ' | Permissao: ' . $_SESSION['permissao'] . ' | ID: ' . $_SESSION['id'] . '</p>';
+                echo '</li>';
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link" href="sair.php">Sair</a>';
+                echo '</li>';
+                echo '</ul>';
+            }
             ?>
         </div>
     </div>
-</nav>
+</nav> -->
 
 <div class="container mt-5" id="projeto-cee">
     <div class="row">
@@ -116,6 +142,10 @@
             } else {
                 window.location.href = 'index.php';
             }
+        }
+
+        if (usuarioLogado) {
+        document.getElementById('loginLi').style.display = 'none';
         }
     </script>
     
