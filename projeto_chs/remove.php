@@ -1,7 +1,7 @@
 <?php
 session_start();
 header('Access-Control-Allow-Origin: *');
-require_once('config.php');
+require_once('../config.php');
 
 
 if (isset($_POST['id'])) {

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "config.php";
+include_once "../config.php";
 
 if(isset($_SESSION['id'])){
     $usuarioSessao = $_SESSION['id'];

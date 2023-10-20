@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-require_once('config.php');
+require_once('../config.php');
 session_start();
 
 $tag = $_POST['tag'];
