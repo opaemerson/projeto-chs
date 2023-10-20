@@ -36,12 +36,12 @@ require_once('config.php');
 <div class="w3-bar w3-black w3-card">
   <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
   <a href="inicial.php" class="w3-bar-item w3-button w3-hover-red w3-padding-large custom-square">VOLTAR </a>
-  <a href="inicial.php" class="w3-bar-item w3-button w3-padding-large custom-square">REGISTRO COLETIVO </a>
-  <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square">REGISTRO UNICO</a>
+  <a href="inicial.php" class="w3-bar-item w3-button w3-padding-large custom-square" data-bs-toggle="modal" data-bs-target="#modalColetivo">REGISTRO COLETIVO </a>
+  <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#myModal">REGISTRO UNICO</a>
   <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="listarUsuarios(1)">LISTAGEM</a>
   <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#filtroModal">FILTRAGEM</a>
-  <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square">INCLUIR CATEGORIAS</a>
-  <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square">ESTATISTICAS</a>
+  <?php echo '<a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="validaPermissaoCategoria(\'' . $permissao . '\')">INCLUIR CATEGORIAS</a>'; ?>
+  <a href="estatisticas.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square">ESTATISTICAS</a>
   <div class="coluna-pesquisar">
         <input type="text" class="" id="searchInput" placeholder="Pesquise a tag">
         <button type="button" class="btn-preto" onclick="pesquisar()">Pesquisar</button>
