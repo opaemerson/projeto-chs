@@ -1,0 +1,5 @@
+> Alterar a tabela heads para controle
+> Inserir chaves de ligações na tabela modelo e problema igual a equipamento
+> Verificar se ocorre normalização nas funcionalidades do Editar
+> Fazer todos os ajustes no arquivo de importação
+> Adicionar segurança de usuario não poder inserir tags
