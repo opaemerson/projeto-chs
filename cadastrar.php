@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-require_once('../config.php');
+require_once('config.php');
 
 if (isset($_POST['cadastro'])) {
     $nome = $_POST['nome'];
