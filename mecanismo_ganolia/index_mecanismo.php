@@ -7,20 +7,24 @@
     <title>MecanismoG</title>
 </head>
 <body>
-    <h2>Atacando</h2>
-    Selecione o ID do Item Ofensivo:
-    <br>
-    Selecione o ID do Monstro:
+<h2>Atacando</h2>
+<form action="processar_ataque.php" method="post">
+    <label for="idItemOfensivo">Selecione o ID do Item Ofensivo:</label>
+    <input type="text" id="codigoItemAtaque">
+    <button type="button" onclick="buscarItemAtaque()">Buscar</button>
     <br><br>
-    <button>Jogar</button>
-    <br>
-    <h2>Defendendo</h2>
-    Selecione o ID do Item Defensivo:
-    <br>
-    Selecione o ID do Monstro:
+    <div id="resultadoConsulta"></div>
     <br><br>
-    <button>Jogar</button>
+    <label for="idMonstro">Selecione o ID do Monstro:</label>
+    <input type="text" name="idMonstro">
     <br><br>
-    <a href="../index.php">VOLTAR </a>
+    <button type="submit">Jogar</button>
+</form>
+
+
+<h2>Resultado</h2>
+<a href="../index.php">V</a>
+<script src="../scripts/mecanismo_ganolia.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>

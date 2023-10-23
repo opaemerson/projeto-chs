@@ -151,6 +151,5 @@ if (isset($_SESSION['nome'])) {
         var permissaoUsuario = <?php echo isset($_SESSION['permissao']) ? 'true' : 'false'; ?>;
 </script>
 <script src="./scripts/verificacoes.js"></script>
-    
 </body>
 </html>
