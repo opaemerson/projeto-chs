@@ -1,5 +1,6 @@
-> Alterar a tabela heads para controle
-> Inserir chaves de ligações na tabela modelo e problema igual a equipamento
-> Verificar se ocorre normalização nas funcionalidades do Editar
-> Fazer todos os ajustes no arquivo de importação
-> Adicionar segurança de usuario não poder inserir tags
+> [] Alterar a tabela heads para controle
+> [] Inserir chaves de ligações na tabela modelo e problema igual a equipamento
+> [OK] Verificar se ocorre normalização nas funcionalidades do Editar
+> [] Fazer todos os ajustes no arquivo de importação
+> [] Adicionar segurança de usuario não poder inserir tags
+> [] Modificar o like no filtrar para pegar das chaves das tabelas das categorias

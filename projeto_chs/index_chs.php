@@ -77,6 +77,7 @@ require_once('../config.php');
                     $sqlEquipamento = "SELECT id, nome FROM equipamento";
                     $resultadoEquip = $conn->query($sqlEquipamento);
                     if ($resultadoEquip) {
+                      echo "<option value=''>Selecione uma opcao</option>";
                       while ($rowEquip = $resultadoEquip->fetch_assoc()) {
                         $idEquip = $rowEquip["id"];
                         $nomeEquip = $rowEquip["nome"];
@@ -100,6 +101,7 @@ require_once('../config.php');
                     $sqlMarca = "SELECT nome FROM marca";
                     $resultado = $conn->query($sqlMarca);
                     if ($resultado) {
+                      echo "<option value=''>Selecione uma opcao</option>";
                       while ($rowMarca = $resultado->fetch_assoc()) {
                         $nomeMarca = $rowMarca["nome"];
                         echo "<option value='$nomeMarca'>$nomeMarca</option>";
@@ -118,6 +120,7 @@ require_once('../config.php');
                       $sql = "SELECT nome FROM problema";
                       $result = $conn->query($sql);
                       if ($result) {
+                        echo "<option value=''>Selecione uma opcao</option>";
                         while ($row = $result->fetch_assoc()) {
                           $nomeProblema = $row["nome"];
                           echo "<option value='$nomeProblema'>$nomeProblema</option>";
@@ -255,6 +258,7 @@ require_once('../config.php');
                     $sqlMarca = "SELECT nome FROM marca";
                     $resultado = $conn->query($sqlMarca);
                     if ($resultado) {
+                      echo "<option value=''>Selecione uma opcao</option>";
                       while ($rowMarca = $resultado->fetch_assoc()) {
                         $nomeMarca = $rowMarca["nome"];
                         echo "<option value='$nomeMarca'>$nomeMarca</option>";
@@ -271,6 +275,7 @@ require_once('../config.php');
                       $sql = "SELECT nome FROM problema";
                       $result = $conn->query($sql);
                       if ($result) {
+                        echo "<option value=''>Selecione uma opcao</option>";
                         while ($row = $result->fetch_assoc()) {
                           $nomeProblema = $row["nome"];
                           echo "<option value='$nomeProblema'>$nomeProblema</option>";
