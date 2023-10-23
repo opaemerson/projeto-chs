@@ -6,7 +6,7 @@ require_once('../config.php');
 
 $codigoItemAtaque = $_POST['codigoItemAtaque'];
 
-$resposta = array(); // Crie um array para armazenar a resposta
+$resposta = array();
 
 if(isset($codigoItemAtaque) && $codigoItemAtaque !== ''){ 
     $select = "SELECT * FROM item_ataque WHERE codigo = '$codigoItemAtaque'";
@@ -15,13 +15,23 @@ if(isset($codigoItemAtaque) && $codigoItemAtaque !== ''){
     if ($resultado->num_rows > 0){
         $linha = $resultado->fetch_assoc();
         $nome = $linha['nome'];
-        $damage = json_decode($linha['damage'], true);
-        $indiceAleatorio = rand(0, count($damage) - 1);
-        $damageAleatorio = $damage[$indiceAleatorio];
+        $tipo = $linha['tipo'];
+        $raridade = $linha['raridade'];
+        $dano = $linha['damage'];
+        $imagem = $linha['imagem'];
+        $conversaoDano = json_decode($linha['damage'], true);
+        $primeiroDano = reset($conversaoDano);
+        $ultimoDano = end($conversaoDano);
+        $danoCombinado = $primeiroDano . ' - ' . $ultimoDano;
+        // $indiceAleatorio = rand(0, count($damage) - 1);
+        // $damageAleatorio = $damage[$indiceAleatorio];
 
         $resposta['success'] = true;
         $resposta['nome'] = $nome;
-        $resposta['damage'] = $damageAleatorio;
+        $resposta['tipo'] = $tipo;
+        $resposta['raridade'] = $raridade;
+        $resposta['danoCombinado'] = $danoCombinado;
+        $resposta['imagem'] = $imagem;
     } else {
         $resposta['success'] = false;
         $resposta['message'] = 'Item de ataque não encontrado.';

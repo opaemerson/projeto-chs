@@ -15,8 +15,12 @@ function buscarItemAtaque() {
       dataType: 'json',
       success: function (resultado) { 
         if (resultado.success) {
-            $('#resultadoConsulta').html('Nome: ' + resultado.nome + '<br>Dano: ' + resultado.damage);
+            $('#resultadoConsulta').html('Nome: ' + resultado.nome + '<br>Tipo: ' + resultado.tipo + 
+            '<br>Raridade: ' + resultado.raridade + '<br>Dano possíveis: ' + resultado.danoCombinado);
             
+            $('#imagemItemAtaque').attr('src', resultado.imagem);
+            $('#imagemItemAtaque').show();            
+
         } else {
             $('#resultadoConsulta').html('Erro: ' + resultado.message);
         }

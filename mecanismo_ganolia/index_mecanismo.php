@@ -14,6 +14,7 @@
     <button type="button" onclick="buscarItemAtaque()">Buscar</button>
     <br><br>
     <div id="resultadoConsulta"></div>
+    <img id="imagemItemAtaque" src="" class="img-enviado" width="30" height="30" style="display: none;">
     <br><br>
     <label for="idMonstro">Selecione o ID do Monstro:</label>
     <input type="text" name="idMonstro">
