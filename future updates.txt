@@ -4,3 +4,5 @@
 > [] Fazer todos os ajustes no arquivo de importação
 > [] Adicionar segurança de usuario não poder inserir tags
 > [] Modificar o like no filtrar para pegar das chaves das tabelas das categorias
+> [] Incluir a opcao data retorno no cadastro atraves de uma checkbox que abre para inserir na mao caso contrario seja automatico
+> [] Criptografar senha dos usuarios.

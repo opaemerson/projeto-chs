@@ -133,21 +133,24 @@ if (isset($_SESSION['nome'])) {
     </div>
 </div>
 
-    <script>
+<div class="container mt-5" id="mecanismo-ganolia">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Mecanismo Ganolia</h1>
+                    <p class="card-text"><b>Objetivo:</b> Mecanismo teste de ganoilia</p>
+                    <button type="button" onclick="verificarLoginMecanismo()">Acessar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
         var usuarioLogado = <?php echo isset($_SESSION['nome']) ? 'true' : 'false'; ?>;
-
-        function verificarLogin() {
-            if (!usuarioLogado) {
-                window.location.href = 'login.php';
-            } else {
-                window.location.href = 'projeto_chs/index_chs.php';
-            }
-        }
-
-        if (usuarioLogado) {
-        document.getElementById('loginLi').style.display = 'none';
-        }
-    </script>
+        var permissaoUsuario = <?php echo isset($_SESSION['permissao']) ? 'true' : 'false'; ?>;
+</script>
+<script src="./scripts/verificacoes.js"></script>
     
 </body>
 </html>
