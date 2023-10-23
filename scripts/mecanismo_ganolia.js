@@ -16,17 +16,19 @@ function buscarItemAtaque() {
       success: function (resultado) { 
         if (resultado.success) {
             $('#resultadoConsulta').html('Nome: ' + resultado.nome + '<br>Tipo: ' + resultado.tipo + 
-            '<br>Raridade: ' + resultado.raridade + '<br>Dano possíveis: ' + resultado.danoCombinado);
+            '<br>Raridade: ' + resultado.raridade + '<br>Dano possiveis: ' + resultado.danoCombinado);
             
             $('#imagemItemAtaque').attr('src', resultado.imagem);
             $('#imagemItemAtaque').show();            
 
         } else {
             $('#resultadoConsulta').html('Erro: ' + resultado.message);
+            $('#imagemItemAtaque').hide(); 
         }
       },
       error: function (erro) { 
         $('#resultadoConsulta').html('Erro ao buscar o item de ataque.');
+        $('#imagemItemAtaque').hide();  
       }
     });
 }

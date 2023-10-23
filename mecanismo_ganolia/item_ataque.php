@@ -9,7 +9,7 @@ $codigoItemAtaque = $_POST['codigoItemAtaque'];
 $resposta = array();
 
 if(isset($codigoItemAtaque) && $codigoItemAtaque !== ''){ 
-    $select = "SELECT * FROM item_ataque WHERE codigo = '$codigoItemAtaque'";
+    $select = "SELECT * FROM item_ataque WHERE id = '$codigoItemAtaque'";
     $resultado = $conn->query($select);
 
     if ($resultado->num_rows > 0){
