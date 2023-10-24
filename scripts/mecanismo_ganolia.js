@@ -34,67 +34,48 @@ function buscarItemAtaque() {
 }
 
 function buscaCriatura() {
-    const idCriatura = $('#idCriatura').val();
-  
-    const form = new FormData();
-    form.append('idCriatura', idCriatura);
-  
-    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/criatura.php";
-  
-    $.ajax({
-      url: url, 
-      method: 'POST',
-      data: form, 
-      processData: false, 
-      contentType: false,
-      dataType: 'json',
-      success: function (resultado) { 
-        if (resultado.success) {
-            $('#resultadoCriatura').html('Nome: ' + resultado.nome + '<br>Raridade: ' + resultado.raridade);
-            
-            $('#imagemCriatura1').attr('src', resultado.imagem1);
-            $('#imagemCriatura2').attr('src', resultado.imagem2);
-            if (resultado.imagem3 === '' || typeof resultado.imagem3 === 'undefined') {
-                $('#imagemCriatura3').hide();
-            } else {
-                $('#imagemCriatura3').attr('src', resultado.imagem3);
-                $('#imagemCriatura3').show();
-            }
+  const idCriatura = $('#idCriatura').val();
 
-            if (resultado.imagem4 === '' || typeof resultado.imagem4 === 'undefined') {
-              $('#imagemCriatura4').hide();
-            } else {
-              $('#imagemCriatura4').attr('src', resultado.imagem4);
-              $('#imagemCriatura4').show();
-            }
-            
-            if (resultado.imagem5 === '' || typeof resultado.imagem5 === 'undefined') {
-              $('#imagemCriatura5').hide();
-          } else {
-              $('#imagemCriatura5').attr('src', resultado.imagem5);
-              $('#imagemCriatura5').show();
-          }
+  const form = new FormData();
+  form.append('idCriatura', idCriatura);
 
-            $('#imagemCriatura1').show();      
-            $('#imagemCriatura2').show();           
+  const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/criatura.php";
 
-        } else {
-            $('#resultadoCriatura').html('Erro: ' + resultado.message);
-            $('#imagemCriatura1').hide(); 
-            $('#imagemCriatura2').hide(); 
-            $('#imagemCriatura3').hide();
-            $('#imagemCriatura4').hide(); 
-            $('#imagemCriatura5').hide();  
-        }
-      },
-      error: function (erro) { 
-        $('#resultadoCriatura').html('Erro ao buscar criatura.');
-        $('#imagemCriatura1').hide();
-        $('#imagemCriatura2').hide();  
-        $('#imagemCriatura3').hide();    
-        $('#imagemCriatura4').hide();    
-        $('#imagemCriatura5').hide();    
+  $.ajax({
+    url: url, 
+    method: 'POST',
+    data: form, 
+    processData: false, 
+    contentType: false,
+    dataType: 'json',
+    success: function (resultado) { 
+      if (resultado.success) {
+          $('#resultadoCriatura').html('Nome: ' + resultado.nome + '<br>Raridade: ' + resultado.raridade);
+          
+          exibirOuOcultarImagem('#imagemCriatura1', resultado.imagem1);
+          exibirOuOcultarImagem('#imagemCriatura2', resultado.imagem2);
+          exibirOuOcultarImagem('#imagemCriatura3', resultado.imagem3);
+          exibirOuOcultarImagem('#imagemCriatura4', resultado.imagem4);
+          exibirOuOcultarImagem('#imagemCriatura5', resultado.imagem5);
+
+      } else {
+          $('#resultadoCriatura').html('Erro: ' + resultado.message);
+          $('#imagemCriatura1, #imagemCriatura2, #imagemCriatura3, #imagemCriatura4, #imagemCriatura5').hide();
       }
-    });
+    },
+    error: function (erro) {
+      console.log(erro); 
+      $('#resultadoCriatura').html('JS - Erro ao buscar criatura.');
+      $('#imagemCriatura1, #imagemCriatura2, #imagemCriatura3, #imagemCriatura4, #imagemCriatura5').hide();
+    }
+  });
 }
 
+function exibirOuOcultarImagem(elemento, imagem) {
+  if (imagem === '' || typeof imagem === 'undefined') {
+      $(elemento).hide();
+  } else {
+      $(elemento).attr('src', imagem);
+      $(elemento).show();
+  }
+}

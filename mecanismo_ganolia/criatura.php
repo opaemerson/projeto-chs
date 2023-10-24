@@ -38,11 +38,32 @@ if(isset($idCriatura) && $idCriatura !== ''){
         $resposta['success'] = true;
         $resposta['nome'] = $nome;
         $resposta['raridade'] = $raridade;
-        $resposta['imagem1'] = $guardaImagem[0];
-        $resposta['imagem2'] = $guardaImagem[1];
-        $resposta['imagem3'] = $guardaImagem[2];
-        $resposta['imagem4'] = $guardaImagem[3];
-        $resposta['imagem5'] = $guardaImagem[4];
+        
+        if (isset($guardaImagem[0])) {
+            $resposta['imagem1'] = $guardaImagem[0];
+        } else {
+            $resposta['imagem1'] = '';
+        }
+        if (isset($guardaImagem[1])) {
+            $resposta['imagem2'] = $guardaImagem[1];
+        } else {
+            $resposta['imagem2'] = '';
+        }
+        if (isset($guardaImagem[2])) {
+            $resposta['imagem3'] = $guardaImagem[2];
+        } else {
+            $resposta['imagem3'] = '';
+        }
+        if (isset($guardaImagem[3])) {
+            $resposta['imagem4'] = $guardaImagem[3];
+        } else {
+            $resposta['imagem4'] = '';
+        }
+        if (isset($guardaImagem[4])) {
+            $resposta['imagem5'] = $guardaImagem[4];
+        } else {
+            $resposta['imagem5'] = '';
+        }
         
     } else {
         $resposta['success'] = false;
