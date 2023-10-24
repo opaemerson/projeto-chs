@@ -71,6 +71,40 @@ function buscaCriatura() {
   });
 }
 
+function buscaDrop() {
+  const idCriatura = $('#idCriatura').val();
+
+  const form = new FormData();
+  form.append('idCriatura', idCriatura);
+
+  const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/recolher_drop.php";
+
+  $.ajax({
+    url: url, 
+    method: 'POST',
+    data: form, 
+    processData: false, 
+    contentType: false,
+    dataType: 'json',
+    success: function (resultado) { 
+      if (resultado.success) {
+          $('#resultadoDrop').html('Nome: ' + resultado.nomeEscolhido + '<br>Raridade: ' + resultado.raridadeEscolhido + '<br>' + resultado.numeroAleatorio + '%');
+          
+          exibirOuOcultarImagem('#imagemDrop', resultado.imagemEscolhida);
+
+      } else {
+          $('#resultadoDrop').html('Erro: ' + resultado.message);
+          $('#imagemDrop').hide();
+      }
+    },
+    error: function (erro) {
+      console.log(erro); 
+      $('#resultadoDrop').html('JS - Erro ao buscar criatura.');
+      $('#imagemDrop').hide();
+    }
+  });
+}
+
 function exibirOuOcultarImagem(elemento, imagem) {
   if (imagem === '' || typeof imagem === 'undefined') {
       $(elemento).hide();
@@ -78,4 +112,11 @@ function exibirOuOcultarImagem(elemento, imagem) {
       $(elemento).attr('src', imagem);
       $(elemento).show();
   }
+}
+
+function limpar(){
+  $('#imagemDrop').hide();
+  $('#imagemCriatura1, #imagemCriatura2, #imagemCriatura3, #imagemCriatura4, #imagemCriatura5').hide();
+  $('#resultadoDrop').hide();
+  $('#resultadoCriatura').hide();
 }

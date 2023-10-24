@@ -18,15 +18,16 @@ if(isset($idCriatura) && $idCriatura !== ''){
 
     if ($resultado->num_rows > 0){
         $linha = $resultado->fetch_assoc();
-        $nome = $linha['nome'];
-        $raridade = $linha['raridade'];
         $recompensa = $linha['recompensa'];
         $probabilidade = $linha['probabilidade'];
         $recompensaArray = explode(";", $recompensa);
         $probabilidadeArray = explode(";", $probabilidade);
+        $guardaNome = array();
+        $guardaRaridade = array();
         $guardaImagem = array();
         foreach ($recompensaArray as $key) {
-            $existeItem = "SELECT gi.id, gi.imagem FROM ganolia_item gi WHERE gi.id = $key";
+            $existeItem = "SELECT gi.id, gi.nome, gi.raridade, gi.imagem 
+            FROM ganolia_item gi WHERE gi.id = $key";
             
             $resultadoItem = $conn->query($existeItem);
             
@@ -34,6 +35,8 @@ if(isset($idCriatura) && $idCriatura !== ''){
                 $resposta['message'] = 'Criatura não encontrada.';
             } else {
                 $linhaExiste = $resultadoItem->fetch_assoc();
+                $guardaNome[] = $linhaExiste['nome'];
+                $guardaRaridade[] = $linhaExiste['raridade'];
                 $guardaImagem[] = $linhaExiste['imagem'];
             }
         }
@@ -49,14 +52,16 @@ if(isset($idCriatura) && $idCriatura !== ''){
         
             if ($numeroAleatorio <= $intervaloFinal) {
                 $recompensaEscolhida = $recompensaArray[$index];
+                $nomeEscolhido = $guardaNome[$index];
+                $raridadeEscolhido = $guardaRaridade[$index];
                 $imagemEscolhida = $guardaImagem[$index];
                 break;
             }
         }
         
         $resposta['success'] = true;
-        $resposta['nome'] = $nome;
-        $resposta['raridade'] = $raridade;
+        $resposta['nomeEscolhido'] = $nomeEscolhido;
+        $resposta['raridadeEscolhido'] = $raridadeEscolhido;
         $resposta['numeroAleatorio'] = $numeroAleatorio;
         $resposta['recompensaEscolhida'] = $recompensaEscolhida;
         $resposta['imagemEscolhida'] = $imagemEscolhida;

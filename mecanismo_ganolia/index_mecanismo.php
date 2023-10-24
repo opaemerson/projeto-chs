@@ -19,7 +19,8 @@
     </form>
 
     <h2>Recolhendo Drop</h2>
-    <form action="">    <label for="idItemOfensivo">Selecione o ID da Criatura:</label>
+    <form action="">
+    <label for="idItemOfensivo">Selecione o ID da Criatura:</label>
     <input type="text" id="idCriatura">
     <button type="button" onclick="buscaCriatura()">Buscar</button>
     <br><br>
@@ -29,7 +30,18 @@
     <img id="imagemCriatura3" src="" class="img-enviado" width="30" height="30" style="display: none;">
     <img id="imagemCriatura4" src="" class="img-enviado" width="30" height="30" style="display: none;">
     <img id="imagemCriatura5" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <br><br></form>
+
+    <form action="">
+    <input type="hidden" id="idCriatura">
+    <button type="button" onclick="buscaDrop()">Recolher Drop</button>
     <br><br>
+    <div id="resultadoDrop"></div>
+    <img id="imagemDrop" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    </form>
+    <br><br>
+
+    <button type="button" onclick="limpar()">Limpar</button>
 
 <a href="../index.php">V</a>
 <script src="../scripts/mecanismo_ganolia.js"></script>

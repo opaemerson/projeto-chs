@@ -38,7 +38,6 @@ if(isset($idCriatura) && $idCriatura !== ''){
         $resposta['success'] = true;
         $resposta['nome'] = $nome;
         $resposta['raridade'] = $raridade;
-        
         if (isset($guardaImagem[0])) {
             $resposta['imagem1'] = $guardaImagem[0];
         } else {
