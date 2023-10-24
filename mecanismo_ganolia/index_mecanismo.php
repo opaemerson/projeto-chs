@@ -24,10 +24,13 @@
     <button type="button" onclick="buscaCriatura()">Buscar</button>
     <br><br>
     <div id="resultadoCriatura"></div>
-    <img id="imagemCriatura" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <img id="imagemCriatura1" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <img id="imagemCriatura2" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <img id="imagemCriatura3" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <img id="imagemCriatura4" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <img id="imagemCriatura5" src="" class="img-enviado" width="30" height="30" style="display: none;">
     <br><br>
 
-<h2>Resultado</h2>
 <a href="../index.php">V</a>
 <script src="../scripts/mecanismo_ganolia.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

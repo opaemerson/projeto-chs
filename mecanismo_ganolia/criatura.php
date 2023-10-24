@@ -21,45 +21,29 @@ if(isset($idCriatura) && $idCriatura !== ''){
         $nome = $linha['nome'];
         $raridade = $linha['raridade'];
         $recompensa = $linha['recompensa'];
-        $probabilidade = $linha['probabilidade'];
         $recompensaArray = explode(";", $recompensa);
-        $probabilidadeArray = explode(";", $probabilidade);
         $guardaImagem = array();
         foreach ($recompensaArray as $key) {
             $existeItem = "SELECT gi.id, gi.imagem FROM ganolia_item gi WHERE gi.id = $key";
-            
             $resultadoItem = $conn->query($existeItem);
             
             if ($resultadoItem->num_rows == 0) {
-                $resposta['message'] = 'Criatura não encontrada.';
+                $resposta['message'] = 'Imagem não encontrada.';
             } else {
                 $linhaExiste = $resultadoItem->fetch_assoc();
                 $guardaImagem[] = $linhaExiste['imagem'];
             }
         }
         
-        $numIndices = count($probabilidadeArray);
-        $numeroAleatorio = rand(1, 100);
-        
-        $intervaloInicial = 0;
-        $intervaloFinal = 0;
-        
-        foreach ($probabilidadeArray as $index => $probabilidade) {
-            $intervaloFinal += $probabilidade;
-        
-            if ($numeroAleatorio <= $intervaloFinal) {
-                $recompensaEscolhida = $recompensaArray[$index];
-                $imagemEscolhida = $guardaImagem[$index];
-                break;
-            }
-        }
-        
         $resposta['success'] = true;
         $resposta['nome'] = $nome;
         $resposta['raridade'] = $raridade;
-        $resposta['numeroAleatorio'] = $numeroAleatorio;
-        $resposta['recompensaEscolhida'] = $recompensaEscolhida;
-        $resposta['imagemEscolhida'] = $imagemEscolhida;
+        $resposta['imagem1'] = $guardaImagem[0];
+        $resposta['imagem2'] = $guardaImagem[1];
+        $resposta['imagem3'] = $guardaImagem[2];
+        $resposta['imagem4'] = $guardaImagem[3];
+        $resposta['imagem5'] = $guardaImagem[4];
+        
     } else {
         $resposta['success'] = false;
         $resposta['message'] = 'Criatura não encontrada.';

@@ -50,19 +50,50 @@ function buscaCriatura() {
       dataType: 'json',
       success: function (resultado) { 
         if (resultado.success) {
-            $('#resultadoCriatura').html('Nome: ' + resultado.nome + '<br>Raridade: ' + resultado.raridade + '<br>Recompensa: ' + resultado.recompensaEscolhida + '<br>Taxa% ' + resultado.numeroAleatorio);
+            $('#resultadoCriatura').html('Nome: ' + resultado.nome + '<br>Raridade: ' + resultado.raridade);
             
-            $('#imagemCriatura').attr('src', resultado.imagemEscolhida);
-            $('#imagemCriatura').show();            
+            $('#imagemCriatura1').attr('src', resultado.imagem1);
+            $('#imagemCriatura2').attr('src', resultado.imagem2);
+            if (resultado.imagem3 === '' || typeof resultado.imagem3 === 'undefined') {
+                $('#imagemCriatura3').hide();
+            } else {
+                $('#imagemCriatura3').attr('src', resultado.imagem3);
+                $('#imagemCriatura3').show();
+            }
+
+            if (resultado.imagem4 === '' || typeof resultado.imagem4 === 'undefined') {
+              $('#imagemCriatura4').hide();
+            } else {
+              $('#imagemCriatura4').attr('src', resultado.imagem4);
+              $('#imagemCriatura4').show();
+            }
+            
+            if (resultado.imagem5 === '' || typeof resultado.imagem5 === 'undefined') {
+              $('#imagemCriatura5').hide();
+          } else {
+              $('#imagemCriatura5').attr('src', resultado.imagem5);
+              $('#imagemCriatura5').show();
+          }
+
+            $('#imagemCriatura1').show();      
+            $('#imagemCriatura2').show();           
 
         } else {
             $('#resultadoCriatura').html('Erro: ' + resultado.message);
-            $('#imagemCriatura').hide(); 
+            $('#imagemCriatura1').hide(); 
+            $('#imagemCriatura2').hide(); 
+            $('#imagemCriatura3').hide();
+            $('#imagemCriatura4').hide(); 
+            $('#imagemCriatura5').hide();  
         }
       },
       error: function (erro) { 
         $('#resultadoCriatura').html('Erro ao buscar criatura.');
-        $('#imagemCriatura').hide();  
+        $('#imagemCriatura1').hide();
+        $('#imagemCriatura2').hide();  
+        $('#imagemCriatura3').hide();    
+        $('#imagemCriatura4').hide();    
+        $('#imagemCriatura5').hide();    
       }
     });
 }
