@@ -32,3 +32,38 @@ function buscarItemAtaque() {
       }
     });
 }
+
+function buscaCriatura() {
+    const idCriatura = $('#idCriatura').val();
+  
+    const form = new FormData();
+    form.append('idCriatura', idCriatura);
+  
+    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/criatura.php";
+  
+    $.ajax({
+      url: url, 
+      method: 'POST',
+      data: form, 
+      processData: false, 
+      contentType: false,
+      dataType: 'json',
+      success: function (resultado) { 
+        if (resultado.success) {
+            $('#resultadoCriatura').html('Nome: ' + resultado.nome + '<br>Raridade: ' + resultado.raridade + '<br>Recompensa: ' + resultado.recompensaEscolhida + '<br>Taxa% ' + resultado.numeroAleatorio);
+            
+            $('#imagemCriatura').attr('src', resultado.imagemEscolhida);
+            $('#imagemCriatura').show();            
+
+        } else {
+            $('#resultadoCriatura').html('Erro: ' + resultado.message);
+            $('#imagemCriatura').hide(); 
+        }
+      },
+      error: function (erro) { 
+        $('#resultadoCriatura').html('Erro ao buscar criatura.');
+        $('#imagemCriatura').hide();  
+      }
+    });
+}
+

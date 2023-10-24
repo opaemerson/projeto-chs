@@ -7,8 +7,8 @@
     <title>MecanismoG</title>
 </head>
 <body>
-<h2>Atacando</h2>
-<form action="processar_ataque.php" method="post">
+    <h2>Atacando</h2>
+    <form action="processar_ataque.php" method="post">
     <label for="idItemOfensivo">Selecione o ID do Item Ofensivo:</label>
     <input type="text" id="codigoItemAtaque">
     <button type="button" onclick="buscarItemAtaque()">Buscar</button>
@@ -16,12 +16,16 @@
     <div id="resultadoConsulta"></div>
     <img id="imagemItemAtaque" src="" class="img-enviado" width="30" height="30" style="display: none;">
     <br><br>
-    <label for="idMonstro">Selecione o ID do Monstro:</label>
-    <input type="text" name="idMonstro">
-    <br><br>
-    <button type="submit">Jogar</button>
-</form>
+    </form>
 
+    <h2>Recolhendo Drop</h2>
+    <form action="">    <label for="idItemOfensivo">Selecione o ID da Criatura:</label>
+    <input type="text" id="idCriatura">
+    <button type="button" onclick="buscaCriatura()">Buscar</button>
+    <br><br>
+    <div id="resultadoCriatura"></div>
+    <img id="imagemCriatura" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <br><br>
 
 <h2>Resultado</h2>
 <a href="../index.php">V</a>
