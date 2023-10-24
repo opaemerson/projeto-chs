@@ -34,7 +34,7 @@
 
     <form action="">
     <input type="hidden" id="idCriatura">
-    <button type="button" onclick="buscaDrop()">Recolher Drop</button>
+    <button type="button" onclick="buscaDrop()">Recolher</button>
     <br><br>
     <div id="resultadoDrop"></div>
     <img id="imagemDrop" src="" class="img-enviado" width="30" height="30" style="display: none;">
@@ -42,8 +42,8 @@
     <br><br>
 
     <button type="button" onclick="limpar()">Limpar</button>
-
-<a href="../index.php">V</a>
+    <br>
+    <a href="../index.php">V</a>
 <script src="../scripts/mecanismo_ganolia.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
