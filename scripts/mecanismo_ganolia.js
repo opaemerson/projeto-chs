@@ -171,7 +171,7 @@ function exibirNomeDrop(elemento, nomeDrop) {
     $elemento.append('<br>'); 
   } else {
     $elemento.hide();
-    $elemento.text(nomeDrop); 
+    $elemento.text(nomeDrop);
     $elemento.show();
   }
 }
