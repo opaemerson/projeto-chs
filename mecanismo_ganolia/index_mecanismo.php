@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MecanismoG</title>
+    <style>
+
+</style>
+
 </head>
 <body>
     <h2>Atacando</h2>
@@ -13,8 +17,8 @@
     <input type="text" id="codigoItemAtaque">
     <button type="button" onclick="buscarItemAtaque()">Buscar</button>
     <br><br>
-    <div id="resultadoConsulta"></div>
     <img id="imagemItemAtaque" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <div id="resultadoConsulta"></div>
     <br><br>
     </form>
 
@@ -34,18 +38,25 @@
     <br><br>
     <div id="resultadoCriatura"></div>
     <img id="imagemCriatura1" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <div id="nomeDrop1"  style="display: none;"></div>
     <img id="imagemCriatura2" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <div id="nomeDrop2"  style="display: none;"></div>
     <img id="imagemCriatura3" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <div id="nomeDrop3"  style="display: none;"></div>
     <img id="imagemCriatura4" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <div id="nomeDrop4"  style="display: none;"></div>
     <img id="imagemCriatura5" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <div id="nomeDrop5"  style="display: none;">
+</div>
+
     <br><br></form>
 
     <form action="">
     <input type="hidden" id="idCriatura">
     <button type="button" onclick="buscaDrop()">Recolher</button>
     <br><br>
-    <div id="resultadoDrop"></div>
     <img id="imagemDrop" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <div id="resultadoDrop"></div>
     </form>
     <br><br>
 

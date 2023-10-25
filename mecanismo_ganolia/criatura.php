@@ -25,14 +25,14 @@ if(isset($idCriatura) && $idCriatura !== ''){
         $guardaNome = array();
         $guardaImagem = array();
         foreach ($recompensaArray as $key) {
-            $existeItem = "SELECT gi.id, gi.imagem FROM ganolia_item gi WHERE gi.id = $key";
+            $existeItem = "SELECT gi.id, gi.nome, gi.imagem FROM ganolia_item gi WHERE gi.id = $key";
             $resultadoItem = $conn->query($existeItem);
             
             if ($resultadoItem->num_rows == 0) {
                 $resposta['message'] = 'Imagem não encontrada.';
             } else {
                 $linhaExiste = $resultadoItem->fetch_assoc();
-                // $guardaNome[] = $linhaExiste
+                $guardaNome[] = $linhaExiste['nome'];
                 $guardaImagem[] = $linhaExiste['imagem'];
             }
         }
@@ -40,6 +40,35 @@ if(isset($idCriatura) && $idCriatura !== ''){
         $resposta['success'] = true;
         $resposta['nome'] = $nome;
         $resposta['raridade'] = $raridade;
+
+        //verificando nome dos drops
+        if (isset($guardaNome[0])) {
+            $resposta['nome1'] = $guardaNome[0];
+        } else {
+            $resposta['nome1'] = '';
+        }
+        if (isset($guardaNome[1])) {
+            $resposta['nome2'] = $guardaNome[1];
+        } else {
+            $resposta['nome2'] = '';
+        }
+        if (isset($guardaNome[2])) {
+            $resposta['nome3'] = $guardaNome[2];
+        } else {
+            $resposta['nome3'] = '';
+        }
+        if (isset($guardaNome[3])) {
+            $resposta['nome4'] = $guardaNome[3];
+        } else {
+            $resposta['nome4'] = '';
+        }
+        if (isset($guardaNome[4])) {
+            $resposta['nome5'] = $guardaNome[4];
+        } else {
+            $resposta['nome5'] = '';
+        }
+
+        //verificando imagens dos drops   
         if (isset($guardaImagem[0])) {
             $resposta['imagem1'] = $guardaImagem[0];
         } else {

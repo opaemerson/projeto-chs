@@ -73,7 +73,7 @@ function atacar() {
 }
 
 function buscaCriatura() {
-  const idCriatura = $('#idCriatura').val();
+  let idCriatura = $('#idCriatura').val();
 
   const form = new FormData();
   form.append('idCriatura', idCriatura);
@@ -91,11 +91,19 @@ function buscaCriatura() {
       if (resultado.success) {
           $('#resultadoCriatura').html('Nome do Alvo: ' + resultado.nome + '<br>Raridade do Alvo: ' + resultado.raridade);
           
+          exibirNomeDrop('#nomeDrop1', resultado.nome1);
+          exibirNomeDrop('#nomeDrop2', resultado.nome2);
+          exibirNomeDrop('#nomeDrop3', resultado.nome3);
+          exibirNomeDrop('#nomeDrop4', resultado.nome4);
+          exibirNomeDrop('#nomeDrop5', resultado.nome5);
+
           exibirOuOcultarImagem('#imagemCriatura1', resultado.imagem1);
           exibirOuOcultarImagem('#imagemCriatura2', resultado.imagem2);
           exibirOuOcultarImagem('#imagemCriatura3', resultado.imagem3);
           exibirOuOcultarImagem('#imagemCriatura4', resultado.imagem4);
           exibirOuOcultarImagem('#imagemCriatura5', resultado.imagem5);
+
+          idCriatura = '';
 
       } else {
           $('#resultadoCriatura').html('Erro: ' + resultado.message);
@@ -155,6 +163,20 @@ function exibirOuOcultarImagem(elemento, imagem) {
   }
 }
 
+function exibirNomeDrop(elemento, nomeDrop) {
+  const $elemento = $(elemento);
+  $elemento.empty();
+
+  if (nomeDrop === '' || typeof nomeDrop === 'undefined') {
+    $elemento.append('<br>'); 
+  } else {
+    $elemento.hide();
+    $elemento.text(nomeDrop); 
+    $elemento.show();
+  }
+}
+
+
 function limpar(){
   $('#imagemDrop').hide();
   $('#imagemCriatura1, #imagemCriatura2, #imagemCriatura3, #imagemCriatura4, #imagemCriatura5').hide();
@@ -163,4 +185,5 @@ function limpar(){
   $('#resultadoAtaque').hide();
   $('#imagemItemAtaque').hide();
   $('#resultadoConsulta').hide();
+  $('#nomeDrop1, #nomeDrop2, #nomeDrop3, #nomeDrop4, #nomeDrop5').hide();
 }
