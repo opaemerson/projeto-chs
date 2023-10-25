@@ -9,7 +9,7 @@
 <body>
     <h2>Atacando</h2>
     <form action="processar_ataque.php" method="post">
-    <label for="idItemOfensivo">Selecione o ID do Item Ofensivo:</label>
+    <label for="">Selecione o ID do Item Ofensivo:</label>
     <input type="text" id="codigoItemAtaque">
     <button type="button" onclick="buscarItemAtaque()">Buscar</button>
     <br><br>
@@ -18,9 +18,17 @@
     <br><br>
     </form>
 
+    <form action="">
+    <input type="hidden" id="codigoItemAtaque">
+    <button type="button" onclick="atacar()">Atacar</button>
+    <br><br>
+    <div id="resultadoAtaque"></div>
+    </form>
+    <br><br>
+
     <h2>Recolhendo Drop</h2>
     <form action="">
-    <label for="idItemOfensivo">Selecione o ID da Criatura:</label>
+    <label for="">Selecione o ID da Criatura:</label>
     <input type="text" id="idCriatura">
     <button type="button" onclick="buscaCriatura()">Buscar</button>
     <br><br>

@@ -15,8 +15,13 @@ function buscarItemAtaque() {
       dataType: 'json',
       success: function (resultado) { 
         if (resultado.success) {
-            $('#resultadoConsulta').html('Nome: ' + resultado.nome + '<br>Tipo: ' + resultado.tipo + 
-            '<br>Raridade: ' + resultado.raridade + '<br>Dano possiveis: ' + resultado.danoCombinado);
+          $('#resultadoConsulta').html('Nome: ' + resultado.nome + '<br>Tipo: ' + resultado.tipo + '<br>Raridade: ' + resultado.raridade);
+
+          if (resultado.damageVisual === '' || typeof resultado.damageVisual === 'undefined') {
+            $('#resultadoConsulta').append('<br> '); 
+          } else {
+            $('#resultadoConsulta').append('<br>Damage: ' + resultado.damageVisual); 
+          }
             
             $('#imagemItemAtaque').attr('src', resultado.imagem);
             $('#imagemItemAtaque').show();            
@@ -27,11 +32,46 @@ function buscarItemAtaque() {
         }
       },
       error: function (erro) { 
+        console.log(erro);
         $('#resultadoConsulta').html('Erro ao buscar o item de ataque.');
         $('#imagemItemAtaque').hide();  
       }
     });
 }
+
+function atacar() {
+  const codigoItemAtaque = $('#codigoItemAtaque').val();
+
+  const form = new FormData();
+  form.append('codigoItemAtaque', codigoItemAtaque);
+
+  const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/atacar.php";
+
+  $.ajax({
+    url: url, 
+    method: 'POST',
+    data: form, 
+    processData: false, 
+    contentType: false,
+    dataType: 'json',
+    success: function (resultado) { 
+      if (resultado.success) {
+        var danoConcedido = resultado.damageAleatorio;
+        $('#resultadoAtaque').html('<h3> Dano Concedido: ' + danoConcedido + '</h3>');
+        
+        alert('Dano Realizado: ' + danoConcedido);
+        
+      } else {
+          $('#resultadoAtaque').html('Erro: ' + resultado.message);
+      }
+    },
+    error: function (erro) {
+      console.log(erro); 
+      $('#resultadoAtaque').html('[js] - Erro ao realizar ataque.');
+    }
+  });
+}
+
 
 function buscaCriatura() {
   const idCriatura = $('#idCriatura').val();
@@ -91,6 +131,7 @@ function buscaDrop() {
           $('#resultadoDrop').html('Nome: ' + resultado.nomeEscolhido + '<br>Raridade: ' + resultado.raridadeEscolhido + '<br>' + resultado.numeroAleatorio + '%');
           
           exibirOuOcultarImagem('#imagemDrop', resultado.imagemEscolhida);
+          alert('Nome: ' + resultado.nomeEscolhido + '\nRaridade: ' + resultado.raridadeEscolhido);
 
       } else {
           $('#resultadoDrop').html('Erro: ' + resultado.message);
@@ -119,4 +160,7 @@ function limpar(){
   $('#imagemCriatura1, #imagemCriatura2, #imagemCriatura3, #imagemCriatura4, #imagemCriatura5').hide();
   $('#resultadoDrop').hide();
   $('#resultadoCriatura').hide();
+  $('#resultadoAtaque').hide();
+  $('#imagemItemAtaque').hide();
+  $('#resultadoConsulta').hide();
 }

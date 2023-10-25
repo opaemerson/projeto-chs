@@ -19,21 +19,18 @@ if(isset($codigoItemAtaque) && $codigoItemAtaque !== ''){
         $raridade = $linha['raridade'];
         $imagem = $linha['imagem'];
         $damage = $linha['damage'];
-
-        if ($damage != '' || $damage != null){
-            $damage = $linha['damage'];
-            $damagePossivel = explode(";", $damage);
-            $damageVisual = $damagePossivel[0] . " - " . $damagePossivel[count($damagePossivel) - 1];
-        }
+        $damagePossivel = explode(";", $damage);
+        $indiceAleatorio = rand(0, count($damagePossivel) - 1);
+        $damageAleatorio = $damagePossivel[$indiceAleatorio];
 
         $resposta['success'] = true;
         $resposta['nome'] = $nome;
         $resposta['tipo'] = $tipo;
         $resposta['raridade'] = $raridade;
-        if (isset($damageVisual)) {
-            $resposta['damageVisual'] = $damageVisual;
+        if (isset($damageAleatorio)) {
+            $resposta['damageAleatorio'] = $damageAleatorio;
         } else {
-            $resposta['damageVisual'] = '';
+            $resposta['damageAleatorio'] = '';
         }
         $resposta['imagem'] = $imagem;
     } else {
