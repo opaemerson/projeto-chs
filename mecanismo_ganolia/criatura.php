@@ -22,6 +22,7 @@ if(isset($idCriatura) && $idCriatura !== ''){
         $raridade = $linha['raridade'];
         $recompensa = $linha['recompensa'];
         $recompensaArray = explode(";", $recompensa);
+        $guardaNome = array();
         $guardaImagem = array();
         foreach ($recompensaArray as $key) {
             $existeItem = "SELECT gi.id, gi.imagem FROM ganolia_item gi WHERE gi.id = $key";
@@ -31,6 +32,7 @@ if(isset($idCriatura) && $idCriatura !== ''){
                 $resposta['message'] = 'Imagem não encontrada.';
             } else {
                 $linhaExiste = $resultadoItem->fetch_assoc();
+                // $guardaNome[] = $linhaExiste
                 $guardaImagem[] = $linhaExiste['imagem'];
             }
         }

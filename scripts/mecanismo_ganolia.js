@@ -72,7 +72,6 @@ function atacar() {
   });
 }
 
-
 function buscaCriatura() {
   const idCriatura = $('#idCriatura').val();
 
@@ -90,7 +89,7 @@ function buscaCriatura() {
     dataType: 'json',
     success: function (resultado) { 
       if (resultado.success) {
-          $('#resultadoCriatura').html('Nome: ' + resultado.nome + '<br>Raridade: ' + resultado.raridade);
+          $('#resultadoCriatura').html('Nome do Alvo: ' + resultado.nome + '<br>Raridade do Alvo: ' + resultado.raridade);
           
           exibirOuOcultarImagem('#imagemCriatura1', resultado.imagem1);
           exibirOuOcultarImagem('#imagemCriatura2', resultado.imagem2);
@@ -128,9 +127,10 @@ function buscaDrop() {
     dataType: 'json',
     success: function (resultado) { 
       if (resultado.success) {
-          $('#resultadoDrop').html('Nome: ' + resultado.nomeEscolhido + '<br>Raridade: ' + resultado.raridadeEscolhido + '<br>' + resultado.numeroAleatorio + '%');
+          $('#resultadoDrop').html('Id: ' + resultado.idEscolhido + '<br>Nome: ' + resultado.nomeEscolhido + '<br>Raridade: ' + resultado.raridadeEscolhido + '<br>' + resultado.numeroAleatorio + '%');
           
           exibirOuOcultarImagem('#imagemDrop', resultado.imagemEscolhida);
+
           alert('Nome: ' + resultado.nomeEscolhido + '\nRaridade: ' + resultado.raridadeEscolhido);
 
       } else {

@@ -22,6 +22,7 @@ if(isset($idCriatura) && $idCriatura !== ''){
         $probabilidade = $linha['probabilidade'];
         $recompensaArray = explode(";", $recompensa);
         $probabilidadeArray = explode(";", $probabilidade);
+        $guardaId = array();
         $guardaNome = array();
         $guardaRaridade = array();
         $guardaImagem = array();
@@ -35,6 +36,7 @@ if(isset($idCriatura) && $idCriatura !== ''){
                 $resposta['message'] = 'Criatura não encontrada.';
             } else {
                 $linhaExiste = $resultadoItem->fetch_assoc();
+                $guardaId[] = $linhaExiste['id'];
                 $guardaNome[] = $linhaExiste['nome'];
                 $guardaRaridade[] = $linhaExiste['raridade'];
                 $guardaImagem[] = $linhaExiste['imagem'];
@@ -52,6 +54,7 @@ if(isset($idCriatura) && $idCriatura !== ''){
         
             if ($numeroAleatorio <= $intervaloFinal) {
                 $recompensaEscolhida = $recompensaArray[$index];
+                $idEscolhido = $guardaId[$index];
                 $nomeEscolhido = $guardaNome[$index];
                 $raridadeEscolhido = $guardaRaridade[$index];
                 $imagemEscolhida = $guardaImagem[$index];
@@ -60,6 +63,7 @@ if(isset($idCriatura) && $idCriatura !== ''){
         }
         
         $resposta['success'] = true;
+        $resposta['idEscolhido'] = $idEscolhido;
         $resposta['nomeEscolhido'] = $nomeEscolhido;
         $resposta['raridadeEscolhido'] = $raridadeEscolhido;
         $resposta['numeroAleatorio'] = $numeroAleatorio;
