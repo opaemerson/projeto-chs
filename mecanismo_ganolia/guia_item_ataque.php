@@ -12,37 +12,35 @@ require_once('../config.php');
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Oswald:wght@300&family=Playfair+Display:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <label for=""><h3>Territorios</h3></label>
-  <?php
-        $territorio = "SELECT 
-        territorio, 
-        GROUP_CONCAT(CONCAT('Nome: ' ,nome, ' [', raridade, '] - Drops: [', nome_recompensa, ']') SEPARATOR '<br>') as detalhes, 
-        COUNT(*) as quantidade 
-        FROM ganolia_criatura 
-        GROUP BY territorio";
+  <label for=""><h3>Itens de Ataque</h3></label>
 
-        $resultado = $conn->query($territorio);
+  <?php
+        $itemAtaque = "SELECT * FROM ganolia_item";
+        $resultado = $conn->query($itemAtaque);
 
         if ($resultado->num_rows > 0) {
         while ($row = $resultado->fetch_assoc()) {
-        $territorio = $row["territorio"];
-        $quantidade = $row["quantidade"];
-        $detalhes = $row["detalhes"];
-        echo "<br><br> <b>Territorio:</b> $territorio <br>Quantidade de criaturas: $quantidade";
+        $id = $row["id"];   
+        $nome = $row["nome"];
+        $tipo = $row["tipo"];
+        $raridade = $row["raridade"];
+        $damage = $row["damage"];
 
-        if (!empty($detalhes)) {
-        echo "<br> Detalhes das Criaturas:" . "<br> $detalhes";
-        } else {
-        echo "<br> Nenhum nome encontrado para este territorio.";
+        if ($damage != '' || $damage != null){
+            $damagePossivel = explode(";", $damage);
+            $damageVisual = $damagePossivel[0] . " - " . $damagePossivel[count($damagePossivel) - 1];
+        }
+
+        echo "<br> $nome" . "<br> Dano possivel: " . $damageVisual . "<br>";
         }
     }
-        } else {
-        echo "Não há dados.";
-        }
-      ?>
+    ?>
       <br><br>
 <a href="./index_mecanismo.php" type="button" class="btn-preto">Voltar</a>
+
+
 </body>
 </html>
