@@ -1,3 +1,7 @@
+<?php
+include('../protecao.php');
+require_once('../config.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +50,7 @@
     <h2>Atacando</h2>
     <form action="processar_ataque.php" method="post">
     <label for="">Selecione o ID do Item Ofensivo:</label>
-    <input type="text" id="codigoItemAtaque">
+    <input type="text" style="width: 40px;" id="codigoItemAtaque">
     <button type="button" onclick="buscarItemAtaque()">Buscar</button>
     <br><br>
     <img id="imagemItemAtaque" src="" class="img-enviado" width="30" height="30" style="display: none;">
@@ -65,7 +69,7 @@
     <h2>Recolhendo Drop</h2>
     <form action="">
     <label for="">Selecione o ID da Criatura:</label>
-    <input type="text" id="idCriatura">
+    <input type="text" style="width: 40px;" id="idCriatura">
     <button type="button" onclick="buscaCriatura()">Buscar</button>
     <br><br>
     <div id="resultadoCriatura"></div>
@@ -94,8 +98,6 @@
     <br><br>
 
     <button type="button" onclick="limpar()">Limpar</button>
-    <br>
-    <a href="../index.php">V</a>
 <script src="../scripts/mecanismo_ganolia.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
