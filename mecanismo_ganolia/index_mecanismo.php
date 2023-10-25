@@ -20,6 +20,13 @@
         button:hover {
             background-color: #4169E1;
         }
+
+        .red-background {
+        display: inline;
+        background-color: red;
+        color: black;
+        padding: 5px;
+        }
 </style>
 
 </head>

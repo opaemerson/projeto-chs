@@ -57,7 +57,7 @@ function atacar() {
     success: function (resultado) { 
       if (resultado.success) {
         var danoConcedido = resultado.damageAleatorio;
-        $('#resultadoAtaque').html('<h3> Dano Concedido: ' + danoConcedido + '</h3>');
+        $('#resultadoAtaque').html('<h3 class="red-background"> Dano Concedido: ' + danoConcedido + '</h3>');
         
         alert('Dano Realizado: ' + danoConcedido);
         
@@ -89,7 +89,7 @@ function buscaCriatura() {
     dataType: 'json',
     success: function (resultado) { 
       if (resultado.success) {
-          $('#resultadoCriatura').html('Nome do Alvo: ' + resultado.nome + '<br>Raridade do Alvo: ' + resultado.raridade);
+          $('#resultadoCriatura').html('Nome do Alvo: ' + resultado.nome + '<br>Raridade do Alvo: ' + resultado.raridade + '<br>Recompensas possiveis:');
           
           exibirNomeDrop('#nomeDrop1', resultado.nome1);
           exibirNomeDrop('#nomeDrop2', resultado.nome2);
