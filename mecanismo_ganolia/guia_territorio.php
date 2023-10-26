@@ -3,6 +3,7 @@ require_once('../config.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,39 +15,70 @@ require_once('../config.php');
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Oswald:wght@300&family=Playfair+Display:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
-  <label for=""><h3>Territorios</h3></label>
+  <label for="">
+    <h3>Territorios </h3>
+  </label>
 
   <?php
-        $territorio = "SELECT 
-        territorio, 
-        GROUP_CONCAT(CONCAT('Nome: ' ,nome, ' [', raridade, '] - Drops: [', nome_recompensa, ']') SEPARATOR '<br>') as detalhes, 
-        COUNT(*) as quantidade 
-        FROM ganolia_criatura 
-        GROUP BY territorio";
+  $buscarCriaturas = "SELECT c.id AS criatura_id, 
+                      c.nome as criatura_nome,
+                      v.recompensa_id,
+                      c.territorio as criatura_territorio,
+                      v.probabilidade
+                      FROM ganolia_criatura c
+                      LEFT JOIN ganolia_vinculo v ON c.id = v.criatura_id";
 
-        $resultado = $conn->query($territorio);
+  $resultado = $conn->query($buscarCriaturas);
 
-        if ($resultado->num_rows > 0) {
+  if ($resultado) {
+    if ($resultado->num_rows > 0) {
         while ($row = $resultado->fetch_assoc()) {
-        $territorio = $row["territorio"];
-        $quantidade = $row["quantidade"];
-        $detalhes = $row["detalhes"];
-        echo "<br><br> <b>Territorio:</b> $territorio <br>Quantidade de criaturas: $quantidade";
+            $criatura_territorio = $row['criatura_territorio'];
+            $criatura_nome = $row['criatura_nome'];
+            $criatura_id = $row['criatura_id'];
+            $recompensa_id = $row['recompensa_id'];
+            $probabilidade = $row['probabilidade'];
 
-        if (!empty($detalhes)) {
-        echo "<br> Detalhes das Criaturas:" . "<br> $detalhes";
-        } else {
-        echo "<br> Nenhum nome encontrado para este territorio.";
+            $quebrandoRecompensa = explode(";", $recompensa_id);
+            $quebrandoProbabilidade = explode(";", $probabilidade);
+            
+            $guardarNome = array();
+            foreach ($quebrandoRecompensa as $key => $recompensa) {
+                $buscarNomeRecompensa = "SELECT gi.nome FROM ganolia_item gi WHERE gi.id = $recompensa";
+                $resultadoNomeRecompensa = $conn->query($buscarNomeRecompensa);
+            
+                if ($resultadoNomeRecompensa) {
+                    if ($resultadoNomeRecompensa->num_rows > 0) {
+                        while ($rowNomeRecompensa = $resultadoNomeRecompensa->fetch_assoc()) {
+                            $nomeRecompensa = $rowNomeRecompensa['nome'];
+                            $porcentagem = $quebrandoProbabilidade[$key];
+            
+                            $guardarNome[] = "<b>" . $nomeRecompensa . "</b>[" . $porcentagem . "%] ";
+                        }
+                    } else {
+                        echo "Não encontrou nome do item";
+                    }
+                }
+            }
+            $nomesRecompensa = implode(", ", $guardarNome);
+            echo "<br><b>$criatura_territorio</b> | Criatura Nome: <b>" . $criatura_nome . "</b> | Nome Recompensa: $nomesRecompensa";
         }
+    } else {
+        echo "Nenhum registro encontrado.";
     }
-        } else {
-        echo "Não há dados.";
-        }
-      ?>
-      <br><br>
-<a href="./index_mecanismo.php" type="button" class="btn-preto">Voltar</a>
+} else {
+    echo "Erro na consulta SQL: " . $conn->error;
+}
+?>
+
+
+  ?>
+  <br><br>
+  <a href="./index_mecanismo.php" type="button" class="btn-preto">Voltar</a>
 
 
 </body>
+
 </html>
