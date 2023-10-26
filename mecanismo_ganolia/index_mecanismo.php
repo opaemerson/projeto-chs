@@ -48,8 +48,8 @@ require_once('../config.php');
   <a href="./guia.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">MANUAL</a>
   <a href="./guia_territorio.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">TERRITORIOS</a>
   <a href="./guia_item_ataque.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">ITENS [ATAQUE]</a>
-  <a href="./guia.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">ITENS [DEFESA]</a>
-  <a href="./guia.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">ITENS [MATERIAL]</a>
+  <a href="./guia_item_defesa.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">ITENS [DEFESA]</a>
+  <a href="./guia_item_material.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">ITENS [MATERIAL]</a>
 </div>
     <h2>Atacando</h2>
     <form action="processar_ataque.php" method="post">
