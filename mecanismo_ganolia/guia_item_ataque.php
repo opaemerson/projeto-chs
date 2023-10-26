@@ -28,19 +28,21 @@ require_once('../config.php');
         $tipo = $row["tipo"];
         $raridade = $row["raridade"];
         $damage = $row["damage"];
+        $imagem = $row['imagem'];
 
         if ($damage != '' || $damage != null){
             $damagePossivel = explode(";", $damage);
             $damageVisual = $damagePossivel[0] . " - " . $damagePossivel[count($damagePossivel) - 1];
         }
 
-        echo "<br> $nome" . "<br> Dano possivel: " . $damageVisual . "<br>";
+        echo "<br><b>$nome</b>" . "<br>Tipo: $tipo" . "<br>Raridade: $raridade". "<br>Dano possivel: " . $damageVisual . "<br>";
+        echo '<img src="' . $imagem . '"  class="img-enviado" width="30" height="30">';
+        echo "<br>";
+        
         }
     }
     ?>
       <br><br>
 <a href="./index_mecanismo.php" type="button" class="btn-preto">Voltar</a>
-
-
 </body>
 </html>
