@@ -15,7 +15,8 @@ require_once('../config.php');
 
 </head>
 <body>
-  <label for=""><h3>Itens de Ataque</h3></label>
+<div class="container mt-5">
+<h3>Itens de Ataque</h3>
 
   <?php
         $itemAtaque = "SELECT * FROM ganolia_item gi WHERE gi.categoria = 'Ataque'";
@@ -35,14 +36,20 @@ require_once('../config.php');
             $damageVisual = $damagePossivel[0] . " - " . $damagePossivel[count($damagePossivel) - 1];
         }
 
-        echo "<br><b>$nome</b>" . "<br>Tipo: $tipo" . "<br>Raridade: $raridade". "<br>Dano possivel: " . $damageVisual . "<br>";
-        echo '<img src="' . $imagem . '"  class="img-enviado" width="30" height="30">';
-        echo "<br>";
+        echo '<div class="card mt-3">';
+        echo '<div class="card-body">';
+        echo "<h5 class='card-title'>$nome</h5>";
+        echo "<h6 class='card-subtitle mb-2 text-muted'>Tipo: $tipo</h6>";
+        echo "<p class='card-text'>Raridade: $raridade</p>";
+        echo "<p class='card-text'>Dano possivel: $damageVisual</p>";
+        echo "<img src='$imagem' class='img-enviado' width='30' height='30' alt='Imagem do item'>";
+        echo '</div>';
+        echo '</div>';
         
         }
     }
     ?>
-      <br><br>
+    <br><br>
 <a href="./index_mecanismo.php" type="button" class="btn-preto">Voltar</a>
 </body>
 </html>

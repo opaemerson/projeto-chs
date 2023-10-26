@@ -15,7 +15,8 @@ require_once('../config.php');
 
 </head>
 <body>
-  <label for=""><h3>Itens de Material</h3></label>
+<div class="container mt-5">
+<h3>Itens de Material</h3>
 
   <?php
         $itemMaterial = "SELECT * FROM ganolia_item gi WHERE gi.categoria = 'Material'";
@@ -31,9 +32,17 @@ require_once('../config.php');
 
         $imagem = $row['imagem'];
 
-        echo "<br><b>$nome</b>" . "<br>Tipo: $tipo" . "<br>Raridade: $raridade" . "<br>";
-        echo '<img src="' . $imagem . '"  class="img-enviado" width="30" height="30">';
-        echo "<br>Descricao: $descricao" . "<br>";
+        echo '<div class="row mt-3">';
+        echo '<div class="card">';
+        echo '<div class="card-body">';
+        echo "<h5 class='card-title'>$nome</h5>";
+        echo "<h6 class='card-subtitle mb-2 text-muted'>Tipo: $tipo</h6>";
+        echo "<p class='card-text'>Raridade: $raridade</p>";
+        echo "<img src='$imagem' class='img-enviado' width='30' height='30' >";
+        echo "<p class='card-text'>Descricao: $descricao</p>";
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
         
         }
     }

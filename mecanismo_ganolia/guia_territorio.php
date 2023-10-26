@@ -17,9 +17,8 @@ require_once('../config.php');
 </head>
 
 <body>
-  <label for="">
+<div class="container mt-5">
     <h3>Territorios </h3>
-  </label>
 
   <?php
   $buscarCriaturas = "SELECT c.id AS criatura_id, 
@@ -63,7 +62,13 @@ require_once('../config.php');
                 }
             }
             $nomesRecompensa = implode(", ", $guardarNome);
-            echo "<br><b>$criatura_territorio</b> | Criatura Nome: <b>" . $criatura_nome . "</b> | Nome Recompensa: $nomesRecompensa";
+            echo '<div class="card mt-3">';
+            echo '<div class="card-body">';
+            echo "<h5 class='card-title'>$criatura_territorio</h5>";
+            echo "<h6 class='card-subtitle mb-2 text-muted'>Criatura Nome: $criatura_nome</h6>";
+            echo "<p class='card-text'>Nome Recompensa: $nomesRecompensa</p>";
+            echo '</div>';
+            echo '</div>';
         }
     } else {
         echo "Nenhum registro encontrado.";
@@ -71,14 +76,13 @@ require_once('../config.php');
 } else {
     echo "Erro na consulta SQL: " . $conn->error;
 }
-?>
 
 
   ?>
   <br><br>
   <a href="./index_mecanismo.php" type="button" class="btn-preto">Voltar</a>
 
-
+</div>
 </body>
 
 </html>
