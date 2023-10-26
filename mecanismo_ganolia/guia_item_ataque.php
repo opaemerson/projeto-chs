@@ -18,7 +18,7 @@ require_once('../config.php');
   <label for=""><h3>Itens de Ataque</h3></label>
 
   <?php
-        $itemAtaque = "SELECT * FROM ganolia_item";
+        $itemAtaque = "SELECT * FROM ganolia_item gi WHERE gi.categoria = 'Ataque'";
         $resultado = $conn->query($itemAtaque);
 
         if ($resultado->num_rows > 0) {
