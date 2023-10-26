@@ -66,7 +66,7 @@ require_once('../config.php');
             echo '<div class="card-body">';
             echo "<h5 class='card-title'>$criatura_territorio</h5>";
             echo "<h6 class='card-subtitle mb-2 text-muted'>Criatura Nome: $criatura_nome</h6>";
-            echo "<p class='card-text'>Nome Recompensa: $nomesRecompensa</p>";
+            echo "<p class='card-text'>Possiveis Recompensa: $nomesRecompensa</p>";
             echo '</div>';
             echo '</div>';
         }

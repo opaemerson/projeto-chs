@@ -9,7 +9,7 @@ $codigoItemAtaque = $_POST['codigoItemAtaque'];
 $resposta = array();
 
 if(isset($codigoItemAtaque) && $codigoItemAtaque !== ''){ 
-    $select = "SELECT * FROM ganolia_item WHERE id = '$codigoItemAtaque'";
+    $select = "SELECT * FROM ganolia_item WHERE id = '$codigoItemAtaque' AND categoria = 'Ataque'";
     $resultado = $conn->query($select);
 
     if ($resultado->num_rows > 0){
@@ -38,7 +38,7 @@ if(isset($codigoItemAtaque) && $codigoItemAtaque !== ''){
         $resposta['imagem'] = $imagem;
     } else {
         $resposta['success'] = false;
-        $resposta['message'] = 'Item não encontrado.';
+        $resposta['message'] = 'Item não pertence a categoria de Ataque.';
     }
 } else {
     $resposta['success'] = false;
