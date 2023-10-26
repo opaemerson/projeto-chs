@@ -178,12 +178,5 @@ function exibirNomeDrop(elemento, nomeDrop) {
 
 
 function limpar(){
-  $('#imagemDrop').hide();
-  $('#imagemCriatura1, #imagemCriatura2, #imagemCriatura3, #imagemCriatura4, #imagemCriatura5').hide();
-  $('#resultadoDrop').hide();
-  $('#resultadoCriatura').hide();
-  $('#resultadoAtaque').hide();
-  $('#imagemItemAtaque').hide();
-  $('#resultadoConsulta').hide();
-  $('#nomeDrop1, #nomeDrop2, #nomeDrop3, #nomeDrop4, #nomeDrop5').hide();
+  location.reload();
 }
