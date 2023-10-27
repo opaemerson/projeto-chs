@@ -1,6 +1,6 @@
 Características de Ganolia
 🔴 Qual será a Categoria? 
-➡️ Build deck + Dungeon Crawler
+➡️ Build deck + Dungeon Crawler.
 
 🔴 Qual será o formato do jogo?
 ➡️ Formato Hibrido (Boardgame + Aplicativo)
