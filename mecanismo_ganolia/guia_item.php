@@ -5,7 +5,7 @@ $procurarAtaque = "SELECT * FROM ganolia_item gi";
 
 if (isset($_POST['pesquisar'])) {
     $palavra = $_POST['palavra'];
-    $procurarAtaque .= " WHERE gi.nome LIKE '%$palavra%'";
+    $procurarAtaque .= " WHERE gi.nome LIKE '%$palavra%' OR gi.id LIKE '%$palavra%'";
 }
 
 if (isset($_POST['filtrar_categoria'])) {
@@ -65,7 +65,7 @@ $resultadoProcurar = $conn->query($procurarAtaque);
 <h3>Procure por algo</h3>
 
 <form method="POST">
-  <input type="text" style="width: 220px;" name="palavra" id="palavra">
+  <input type="text" style="width: 220px;" name="palavra" id="palavra" placeholder="Digite o ID ou NOME do Item">
   <button type="submit" name="pesquisar">Pesquisar</button>
 </form>
 
@@ -157,6 +157,7 @@ while ($row = $resultadoProcurar->fetch_assoc()) {
     echo '<div class="card-body">';
     echo "<h5 class='card-title'>$nome</h5>";
     echo "<h6 class='card-subtitle mb-2 text-muted'>Tipo: $tipo</h6>";
+    echo "<p class='card-text'>ID: $id </p>";
     echo "<p class='card-text'>Raridade: $raridade</p>";
     echo "<p class='card-text'>Dano possivel: " . (isset($damageVisual) ? $damageVisual : '-') . "</p>";
     echo "<img src='$imagem' class='img-enviado' width='30' height='30' alt='Imagem do item'>";
