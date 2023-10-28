@@ -22,6 +22,13 @@ if (isset($_POST['filtrar_tipo'])) {
   }
 }
 
+if (isset($_POST['filtrar_raridade'])) {
+  $raridadeSelecionada = $_POST['raridade'];
+  if (!empty($raridadeSelecionada)) {
+      $procurarAtaque .= " WHERE gi.raridade = '$raridadeSelecionada'";
+  }
+}
+
 $resultadoProcurar = $conn->query($procurarAtaque);
 ?>
 
@@ -104,13 +111,35 @@ $resultadoProcurar = $conn->query($procurarAtaque);
   <button type="submit" name="filtrar_tipo">Filtrar por tipo</button>
 </form>
 
+
+<br>
+<form method="POST">
+  <select name="raridade" id="raridade">
+    <option value="">Selecione uma raridade</option>
+    <?php
+    $selectRaridades = "SELECT DISTINCT gi.raridade FROM ganolia_item gi";
+    $resultadoRaridades = $conn->query($selectRaridades);
+    if ($resultadoRaridades) {
+        while ($rowTp = $resultadoRaridades->fetch_assoc()) {
+            $raridade = $rowTp['raridade'];
+            echo "<option value='$raridade'>$raridade</option>";
+        }
+        $resultadoRaridades->close();
+    } else {
+        echo "Erro na consulta sql";
+    }
+    ?>
+  </select>
+  <button type="submit" name="filtrar_raridade">Filtrar por raridade</button>
+</form>
+
 <br>
 <form action="POST">
 <button type="button" onclick="limpar()">Limpar</button>
 </form>
 
 <?php
-if (isset($_POST['pesquisar']) || isset($_POST['todos']) || isset($_POST['filtrar_categoria']) || isset($_POST['filtrar_tipo'])) {
+if (isset($_POST['pesquisar']) || isset($_POST['todos']) || isset($_POST['filtrar_categoria']) || isset($_POST['filtrar_tipo']) || isset($_POST['filtrar_raridade'])) {
 while ($row = $resultadoProcurar->fetch_assoc()) {
     $id = $row["id"];
     $nome = $row["nome"];
