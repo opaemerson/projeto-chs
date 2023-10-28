@@ -19,6 +19,7 @@ if(isset($codigoItemAtaque) && $codigoItemAtaque !== ''){
         $raridade = $linha['raridade'];
         $imagem = $linha['imagem'];
         $damage = $linha['damage'];
+        $habilidade = $linha['habilidade'];
 
         if ($damage != '' || $damage != null){
             $damage = $linha['damage'];
@@ -26,6 +27,15 @@ if(isset($codigoItemAtaque) && $codigoItemAtaque !== ''){
             $damageVisual = $damagePossivel[0] . " - " . $damagePossivel[count($damagePossivel) - 1];
         }
 
+        switch ($habilidade) {
+            case "Critico":
+                break;
+            case "Vampirismo":
+                break;
+            default:
+                break;
+        }
+        
         $resposta['success'] = true;
         $resposta['nome'] = $nome;
         $resposta['tipo'] = $tipo;
