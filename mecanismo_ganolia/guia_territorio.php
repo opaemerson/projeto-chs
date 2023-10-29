@@ -23,11 +23,10 @@ require_once('../config.php');
   <?php
   $buscarCriaturas = "SELECT c.id AS criatura_id, 
                       c.nome as criatura_nome,
-                      v.recompensa_id,
+                      c.recompensa_id,
                       c.territorio as criatura_territorio,
-                      v.probabilidade
-                      FROM ganolia_criatura c
-                      LEFT JOIN ganolia_vinculo v ON c.id = v.criatura_id";
+                      c.probabilidade
+                      FROM ganolia_criatura c";
 
   $resultado = $conn->query($buscarCriaturas);
 
