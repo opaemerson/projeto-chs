@@ -9,10 +9,8 @@ $idCriatura = $_POST['idCriatura'];
 $resposta = array();
 
 if(isset($idCriatura) && $idCriatura !== ''){ 
-    $select = "SELECT gc.nome as nome, gc.raridade as raridade, gv.recompensa_id as recompensa, gv.probabilidade as probabilidade
-    FROM ganolia_vinculo gv
-    INNER JOIN ganolia_criatura gc
-    ON gc.id = gv.criatura_id
+    $select = "SELECT gc.nome as nome, gc.raridade as raridade, gc.recompensa_id as recompensa, gc.probabilidade as probabilidade
+    FROM ganolia_criatura gc
     WHERE gc.id = '$idCriatura'";
     $resultado = $conn->query($select);
 
