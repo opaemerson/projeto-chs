@@ -33,6 +33,14 @@
       enquanto gerenciam suas cartas virtuais para construir o deck perfeito.
       </p>
 
+      <h2>Como funciona apos a compra do jogo?</h2>
+
+      <p>
+      O jogo contara com miniaturas representando tanto os personagens jogaveis quanto os temiveis monstros que servirao como desafios para os jogadores. 
+      Alem disso, ao adquirir o jogo, os compradores receberao um serial unico e valido que deverao inserir ao baixar o aplicativo. 
+      Uma vez validado, eles terao a oportunidade de criar novas partidas, com um limite de ate seis jogadores por sala.
+      </p>
+
       <h3>About sub-subs</h3>
 
       <h4>Burrow</h4>
@@ -80,177 +88,180 @@
 </body>
 </html>
 
-🔴 Como funciona após a compra do jogo?
-➡️ O jogo contará com miniaturas representando tanto os personagens jogáveis quanto os temíveis monstros que servirão como desafios para os jogadores. Além disso, ao adquirir o jogo, os compradores receberão um serial único e válido que deverão inserir ao baixar o aplicativo. Uma vez validado, eles terão a oportunidade de criar novas partidas, com um limite de até seis jogadores por sala.
-➡️ Cada jogador, ao ingressar na partida, será atribuído com um conjunto inicial de cartas, ajustado de acordo com a classe do personagem que tenham escolhido para a aventura.
-➡️ O jogo irá conter um mapa pré-definido, desenhado sob um gradiente, que servirá como casas para as miniaturas.
-➡️ O jogo segue uma mecânica já estabelecida, que, em sua essência, envolve rolagem de dados para determinar eventos, como o causamento de dano. Quando um jogador causa dano, ele seleciona a carta correspondente no aplicativo e aplica-a ao monstro em questão.
+🔴 
+➡️ 
+➡️ Cada jogador, ao ingressar na partida, ser� atribu�do com um conjunto inicial de cartas, ajustado de acordo com a classe do personagem que tenham escolhido para a aventura.
+➡️ O jogo ir� conter um mapa pr�-definido, desenhado sob um gradiente, que servir� como casas para as miniaturas.
+➡️ O jogo segue uma mec�nica j� estabelecida, que, em sua ess�ncia, envolve rolagem de dados para determinar eventos, como o causamento de dano. Quando um jogador causa dano, ele seleciona a carta correspondente no aplicativo e aplica-a ao monstro em quest�o.
 
-🔴 O jogo terá final?
-Sim, o jogo terá uma progressão com final, definindo cada partida como uma sessão de Galonia.
+🔴 O jogo ter� final?
+Sim, o jogo ter� uma progress�o com final, definindo cada partida como uma sess�o de Galonia.
 
 🔴 Diferenciais do jogo
-➡️ Cada partida é propensa a ser única, utilizando de uma inteligência para quests para garantir a diversidade de experiência.
-➡️ Há a possibilidade de encantamento de itens durante partidas atuais, de modo que possam ser utilizados em partidas futuras.
-➡️Ao comprar um pacote fisico, você enriquecerá a sua 'biblioteca', o que proporcionará uma experiência imersiva em qualquer jogo que você escolher jogar. O jogo será enriquecido com base nas cartas disponíveis de sua biblioteca, oferecendo ao grupo oportunidade de obte-las também.
-➡️ Eventos Nativos Dungeons, que apresentam uma variedade de monstros aleatórios, poderão emergir a cada X números de turnos. Quando uma dungeon surgir no mapa, os jogadores terão a oportunidade de se envolver. No entanto, o formato deste evento é singular, com um mapa exclusivo e dados virtuais, todos no ambiente online.
+➡️ Cada partida � propensa a ser �nica, utilizando de uma intelig�ncia para quests para garantir a diversidade de experi�ncia.
+➡️ H� a possibilidade de encantamento de itens durante partidas atuais, de modo que possam ser utilizados em partidas futuras.
+➡️Ao comprar um pacote fisico, voc� enriquecer� a sua 'biblioteca', o que proporcionar� uma experi�ncia imersiva em qualquer jogo que voc� escolher jogar. O jogo ser� enriquecido com base nas cartas dispon�veis de sua biblioteca, oferecendo ao grupo oportunidade de obte-las tamb�m.
+➡️ Eventos Nativos Dungeons, que apresentam uma variedade de monstros aleat�rios, poder�o emergir a cada X n�meros de turnos. Quando uma dungeon surgir no mapa, os jogadores ter�o a oportunidade de se envolver. No entanto, o formato deste evento � singular, com um mapa exclusivo e dados virtuais, todos no ambiente online.
 
-🔴 O que são pacotes?
-➡️ A ideia é dar inicio a uma comercialização fora do jogo padrão, desta maneira, busco encontrar uma história tão rica que faça união sobre a maioria dos personagens e monstros, deste modo é possível realizar a comercialização de miniaturas que estão fora do jogo padrão.
+🔴 O que s�o pacotes?
+➡️ A ideia � dar inicio a uma comercializa��o fora do jogo padr�o, desta maneira, busco encontrar uma hist�ria t�o rica que fa�a uni�o sobre a maioria dos personagens e monstros, deste modo � poss�vel realizar a comercializa��o de miniaturas que est�o fora do jogo padr�o.
 O pacote pode ser adquirido de duas maneiras:
 Pacote de Miniatura
-➡️ Este pacote incluirá uma miniatura e algumas cartas aleatórias de equipamentos ou receitas.
+➡️ Este pacote incluir� uma miniatura e algumas cartas aleat�rias de equipamentos ou receitas.
 
 Pacote Tradicional
-➡️ Este pacote é uma recompensa que os jogadores receberão após concluírem a missão final do jogo. Ele concede três cartas exclusivamente relacionadas a equipamentos ou receitas. Quando um jogador recebe um equipamento, ele é automaticamente adicionado à sua biblioteca, podendo ser usado nas partidas com amigos ou em aventuras individuais.
+➡️ Este pacote � uma recompensa que os jogadores receber�o ap�s conclu�rem a miss�o final do jogo. Ele concede tr�s cartas exclusivamente relacionadas a equipamentos ou receitas. Quando um jogador recebe um equipamento, ele � automaticamente adicionado � sua biblioteca, podendo ser usado nas partidas com amigos ou em aventuras individuais.
 
 🔴 O que seria a Biblioteca?
-➡️ Este é o local onde você guarda tanto as cartas de monstros quanto as de personagens que adquiriu por pacotes.
-➡️ Sua biblioteca funciona como um catálogo de colecionáveis, permitindo que você utilize suas conquistas em qualquer partida que iniciar.
-➡️ Observação Importante sobre Perda de Cartas: Lembre-se de que as cartas adquiridas por pacotes são consideradas permanentes, já as que foram "encantadas" podem ser perdidas em partidas sujeitas a riscos.
+➡️ Este � o local onde voc� guarda tanto as cartas de monstros quanto as de personagens que adquiriu por pacotes.
+➡️ Sua biblioteca funciona como um cat�logo de colecion�veis, permitindo que voc� utilize suas conquistas em qualquer partida que iniciar.
+➡️ Observa��o Importante sobre Perda de Cartas: Lembre-se de que as cartas adquiridas por pacotes s�o consideradas permanentes, j� as que foram "encantadas" podem ser perdidas em partidas sujeitas a riscos.
 Mapas
 
-🔴Território Central 
-➡️ Essa parte do jogo é essencial, pois fornece um formato para posicionar as peças distintas. Geralmente, é nela que ocorre a centralização, reunindo todos os monstros dos territórios diferentes.
+🔴Territ�rio Central 
+➡️ Essa parte do jogo � essencial, pois fornece um formato para posicionar as pe�as distintas. Geralmente, � nela que ocorre a centraliza��o, reunindo todos os monstros dos territ�rios diferentes.
 
-🔴Territórios Distintos 
-➡️ Essas são peças que se unem à parte central do mapa. Monstros de territórios distintos não têm a capacidade de invadir uns aos outros, mas podem coexistir no território central.
+🔴Territ�rios Distintos 
+➡️ Essas s�o pe�as que se unem � parte central do mapa. Monstros de territ�rios distintos n�o t�m a capacidade de invadir uns aos outros, mas podem coexistir no territ�rio central.
 
 ❓ Adiconar eventos que introduzem objetos ao mapa, estes podem ser interagidos tanto com os personagens como os monstros.
 
 Objetivo do Jogo
-🔴 Resolução da Quest - Principal
-➡️A ideia é fazer que uma inteligência que monte uma Quest para cada jogador, podendo mesclar as situações de:
-➡️ X Fabricação de Item normal, X fabricação de item raro.
-➡️ X Aniquilações de monstros.
-➡️ X Aniquilação de Chefe de Elite (Semi-Boss).
+🔴 Resolu��o da Quest - Principal
+➡️A ideia � fazer que uma intelig�ncia que monte uma Quest para cada jogador, podendo mesclar as situa��es de:
+➡️ X Fabrica��o de Item normal, X fabrica��o de item raro.
+➡️ X Aniquila��es de monstros.
+➡️ X Aniquila��o de Chefe de Elite (Semi-Boss).
 
 🔴 Quest - "End Game"
-➡️ Após todos os jogadores finalizarem as quests, terá a oportunidade de resolver a Quest do End Game.
-➡️ A ideia é fazer que uma inteligência monte um final com um Boss especifico e aleatório para cada fim de jogo, equilibrando o poder do Boss de acordo com os números de jogadores. Todos os jogadores se juntam para tentar aniquilar este Boss Final.
-➡️ Ao derrotar o boss final você ganhará um pacote, que terá a oportunidade de aquisição de itens para somatória de sua biblioteca.
-➡️ Se você ou o seu grupo conseguirem derrotar o Boss Final, a Quest do End Game será concluída, e o jogo será considerado "100% Concluído".
-➡️ Caso vocês não consigam derrotar o Boss Final, a porcentagem de progresso no jogo será proporcional ao dano causado ao Boss. Isso pode resultar em porcentagens variando de 90% a 99% de conclusão, indicando que o Boss foi derrotado parcialmente, mas não completamente.
+➡️ Ap�s todos os jogadores finalizarem as quests, ter� a oportunidade de resolver a Quest do End Game.
+➡️ A ideia � fazer que uma intelig�ncia monte um final com um Boss especifico e aleat�rio para cada fim de jogo, equilibrando o poder do Boss de acordo com os n�meros de jogadores. Todos os jogadores se juntam para tentar aniquilar este Boss Final.
+➡️ Ao derrotar o boss final voc� ganhar� um pacote, que ter� a oportunidade de aquisi��o de itens para somat�ria de sua biblioteca.
+➡️ Se voc� ou o seu grupo conseguirem derrotar o Boss Final, a Quest do End Game ser� conclu�da, e o jogo ser� considerado "100% Conclu�do".
+➡️ Caso voc�s n�o consigam derrotar o Boss Final, a porcentagem de progresso no jogo ser� proporcional ao dano causado ao Boss. Isso pode resultar em porcentagens variando de 90% a 99% de conclus�o, indicando que o Boss foi derrotado parcialmente, mas n�o completamente.
 
 Cartas 
 🔴  Carta de Moedas
-➡️ Usabilidade - Realizar a junção de células necessárias para troca de itens em loja, realizar a ação de compra gastará uma ação em sua rodada.
+➡️ Usabilidade - Realizar a jun��o de c�lulas necess�rias para troca de itens em loja, realizar a a��o de compra gastar� uma a��o em sua rodada.
 ➡️ Formas de Obter - Drop de Inimigos.
-➡️ Formas de Obter - Conclusão de Quests.
+➡️ Formas de Obter - Conclus�o de Quests.
 ➡️ Formas de Obter - Venda de equipamento de Loja Online.
-➡️ Formas de Aquisição - Itens em Lojas (Online ou Hibrido).
-➡️ Formato da Carta - Unidades simbolizando números (Célula $2, Célula $5)
+➡️ Formas de Aquisi��o - Itens em Lojas (Online ou Hibrido).
+➡️ Formato da Carta - Unidades simbolizando n�meros (C�lula $2, C�lula $5)
 
 🔴  Carta de Receitas
-➡️Esta é uma carta com o poder de invocar um item, no entanto, é obrigatório realizar a fusão dos itens descritos na receita para criar o item.
+➡️Esta � uma carta com o poder de invocar um item, no entanto, � obrigat�rio realizar a fus�o dos itens descritos na receita para criar o item.
 
 🔴  Carta de Equipamentos
-➡️ Os equipamentos estão divididos em diferentes categorias de raridade, e essa raridade pode influenciar os atributos do equipamento.
-➡️ Os equipamentos possuem suas classificações diante seu preço, haverá uma escala de preços de acordo com sua raridade.
+➡️ Os equipamentos est�o divididos em diferentes categorias de raridade, e essa raridade pode influenciar os atributos do equipamento.
+➡️ Os equipamentos possuem suas classifica��es diante seu pre�o, haver� uma escala de pre�os de acordo com sua raridade.
 ➡️ Cada personagem utiliza o item de acordo com sua classe.
-➡️ Cada carta possui uma indicação que especifica quantos dados ou que tipo de dado o equipamento utiliza, podendo variar de um D6 até um D12.
-➡️ O jogo segue uma mecânica já estabelecida, que, em sua essência, envolve a evolução de seu baralho, adinando uma camada estratégica de jogo, rolagem de dados para determinar eventos, como o causamento de dano. Quando um jogador causa dano, ele seleciona a carta correspondente no aplicativo e aplica-a ao monstro em questão.
+➡️ Cada carta possui uma indica��o que especifica quantos dados ou que tipo de dado o equipamento utiliza, podendo variar de um D6 at� um D12.
+➡️ O jogo segue uma mec�nica j� estabelecida, que, em sua ess�ncia, envolve a evolu��o de seu baralho, adinando uma camada estrat�gica de jogo, rolagem de dados para determinar eventos, como o causamento de dano. Quando um jogador causa dano, ele seleciona a carta correspondente no aplicativo e aplica-a ao monstro em quest�o.
 🔴Carta de Itens
 🔸 Exemplo de item - Eternal
-➡️É um feitiço que permite vincular um item a ele. Quando este encantamento é aplicado a um item, ele é transferido para a sua biblioteca. No entanto, como o item não faz parte dos seus pertences permanentes de biblioteca, se o seu personagem morrer no jogo enquanto estiver usando o equipamento, o encantamento será desfeito, resultando na perda total do item.
+➡️�� um feiti�o que permite vincular um item a ele. Quando este encantamento � aplicado a um item, ele � transferido para a sua biblioteca. No entanto, como o item n�o faz parte dos seus pertences permanentes de biblioteca, se o seu personagem morrer no jogo enquanto estiver usando o equipamento, o encantamento ser� desfeito, resultando na perda total do item.
 🔸 Itens - Materiais Comuns
-➡️ A combinação de materiais comuns geralmente resulta na criação de equipamento, que pode ser utilizado para proteção ou ataque.
+➡️ A combina��o de materiais comuns geralmente resulta na cria��o de equipamento, que pode ser utilizado para prote��o ou ataque.
 
 Lojas 
 🔴Loja Comum
-➡️ 05 itens disponíveis para aquisição, podendo ser embaralhada a cada X rodadas.
+➡️ 05 itens dispon�veis para aquisi��o, podendo ser embaralhada a cada X rodadas.
 
 🔴Loja Online - Especial
-➡️Um cardápio de itens especiais.
-➡️ Itens exclusivos que são referentes a datas comemorativas e situações eventuais, podendo ser adquirido com algumas condiçoes.
+➡️Um card�pio de itens especiais.
+➡️ Itens exclusivos que s�o referentes a datas comemorativas e situa��es eventuais, podendo ser adquirido com algumas condi�oes.
 
 Monstros
-🔴Monstros únicos
-➡️Nomeado como monstros, estes são os adversários que os personagens enfrentam durante o jogo.
+🔴Monstros �nicos
+➡️Nomeado como monstros, estes s�o os advers�rios que os personagens enfrentam durante o jogo.
 
 🔴Raridade
-➡️Os monstros estão divididos em diferentes categorias de raridade, e essa raridade pode influenciar em seus atributos.
+➡️Os monstros est�o divididos em diferentes categorias de raridade, e essa raridade pode influenciar em seus atributos.
 
 Personagens 
-🔴 Personagem únicos
-➡️ Conjunto de habilidades únicas
+🔴 Personagem �nicos
+➡️ Conjunto de habilidades �nicas
 ➡️ Todo personagem faz parte de uma classe
 
 🔴Classes de personagens
 🔸Mago [Magias]
-➡️Habilidades mágicas: Excelente.
+➡️Habilidades m�gicas: Excelente.
 ➡️Poder de ataque: Normal.
-➡️Ataque a distância: Sim.
+➡️Ataque a dist�ncia: Sim.
 ➡️Taxa de defesa: Normal.
 
-🔸Arqueiro [Distância]
-➡️Habilidades mágicas: Normal.
+🔸Arqueiro [Dist�ncia]
+➡️Habilidades m�gicas: Normal.
 ➡️Poder de ataque: Normal.
-➡️Ataque a distância: Sim, com potência aumentada.
+➡️Ataque a dist�ncia: Sim, com pot�ncia aumentada.
 ➡️Taxa de defesa: Ruim.
 
 🔸Guerreiro [Hibrido]
-➡️Habilidades mágicas: Normal.
+➡️Habilidades m�gicas: Normal.
 ➡️Poder de ataque: Normal.
-➡️Ataque a distância: Não.
+➡️Ataque a dist�ncia: N�o.
 ➡️Taxa de defesa: Excelente.
 
 🔸Berserk [Ataque]
-➡️Habilidades mágicas: Normal.
+➡️Habilidades m�gicas: Normal.
 ➡️Poder de ataque: Excelente.
-➡️Ataque a distância: Não.
+➡️Ataque a dist�ncia: N�o.
 ➡️Taxa de defesa: Normal.
 
 🔸Sacerdote [Suporte]
-➡️Habilidades mágicas: Normal.
+➡️Habilidades m�gicas: Normal.
 ➡️Poder de ataque: Excelente.
-➡️Ataque a distância: Sim.
+➡️Ataque a dist�ncia: Sim.
 ➡️Taxa de defesa: Excelente.
 
 Manual
-🔴 Movimentação
-➡️A movimentação ocorre de acordo com cada personagem podendo ser em círculo, cruz ou X.
-➡️A movimentação é quantidade de casas que o personagem é capaz de andar na tabuleiro gradiente.
-➡️A movimentação do adversário é disposta ao alvo que é selecionado, andando apenas e formato de cruz.
+🔴 Movimenta��o
+➡️A movimenta��o ocorre de acordo com cada personagem podendo ser em c�rculo, cruz ou X.
+➡️A movimenta��o � quantidade de casas que o personagem � capaz de andar na tabuleiro gradiente.
+➡️A movimenta��o do advers�rio � disposta ao alvo que � selecionado, andando apenas e formato de cruz.
 
 🔴 Ciclo de turno
-➡️ Seguindo a ordem da pessoa mais nova até a mais velha, os personagens começam jogando primeiro do que os monstros.
-➡️ Todos jogadores devem realizar suas ações, as ações será explicada mais tarde na categoria do Mecanismo de Jogabilidade.
-➡️ Após todos os jogadores realizarem suas ações, é a hora das ações dos monstros, estes agora, jogará um de cada vez, indicando na tela do aplicativo qual jogador ele está seguindo e caso estiver em seu alcance, lançar ataques ao jogador alvo.
+➡️ Seguindo a ordem da pessoa mais nova at� a mais velha, os personagens come�am jogando primeiro do que os monstros.
+➡️ Todos jogadores devem realizar suas a��es, as a��es ser� explicada mais tarde na categoria do Mecanismo de Jogabilidade.
+➡️ Ap�s todos os jogadores realizarem suas a��es, � a hora das a��es dos monstros, estes agora, jogar� um de cada vez, indicando na tela do aplicativo qual jogador ele est� seguindo e caso estiver em seu alcance, lan�ar ataques ao jogador alvo.
 
-🔴 Ações
-➡️ Faça Três Ações, sendo uma ação obrigatória e duas opcionais.
-🔸Ação Obrigatória - Manipulação: 
-➡️Coletar 05 cartas de seu baralho de privilégios, destas cartas você pode fazer as manipulações que é:
-➡️Fabricação - Combinação de itens para formação de algum equipamento.
+🔴 A��es
+➡️ Fa�a Tr�s A��es, sendo uma a��o obrigat�ria e duas opcionais.
+🔸A��o Obrigat�ria - Manipula��o: 
+➡️Coletar 05 cartas de seu baralho de privil�gios, destas cartas voc� pode fazer as manipula��es que �:
+➡️Fabrica��o - Combina��o de itens para forma��o de algum equipamento.
 ➡️Equipar-se - Inserir cartas nos slots de Ataque/Defesa.
 ➡️Aprendizado - Inserir receitas no seu caderno de aprendizado.
-➡️Banir - Exclusão de qualquer item indesejado do seu baralho.
+➡️Banir - Exclus�o de qualquer item indesejado do seu baralho.
 
-🔸Ação Opcional - Atacar: Caso você tenha se equipado de algum item, você pode selecionar o monstro em seu alcance e realizar o ataque.
-🔸Ação Opcional - Descansar: Caso você estiver com o HP baixo, você pode realizar essa ação para recuperar X de vida de seu personagem.
-🔸Ação Opcional - Andar: Essa ação é de acordo com número de movimento do seu personagem, permitirá que você chegue mais perto do seu alvo ou recue de algum adversário
-🔸Ação Opcional – Compra: Com as moedas combinadas em sua mão, você poderá realizar a compra na loja.
+🔸A��o Opcional - Atacar: Caso voc� tenha se equipado de algum item, voc� pode selecionar o monstro em seu alcance e realizar o ataque.
+🔸A��o Opcional - Descansar: Caso voc� estiver com o HP baixo, voc� pode realizar essa a��o para recuperar X de vida de seu personagem.
+🔸A��o Opcional - Andar: Essa a��o � de acordo com n�mero de movimento do seu personagem, permitir� que voc� chegue mais perto do seu alvo ou recue de algum advers�rio
+🔸A��o Opcional – Compra: Com as moedas combinadas em sua m�o, voc� poder� realizar a compra na loja.
 
-➡️ Após suas Ações, todos seus itens irá para pilha de descarte e pegue novas 05 cartas. Quando sua pilha de Privilégios acabar, embaralhe e comece o ciclo novamente.
+➡️ Ap�s suas A��es, todos seus itens ir� para pilha de descarte e pegue novas 05 cartas. Quando sua pilha de Privil�gios acabar, embaralhe e comece o ciclo novamente.
 
 🔴Recompensa de Monstro
-➡️ A recompensa é concedida após a aniquilação de um monstro, ou seja, quando o HP do monstro é reduzido a zero.
-➡️ Existem dois tipos de recompensa: a recompensa por dano final e a recompensa por dano maior. Isso significa que o jogador que causar mais dano ao monstro também receberá a recompensa associada a ele. Se o jogador que causou o dano final for o mesmo que causou o dano maior, ele receberá duas recompensas.
+➡️ A recompensa � concedida ap�s a aniquila��o de um monstro, ou seja, quando o HP do monstro � reduzido a zero.
+➡️ Existem dois tipos de recompensa: a recompensa por dano final e a recompensa por dano maior. Isso significa que o jogador que causar mais dano ao monstro tamb�m receber� a recompensa associada a ele. Se o jogador que causou o dano final for o mesmo que causou o dano maior, ele receber� duas recompensas.
 
 🔴 Combate - Atacando
-➡️ O jogador apenas ataca se ele tiver utilizando pelo menos um equipamento com poder de ataque e um monstro estiver em seu alcance, caso ele tenha disposto três equipamentos, serão três ataques diferentes.
-➡️As cartas de ataque contém uma marcação de dados que representa a probabilidade de sucesso do ataque. Ou seja, se o resultado do dado ultrapassar esse valor, o ataque é bem-sucedido."
-➡️Além disso, existe a chance de causar dano máximo quando se obtém o número mais alto que o dado oferece. Isso é considerado um sucesso milagroso e pode resultar na ativação de efeitos especiais provenientes do equipamento ou habilidade do seu personagem.
-➡️Para que um ataque tenha sucesso, a taxa de acerto deve superar a taxa de defesa do inimigo. Suponha que você tenha três equipamentos à sua disposição; isso lhe permite realizar até três ataques. Em cada ataque, você rola dados, podendo variar de um D6 à um D12.
-➡️Cada equipamento possui sua própria taxa de acerto. Por exemplo, se uma espada tem uma taxa de acerto de 5 ou mais em um dado D6, isso significa que ela só causará dano se o resultado do dado for 5 ou superior. Além disso, o dano causado é indicado e calculado pelo aplicativo, e a faixa de dano que o equipamento pode infligir é descrita na carta correspondente.
+➡️ O jogador apenas ataca se ele tiver utilizando pelo menos um equipamento com poder de ataque e um monstro estiver em seu alcance, caso ele tenha disposto tr�s equipamentos, ser�o tr�s ataques diferentes.
+➡️As cartas de ataque cont�m uma marca��o de dados que representa a probabilidade de sucesso do ataque. Ou seja, se o resultado do dado ultrapassar esse valor, o ataque � bem-sucedido."
+➡️Al�m disso, existe a chance de causar dano m�ximo quando se obt�m o n�mero mais alto que o dado oferece. Isso � considerado um sucesso milagroso e pode resultar na ativa��o de efeitos especiais provenientes do equipamento ou habilidade do seu personagem.
+➡️Para que um ataque tenha sucesso, a taxa de acerto deve superar a taxa de defesa do inimigo. Suponha que voc� tenha tr�s equipamentos � sua disposi��o; isso lhe permite realizar at� tr�s ataques. Em cada ataque, voc� rola dados, podendo variar de um D6 � um D12.
+➡️Cada equipamento possui sua pr�pria taxa de acerto. Por exemplo, se uma espada tem uma taxa de acerto de 5 ou mais em um dado D6, isso significa que ela s� causar� dano se o resultado do dado for 5 ou superior. Al�m disso, o dano causado � indicado e calculado pelo aplicativo, e a faixa de dano que o equipamento pode infligir � descrita na carta correspondente.
 
 
-➡️Para frisar, imagine três ataques, cada um usando um dado de seis lados. O primeiro ataque resulta em 4, o segundo em 2, e o terceiro em 5. A defesa do oponente também envolve o lançamento de um dado de seis lados. Suponha que a carta de defesa do inimigo indique uma probabilidade de defesa de 3. Neste cenário, dois ataques são bem-sucedidos. Em seguida, o aplicativo calcula o poder de ataque de cada equipamento que obteve êxito, variando de acordo com os equipamentos. Além disso, as cartas também fornecem informações sobre o dano máximo que um equipamento pode causar diretamente à vida do alvo.
+➡️Para frisar, imagine tr�s ataques, cada um usando um dado de seis lados. O primeiro ataque resulta em 4, o segundo em 2, e o terceiro em 5. A defesa do oponente tamb�m envolve o lan�amento de um dado de seis lados. Suponha que a carta de defesa do inimigo indique uma probabilidade de defesa de 3. Neste cen�rio, dois ataques s�o bem-sucedidos. Em seguida, o aplicativo calcula o poder de ataque de cada equipamento que obteve �xito, variando de acordo com os equipamentos. Al�m disso, as cartas tamb�m fornecem informa��es sobre o dano m�ximo que um equipamento pode causar diretamente � vida do alvo.
 
 🔴 Combate - Defendendo
-➡️A diferença entre o ataque e a defesa é a seguinte: quando se trata de defesa, você escolhe qual equipamento defensivo usar na batalha, e essa vestimenta representa você em todas as suas tentativas de defesa. A cada ataque do adversário, o aplicativo automaticamente calcula se resultará em dano ou não, da mesma forma que ocorre com o ataque.
+➡️A diferen�a entre o ataque e a defesa � a seguinte: quando se trata de defesa, voc� escolhe qual equipamento defensivo usar na batalha, e essa vestimenta representa voc� em todas as suas tentativas de defesa. A cada ataque do advers�rio, o aplicativo automaticamente calcula se resultar� em dano ou n�o, da mesma forma que ocorre com o ataque.
 
-➡️A batalha é resolvida subtraindo o valor de ataque do valor de defesa. Se a defesa for maior, o ataque não é bem-sucedido. No entanto, se a defesa não for suficiente, o ataque é realizado aleatoriamente, utilizando o poder de ataque indicado na carta do inimigo.
+➡️A batalha � resolvida subtraindo o valor de ataque do valor de defesa. Se a defesa for maior, o ataque n�o � bem-sucedido. No entanto, se a defesa n�o for suficiente, o ataque � realizado aleatoriamente, utilizando o poder de ataque indicado na carta do inimigo.
 
-➡️Quando a pessoa matar o monstro ela recebe os benefícios ou quando a pessoa enfrenta também recebe
+➡️Quando a pessoa matar o monstro ela recebe os benef�cios ou quando a pessoa enfrenta tamb�m recebe
+
+
+<a href="index_mecanismo.php">Voltar</a>
