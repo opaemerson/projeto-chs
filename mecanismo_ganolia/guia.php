@@ -22,7 +22,7 @@
       </p>
 
       <p>
-        Nam dolor mauris, condimentum a neque vitae, eleifend interdum dolor.
+      Nam dolor mauris, condimentum a neque vitae, eleifend interdum dolor.
       </p>
 
       <h2>Qual sera o formato do jogo?</h2>
@@ -40,6 +40,22 @@
       Alem disso, ao adquirir o jogo, os compradores receberao um serial unico e valido que deverao inserir ao baixar o aplicativo. 
       Uma vez validado, eles terao a oportunidade de criar novas partidas, com um limite de ate seis jogadores por sala.
       </p>
+
+      <p>
+      Cada jogador, ao ingressar na partida, sera atribuido com um conjunto inicial de cartas, 
+      ajustado de acordo com a classe do personagem que tenham escolhido para a aventura. 
+      O jogo ira conter um mapa pre-definido, desenhado sob um gradiente, que servira como casas para as miniaturas.
+      </p>
+
+      <p>
+      O jogo segue uma mecanica ja estabelecida, que, em sua essencia, 
+      envolve rolagem de dados para determinar eventos, como o causamento de dano. 
+      Quando um jogador causa dano, ele seleciona a carta correspondente no aplicativo e aplica-a ao monstro em questao. 
+      </p>
+
+      <p>O jogo tera uma progressao com final, definindo cada partida como uma sessao de Galonia.</p>
+
+      <h2></h2>
 
       <h3>About sub-subs</h3>
 
@@ -63,7 +79,6 @@
         More styles are available, like the ones shown below,
         including lists, quotes, and alternative colouring and layout.
       </p>
-
       
       <ul>
         <li>
@@ -87,15 +102,6 @@
     </div>
 </body>
 </html>
-
-🔴 
-➡️ 
-➡️ Cada jogador, ao ingressar na partida, ser� atribu�do com um conjunto inicial de cartas, ajustado de acordo com a classe do personagem que tenham escolhido para a aventura.
-➡️ O jogo ir� conter um mapa pr�-definido, desenhado sob um gradiente, que servir� como casas para as miniaturas.
-➡️ O jogo segue uma mec�nica j� estabelecida, que, em sua ess�ncia, envolve rolagem de dados para determinar eventos, como o causamento de dano. Quando um jogador causa dano, ele seleciona a carta correspondente no aplicativo e aplica-a ao monstro em quest�o.
-
-🔴 O jogo ter� final?
-Sim, o jogo ter� uma progress�o com final, definindo cada partida como uma sess�o de Galonia.
 
 🔴 Diferenciais do jogo
 ➡️ Cada partida � propensa a ser �nica, utilizando de uma intelig�ncia para quests para garantir a diversidade de experi�ncia.
