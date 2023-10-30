@@ -1,3 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/rpg.css">
+    <style>
+    body {
+    background-image: url('../Images/bg.png'); /* Caminho correto para a imagem */
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+</style>
+</head>
+<body>
+    
+<div class="two-columns">
+      <p class="dropcap">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Cras non euismod erat. Duis eget est in velit laoreet rutrum.
+        Suspendisse mollis sed libero eget dapibus. Mauris vestibulum,
+        ante sit amet mollis facilisis, dolor leo congue augue, sit ame
+        vestibulum purus neque quis diam. Nulla varius mollis finibus.
+      </p>
+
+      <p>
+        Nam dolor mauris, condimentum a neque vitae, eleifend interdum dolor.
+      </p>
+
+      <h2>Qual sera o formato do jogo?</h2>
+
+      <p>
+    Formato Hibrido (Boardgame + Aplicativo)
+    Tabuleiro Fisico.
+    Miniaturas Físicas.
+    Dados Fisicos.
+    Cartas Virtuais.
+      </p>
+      
+      <div class="readaloud">
+        Text in boxes like these are meant to be read aloud or paraphrased to
+        players as they first arrive at a location or given specific conditions
+        described in the text.
+      </div>
+
+      <h3>About sub-subs</h3>
+      
+      <div class="opening-flavour">
+        Sub-subs, h3s, or sections of sections of chapters perhaps
+      </div>
+
+      <p>
+        Fusce vehicula placerat ullamcorper.
+        Praesent dui risus, interdum at eros sit amet, mattis volutpat nunc.
+      </p>
+
+      <p>
+        You can sub-divide sections even further to explain more minor point.
+        Like if you want to explain about different kinds of movement.
+      </p>
+
+      <h4>Burrow</h4>
+      
+      <p>
+        Curabitur rutrum non diam in eleifend.
+      </p>
+
+      <h4>Climb</h4>
+      
+      <p>
+        Nulla gravida dui et ipsum iaculis eleifend.
+      </p>
+
+      <h4>Fly</h4>
+
+      <p>
+        Aenean volutpat, nisi in pellentesque consectetur, dui mauris tempor
+        sapien, non volutpat quam quam id arcu.
+      </p>
+
+      <p>
+        Below is a list of some creatures that can fly:
+      </p>
+
+      <p>
+        <strong>Unladen Swallows</strong> can fly.
+        Some have even been known to carry coconuts over long distances.
+      </p>
+
+      <p>
+        <strong>Bees</strong> can fly too. They like birds, so sometimes they
+        fly together.
+      </p>
+
+      <p>
+        <strong>Penguins</strong> can fly too if they swim really fast first.
+      </p>
+
+      <p>
+        Fusce maximus lacus pulvinar augue venenatis, sed ullamcorper odio gravida.
+        Maecenas nec dapibus elit, et faucibus enim.
+        Nulla auctor viverra orci ac tempor.
+        Mauris fringilla rhoncus nibh, quis volutpat velit vehicula et.
+      </p>
+      
+      <div class="sidenote">
+        <h4>Sidenotes</h4>
+        
+        <p>
+          Sometimes we might have asides to include.
+        </p>
+
+        <p>
+          This is the kind of place we can put them.
+        </p>
+      </div>
+
+      <div class="page-break"></div>
+
+      <h2>More styles</h2>
+
+      <p class="dropcap">
+        More styles are available, like the ones shown below,
+        including lists, quotes, and alternative colouring and layout.
+      </p>
+
+      <h3 class="blue-head">Alternative header</h3>
+
+      <p>
+        Colours that work really well include:
+      </p>
+      
+      <ul>
+        <li>
+          Burgundy
+        </li>
+        <li>
+          Brown
+        </li>
+        <li>
+          Golden
+        </li>
+        <li>
+          Grey
+        </li>
+      </ul>
+
+      <p>
+        Don't quote me on that though.
+      </p>
+
+      <blockquote>
+        <p>
+          This is the single best thing since sliced bread. Perhaps.
+        </p>
+
+        <cite>
+          The Author, <i>The Scriptures</i>
+        </cite>
+      </blockquote>
+    </div>
+</body>
+</html>
+
 Características de Ganolia
 🔴 Qual será a Categoria? 
 ➡️ Build deck + Dungeon Crawler
