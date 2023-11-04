@@ -15,14 +15,16 @@
 </style>
 </head>
 <body>
-    
+<div>
+  <img src="../Images/TESTING.jpg" alt="" style="width: 150mm; padding: 10mm;">
+</div>
+
 <div class="two-columns">
     <p class="dropcap">
     Ganolia sera um Dungeon Crawler com um formato hibrido que combina elementos de boardgame com um aplicativo interativo, 
     oferecendo aos jogadores a experiencia de explorar masmorras em um tabuleiro fisico, com miniaturas e dados, 
     enquanto gerenciam suas cartas virtuais para construir o deck perfeito.
     </p>
-    <p>O jogo segue uma mecânica já estabelecida que envolve a evolução de seu baralho, adicionando uma camada estratégica de jogo, juntamente com a rolagem de dados para determinar eventos, como causar dano.</p>
     <!--##topico##-->
     <h2>Como funciona apos a compra do jogo?</h2>
 
@@ -94,7 +96,7 @@
 
     <p>Este é o local de consulta na qual contém tanto as cartas de monstros quanto as de personagens que foram adquiridos. </p>
     <p>Sua biblioteca funciona como um catálogo de colecionáveis, permitindo que você utilize suas conquistas em qualquer partida que iniciar.</p>
-    <p>Uma observação importante sobre <b>Perda de Cartas:</b> Lembre-se de que as cartas adquiridas por pacotes são consideradas permanentes, já as que foram "encantadas" podem ser perdidas em partidas sujeitas a riscos.</p>
+    <p>Uma observação importante sobre <b>Perda de Cartas:</b> Lembre-se de que as cartas adquiridas por pacotes são consideradas permanentes, já as que foram "encantadas" podem ser perdidas em partidas.</p>
     
     <!--##topico##-->
     <h3>Mapas</h3>
@@ -197,7 +199,7 @@
     
     <!--##topico##-->
     <h2>Ciclo de Turno</h2>
-    <p>Na ordem da pessoa mais jovem para a mais velha, os personagens jogam antes dos monstros. Após isso todos os jogadores realizam seus turnos baseado nas ações, que serão explicadas posteriormente.</p>
+    <p>Na ordem da pessoa mais jovem para a mais velha, os personagens jogam antes dos monstros.</p>
     <p>Após realizar suas ações, todos os seus itens serão movidos para a pilha de descarte e, em seguida, pegue 5 novas cartas. Quando sua pilha de Privilégios estiver vazia, embaralhe e inicie o ciclo novamente.</p>
     <p>Depois que todos os jogadores terminam suas ações, os monstros agem um de cada vez, indicando qual jogador estão seguindo e atacando, se estiverem ao alcance.</p>
     
@@ -210,16 +212,16 @@
         <b>Manipulação:</b>
         Coletar 05 cartas de seu baralho de privilegios, destas cartas voce pode fazer as seguintes ações:
         <li>
-          Equipar-se: Inserir as cartas de Ataque/Defesa em seus slots.
+          <b>Equipar-se:</b> Inserir as cartas de Ataque/Defesa em seus slots.
         </li>
         <li>
-          Fabricação: Combine materiais para criar equipamentos. Após a criação, coloque a nova carta no baralho de descarte.
+          <b>Fabricação:</b> Combine materiais para criar equipamentos. Após a criação, coloque a nova carta no baralho de descarte.
         </li>
         <li>
-          Aprendizagem: Inserir as cartas de receitas em seu caderno de aprendizado.
+          <b>Aprendizagem:</b> Inserir as cartas de receitas em seu caderno de aprendizado.
         </li>
         <li>
-          Banimento: Exclusao de qualquer carta indesejado de seu baralho.
+          <b>Banimento:</b> Exclusao de qualquer carta indesejado de seu baralho.
         </li>
     </ul>
 
@@ -234,14 +236,15 @@
 
     <h4>Atacando</h4>
     <p>O jogador só pode realizar um ataque se estiver usando pelo menos um equipamento com poder de ataque e houver um monstro ao alcance. Se o jogador dispuser de três equipamentos, poderá executar até três ataques distintos.</p>
-    <p>As cartas de ataque contêm uma marcação de dados que representa a probabilidade de sucesso do ataque. Ou seja, se o resultado do dado for maior que esse valor, o ataque é bem-sucedido.</p>
-    <p>Além disso, alguns itens possuem habilidades que, ao serem ativadas durante um ataque, aplicam um efeito ao alvo ou desencadeiam um evento relacionado à habilidade.</p>
+    <p>As cartas de ataque contêm uma marcação de dados que representa a probabilidade de sucesso do ataque. Ou seja, se o resultado do dado for igual ou maior que esse valor, o ataque é bem-sucedido.</p>
+    <p>Além disso, alguns itens possuem habilidades que, ao serem ativadas durante um combate, aplicam um efeito ao alvo ou desencadeiam um evento relacionado à habilidade.</p>
     <p>Para que um ataque tenha sucesso, a taxa de acerto deve superar a taxa de defesa do inimigo. Suponhamos que você tenha três equipamentos à sua disposição; isso permite realizar até três ataques. Em cada ataque, você rola dados, variando de um D6 a um D12.</p>
     <p>Cada equipamento possui sua própria taxa de acerto. Por exemplo, se uma espada tem uma taxa de acerto de 5 ou mais em um dado D6, isso significa que ela só causará dano se o resultado do dado for 5 ou superior. Além disso, o dano causado é indicado e calculado pelo aplicativo, e a faixa de dano que o equipamento pode infligir está descrita na carta correspondente.</p>
-    
+    <p>É importante ressaltar que, além de rolar os dados de taxa de acerto, também é feita uma jogada dos dados de redução conforme indicado pela criatura. Dependendo do valor obtido nessa jogada, é possível reduzir o número resultante do dado de habilidade.</p>
+
     <h4>Situação Exemplo</h4>
-    <p>Para ilustrar, considere três ataques, cada um utilizando um dado de seis lados. O primeiro ataque resulta em 4, o segundo em 2, e o terceiro em 5. O oponente lança um dado de seis lados como parte de sua defesa, e suponha que a carta de defesa do inimigo indique uma probabilidade de defesa de 3. Nesse cenário, dois dos ataques são bem-sucedidos.</p>
-    <p>Em seguida, o aplicativo calcula o poder de ataque de cada equipamento que obteve sucesso, variando de acordo com os equipamentos. Além disso, as cartas também fornecem informações sobre o dano máximo que um equipamento pode causar diretamente à vida do alvo.</p>
+    <p>Para exemplificar, imagine três ataques, cada um usando um dado de seis lados, com sucesso ocorrendo quando o valor é igual ou superior a quatro. O primeiro ataque resulta em 4, o segundo em 2, e o terceiro em 5. O oponente lança um dado de seis lados como parte de sua defesa, e suponha que a carta de defesa do inimigo tenha reduzido a taxa de acerto em 1. Nesse cenário, apenas um ataque foi bem-sucedido.</p>
+    <p>Em seguida, o aplicativo calcula o dano de ataque de cada equipamento que obteve sucesso, variando de acordo com os equipamentos. Além disso, as cartas também fornecem informações sobre o dano máximo que um equipamento pode causar diretamente à vida do alvo.</p>
 
     <h4>Defendendo</h4>
     <p>A diferença entre ataque e defesa é a seguinte: ao se tratar da defesa, você escolhe o equipamento defensivo a ser utilizado na batalha, representando-o em todas as tentativas de defesa contra os ataques adversários. Em cada investida do oponente, o aplicativo automaticamente calcula se resultará em dano ou não, de maneira similar ao que ocorre com os ataques.</p>
