@@ -37,6 +37,13 @@ require_once('../config.php');
 
         body {font-family: "Lato", sans-serif}
         .mySlides {display: none}
+
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 80%; /* ajuste conforme necessário */
+            box-sizing: border-box;
+        }
 </style>
 
 </head>
@@ -49,16 +56,18 @@ require_once('../config.php');
   <a href="./guia_territorio.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">TERRITORIOS</a>
   <a href="./guia_item.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">ITENS</a>
 </div>
+<div class="container">
     <h2>Atacando</h2>
     <form action="processar_ataque.php" method="post">
     <label for="">Selecione o ID do Item Ofensivo:</label>
     <input type="text" style="width: 40px;" id="codigoItemAtaque">
     <button type="button" onclick="buscarItemAtaque()">Buscar</button>
     <br><br>
-    <img id="imagemItemAtaque" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <img id="imagemItemAtaque" src="" class="img-enviado" width="300" height="380" style="display: none;">
     <div id="resultadoConsulta"></div>
     <br><br>
     </form>
+
 
     <form action="">
     <input type="hidden" id="codigoItemAtaque">
@@ -67,7 +76,9 @@ require_once('../config.php');
     <div id="resultadoAtaque"></div>
     </form>
     <br><br>
-
+    <button type="button" onclick="limpar()">Limpar</button>
+</div>
+<div class="container">
     <h2>Recolhendo Drop</h2>
     <form action="">
     <label for="">Selecione o ID da Criatura:</label>
@@ -85,8 +96,7 @@ require_once('../config.php');
     <img id="imagemCriatura4" src="" class="img-enviado" width="30" height="30" style="display: none;">
     <div id="nomeDrop4"  style="display: none;"></div>
     <img id="imagemCriatura5" src="" class="img-enviado" width="30" height="30" style="display: none;">
-    <div id="nomeDrop5"  style="display: none;">
-</div>
+    <div id="nomeDrop5"  style="display: none;"></div>
 
     <br><br></form>
 
@@ -98,8 +108,9 @@ require_once('../config.php');
     <div id="resultadoDrop"></div>
     </form>
     <br><br>
-
     <button type="button" onclick="limpar()">Limpar</button>
+    </div>
+    
 <script src="../scripts/mecanismo_ganolia.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

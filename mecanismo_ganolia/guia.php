@@ -248,7 +248,7 @@
 
     <h4>Defendendo</h4>
     <p>A diferença entre ataque e defesa é a seguinte: ao se tratar da defesa, você escolhe o equipamento defensivo a ser utilizado na batalha, representando-o em todas as tentativas de defesa contra os ataques adversários. Em cada investida do oponente, o aplicativo automaticamente calcula se resultará em dano ou não, de maneira similar ao que ocorre com os ataques.</p>
-    <p>A resolução da batalha ocorre subtraindo o valor de ataque do valor de defesa. Se o valor de defesa for maior, o ataque não é bem-sucedido. No entanto, se a defesa não for suficiente, o ataque é realizado aleatoriamente, usando o poder de ataque indicado na carta do inimigo.</p>
+    <p>A resolução da batalha ocorre da seguinte forma, o item de defesa dará a probabilidad de remover valor de  No entanto, se a defesa não for suficiente, o ataque é realizado aleatoriamente, usando o poder de ataque indicado na carta do inimigo.</p>
     <p>Quando um jogador derrota um monstro, ele recebe os benefícios associados à vitória. Além disso, quando um jogador enfrenta um monstro, ele também tem a oportunidade de receber recompensas.</p>
 
 
