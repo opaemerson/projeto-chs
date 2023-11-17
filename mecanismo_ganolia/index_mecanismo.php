@@ -56,7 +56,7 @@ require_once('../config.php');
   <a href="./guia_territorio.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">TERRITORIOS</a>
   <a href="./guia_item.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">ITENS</a>
   <?php if (isset($_SESSION['permissao']) && $_SESSION['permissao'] == 'Admin') { ?>
-    <a href="./adm.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">ADMINISTRACAO</a>
+    <a href="./adm.php" class="w3-bar-item w3-button w3-hover-yellow w3-padding-large custom-square" style="text-decoration: none;">ADMINISTRACAO</a>
     <?php } ?>
 </div>
 <div class="container">
