@@ -29,9 +29,8 @@
 
 <div class="w3-bar w3-black w3-card">
   <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-  <a href="index.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">HOME </a>
   <a href="index.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">PROJETOS</a>
-  <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" style="text-decoration: none;">CONTATO</a>
+  <a href="contato.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" style="text-decoration: none;">CONTATO</a>
   <a href="login.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" id="loginLi" style="text-decoration: none;">ENTRAR</a>
   <?php
 if (isset($_SESSION['nome'])) {
@@ -42,44 +41,29 @@ if (isset($_SESSION['nome'])) {
 }
 ?>
 </div>
+<?php
+    if (isset($_SESSION['nome'])) {
+        echo '<ul class="navbar-nav ml-auto">';
+        echo '<li class="nav-item">';
+        echo '<p class="text-light">Bem-Vindo, ' . $_SESSION['nome'] . ' | Permissao: ' . $_SESSION['permissao'] . ' | ID: ' . $_SESSION['id'] . '</p>';
+        echo '</li>';
+        echo '<li class="nav-item">';
+        echo '</li>';
+        echo '</ul>';
+    }
+?>
 
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#">GOBLINS</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#projeto-cee">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#projeto-geekzero">Projetos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#projeto-dintask">Contato</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php" id="loginLi">Entrar</a>
-                </li>
-            </ul>
-            <?php
-            if (isset($_SESSION['nome'])) {
-                echo '<ul class="navbar-nav ml-auto">';
-                echo '<li class="nav-item">';
-                echo '<p class="text-light">Bem-Vindo, ' . $_SESSION['nome'] . ' | Permissao: ' . $_SESSION['permissao'] . ' | ID: ' . $_SESSION['id'] . '</p>';
-                echo '</li>';
-                echo '<li class="nav-item">';
-                echo '<a class="nav-link" href="sair.php">Sair</a>';
-                echo '</li>';
-                echo '</ul>';
-            }
-            ?>
-        </div>
-    </div>
-</nav> -->
+<?php
+    if (isset($_SESSION['nome'])) {
+?>
 
+<?php } else{
+    echo '<div> Loga para mostrar conteudo </div>';
+}?>
+
+<?php
+    if (isset($_SESSION['nome'])) {
+?>
 <div class="container mt-5" id="projeto-cee">
     <div class="row">
         <div class="col-md-12">
@@ -93,7 +77,12 @@ if (isset($_SESSION['nome'])) {
         </div>
     </div>
 </div>
+<?php } ?>
 
+
+<?php
+    if (isset($_SESSION['nome'])) {
+?>
 <div class="container mt-5" id="projeto-geekzero">
     <div class="row">
         <div class="col-md-12">
@@ -106,7 +95,11 @@ if (isset($_SESSION['nome'])) {
         </div>
     </div>
 </div>
+<?php } ?>
 
+<?php
+    if (isset($_SESSION['nome'])) {
+?>
 <div class="container mt-5" id="projeto-dintask">
     <div class="row">
         <div class="col-md-12">
@@ -119,7 +112,12 @@ if (isset($_SESSION['nome'])) {
         </div>
     </div>
 </div>
+<?php } ?>
 
+
+<?php
+    if (isset($_SESSION['nome'])) {
+?>
 <div class="container mt-5" id="projeto-ganolia">
     <div class="row">
         <div class="col-md-12">
@@ -132,7 +130,11 @@ if (isset($_SESSION['nome'])) {
         </div>
     </div>
 </div>
+<?php } ?>
 
+<?php
+    if (isset($_SESSION['nome'])) {
+?>
 <div class="container mt-5" id="mecanismo-ganolia">
     <div class="row">
         <div class="col-md-12">
@@ -146,6 +148,7 @@ if (isset($_SESSION['nome'])) {
         </div>
     </div>
 </div>
+<?php } ?>
 <script>
         var usuarioLogado = <?php echo isset($_SESSION['nome']) ? 'true' : 'false'; ?>;
         var permissaoUsuario = <?php echo isset($_SESSION['permissao']) ? 'true' : 'false'; ?>;
