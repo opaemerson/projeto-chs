@@ -17,39 +17,39 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-    body {font-family: "Lato", sans-serif}
-    .mySlides {display: none}
-    </style>
 </head>
 <body>
-    <?php
-    session_start();
-    ?>
+    <?php session_start(); ?>
 
-<div class="w3-bar w3-black w3-card">
-  <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-  <a href="index.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">PROJETOS</a>
-  <a href="contato.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" style="text-decoration: none;">CONTATO</a>
-  <a href="login.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" id="loginLi" style="text-decoration: none;">ENTRAR</a>
-  <?php
-if (isset($_SESSION['nome'])) {
-    echo '<div class="w3-bar-item  w3-padding-large w3-hide-small w3-text-yellow"  style="text-decoration: none;">';
-    echo 'Bem-Vindo, ' . $_SESSION['nome'] . ' | Permissao: ' . $_SESSION['permissao'] . ' | ID: ' . $_SESSION['id'];
-    echo '</div>';
-    echo '<a href="sair.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hover-red custom-square" style="text-decoration: none;">SAIR</a>';
-}
-?>
-</div>
+    <div class="w3-bar w3-black w3-card">
+        <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+        <a href="index.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">PROJETOS</a>
+        <a href="contato.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" style="text-decoration: none;">CONTATO</a>
+        <a href="login.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" id="loginLi" style="text-decoration: none;">ENTRAR</a>
+        <?php if (isset($_SESSION['nome'])) { ?>
+            <div class="w3-bar-item w3-padding-large w3-hide-small w3-text-yellow" style="text-decoration: none;">
+                Bem-Vindo, <?php echo $_SESSION['nome']; ?> | Permissao: <?php echo $_SESSION['permissao']; ?> | ID: <?php echo $_SESSION['id']; ?>
+            </div>
+            <a href="sair.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hover-red custom-square" style="text-decoration: none;">SAIR</a>
+        <?php } ?>
+    </div>
 
-<div>
-    Entre em contaot jfiusdhiugfds giush ghiufdhu
-</div>
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="height: 40vh;">
+            <div class="col-md-4 text-center">
+                <h1>Contato</h1>
+                <hr>
+                <p>Entre em contato via telepatia</p>
+                <hr>
+                <p>Telefone: 174716</p>
+            </div>
+        </div>
+    </div>
 
-<script>
+    <script>
         var usuarioLogado = <?php echo isset($_SESSION['nome']) ? 'true' : 'false'; ?>;
         var permissaoUsuario = <?php echo isset($_SESSION['permissao']) ? 'true' : 'false'; ?>;
-</script>
-<script src="./scripts/verificacoes.js"></script>
+    </script>
+    <script src="./scripts/verificacoes.js"></script>
 </body>
 </html>
