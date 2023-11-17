@@ -2,31 +2,33 @@
 require_once('../config.php');
 
 $procurarAtaque = "SELECT * FROM ganolia_item gi";
+$condicoes = "";
 
 if (isset($_POST['pesquisar'])) {
     $palavra = $_POST['palavra'];
-    $procurarAtaque .= " WHERE gi.nome LIKE '%$palavra%' OR gi.id LIKE '%$palavra%'";
+    $condicoes .= "AND (gi.nome LIKE '%$palavra%' OR gi.id LIKE '%$palavra%')";
 }
 
-if (isset($_POST['filtrar_categoria'])) {
-  $categoriaSelecionada = $_POST['categoria'];
+if (isset($_POST['filtrar'])) {
+  $categoriaSelecionada = isset($_POST['categoria']) ? $_POST['categoria'] : '';
+  $tipoSelecionada = isset($_POST['tipo']) ? $_POST['tipo'] : '';
+  $raridadeSelecionada = isset($_POST['raridade']) ? $_POST['raridade'] : '';
   if (!empty($categoriaSelecionada)) {
-      $procurarAtaque .= " WHERE gi.categoria = '$categoriaSelecionada'";
+      $condicoes .= "AND gi.categoria = '$categoriaSelecionada'";
   }
-}
-
-if (isset($_POST['filtrar_tipo'])) {
-  $tipoSelecionada = $_POST['tipo'];
   if (!empty($tipoSelecionada)) {
-      $procurarAtaque .= " WHERE gi.tipo = '$tipoSelecionada'";
+      $condicoes .= "AND gi.tipo = '$tipoSelecionada'";
+  }
+  if (!empty($raridadeSelecionada)) {
+    $condicoes .= "AND gi.raridade = '$raridadeSelecionada'";
   }
 }
 
-if (isset($_POST['filtrar_raridade'])) {
-  $raridadeSelecionada = $_POST['raridade'];
-  if (!empty($raridadeSelecionada)) {
-      $procurarAtaque .= " WHERE gi.raridade = '$raridadeSelecionada'";
-  }
+
+$condicoes = ltrim($condicoes, "AND");
+
+if (!empty($condicoes)) {
+  $procurarAtaque .= " WHERE" . $condicoes;
 }
 
 $resultadoProcurar = $conn->query($procurarAtaque);
@@ -44,18 +46,13 @@ $resultadoProcurar = $conn->query($procurarAtaque);
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Oswald:wght@300&family=Playfair+Display:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <script>
-  function pegarPalavra() {
-    var palavra = document.getElementById('palavra').value;
-
-    console.log('Valor da variável palavra:', palavra);
-    }
 
     function limpar() {
-    var randomValue = new Date().getTime();
-    var currentUrl = window.location.href;
-    var newUrl = currentUrl + "?random=" + randomValue;
-    window.location.href = newUrl;
-}
+        var randomValue = new Date().getTime();
+        var currentUrl = window.location.href;
+        var newUrl = currentUrl + "?random=" + randomValue;
+        window.location.href = newUrl;
+  }
 
   </script>
 
@@ -87,51 +84,44 @@ $resultadoProcurar = $conn->query($procurarAtaque);
     }
     ?>
   </select>
-  <button type="submit" name="filtrar_categoria">Filtrar por Categoria</button>
-</form>
-
-<br>
-<form method="POST">
+  <br><br>
   <select name="tipo" id="tipo">
-    <option value="">Selecione uma tipo</option>
+    <option value="">Selecione um tipo</option>
     <?php
-    $selectTipos = "SELECT DISTINCT gi.tipo FROM ganolia_item gi";
-    $resultadoTipos = $conn->query($selectTipos);
-    if ($resultadoTipos) {
-        while ($rowTp = $resultadoTipos->fetch_assoc()) {
-            $tipo = $rowTp['tipo'];
+    $selectOpcoes = "SELECT DISTINCT gi.tipo FROM ganolia_item gi";
+    $resultadoOpcoes = $conn->query($selectOpcoes);
+    if ($resultadoOpcoes) {
+        while ($rowOp = $resultadoOpcoes->fetch_assoc()) {
+            $tipo = $rowOp['tipo'];
             echo "<option value='$tipo'>$tipo</option>";
         }
-        $resultadoTipos->close();
+        $resultadoOpcoes->close();
     } else {
         echo "Erro na consulta sql";
     }
     ?>
   </select>
-  <button type="submit" name="filtrar_tipo">Filtrar por tipo</button>
-</form>
-
-
-<br>
-<form method="POST">
+  <br><br>
   <select name="raridade" id="raridade">
     <option value="">Selecione uma raridade</option>
     <?php
-    $selectRaridades = "SELECT DISTINCT gi.raridade FROM ganolia_item gi";
-    $resultadoRaridades = $conn->query($selectRaridades);
-    if ($resultadoRaridades) {
-        while ($rowTp = $resultadoRaridades->fetch_assoc()) {
-            $raridade = $rowTp['raridade'];
+    $selectOpcoes = "SELECT DISTINCT gi.raridade FROM ganolia_item gi";
+    $resultadoOpcoes = $conn->query($selectOpcoes);
+    if ($resultadoOpcoes) {
+        while ($rowOp = $resultadoOpcoes->fetch_assoc()) {
+            $raridade = $rowOp['raridade'];
             echo "<option value='$raridade'>$raridade</option>";
         }
-        $resultadoRaridades->close();
+        $resultadoOpcoes->close();
     } else {
         echo "Erro na consulta sql";
     }
     ?>
   </select>
-  <button type="submit" name="filtrar_raridade">Filtrar por raridade</button>
+  <br><br>
+  <button type="submit" name="filtrar">Filtrar</button>
 </form>
+
 
 <br>
 <form action="POST">
@@ -139,7 +129,7 @@ $resultadoProcurar = $conn->query($procurarAtaque);
 </form>
 
 <?php
-if (isset($_POST['pesquisar']) || isset($_POST['todos']) || isset($_POST['filtrar_categoria']) || isset($_POST['filtrar_tipo']) || isset($_POST['filtrar_raridade'])) {
+if (isset($_POST['pesquisar']) || isset($_POST['filtrar'])) {
 while ($row = $resultadoProcurar->fetch_assoc()) {
     $id = $row["id"];
     $nome = $row["nome"];
