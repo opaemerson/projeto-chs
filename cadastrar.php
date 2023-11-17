@@ -26,8 +26,7 @@ if (isset($_POST['cadastro'])) {
     } else{
         $sql = "INSERT INTO usuarios (nome, email, senha, permissao, referencia) VALUES ('$nome','$email', '$senha', '$permissao', '$referencia_select')";
         if ($conn->query($sql) === TRUE) {
-            echo "cadastrado";
-            header('Location: index.php'); 
+            header('Location: obrigado_cadastro.php'); 
             exit;
         } else {
             echo "erro de conexao";
