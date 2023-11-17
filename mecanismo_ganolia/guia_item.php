@@ -24,7 +24,6 @@ if (isset($_POST['filtrar'])) {
   }
 }
 
-
 $condicoes = ltrim($condicoes, "AND");
 
 if (!empty($condicoes)) {

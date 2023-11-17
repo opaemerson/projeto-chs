@@ -55,6 +55,9 @@ require_once('../config.php');
   <a href="./guia.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">MANUAL</a>
   <a href="./guia_territorio.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">TERRITORIOS</a>
   <a href="./guia_item.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">ITENS</a>
+  <?php if (isset($_SESSION['permissao']) && $_SESSION['permissao'] == 'Admin') { ?>
+    <a href="./adm.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">ADMINISTRACAO</a>
+    <?php } ?>
 </div>
 <div class="container">
     <h2>Atacando</h2>
@@ -78,6 +81,13 @@ require_once('../config.php');
     <br><br>
     <button type="button" onclick="limpar()">Limpar</button>
 </div>
+
+<div class="container">
+    <h2>Defendendo</h2>
+    <form action="processar_ataque.php" method="post">
+    <label for="">Desenvolvendo[...]</label>
+</div>
+
 <div class="container">
     <h2>Recolhendo Drop</h2>
     <form action="">
