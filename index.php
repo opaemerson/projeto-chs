@@ -89,7 +89,7 @@ if (isset($_SESSION['nome'])) {
             <div class="card">
                 <div class="card-body">
                     <h1 class="card-title">Projeto Geekzero</h1>
-                    <p class="card-text"><b>Objetivo:</b> Notas sobre SERIES | FILMES | JOGOS VIRTUAIS | BOARDGAMES</p>
+                    <p class="card-text"><b>Objetivo:</b> Notas sobre SERIES | FILMES | LIVROS | JOGOS VIRTUAIS | BOARDGAMES</p>
                 </div>
             </div>
         </div>
