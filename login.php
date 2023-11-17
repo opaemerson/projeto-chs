@@ -2,7 +2,6 @@
 header('Access-Control-Allow-Origin: *');
 require_once('config.php');
 
-// Função para limpar e escapar dados do usuário
 function limparEntrada($entrada) {
     global $conn;
     return $conn->real_escape_string(strip_tags(trim($entrada)));
@@ -10,9 +9,9 @@ function limparEntrada($entrada) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['login'])) {
-        $nome = limparEntrada($_POST['nome']);
+        $email = limparEntrada($_POST['email']);
         $senha = limparEntrada($_POST['senha']);
-        $sql = "SELECT * FROM usuarios WHERE nome = '$nome' AND senha = '$senha'";
+        $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
         $resultado = $conn->query($sql) or die("Falha na execucao do codigo SQL: " . $conn->error);
 
         if ($resultado->num_rows == 1) {
@@ -52,15 +51,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="container">
   <form method="POST" action="login.php">
     <div class="card">
-      <a class="login">Log in</a>
+      <a class="login">Entrar</a>
       <div class="inputBox">
-        <input type="text" required="required" id="nome" name="nome">
-        <span class="user">Username</span>
+        <input type="text" required="required" id="email" name="email">
+        <span class="user">E-mail</span>
       </div>
 
       <div class="inputBox">
         <input type="password" required="required" id="senha" name="senha">
-        <span>Password</span>
+        <span>Senha</span>
       </div>
 
       <button type="submit" class="enter" name="login">Enter</button>

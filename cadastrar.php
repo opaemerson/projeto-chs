@@ -4,6 +4,7 @@ require_once('config.php');
 
 if (isset($_POST['cadastro'])) {
     $nome = $_POST['nome'];
+    $email = $_POST['email'];
     $senha = $_POST['senha'];
     $referencia_select = $_POST['referencia_select'];
     $permissao = 'Usuario';
@@ -12,18 +13,18 @@ if (isset($_POST['cadastro'])) {
         echo "Por favor,  selecione uma opcao de referencia.";
     }
 
-    if (!strpos($nome, '@')) {
+    if (!strpos($email, '@')) {
         echo "O campo de e-mail deve conter o caractere '@'.";
     } else {
-    $stmt = $conn->prepare("SELECT nome FROM usuarios WHERE nome = ?");
-    $stmt->bind_param("s", $nome);
+    $stmt = $conn->prepare("SELECT email FROM usuarios WHERE email = ?");
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
         echo "Este usuário já existe.";
     } else{
-        $sql = "INSERT INTO usuarios (nome, senha, permissao, referencia) VALUES ('$nome', '$senha', '$permissao', '$referencia_select')";
+        $sql = "INSERT INTO usuarios (nome, email, senha, permissao, referencia) VALUES ('$nome','$email', '$senha', '$permissao', '$referencia_select')";
         if ($conn->query($sql) === TRUE) {
             echo "cadastrado";
             header('Location: index.php'); 
@@ -54,11 +55,15 @@ if (isset($_POST['cadastro'])) {
     <div class="card">
     <a class="login">Cadastrar</a>
         <label for="nome" class="inputBox">
+            Nome:
+            <input type="text" id="nome" name="nome" required>
+            <span>Nome</span>
+        </label>
+        <label for="email" class="inputBox">
             E-mail:
-            <input type="text" id="nome" name="nome" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+            <input type="text" id="email" name="email" required>
             <span>E-mail</span>
         </label>
-        <br>
         <label for="senha_cadastro" class="inputBox">
             Senha:
             <input type="password" id="senha_cadastro" name="senha" required>
