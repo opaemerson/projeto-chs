@@ -56,7 +56,7 @@ require_once('../config.php');
                             $guardarNome[] = "<b>" . $nomeRecompensa . "</b>[" . $porcentagem . "%] ";
                         }
                     } else {
-                        echo "Não encontrou nome do item";
+                        echo "Nao encontrou nome do item";
                     }
                 }
             }
