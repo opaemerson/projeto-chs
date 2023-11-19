@@ -16,6 +16,14 @@ function buscarItemAtaque() {
       success: function (resultado) { 
         if (resultado.success) {
             
+            $('#resultadoConsulta').html('Nome: ' + resultado.nome + '<br>Tipo: ' + resultado.tipo + '<br>Raridade: ' + resultado.raridade);
+
+            if (resultado.damageVisual === '' || typeof resultado.damageVisual === 'undefined') {
+              $('#resultadoConsulta').append('<br> '); 
+            } else {
+              $('#resultadoConsulta').append('<br>Damage: ' + resultado.damageVisual); 
+            }
+
             $('#imagemItemAtaque').attr('src', resultado.imagem);
             $('#imagemItemAtaque').show();            
 

@@ -66,7 +66,7 @@ require_once('../config.php');
     <input type="text" style="width: 40px;" id="codigoItemAtaque">
     <button type="button" onclick="buscarItemAtaque()">Buscar</button>
     <br><br>
-    <img id="imagemItemAtaque" src="" class="img-enviado" width="300" height="380" style="display: none;">
+    <img id="imagemItemAtaque" src="" class="img-enviado" width="200" height="180" style="display: none;">
     <div id="resultadoConsulta"></div>
     <br><br>
     </form>

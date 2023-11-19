@@ -155,6 +155,7 @@
     <h3>Classe de Personagens</h3>
     <h4>Mago</h4>
     <ul>
+      <li>Equipamento: Cajado</li>      
       <li>Habilidades mágicas: Excelente.</li>
       <li>Poder de ataque: Normal.</li>
       <li>Ataque a distância: Sim.</li>
@@ -162,13 +163,15 @@
     </ul>
     <h4>Guerreiro</h4>
     <ul>
+    <li>Equipamento: Espada</li>
       <li>Habilidades mágicas: Normal.</li>
       <li>Poder de ataque: Normal.</li>
       <li>Ataque a distância: Não.</li>
       <li>Taxa de defesa: Excelente.</li>
     </ul>
-    <h4>Berserk</h4>
+    <h4>Barbaro</h4>
     <ul>
+      <li>Equipamento: Machado</li>
       <li>Habilidades mágicas: Normal.</li>
       <li>Poder de ataque: Excelente.</li>
       <li>Ataque a distância: Nao.</li>
@@ -176,6 +179,7 @@
     </ul>
     <h4>Arqueiro</h4>
     <ul>
+      <li>Equipamento: Arco</li>
       <li>Habilidades mágicas: Normal.</li>
       <li>Poder de ataque: Normal.</li>
       <li>Ataque a distância: Sim (com potência aumentada).</li>
@@ -183,6 +187,7 @@
     </ul>
     <h4>Sacerdote</h4>
     <ul>
+      <li>Equipamento: Cajado</li>     
       <li>Habilidades mágicas: Normal.</li>
       <li>Poder de ataque: Normal.</li>
       <li>Ataque a distância: Sim.</li>
