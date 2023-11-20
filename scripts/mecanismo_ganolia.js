@@ -92,17 +92,20 @@ function buscaCriatura() {
       if (resultado.success) {
           $('#resultadoCriatura').html('Nome do Alvo: ' + resultado.nome + '<br>Raridade do Alvo: ' + resultado.raridade + '<br>Recompensas possiveis:');
           
-          exibirNomeDrop('#nomeDrop1', resultado.nome1);
-          exibirNomeDrop('#nomeDrop2', resultado.nome2);
-          exibirNomeDrop('#nomeDrop3', resultado.nome3);
-          exibirNomeDrop('#nomeDrop4', resultado.nome4);
-          exibirNomeDrop('#nomeDrop5', resultado.nome5);
+          exibirNomeDrop('#nomeDrop1', 'Nome: ' + resultado.nome1);
+          exibirNomeDrop('#nomeDrop2', 'Nome: ' + resultado.nome2);
+          exibirNomeDrop('#nomeDrop3', 'Nome: ' + resultado.nome3);
+          exibirNomeDrop('#nomeDrop4', 'Nome: ' + resultado.nome4);
+
+          exibirRaridadeDrop('#nomeRaridade1', 'Raridade: ' + resultado.item_raridade1);
+          exibirRaridadeDrop('#nomeRaridade2', 'Raridade: ' + resultado.item_raridade2);
+          exibirRaridadeDrop('#nomeRaridade3', 'Raridade: ' + resultado.item_raridade3);
+          exibirRaridadeDrop('#nomeRaridade4', 'Raridade: ' + resultado.item_raridade4);
 
           exibirOuOcultarImagem('#imagemCriatura1', resultado.imagem1);
           exibirOuOcultarImagem('#imagemCriatura2', resultado.imagem2);
           exibirOuOcultarImagem('#imagemCriatura3', resultado.imagem3);
           exibirOuOcultarImagem('#imagemCriatura4', resultado.imagem4);
-          exibirOuOcultarImagem('#imagemCriatura5', resultado.imagem5);
 
           idCriatura = '';
 
@@ -161,6 +164,19 @@ function exibirOuOcultarImagem(elemento, imagem) {
   } else {
       $(elemento).attr('src', imagem);
       $(elemento).show();
+  }
+}
+
+function exibirRaridadeDrop(elemento, nomeRaridade) {
+  const $elemento = $(elemento);
+  $elemento.empty();
+
+  if (nomeRaridade === '' || typeof nomeRaridade === 'undefined') {
+    $elemento.append('<br>'); 
+  } else {
+    $elemento.hide();
+    $elemento.text(nomeRaridade);
+    $elemento.show();
   }
 }
 

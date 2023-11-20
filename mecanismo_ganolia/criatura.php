@@ -21,9 +21,11 @@ if(isset($idCriatura) && $idCriatura !== ''){
         $recompensa = $linha['recompensa'];
         $recompensaArray = explode(";", $recompensa);
         $guardaNome = array();
+        $guardaRaridade = array();
         $guardaImagem = array();
         foreach ($recompensaArray as $key) {
-            $existeItem = "SELECT gi.id, gi.nome, gi.imagem FROM ganolia_item gi WHERE gi.id = $key";
+            $existeItem = "SELECT gi.id, gi.nome, gi.raridade as item_raridade,
+            gi.imagem FROM ganolia_item gi WHERE gi.id = $key";
             $resultadoItem = $conn->query($existeItem);
             
             if ($resultadoItem->num_rows == 0) {
@@ -31,6 +33,7 @@ if(isset($idCriatura) && $idCriatura !== ''){
             } else {
                 $linhaExiste = $resultadoItem->fetch_assoc();
                 $guardaNome[] = $linhaExiste['nome'];
+                $guardaRaridade[] = $linhaExiste['item_raridade'];
                 $guardaImagem[] = $linhaExiste['imagem'];
             }
         }
@@ -38,6 +41,27 @@ if(isset($idCriatura) && $idCriatura !== ''){
         $resposta['success'] = true;
         $resposta['nome'] = $nome;
         $resposta['raridade'] = $raridade;
+
+        if (isset($guardaRaridade[0])) {
+            $resposta['item_raridade1'] = $guardaRaridade[0];
+        } else {
+            $resposta['item_raridade1'] = '';
+        }
+        if (isset($guardaRaridade[1])) {
+            $resposta['item_raridade2'] = $guardaRaridade[1];
+        } else {
+            $resposta['item_raridade2'] = '';
+        }
+        if (isset($guardaRaridade[2])) {
+            $resposta['item_raridade3'] = $guardaRaridade[2];
+        } else {
+            $resposta['item_raridade3'] = '';
+        }
+        if (isset($guardaRaridade[3])) {
+            $resposta['item_raridade4'] = $guardaRaridade[3];
+        } else {
+            $resposta['item_raridade4'] = '';
+        }
 
         //verificando nome dos drops
         if (isset($guardaNome[0])) {
@@ -60,11 +84,6 @@ if(isset($idCriatura) && $idCriatura !== ''){
         } else {
             $resposta['nome4'] = '';
         }
-        if (isset($guardaNome[4])) {
-            $resposta['nome5'] = $guardaNome[4];
-        } else {
-            $resposta['nome5'] = '';
-        }
 
         //verificando imagens dos drops   
         if (isset($guardaImagem[0])) {
@@ -86,11 +105,6 @@ if(isset($idCriatura) && $idCriatura !== ''){
             $resposta['imagem4'] = $guardaImagem[3];
         } else {
             $resposta['imagem4'] = '';
-        }
-        if (isset($guardaImagem[4])) {
-            $resposta['imagem5'] = $guardaImagem[4];
-        } else {
-            $resposta['imagem5'] = '';
         }
         
     } else {

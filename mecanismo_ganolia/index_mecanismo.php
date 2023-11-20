@@ -66,7 +66,7 @@ require_once('../config.php');
     <input type="text" style="width: 40px;" id="codigoItemAtaque">
     <button type="button" onclick="buscarItemAtaque()">Buscar</button>
     <br><br>
-    <img id="imagemItemAtaque" src="" class="img-enviado" width="200" height="180" style="display: none;">
+    <img id="imagemItemAtaque" src="" class="img-enviado" width="150" height="220" style="display: none;">
     <div id="resultadoConsulta"></div>
     <br><br>
     </form>
@@ -97,16 +97,46 @@ require_once('../config.php');
     <br><br>
     <div id="resultadoCriatura"></div>
     <div style="margin-bottom: 10px;"></div>
-    <img id="imagemCriatura1" src="" class="img-enviado" width="30" height="30" style="display: none;">
-    <div id="nomeDrop1" style="display: none;"></div>
-    <img id="imagemCriatura2" src="" class="img-enviado" width="30" height="30" style="display: none;">
-    <div id="nomeDrop2" style="display: none;"></div>
-    <img id="imagemCriatura3" src="" class="img-enviado" width="30" height="30" style="display: none;">
-    <div id="nomeDrop3"  style="display: none;"></div>
-    <img id="imagemCriatura4" src="" class="img-enviado" width="30" height="30" style="display: none;">
-    <div id="nomeDrop4"  style="display: none;"></div>
-    <img id="imagemCriatura5" src="" class="img-enviado" width="30" height="30" style="display: none;">
-    <div id="nomeDrop5"  style="display: none;"></div>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card mt-3">
+                <img id="imagemCriatura1" src="" class="img-enviado card-img-top" width="150" height="220" style="display: none;">
+                <div class="card-body">
+                    <div id="nomeDrop1" style="display: none;"></div>
+                    <div id="nomeRaridade1" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mt-3">
+                <img id="imagemCriatura2" src="" class="img-enviado card-img-top" width="150" height="220" style="display: none;">
+                <div class="card-body">
+                    <div id="nomeDrop2" style="display: none;"></div>
+                    <div id="nomeRaridade2" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mt-3">
+                <img id="imagemCriatura3" src="" class="img-enviado card-img-top" width="150" height="220" style="display: none;">
+                <div class="card-body">
+                    <div id="nomeDrop3" style="display: none;"></div>
+                    <div id="nomeRaridade3" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mt-3">
+                <img id="imagemCriatura4" src="" class="img-enviado card-img-top" width="150" height="220" style="display: none;">
+                <div class="card-body">
+                    <div id="nomeDrop4" style="display: none;"></div>
+                    <div id="nomeRaridade4" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     <br><br></form>
 
@@ -114,7 +144,7 @@ require_once('../config.php');
     <input type="hidden" id="idCriatura">
     <button type="button" onclick="buscaDrop()" style="background-color: #B22222; color: white;">Recolher</button>
     <br><br>
-    <img id="imagemDrop" src="" class="img-enviado" width="30" height="30" style="display: none;">
+    <img id="imagemDrop" src="" class="img-enviado" width="180" height="220" style="display: none;">
     <div id="resultadoDrop"></div>
     </form>
     <br><br>
