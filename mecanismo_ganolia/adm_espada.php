@@ -16,12 +16,16 @@ function buscaTerritorio($codigo) {
           while ($row = $result->fetch_assoc()) {
               if (isset($row['recompensa_id'])) {
                   $nomeTerritorio = $row['territorio'];
+                  $nomeCriatura = $row['nome'];
                   $recompensa_id = $row['recompensa_id'];
                   $partes = explode(";", $recompensa_id);
 
                   foreach ($partes as $parte) {
                       if ($parte === $codigo) {
-                          $arrayResultado[] = $nomeTerritorio;
+                        $arrayResultado[] = [
+                          'array_territorio' => $nomeTerritorio,
+                          'array_criatura' => $nomeCriatura,
+                        ];
                       }
                   }
               }
@@ -80,6 +84,7 @@ if ($resultado->num_rows > 0) {
     $codigo = $row['id'];
     $nome = $row['nome'];
     $dados = $row['dados'];
+    $valor = $row['valor'];
     $raridade = $row['raridade'];
     $damage = $row['damage'];
     $habilidade = $row['habilidade'];
@@ -110,9 +115,11 @@ if ($resultado->num_rows > 0) {
         echo "<h6>Damage: $damage</h6>";
         echo "<h6>Habilidade: $habilidade</h6>";
         echo "<h6>Taxa Hab: $taxa_habilidade</h6>";
-        foreach ($territorio as $nomesTerritorios){
-          echo "<h6>Territorio: $nomesTerritorios</h6>";
-        }
+        echo "<h6>Valor: $$valor</h6>";
+        foreach ($territorio as $item) {
+          echo "<h6>Territorio: " . $item['array_territorio'] . "</h6>";
+          echo "<h6>Criatura: " . $item['array_criatura'] . "</h6>";
+      }
         echo "<td class='td-center text-start'>"
         . "<button type='button' class='btn btn-link btn-editar' 
         data-bs-toggle='modal' data-bs-target='#modalAdmEspadas' 
