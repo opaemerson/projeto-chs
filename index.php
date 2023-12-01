@@ -46,7 +46,7 @@
             <div class="social">
                     <?php
                     if (isset($_SESSION['nome'])) {
-                    echo '<p style="color: #00ff00;">Bem-Vindo, ' . $_SESSION['nome'] . ' | Permissao: ' . $_SESSION['permissao'] . 
+                    echo '<p style="color: #00ff00;">' . $_SESSION['nome'] . ' | Permissao: ' . $_SESSION['permissao'] . 
                     ' | ID: ' . $_SESSION['id'] . '</p>';
                     }
                     ?>

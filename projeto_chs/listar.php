@@ -54,7 +54,7 @@ if (!empty($pagina)) {
         } elseif ($situacao === 'Pendente') {
             $situacaoTd = "$situacao ".'<img src="../Images/pendente.png" class="img-enviado" alt="Pendente" width="30" height="30">';
         } elseif ($situacao === 'Concluido') {
-            $situacaoTd = "$situacao ".'<img src="../Images/pudim.png" class="img-enviado" alt="Concluido" width="30" height="30">';
+            $situacaoTd = "$situacao ".'<img src="../Images/concluido.png" class="img-enviado" alt="Concluido" width="30" height="30">';
         }
         $dados .= "<tr>
                     <td>$equipamento</td>

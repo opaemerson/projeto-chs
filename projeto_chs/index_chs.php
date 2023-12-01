@@ -38,7 +38,6 @@ require_once('../config.php');
   <a href="../index.php" class="w3-bar-item w3-button w3-hover-red w3-padding-large custom-square">VOLTAR </a>
   <a class="w3-bar-item w3-button w3-padding-large custom-square" data-bs-toggle="modal" data-bs-target="#modalColetivo">REGISTRO COLETIVO </a>
   <a class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#myModal">REGISTRO UNICO</a>
-  <a class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="listarUsuarios(1)">LISTAGEM</a>
   <a class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#filtroModal">FILTRAGEM</a>
   <?php echo '<a  class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="validaPermissaoCategoria(\'' . $permissao . '\')">INCLUIR</a>'; ?>
   <a href="estatisticas.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square">ESTATISTICAS</a>

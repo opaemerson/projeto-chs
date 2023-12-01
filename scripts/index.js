@@ -169,9 +169,12 @@ function editarUsuario() {
 }
 
 function pesquisar() {
-  const procurarPalavra = $('#searchInput').val();
+  const procurarPalavra = document.getElementById('searchInput').value;
 
-  if (procurarPalavra === '') return;
+  if (!procurarPalavra || procurarPalavra.trim() === ''){
+    listarUsuarios(1);
+    return;
+  }
 
   const form = new FormData();
   form.append('procurarPalavra', procurarPalavra);
