@@ -13,31 +13,64 @@ require_once('../config.php');
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Oswald:wght@300&family=Playfair+Display:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    margin: 0;
+}
+
+section {
+    padding: 25px 5%;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+
+section h2{
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+section p{
+    font-size: 20px;
+    text-align: left;
+}
+</style>
 </head>
 
 <body>
-<div class="container mt-5">
 
+<section>
 <h4>Territorio - Baixo</h4>
 <p><b>Pantano Flutuante</b>: Local de drop itens diversas</p>
 <p><b>Floresta Hibrida</b>: Local de drop itens diversas, alguns itens de plantas</p>
 <p><b>Skulles</b>: Local de drop itens diversas, alguns itens de osso</p>
 <p><b>Ganolia</b>: Local de drop itens diversas, alguns itens de madeira,ferro.</p>
+</section>
 
+<section>
 <h4>Territorio - Médio</h4>
 <p><b>Vale da Lua</b>: Local de drop itens diversas, alguns itens brancos</p>
 <p><b>Deserto de Xantras</b>: Local de drop itens diversas, alguns itens egipicios</p>
 <p><b>Orkland</b>: Local de drop itens diversas.</p>
 <p><b>Pedras de Fogo</b>: Local de drop itens diversas, itens vermelhos, fogo</p>
 <p><b>Iceborg</b>: Local de drop itens de gelo.</p>
+</section>
 
+<section>
 <h4>Territorio - Alto</h4>
 <p><b>Draconia</b>: Local de drop itens de dragoes</p>
 <p><b>Koppala</b>: Local de drop itens fortes</p>
 <p><b>Obscuria</b>: Local de drop itens tipo obsidiana</p>
 <p><b>Prisma</b>: Local de drop itens diferentes</p>
+</section>
 
+<div class="container mt-4">
 <h3>Criaturas por território</h3>
   <?php
   $buscarCriaturas = "SELECT c.id AS criatura_id, 
@@ -98,6 +131,7 @@ require_once('../config.php');
 
 
   ?>
+  </div>
   <br><br>
   <a href="./index_mecanismo.php" type="button" class="btn-preto">Voltar</a>
 
