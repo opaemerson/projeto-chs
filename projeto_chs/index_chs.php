@@ -44,7 +44,7 @@ require_once('../config.php');
   <a href="estatisticas.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square">ESTATISTICAS</a>
   <div class="coluna-pesquisar">
         <input type="text" class="" id="searchInput" placeholder="Pesquise a tag">
-        <button type="button" class="btn-preto" onclick="pesquisar()">Pesquisar</button>
+        <button type="button" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="pesquisar()">PESQUISAR</button>
       </div>
 </div>
 
