@@ -18,15 +18,35 @@ require_once('../config.php');
 
 <body>
 <div class="container mt-5">
-    <h3>Territorios </h3>
 
+<h4>Territorio - Baixo</h4>
+<p><b>Pantano Flutuante</b>: Local de drop itens diversas</p>
+<p><b>Floresta Hibrida</b>: Local de drop itens diversas, alguns itens de plantas</p>
+<p><b>Skulles</b>: Local de drop itens diversas, alguns itens de osso</p>
+<p><b>Ganolia</b>: Local de drop itens diversas, alguns itens de madeira,ferro.</p>
+
+<h4>Territorio - Médio</h4>
+<p><b>Vale da Lua</b>: Local de drop itens diversas, alguns itens brancos</p>
+<p><b>Deserto de Xantras</b>: Local de drop itens diversas, alguns itens egipicios</p>
+<p><b>Orkland</b>: Local de drop itens diversas.</p>
+<p><b>Pedras de Fogo</b>: Local de drop itens diversas, itens vermelhos, fogo</p>
+<p><b>Iceborg</b>: Local de drop itens de gelo.</p>
+
+<h4>Territorio - Alto</h4>
+<p><b>Draconia</b>: Local de drop itens de dragoes</p>
+<p><b>Koppala</b>: Local de drop itens fortes</p>
+<p><b>Obscuria</b>: Local de drop itens tipo obsidiana</p>
+<p><b>Prisma</b>: Local de drop itens diferentes</p>
+
+<h3>Criaturas por território</h3>
   <?php
   $buscarCriaturas = "SELECT c.id AS criatura_id, 
                       c.nome as criatura_nome,
                       c.recompensa_id,
                       c.territorio as criatura_territorio,
                       c.probabilidade
-                      FROM ganolia_criatura c";
+                      FROM ganolia_criatura c
+                      order by c.territorio";
 
   $resultado = $conn->query($buscarCriaturas);
 
@@ -44,7 +64,7 @@ require_once('../config.php');
             
             $guardarNome = array();
             foreach ($quebrandoRecompensa as $key => $recompensa) {
-                $buscarNomeRecompensa = "SELECT gi.nome FROM ganolia_item gi WHERE gi.id = $recompensa";
+                $buscarNomeRecompensa = "SELECT gi.nome, gi.tipo FROM ganolia_item gi WHERE gi.id = $recompensa";
                 $resultadoNomeRecompensa = $conn->query($buscarNomeRecompensa);
             
                 if ($resultadoNomeRecompensa) {
