@@ -11,30 +11,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['login'])) {
         $email = limparEntrada($_POST['email']);
         $senha = limparEntrada($_POST['senha']);
-        $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
-        $resultado = $conn->query($sql) or die("Falha na execucao do codigo SQL: " . $conn->error);
+
+        // para evitar SQL Injection
+        $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = ? AND senha = ?");
+        $stmt->bind_param("ss", $email, $senha);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
 
         if ($resultado->num_rows == 1) {
             $row = $resultado->fetch_assoc();
 
-            if(!isset($_SESSION)){
-                session_start();
-            }
+            session_start();
 
             $_SESSION['id'] = $row['id'];
             $_SESSION['nome'] = $row['nome'];
             $_SESSION['permissao'] = $row['permissao'];
 
-            header('Location: index.php'); 
+            header('Location: index.php');
             exit;
         } else {
             $erro_login = 'Credenciais inválidas. Por favor, tente novamente.';
         }
     } else {
-        $erro_cadastro = 'Erro ao cadastrar o usuário: ' . $mysqli->error;
+        $erro_cadastro = 'Erro ao cadastrar o usuário: ' . $conn->error;
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +69,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   </form>
 </div>
-
-
 </body>
 </html>
