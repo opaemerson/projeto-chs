@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/cabecalho.css">
     <title>Projeto</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/template1.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -21,18 +22,30 @@
 <body>
     <?php session_start(); ?>
 
-    <div class="w3-bar w3-black w3-card">
-        <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="index.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">PROJETOS</a>
-        <a href="contato.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" style="text-decoration: none;">CONTATO</a>
-        <a href="login.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" id="loginLi" style="text-decoration: none;">ENTRAR</a>
-        <?php if (isset($_SESSION['nome'])) { ?>
-            <div class="w3-bar-item w3-padding-large w3-hide-small w3-text-yellow" style="text-decoration: none;">
-                Bem-Vindo, <?php echo $_SESSION['nome']; ?> | Permissao: <?php echo $_SESSION['permissao']; ?> | ID: <?php echo $_SESSION['id']; ?>
+    <header>
+        <div class="container">
+        <div class="logo"><h3 style="color: #00ff00;">GOBLINS</h3></div>
+            <div class="menu">
+                <nav>
+                    <a href="index.php">PROJETOS</a>
+                    <a href="contato.php">CONTATO</a>
+                    <a href="login.php">ENTRAR</a>
+                    <?php
+                    if (isset($_SESSION['nome'])) {
+                    echo '<a href="sair.php">SAIR</a>';
+                    }
+                    ?>
+                </nav>
             </div>
-            <a href="sair.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hover-red custom-square" style="text-decoration: none;">SAIR</a>
-        <?php } ?>
-    </div>
+
+            <div class="social">
+                    <?php
+                    echo '<p style="color: #00ff00;">Bem-Vindo, ' . $_SESSION['nome'] . ' | Permissao: ' . $_SESSION['permissao'] . 
+                    ' | ID: ' . $_SESSION['id'] . '</p>';
+                    ?>
+            </div>
+        </div>
+    </header>
 
     <div class="container">
         <div class="row justify-content-center align-items-center" style="height: 40vh;">

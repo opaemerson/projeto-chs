@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/cabecalho.css">
+    <link rel="stylesheet" href="css/template1.css">
     <title>Projeto</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -26,21 +27,51 @@
     <?php
     session_start();
     ?>
+    <header>
+        <div class="container">
+        <div class="logo"><h3 style="color: #00ff00;">GOBLINS</h3></div>
+            <div class="menu">
+                <nav>
+                    <a href="index.php">PROJETOS</a>
+                    <a href="contato.php">CONTATO</a>
+                    <a href="login.php">ENTRAR</a>
+                    <?php
+                    if (isset($_SESSION['nome'])) {
+                    echo '<a href="sair.php">SAIR</a>';
+                    }
+                    ?>
+                </nav>
+            </div>
 
-<div class="w3-bar w3-black w3-card">
-  <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-  <a href="index.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">PROJETOS</a>
-  <a href="contato.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" style="text-decoration: none;">CONTATO</a>
-  <a href="login.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" id="loginLi" style="text-decoration: none;">ENTRAR</a>
-  <?php
-if (isset($_SESSION['nome'])) {
-    echo '<div class="w3-bar-item  w3-padding-large w3-hide-small w3-text-yellow"  style="text-decoration: none;">';
-    echo 'Bem-Vindo, ' . $_SESSION['nome'] . ' | Permissao: ' . $_SESSION['permissao'] . ' | ID: ' . $_SESSION['id'];
-    echo '</div>';
-    echo '<a href="sair.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hover-red custom-square" style="text-decoration: none;">SAIR</a>';
-}
-?>
-</div>
+            <div class="social">
+                    <?php
+                    if (isset($_SESSION['nome'])) {
+                    echo '<p style="color: #00ff00;">Bem-Vindo, ' . $_SESSION['nome'] . ' | Permissao: ' . $_SESSION['permissao'] . 
+                    ' | ID: ' . $_SESSION['id'] . '</p>';
+                    }
+                    ?>
+            </div>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="container1">
+            <h2>CHS</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum culpa et ad, itaque ipsum impedit ducimus vero fugit amet earum deserunt omnis possimus minima ipsam quia est quaerat illo quidem.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem, repudiandae corporis possimus veritatis fugiat facilis nihil sapiente facere delectus ex vel voluptatibus cumque recusandae quaerat dignissimos. Illum, exercitationem recusandae? Cum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus molestias sapiente qui odio aspernatur vitae dolores ab optio accusamus sint pariatur, maxime facere ullam eveniet, reiciendis dolore quia rerum architecto.</p>
+            <button type="button" onclick="verificarLogin()">Acessar</button>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div class="container1">
+            <h2>Ganolia</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum culpa et ad, itaque ipsum impedit ducimus vero fugit amet earum deserunt omnis possimus minima ipsam quia est quaerat illo quidem.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem, repudiandae corporis possimus veritatis fugiat facilis nihil sapiente facere delectus ex vel voluptatibus cumque recusandae quaerat dignissimos. Illum, exercitationem recusandae? Cum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus molestias sapiente qui odio aspernatur vitae dolores ab optio accusamus sint pariatur, maxime facere ullam eveniet, reiciendis dolore quia rerum architecto.</p>
+            <button type="button" onclick="verificarLoginMecanismo()">Acessar</button>
+        </div>
+    </section>
+
 <?php
     if (isset($_SESSION['nome'])) {
         echo '<ul class="navbar-nav ml-auto">';
@@ -53,155 +84,8 @@ if (isset($_SESSION['nome'])) {
     }
 ?>
 
-<?php
-    if (isset($_SESSION['nome'])) {
-?>
+                    
 
-<?php } else{
-    ?>
-    <h2 style="text-align: center; margin-top: 50px;">Cadastre-se para conhecer os seguintes projetos:</h2>
-
-    <div class="container mt-5" id="projeto-cee">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h1 class="card-title">Projeto CHS</h1>
-                    <p class="card-text"><b>Objetivo:</b> Controle de Envio de Equipamentos.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container mt-5" id="projeto-geekzero">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h1 class="card-title">Projeto Geekzero</h1>
-                    <p class="card-text"><b>Objetivo:</b> Notas sobre SERIES | FILMES | LIVROS | JOGOS VIRTUAIS | BOARDGAMES</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-    <?php
-}?>
-
-<?php
-    if (isset($_SESSION['nome'])) {
-?>
-<div class="container mt-5" id="projeto-cee">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h1 class="card-title">Projeto CHS</h1>
-                    <p class="card-text"><b>Objetivo:</b> Controle de Envio de Equipamentos.</p>
-                    <button type="button" onclick="verificarLogin()">Acessar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php } ?>
-
-<div class="container mt-5" id="projeto-dintask">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h1 class="card-title">Projeto Dintask</h1>
-                    <p class="card-text"><b>Objetivo:</b> Controle sobre qualquer tipo de tarefa</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php
-    if (isset($_SESSION['nome'])) {
-?>
-<div class="container mt-5" id="projeto-geekzero">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h1 class="card-title">Projeto Geekzero</h1>
-                    <p class="card-text"><b>Objetivo:</b> Notas sobre SERIES | FILMES | LIVROS | JOGOS VIRTUAIS | BOARDGAMES</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php } ?>
-
-<?php
-    if (isset($_SESSION['nome'])) {
-?>
-<div class="container mt-5" id="projeto-dintask">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h1 class="card-title">Projeto Dintask</h1>
-                    <p class="card-text"><b>Objetivo:</b> Controle sobre qualquer tipo de tarefa</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php } ?>
-
-<div class="container mt-5" id="projeto-ganolia">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h1 class="card-title">Projeto Ganolia</h1>
-                    <p class="card-text"><b>Objetivo:</b> Boardgame unico e hibrido</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php
-    if (isset($_SESSION['nome'])) {
-?>
-<div class="container mt-5" id="projeto-ganolia">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h1 class="card-title">Projeto Ganolia</h1>
-                    <p class="card-text"><b>Objetivo:</b> Boardgame unico e hibrido</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php } ?>
-
-<?php
-    if (isset($_SESSION['nome'])) {
-?>
-<div class="container mt-5" id="mecanismo-ganolia">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h1 class="card-title">Mecanismo Ganolia</h1>
-                    <p class="card-text"><b>Objetivo:</b> Mecanismo teste de ganoilia</p>
-                    <button type="button" onclick="verificarLoginMecanismo()">Acessar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php } ?>
 <script>
         var usuarioLogado = <?php echo isset($_SESSION['nome']) ? 'true' : 'false'; ?>;
         var permissaoUsuario = <?php echo isset($_SESSION['permissao']) ? 'true' : 'false'; ?>;
