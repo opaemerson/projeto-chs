@@ -58,7 +58,38 @@ if (isset($_SESSION['nome'])) {
 ?>
 
 <?php } else{
-    echo '<div> Loga para mostrar conteudo </div>';
+    ?>
+    <h2 style="text-align: center; margin-top: 50px;">Cadastre-se para conhecer os seguintes projetos:</h2>
+
+    <div class="container mt-5" id="projeto-cee">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Projeto CHS</h1>
+                    <p class="card-text"><b>Objetivo:</b> Controle de Envio de Equipamentos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5" id="projeto-geekzero">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Projeto Geekzero</h1>
+                    <p class="card-text"><b>Objetivo:</b> Notas sobre SERIES | FILMES | LIVROS | JOGOS VIRTUAIS | BOARDGAMES</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <?php
 }?>
 
 <?php
@@ -79,7 +110,18 @@ if (isset($_SESSION['nome'])) {
 </div>
 <?php } ?>
 
-
+<div class="container mt-5" id="projeto-dintask">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Projeto Dintask</h1>
+                    <p class="card-text"><b>Objetivo:</b> Controle sobre qualquer tipo de tarefa</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
     if (isset($_SESSION['nome'])) {
 ?>
@@ -114,7 +156,18 @@ if (isset($_SESSION['nome'])) {
 </div>
 <?php } ?>
 
-
+<div class="container mt-5" id="projeto-ganolia">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Projeto Ganolia</h1>
+                    <p class="card-text"><b>Objetivo:</b> Boardgame unico e hibrido</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
     if (isset($_SESSION['nome'])) {
 ?>
