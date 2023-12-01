@@ -97,7 +97,7 @@ if ($resultado->num_rows > 0) {
       echo '<div class="col-md-3">';
       echo '<div class="card mt-3">';
       echo '<div class="card-body">';
-      echo '<h5 class="card-title"><img src="' . $imagem . '"  height="200" width="180">' . $nome . '</h5>';
+      echo '<h5 class="card-title"><img src="' . $imagem . '"  height="200" width="180">' . '<br>' . $nome . '</h5>';
       if ($raridade == 'Comum') {
         echo "<h6>$raridade " . '<img src="../Images/Ganolia/Icons/Comum.png" width="20" height="20">' . "</h6>";
       }
