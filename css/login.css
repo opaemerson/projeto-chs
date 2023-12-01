@@ -102,11 +102,40 @@ body {
     font-size: 10px;
     letter-spacing: 2px;
     margin-bottom: 1em;
-  }
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
   
   .enter:hover {
     background-color: rgb(0, 0, 0);
     color: white;
+  }
+
+  .enterenter {
+    height: 45px;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid #000;
+    cursor: pointer;
+    background-color: transparent;
+    transition: 0.5s;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 1em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+  
+  .enterenter:hover {
+    background-color: #00ff00;
+    color: rgb(0, 0, 0);
   }
   
   /* Estilos para os links "Cadastrar" e "Voltar" */

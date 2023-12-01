@@ -47,6 +47,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/erro.css">
     <title>Login e Cadastro</title>
+    <style>
+  .link-container a {
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 50px;
+  }
+</style>
 </head>
 <body>
 <div class="container">
@@ -63,9 +71,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <span>Senha</span>
       </div>
 
-      <button type="submit" class="enter" name="login">Enter</button>
-      <a href="cadastrar.php">Cadastrar</a>
-      <a href="index.php">Voltar</a>
+      <button type="submit" class="enterenter" name="login">Enter</button>
+      <div class="link-container">
+      <a class="enter" href="cadastrar.php">Cadastrar</a>
+      <a class="enter" href="index.php">Voltar</a>
+      </div>
     </div>
   </form>
 </div>

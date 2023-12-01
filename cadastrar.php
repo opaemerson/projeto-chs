@@ -22,7 +22,7 @@ if (isset($_POST['cadastro'])) {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        echo "Este usu·rio j· existe.";
+        echo "Este usuÔøΩrio jÔøΩ existe.";
     } else{
         $sql = "INSERT INTO usuarios (nome, email, senha, permissao, referencia) VALUES ('$nome','$email', '$senha', '$permissao', '$referencia_select')";
         if ($conn->query($sql) === TRUE) {
@@ -46,6 +46,18 @@ if (isset($_POST['cadastro'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
+    <style>
+                input, select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
     <title>Document</title>
 </head>
 <body>
@@ -71,15 +83,15 @@ if (isset($_POST['cadastro'])) {
         <br>
         <label for="referencia" class="inputBox">
             Me conhece da onde?
-            <select name="referencia_select" id="referencia_select" required>
-                <option value=''>Selecione uma opcao</option>"
+            <select id="referencia_select" name="referencia_select" required>
+                <option value="">Selecione uma op√ß√£o</option>
                 <option value="Amigo">Amigo</option>
                 <option value="Linkedin">Linkedin</option>
             </select>
         </label>
         <br>
-        <button type="submit" name="cadastro" class="enter">Cadastrar</button>
-        <a href="index.php">Voltar</a>
+        <button type="submit" name="cadastro" class="enterenter">Enviar</button>
+        <a class="enter" href="login.php">Voltar</a>
 </div>
 </form>
 
