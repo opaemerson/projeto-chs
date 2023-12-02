@@ -36,8 +36,8 @@ require_once('../config.php');
 <div class="w3-bar w3-black w3-card">
   <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
   <a href="../index.php" class="w3-bar-item w3-button w3-hover-red w3-padding-large custom-square">VOLTAR </a>
-  <a class="w3-bar-item w3-button w3-padding-large custom-square" data-bs-toggle="modal" data-bs-target="#modalColetivo">REGISTRO COLETIVO </a>
   <a class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#myModal">REGISTRO UNICO</a>
+  <a class="w3-bar-item w3-button w3-padding-large custom-square" data-bs-toggle="modal" data-bs-target="#modalColetivo">IMPORTAR</a>
   <a class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#filtroModal">FILTRAGEM</a>
   <?php echo '<a  class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="validaPermissaoCategoria(\'' . $permissao . '\')">INCLUIR</a>'; ?>
   <a href="estatisticas.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square">ESTATISTICAS</a>
@@ -181,8 +181,8 @@ require_once('../config.php');
               <!-- Formulário de Edição -->
               <form id="editForm">
                 <input type="hidden" id="editId" value="">
-                <input type="hidden" id="editGarantia" class="form-control">
-                <input type="hidden" id="editDataEnvio" class="form-control">
+                <input type="hidden" id="editGarantia" >
+                <input type="hidden" id="editDataEnvio">
                 <div class="mb-3">
                   <label for="editTag" class="form-label">Tag</label>
                   <input type="text" class="form-control" id="editTag">
