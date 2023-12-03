@@ -34,10 +34,12 @@
                 <nav>
                     <a href="index.php">PROJETOS</a>
                     <a href="contato.php">CONTATO</a>
-                    <a href="login.php">ENTRAR</a>
+
                     <?php
                     if (isset($_SESSION['nome'])) {
                     echo '<a href="sair.php">SAIR</a>';
+                    } else{
+                    echo '<a href="login.php">ENTRAR</a>';
                     }
                     ?>
                 </nav>
