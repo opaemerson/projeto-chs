@@ -31,13 +31,15 @@
         <div class="container">
         <div class="logo"><h3 style="color: #00ff00;">GOB INC</h3></div>
             <div class="menu">
-                <nav>
+            <nav>
                     <a href="index.php">PROJETOS</a>
                     <a href="contato.php">CONTATO</a>
-                    <a href="login.php">ENTRAR</a>
+
                     <?php
                     if (isset($_SESSION['nome'])) {
                     echo '<a href="sair.php">SAIR</a>';
+                    } else{
+                    echo '<a href="login.php">ENTRAR</a>';
                     }
                     ?>
                 </nav>
