@@ -12,39 +12,8 @@ require_once('../config.php');
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/ganolia.css">
     <title>MecanismoG</title>
-    <style>
-        button {
-            padding: 10px 20px;
-            background-color: #191970;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        /* Estilo quando o cursor passa por cima do botão */
-        button:hover {
-            background-color: #4169E1;
-        }
-
-        .red-background {
-        display: inline;
-        background-color: red;
-        color: black;
-        padding: 5px;
-        }
-
-        body {font-family: "Lato", sans-serif}
-        .mySlides {display: none}
-
-        .container {
-            border: 1px solid #ccc;
-            padding: 20px;
-            width: 80%; /* ajuste conforme necessário */
-            box-sizing: border-box;
-        }
-</style>
 
 </head>
 <body>
@@ -55,6 +24,7 @@ require_once('../config.php');
   <a href="./guia.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">MANUAL</a>
   <a href="./guia_territorio.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">TERRITORIOS</a>
   <a href="./guia_item.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">ITENS</a>
+  <a href="./guia_personagem.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">PERSONAGEM</a>
   <?php if (isset($_SESSION['permissao']) && $_SESSION['permissao'] == 'Admin') { ?>
     <a href="./adm.php" class="w3-bar-item w3-button w3-hover-yellow w3-padding-large custom-square" style="text-decoration: none;">ADMINISTRACAO</a>
     <?php } ?>
@@ -140,19 +110,44 @@ require_once('../config.php');
 
     <br><br></form>
 
-    <form action="">
-    <input type="hidden" id="idCriatura">
-    <button type="button" onclick="buscaDrop()" style="background-color: #B22222; color: white;">Recolher</button>
-    <br><br>
-    <img id="imagemDrop" src="" class="img-enviado" width="180" height="220" style="display: none;">
-    <div id="resultadoDrop"></div>
-    </form>
-    <br><br>
-    <button type="button" onclick="limpar()">Limpar</button>
+<form action="">
+<input type="hidden" id="idCriatura">
+<button type="button" onclick="buscaDrop()" style="background-color: #B22222; color: white;">Recolher</button>
+<br><br>
+<img id="imagemDrop" src="" class="img-enviado" width="180" height="220" style="display: none;">
+<div id="resultadoDrop"></div>
+</form>
+<br><br>
+<button type="button" onclick="limpar()">Limpar</button>
+</div>
+
+<!-- Botao Historico -->
+<button class="floating-button" data-bs-toggle="modal" data-bs-target="#historicoModal">Historico</button>
+
+<div class="modal fade" id="historicoModal" tabindex="-1" aria-labelledby="historicoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="historicoModalLabel">Historico de Conversa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+            <div class="modal-body">
+                <div class="conversa">
+                    Conteudo
+                </div>
+            </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
     </div>
+  </div>
+</div>
+
+
     
 <script src="../scripts/mecanismo_ganolia.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-rdVz8AuYKAo23wDPqNjsMEnXRqfD+2qX1TEu6CgeUVTv1ng4F6XnfsFSLW0k6OO1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,0 +1,46 @@
+button {
+    padding: 10px 20px;
+    background-color: #191970;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo quando o cursor passa por cima do botão */
+button:hover {
+    background-color: #4169E1;
+}
+
+.red-background {
+display: inline;
+background-color: red;
+color: black;
+padding: 5px;
+}
+
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+
+.container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 80%; /* ajuste conforme necessário */
+    box-sizing: border-box;
+}
+
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #28a745; /* Cor do bot�o */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.floating-button:hover {
+    background-color: #218838; 
+}

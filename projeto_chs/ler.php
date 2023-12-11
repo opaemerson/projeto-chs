@@ -12,8 +12,6 @@ if(empty($id)){
     $response = $conn->query($sql);
     $rows = array();
 
-    //Verificamos se $response é verdadeiro ($response && $response->num_rows > 0) antes de verificar o número de linhas retornadas. 
-    //Isso garante que $response não seja nulo antes de acessar a propriedade num_rows.
     if($response && $response->num_rows > 0){ 
 
         while($row = $response->fetch_assoc()){
