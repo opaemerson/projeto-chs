@@ -46,29 +46,23 @@ section p{
 <body>
 
 <section>
-<h4>Territorio - Baixo</h4>
+<h4>Territorios</h4>
 <p><b>Pantano Flutuante</b>: Local de drop itens diversas</p>
-<p><b>Floresta Hibrida</b>: Local de drop itens diversas, alguns itens de plantas</p>
+<p><b>Floresta Oculta</b>: Local de drop itens diversas, alguns itens de plantas</p>
 <p><b>Skulles</b>: Local de drop itens diversas, alguns itens de osso</p>
-<p><b>Ganolia</b>: Local de drop itens diversas, alguns itens de madeira,ferro.</p>
-</section>
-
-<section>
-<h4>Territorio - Médio</h4>
 <p><b>Vale da Lua</b>: Local de drop itens diversas, alguns itens brancos</p>
-<p><b>Deserto de Xantras</b>: Local de drop itens diversas, alguns itens egipicios</p>
-<p><b>Orkland</b>: Local de drop itens diversas.</p>
 <p><b>Pedras de Fogo</b>: Local de drop itens diversas, itens vermelhos, fogo</p>
 <p><b>Iceborg</b>: Local de drop itens de gelo.</p>
-</section>
-
-<section>
-<h4>Territorio - Alto</h4>
 <p><b>Draconia</b>: Local de drop itens de dragoes</p>
 <p><b>Koppala</b>: Local de drop itens fortes</p>
-<p><b>Obscuria</b>: Local de drop itens tipo obsidiana</p>
+
+<section>Territorios Inativos</section>
+<p><b>Deserto de Xantras</b>: Local de drop itens diversas, alguns itens egipicios</p>
 <p><b>Prisma</b>: Local de drop itens diferentes</p>
-</section>
+<p><b>Orkland</b>: Local de drop itens diversas.</p>
+<p><b>Obscuria</b>: Local de drop itens tipo obsidiana</p>
+
+
 
 <div class="container mt-4">
 <h3>Criaturas por território</h3>
