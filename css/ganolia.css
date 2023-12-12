@@ -22,19 +22,12 @@ padding: 5px;
 body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
 
-.container {
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 80%; /* ajuste conforme necess√°rio */
-    box-sizing: border-box;
-}
-
 .floating-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
     padding: 10px 20px;
-    background-color: #28a745; /* Cor do bot„o */
+    background-color: #28a745;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -43,4 +36,14 @@ body {font-family: "Lato", sans-serif}
 
 .floating-button:hover {
     background-color: #218838; 
+}
+
+.secao {
+    margin-bottom: 20px;
+    overflow: hidden; /* Limpa o float */
+}
+
+.quadro {
+    float: left;
+    width: 50%; /* Ajuste conforme necess·rio */
 }

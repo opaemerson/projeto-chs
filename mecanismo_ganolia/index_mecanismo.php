@@ -29,7 +29,9 @@ require_once('../config.php');
     <a href="./adm.php" class="w3-bar-item w3-button w3-hover-yellow w3-padding-large custom-square" style="text-decoration: none;">ADMINISTRACAO</a>
     <?php } ?>
 </div>
-<div class="container">
+
+<div class="sessao">
+    <div class="quadro">
     <h2>Atacando</h2>
     <form action="processar_ataque.php" method="post">
     <label for="">Selecione o ID do Item Ofensivo:</label>
@@ -50,15 +52,13 @@ require_once('../config.php');
     </form>
     <br><br>
     <button type="button" onclick="limpar()">Limpar</button>
-</div>
-
-<div class="container">
+    
     <h2>Defendendo</h2>
     <form action="processar_ataque.php" method="post">
     <label for="">Desenvolvendo[...]</label>
-</div>
 
-<div class="container">
+
+
     <h2>Recolhendo Drop</h2>
     <form action="">
     <label for="">Selecione o ID da Criatura:</label>
@@ -67,7 +67,6 @@ require_once('../config.php');
     <br><br>
     <div id="resultadoCriatura"></div>
     <div style="margin-bottom: 10px;"></div>
-    <div class="container">
     <div class="row">
         <div class="col-md-3">
             <div class="card mt-3">
@@ -106,42 +105,21 @@ require_once('../config.php');
             </div>
         </div>
     </div>
-</div>
-
     <br><br></form>
 
-<form action="">
-<input type="hidden" id="idCriatura">
-<button type="button" onclick="buscaDrop()" style="background-color: #B22222; color: white;">Recolher</button>
-<br><br>
-<img id="imagemDrop" src="" class="img-enviado" width="180" height="220" style="display: none;">
-<div id="resultadoDrop"></div>
-</form>
-<br><br>
-<button type="button" onclick="limpar()">Limpar</button>
-</div>
-
-<!-- Botao Historico -->
-<button class="floating-button" data-bs-toggle="modal" data-bs-target="#historicoModal">Historico</button>
-
-<div class="modal fade" id="historicoModal" tabindex="-1" aria-labelledby="historicoModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="historicoModalLabel">Historico de Conversa</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-            <div class="modal-body">
-                <div class="conversa">
-                    Conteudo
-                </div>
-            </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-      </div>
+    <form action="">
+    <input type="hidden" id="idCriatura">
+    <button type="button" onclick="buscaDrop()" style="background-color: #B22222; color: white;">Recolher</button>
+    <br><br>
+    <img id="imagemDrop" src="" class="img-enviado" width="180" height="220" style="display: none;">
+    <div id="resultadoDrop"></div>
+    </form>
+    <br><br>
+    <button type="button" onclick="limpar()">Limpar</button>
     </div>
-  </div>
 </div>
+
+    <div class="quadro"> outro lado </div>
 
 
     
