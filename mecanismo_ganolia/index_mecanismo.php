@@ -118,10 +118,17 @@ require_once('../config.php');
     <button type="button" onclick="limpar()">Limpar</button>
     </div>
 </div>
-
-    <div class="quadro"> outro lado </div>
-
-
+    <?php
+    $sql = "SELECT gh.evento, gp.nome , gp.classe , gp.sessao from ganolia_historico gh 
+    inner join ganolia_personagem gp 
+    on gp.id = gh.personagem_id";
+    $resultado = $conn->query($sql);
+    if($resultado){
+        while ($row = $resultado->fetch_assoc()) {
+            echo '<div class="quadro">' . $row['sessao'] . $row['nome'] . $row['classe'] . $row['evento'] . '</div>';
+        }
+    }
+    ?>
     
 <script src="../scripts/mecanismo_ganolia.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
