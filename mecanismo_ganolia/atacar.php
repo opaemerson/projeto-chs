@@ -3,12 +3,15 @@ session_start();
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 require_once('../config.php');
+date_default_timezone_set('America/Sao_Paulo');
 
 $codigoItemAtaque = $_POST['codigoItemAtaque'];
+$usuario = (isset($_SESSION['id']) && $_SESSION['id']) ? $_SESSION['id'] : null;
+
 
 $resposta = array();
 
-if(isset($codigoItemAtaque) && $codigoItemAtaque !== ''){ 
+if(isset($codigoItemAtaque) && $codigoItemAtaque !== '' && !empty($usuario)){ 
     $select = "SELECT * FROM ganolia_item WHERE id = '$codigoItemAtaque'";
     $resultado = $conn->query($select);
 
@@ -27,12 +30,35 @@ if(isset($codigoItemAtaque) && $codigoItemAtaque !== ''){
         $resposta['nome'] = $nome;
         $resposta['tipo'] = $tipo;
         $resposta['raridade'] = $raridade;
-        if (isset($damageAleatorio)) {
-            $resposta['damageAleatorio'] = $damageAleatorio;
-        } else {
-            $resposta['damageAleatorio'] = '';
-        }
+        $resposta['damageAleatorio'] = isset($damageAleatorio) ? $damageAleatorio : '';
         $resposta['imagem'] = $imagem;
+
+        $verPersonagem = "SELECT gh.evento as evento, 
+        gp.id as id
+        from ganolia_historico gh 
+        inner join ganolia_personagem gp 
+        on gp.id = gh.personagem_id
+        WHERE gp.usuario_id = $usuario";
+
+        $conHistorico = $conn->query($verPersonagem);
+
+        if ($conHistorico == FALSE){
+            die("Erro na consulta: " . $conn->error);
+        }
+
+        $rw = $conHistorico->fetch_assoc();
+        $horario = date('Y-m-d H:i:s');
+        $idPersonagem = $rw['id'];
+        $evento = 'Acertou ' . $damageAleatorio . ' de dano no alvo.';
+
+        $inserEvento = "INSERT INTO ganolia_historico
+        (personagem_id, evento, horario)
+        VALUES ($idPersonagem, '$evento', '$horario')";
+
+        if ($conn->query($inserEvento) === FALSE) {
+            die("Erro na consulta: " . $conn->error);
+        }
+
     } else {
         $resposta['success'] = false;
         $resposta['message'] = 'Item não encontrado.';
