@@ -15,25 +15,29 @@ header('Access-Control-Allow-Origin: *');
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $_SESSION['id'];
-    $nome = $_POST['nome'];
-    $classe = $_POST['classe'];
+    $idPersonagem = $_POST['selectPersonagem'];
+    var_dump($idPersonagem);
 
-    if (empty($nome) || empty($classe)) {
+    if (empty($idPersonagem)) {
         echo "<script>alert('Todos os campos precisam ser preenchidos');</script>";
     } else {
     
-        $nomeExistente = "SELECT gp.nome FROM ganolia_personagem gp WHERE nome = '$nome'";
+        $nomeExistente = "SELECT gp.id
+        FROM ganolia_personagem gp
+        WHERE usuario_id = '$usuario'";
+
         $resultado = $conn->query($nomeExistente);
     
-        if ($resultado->num_rows > 0 || $resultado == FALSE){
-            echo "<script>alert('Nome já existe / Falha na busca');</script>";
+        if ($resultado == FALSE){
+            echo "<script>alert(Falha ao selecionar');</script>";
         } else {
-            $insert = "INSERT INTO ganolia_personagem (nome, classe, sessao, usuario_id) 
-            VALUES ('$nome', '$classe', '', '$usuario')";
+            $update = "UPDATE usuarios
+            SET personagem_ganolia = $idPersonagem
+            WHERE id = $usuario";
 
             //tratativa caso der b.o na insercao
-            if ($conn->query($insert) === TRUE) {
-                echo "<script>alert('Salvo no banco de dados!');</script>";
+            if ($conn->query($update) === TRUE) {
+                echo "<script>alert('Personagem  selecionado!');</script>";
                 echo "<script>window.location.href = 'guia_personagem.php';</script>"; 
             } else {
                 echo "<script>alert('Erro ao inserir no banco de dados!');</script>";

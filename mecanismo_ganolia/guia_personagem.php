@@ -56,16 +56,18 @@ if (isset($_SESSION['nome'])) {
             <label  class="form-label">Classe</label>
             <select class="form-select" id="selectPersonagem" name="selectPersonagem" aria-label="Default select example">
                     <?php
-                    $sql = "SELECT id, nome 
+                    $sql = "SELECT id as id_personagem, nome 
                     FROM ganolia_personagem
                     WHERE usuario_id = $idUsuario";
 
                     $resultado = $conn->query($sql);
+
                     if ($resultado) {
-                        while ($row = $resultado->fetch_assoc()) {
-                            $nome = $row["nome"];
-                            echo "<option value='$nome'>$nome</option>";
-                        }
+                    while ($row = $resultado->fetch_assoc()) {
+                        $idPersonagem = $row["id_personagem"];
+                        $nome = $row["nome"];
+                        echo "<option value='$idPersonagem'>$nome</option>";
+                    }
                     } else {
                     echo "Erro na consulta: " . $conn->error;
                     }
