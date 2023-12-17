@@ -60,7 +60,7 @@ function iniciarConexaoWebSocket() {
   ws.onmessage = function (event) {
     console.log("Mensagem recebida do servidor:", event.data);
 
-    if (event.data === 'Recarregar') {
+    if (event.data === 'recarregar') {
       console.log("Recarregando a página...");
       location.reload();
     }

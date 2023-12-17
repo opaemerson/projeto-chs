@@ -26,8 +26,8 @@ class SistemaChat implements MessageComponentInterface{
     {
 
         if ($this->contemSubString($msg, 'recarregar')) {
-            $this->enviarParaTodos("Recarregar");
-            echo "Mensagem 'Recarregar' enviada para todos\n";
+            $this->enviarParaTodos("recarregar");
+            echo "Mensagem 'recarregar' enviada para todos\n";
             return;
         }
 
