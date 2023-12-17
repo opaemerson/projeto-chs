@@ -66,7 +66,7 @@ if (isset($_SESSION['nome'])) {
 
                     $pegaPersonagem = $resultadoName->fetch_assoc();
                     $personagemAtual = $pegaPersonagem['personagem_atual'];
-                 echo '<label  class="form-label">' . $_SESSION['nome'] . ', seu personagem atual é: <b>' .  $personagemAtual . '</b> </label>';
+                    echo '<label  class="form-label"> <h5>' . 'Seu personagem atual é: <b>' .  $personagemAtual . '</b> </h5></label>';
                 ?>
 
             <select class="form-select" id="selectPersonagem" name="selectPersonagem" aria-label="Default select example">
@@ -95,7 +95,7 @@ if (isset($_SESSION['nome'])) {
     </form>
 
 
-
+<a href="index_mecanismo.php">Voltar</a>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </body>
