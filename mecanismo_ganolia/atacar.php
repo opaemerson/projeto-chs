@@ -58,13 +58,7 @@ if(isset($codigoItemAtaque) && $codigoItemAtaque !== '' && !empty($usuario)){
 
         if ($conn->query($inserEvento) === FALSE) {
             die("Erro na consulta: " . $conn->error);
-        } else{
-            $mensagem = $nome;
-
-            $sistemaChat = new \Api\Websocket\SistemaChat(); // Certifique-se de usar o namespace completo se necessário
-            $sistemaChat->imprimirOi($mensagem);
-    
-            }
+        }
 
     } else {
         $resposta['success'] = false;

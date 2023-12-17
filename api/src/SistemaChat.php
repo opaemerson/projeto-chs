@@ -47,11 +47,5 @@ class SistemaChat implements MessageComponentInterface{
 
         echo "Ocorreu um erro: {$e->getMessage()}";
     }
-
-    public function imprimirOi($mensagem)
-    {
-        return json_encode(["Oi" => $mensagem], JSON_PRETTY_PRINT);
-    }
-    
     
 }
