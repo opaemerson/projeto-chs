@@ -15,38 +15,14 @@ header('Access-Control-Allow-Origin: *');
 </head>
 <body>
 
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $usuario = $_SESSION['id'];
-    $nome = $_POST['nome'];
-    $classe = $_POST['classe'];
-
-    if (empty($nome) || empty($classe)) {
-        echo "<script>alert('Todos os campos precisam ser preenchidos');</script>";
-    } else {
-    
-        $nomeExistente = "SELECT gp.nome FROM ganolia_personagem gp WHERE nome = '$nome'";
-        $resultado = $conn->query($nomeExistente);
-    
-        if ($resultado->num_rows > 0 || $resultado == FALSE){
-            echo "<script>alert('Nome já existe / Falha na busca');</script>";
-        } else {
-            $insert = "INSERT INTO ganolia_personagem (nome, classe, sessao, usuario_id) 
-            VALUES ('$nome', '$classe', '', '$usuario')";
-
-            //tratativa caso der b.o na insercao
-            echo ($conn->query($insert) === TRUE) ? "<script>alert('Salvo no banco de dados!');</script>" : "<script>alert('Erro ao inserir no banco de dados!');</script>";
-        }
-    }
-}
-?>
 
 <!-- PARTE DO HTML -->
 <!-- PRIMEIRO FORMULARIO DE CRIAÇÃO -->
 <?php
+$idUsuario = $_SESSION['id'];
 if (isset($_SESSION['nome'])) {
 ?>
-    <form action="" class="m-3" method="POST">
+    <form action="personagem_criar.php" class="m-3" method="POST">
         <?php
             echo '<label>' . '<h3>' . $_SESSION['nome'] . ', Crie seu personagem!' . '</h3>' . '</label>';
         ?>
@@ -70,6 +46,36 @@ if (isset($_SESSION['nome'])) {
     echo "Erro ao acessar a página";
 }
 ?>
+
+<!-- SEGUNDO FORMULARIO DE SELEÇÃO -->
+    <form action="personagem_selecionar.php" class="m-3" method="POST">
+        <?php
+            echo '<label>' . '<h3>' . $_SESSION['nome'] . ', Selecione seu Personagem' . '</h3>' . '</label>';
+        ?>
+        <div class="mb-3">
+            <label  class="form-label">Classe</label>
+            <select class="form-select" id="selectPersonagem" name="selectPersonagem" aria-label="Default select example">
+                    <?php
+                    $sql = "SELECT id, nome 
+                    FROM ganolia_personagem
+                    WHERE usuario_id = $idUsuario";
+
+                    $resultado = $conn->query($sql);
+                    if ($resultado) {
+                        while ($row = $resultado->fetch_assoc()) {
+                            $nome = $row["nome"];
+                            echo "<option value='$nome'>$nome</option>";
+                        }
+                    } else {
+                    echo "Erro na consulta: " . $conn->error;
+                    }
+                ?>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
