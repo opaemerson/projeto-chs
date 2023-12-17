@@ -24,7 +24,7 @@ if (isset($_SESSION['nome'])) {
 ?>
     <form action="personagem_criar.php" class="m-3" method="POST">
         <?php
-            echo '<label>' . '<h3>' . $_SESSION['nome'] . ', Crie seu personagem!' . '</h3>' . '</label>';
+            echo '<label>' . '<h3>' . 'Criar personagem' . '</h3>' . '</label>';
         ?>
         <div class="mb-3">
             <label class="form-label">Nome</label>
@@ -53,15 +53,32 @@ if (isset($_SESSION['nome'])) {
             echo '<label>' . '<h3>' . $_SESSION['nome'] . ', Selecione seu Personagem' . '</h3>' . '</label>';
         ?>
         <div class="mb-3">
-            <label  class="form-label">Classe</label>
+                <?php
+                    $sqlName = "SELECT gp.id as id_personagem, 
+                    gp.nome, 
+                    (select x.nome from ganolia_personagem x where x.id = u.personagem_ganolia) as personagem_atual
+                    FROM ganolia_personagem gp
+                    INNER JOIN usuarios u
+                    ON u.id = gp.usuario_id
+                    WHERE usuario_id = $idUsuario";
+
+                    $resultadoName = $conn->query($sqlName);
+
+                    $pegaPersonagem = $resultadoName->fetch_assoc();
+                    $personagemAtual = $pegaPersonagem['personagem_atual'];
+                 echo '<label  class="form-label">' . $_SESSION['nome'] . ', seu personagem atual é: <b>' .  $personagemAtual . '</b> </label>';
+                ?>
+
             <select class="form-select" id="selectPersonagem" name="selectPersonagem" aria-label="Default select example">
-                    <?php
-                    $sql = "SELECT id as id_personagem, nome 
-                    FROM ganolia_personagem
+                <?php
+                    $sql = "SELECT gp.id as id_personagem, 
+                    gp.nome
+                    FROM ganolia_personagem gp
+                    INNER JOIN usuarios u
+                    ON u.id = gp.usuario_id
                     WHERE usuario_id = $idUsuario";
 
                     $resultado = $conn->query($sql);
-
                     if ($resultado) {
                     while ($row = $resultado->fetch_assoc()) {
                         $idPersonagem = $row["id_personagem"];

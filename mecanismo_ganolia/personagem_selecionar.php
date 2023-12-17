@@ -16,6 +16,7 @@ header('Access-Control-Allow-Origin: *');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $_SESSION['id'];
     $idPersonagem = $_POST['selectPersonagem'];
+
     var_dump($idPersonagem);
 
     if (empty($idPersonagem)) {
@@ -37,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             //tratativa caso der b.o na insercao
             if ($conn->query($update) === TRUE) {
-                echo "<script>alert('Personagem  selecionado!');</script>";
+                echo "<script>alert('Personagem selecionado!');</script>";
                 echo "<script>window.location.href = 'guia_personagem.php';</script>"; 
             } else {
                 echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
