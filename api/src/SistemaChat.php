@@ -5,6 +5,7 @@ namespace Api\Websocket;
 use Exception;
 use Ratchet\ConnectionInterface;
 use Ratchet\WebSocket\MessageComponentInterface;
+require __DIR__ . '/../vendor/autoload.php';
 
 class SistemaChat implements MessageComponentInterface{
 
@@ -46,5 +47,11 @@ class SistemaChat implements MessageComponentInterface{
 
         echo "Ocorreu um erro: {$e->getMessage()}";
     }
+
+    public function imprimirOi($mensagem)
+    {
+        return json_encode(["Oi" => $mensagem], JSON_PRETTY_PRINT);
+    }
+    
     
 }

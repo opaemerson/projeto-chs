@@ -3,6 +3,7 @@ session_start();
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 require_once('../config.php');
+require_once('../api/src/SistemaChat.php');
 date_default_timezone_set('America/Sao_Paulo');
 
 $codigoItemAtaque = $_POST['codigoItemAtaque'];
@@ -57,7 +58,13 @@ if(isset($codigoItemAtaque) && $codigoItemAtaque !== '' && !empty($usuario)){
 
         if ($conn->query($inserEvento) === FALSE) {
             die("Erro na consulta: " . $conn->error);
-        }
+        } else{
+            $mensagem = $nome;
+
+            $sistemaChat = new \Api\Websocket\SistemaChat(); // Certifique-se de usar o namespace completo se necessário
+            $sistemaChat->imprimirOi($mensagem);
+    
+            }
 
     } else {
         $resposta['success'] = false;
