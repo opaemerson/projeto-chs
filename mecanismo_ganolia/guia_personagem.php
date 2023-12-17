@@ -10,6 +10,8 @@ header('Access-Control-Allow-Origin: *');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Personagem</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
 </head>
 <body>
 
@@ -39,6 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+<!-- PARTE DO HTML -->
+<!-- PRIMEIRO FORMULARIO DE CRIAÇÃO -->
 <?php
 if (isset($_SESSION['nome'])) {
 ?>
@@ -60,43 +64,14 @@ if (isset($_SESSION['nome'])) {
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 <?php
+?>
+<?php
 } else {
     echo "Erro ao acessar a página";
 }
 ?>
 
 
-
-
-<script>
-function criaPersonagem() {
-  const nome = $('#nome').val();
-  const classe = $('select[name="classe"]').val();
-
-  const form = new FormData();
-  form.append('nome', nome);
-  form.append('classe', classe);
-
-  const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/guia_personagem.php";
-
-  $.ajax({
-    url: url,
-    method: 'POST', 
-    data: form,
-    processData: false, 
-    contentType: false, 
-    success: function (resultado) { 
-        console.log(resultado); 
-        location.reload();
-    },
-    error: function (erro) { 
-        console.log(erro); 
-    }
-  });
-}
-</script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-
 </body>
 </html>
