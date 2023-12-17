@@ -35,11 +35,14 @@ if(isset($codigoItemAtaque) && $codigoItemAtaque !== '' && !empty($usuario)){
         $resposta['imagem'] = $imagem;
 
         $verPersonagem = "SELECT gh.evento as evento, 
-        gp.id as id
-        from ganolia_historico gh 
-        inner join ganolia_personagem gp 
+        (select x.nome from ganolia_personagem x where x.id = u.personagem_ganolia) as personagem_atual,
+        (select x.id from ganolia_personagem x where x.id = u.personagem_ganolia) as id_atual
+        FROM ganolia_historico gh 
+        INNER join ganolia_personagem gp 
         on gp.id = gh.personagem_id
-        WHERE gp.usuario_id = $usuario";
+        INNER JOIN usuarios u
+        ON u.id = gp.usuario_id
+        WHERE usuario_id = $usuario";
 
         $conHistorico = $conn->query($verPersonagem);
 
@@ -49,7 +52,7 @@ if(isset($codigoItemAtaque) && $codigoItemAtaque !== '' && !empty($usuario)){
 
         $rw = $conHistorico->fetch_assoc();
         $horario = date('Y-m-d H:i:s');
-        $idPersonagem = $rw['id'];
+        $idPersonagem = $rw['id_atual'];
         $evento = 'Acertou ' . $damageAleatorio . ' de dano no alvo.';
         $item_usado = $nome;
 

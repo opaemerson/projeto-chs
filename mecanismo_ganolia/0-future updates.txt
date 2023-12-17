@@ -1,1 +1,1 @@
-> [] No campo de mostragem de eventos, tem que ser o personagem atual da pessoa.
+> [X] No campo de mostragem de eventos, tem que ser o personagem atual da pessoa.
