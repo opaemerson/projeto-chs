@@ -1,3 +1,9 @@
+var ws;
+
+$(document).ready(function () {
+  iniciarConexaoWebSocket();
+});
+
 function buscarItemAtaque() {
     const codigoItemAtaque = $('#codigoItemAtaque').val();
   
@@ -40,6 +46,19 @@ function buscarItemAtaque() {
     });
 }
 
+function iniciarConexaoWebSocket() {
+  ws = new WebSocket('ws://localhost:8080');
+
+  ws.onopen = (e) => {
+    console.log("Conectado");
+  };
+
+  ws.onerror = function (error) {
+    console.error('Erro na conexão WebSocket:', error);
+  };
+
+}
+
 function atacar() {
   const codigoItemAtaque = $('#codigoItemAtaque').val();
 
@@ -61,6 +80,13 @@ function atacar() {
         $('#resultadoAtaque').html('<h3 class="red-background"> Dano Concedido: ' + danoConcedido + '</h3>');
         
         alert('Dano Realizado: ' + danoConcedido);
+
+        if (ws && ws.readyState === WebSocket.OPEN) {
+          console.log('Enviando mensagem:', 'recarregar');
+          ws.send('recarregar');
+        } else {
+          console.error('A conexão WebSocket não está aberta.');
+        }
         
       } else {
           $('#resultadoAtaque').html('Erro: ' + resultado.message);

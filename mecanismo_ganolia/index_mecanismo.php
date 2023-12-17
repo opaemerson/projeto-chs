@@ -13,6 +13,7 @@ require_once('../config.php');
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/ganolia.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>MecanismoG</title>
 
 </head>
@@ -133,5 +134,6 @@ require_once('../config.php');
     
 <script src="../scripts/mecanismo_ganolia.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </body>
 </html>
