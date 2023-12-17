@@ -119,19 +119,27 @@ require_once('../config.php');
     <button type="button" onclick="limpar()">Limpar</button>
     </div>
 </div>
+<div class="scrolling-container" id="scrollingContainer">
     <?php
-    $sql = "SELECT gh.evento, gp.nome , gp.classe , gp.sessao, gh.horario 
+    $sql = "SELECT gh.evento, gp.nome , gp.classe , gp.sessao, gh.horario, gh.item_usado 
     from ganolia_historico gh 
     inner join ganolia_personagem gp 
-    on gp.id = gh.personagem_id";
+    on gp.id = gh.personagem_id
+    order by gh.horario asc";
     $resultado = $conn->query($sql);
     if($resultado){
         while ($row = $resultado->fetch_assoc()) {
-            echo '<div class="quadro">' . '[Sessão de ' . $row['sessao'] . ' - ' . $row['horario'] . ']: ' . $row['nome'] . ' - ' . $row['evento'] . '</div>';
+            if ($row['item_usado'] !== ''){
+            echo '<div class="">' . '[' . $row['horario'] . ']: <b>' . $row['nome'] . '</b> - ' . $row['evento'] . '<br> [' . $row['horario'] . ']: ' . ' Item Usado: ' . $row['item_usado'] . '<hr>' . '</div>';
+            } 
+            else{
+            echo '<div class="">' . '[' . $row['horario'] . ']: <b>' . $row['nome'] . '</b> - ' . $row['evento'] . '<br>' . '<hr>' . '</div>';
+            }
         }
     }
     ?>
-    
+</div>
+
 <script src="../scripts/mecanismo_ganolia.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

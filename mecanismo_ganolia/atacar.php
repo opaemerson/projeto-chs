@@ -51,10 +51,11 @@ if(isset($codigoItemAtaque) && $codigoItemAtaque !== '' && !empty($usuario)){
         $horario = date('Y-m-d H:i:s');
         $idPersonagem = $rw['id'];
         $evento = 'Acertou ' . $damageAleatorio . ' de dano no alvo.';
+        $item_usado = $nome;
 
         $inserEvento = "INSERT INTO ganolia_historico
-        (personagem_id, evento, horario)
-        VALUES ($idPersonagem, '$evento', '$horario')";
+        (personagem_id, evento, horario, item_usado)
+        VALUES ($idPersonagem, '$evento', '$horario', '$item_usado')";
 
         if ($conn->query($inserEvento) === FALSE) {
             die("Erro na consulta: " . $conn->error);

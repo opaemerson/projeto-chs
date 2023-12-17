@@ -2,6 +2,8 @@ var ws;
 
 $(document).ready(function () {
   iniciarConexaoWebSocket();
+  var scrollingContainer = document.getElementById('scrollingContainer');
+    scrollingContainer.scrollTop = scrollingContainer.scrollHeight;
 });
 
 function buscarItemAtaque() {
