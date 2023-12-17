@@ -57,6 +57,15 @@ function iniciarConexaoWebSocket() {
     console.error('Erro na conexão WebSocket:', error);
   };
 
+  ws.onmessage = function (event) {
+    console.log("Mensagem recebida do servidor:", event.data);
+
+    if (event.data === 'Recarregar') {
+      console.log("Recarregando a página...");
+      location.reload();
+    }
+  };
+
 }
 
 function atacar() {
