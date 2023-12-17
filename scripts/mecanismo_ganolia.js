@@ -230,7 +230,7 @@ function exibirNomeDrop(elemento, nomeDrop) {
   }
 }
 
-
 function limpar(){
   location.reload();
 }
+

@@ -8,7 +8,7 @@ button {
 }
 
 .scrolling-container {
-    max-height: 500px; /* Defina a altura máxima desejada para a barra de rolagem */
+    max-height: 400px; /* Defina a altura máxima desejada para a barra de rolagem */
     overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando o conteúdo ultrapassa a altura máxima */
     border: 1px solid #ccc; /* Adiciona uma borda para melhor visualização */
     padding: 10px; /* Adiciona algum espaço interno para o conteúdo não encostar nas bordas */
