@@ -3,7 +3,7 @@ session_start();
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 require_once('../config.php');
-require_once('../api/src/SistemaChat.php');
+// require_once('../api/src/SistemaChat.php');
 date_default_timezone_set('America/Sao_Paulo');
 
 $codigoItemAtaque = $_POST['codigoItemAtaque'];

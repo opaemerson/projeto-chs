@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Dez-2023 às 22:48
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Tempo de geração: 18/12/2023 às 01:30
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `equipamento`
+-- Estrutura para tabela `equipamento`
 --
 
 CREATE TABLE `equipamento` (
@@ -33,7 +33,7 @@ CREATE TABLE `equipamento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `equipamento`
+-- Despejando dados para a tabela `equipamento`
 --
 
 INSERT INTO `equipamento` (`id`, `nome`) VALUES
@@ -43,7 +43,7 @@ INSERT INTO `equipamento` (`id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ganolia_criatura`
+-- Estrutura para tabela `ganolia_criatura`
 --
 
 CREATE TABLE `ganolia_criatura` (
@@ -57,18 +57,126 @@ CREATE TABLE `ganolia_criatura` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `ganolia_criatura`
+-- Despejando dados para a tabela `ganolia_criatura`
 --
 
 INSERT INTO `ganolia_criatura` (`id`, `nome`, `territorio`, `raridade`, `recompensa_id`, `probabilidade`, `imagem`) VALUES
-(1, 'Bicho', 'Pantano', 'Comum', '1;2;3', '50;30;20', '../Images/arrow.png'),
-(2, 'Amigao', 'Floresta', 'Comum', '4;4', '50;50', '../Images/arrow.png'),
-(3, 'Karro', 'Pantano', 'Incomum', '1', '100', '../Images/arrow.png');
+(1, 'Bezon', 'Floresta Oculta', 'Baixo', '', '', ''),
+(2, 'Durotan', 'Floresta Oculta', 'Baixo', '', '', ''),
+(3, 'Grunt', 'Floresta Oculta', 'Baixo', '', '', ''),
+(4, 'Jarvin', 'Floresta Oculta', 'Baixo', '', '', ''),
+(5, 'Nargol', 'Floresta Oculta', 'Baixo', '', '', ''),
+(6, 'Tweak', 'Floresta Oculta', 'Baixo', '', '', ''),
+(7, 'Zigzab', 'Floresta Oculta', 'Baixo', '', '', ''),
+(8, 'Noru', 'Floresta Oculta', 'Medio', '', '', ''),
+(9, 'Jangle', 'Floresta Oculta', 'Medio', '', '', ''),
+(10, 'Letoe', 'Floresta Oculta', 'Medio', '', '', ''),
+(11, 'Frogino', 'Pantano Flutuante', 'Baixo', '', '', ''),
+(12, 'Grivo', 'Pantano Flutuante', 'Baixo', '', '', ''),
+(13, 'Nazar', 'Pantano Flutuante', 'Baixo', '', '', ''),
+(14, 'Ropalo', 'Pantano Flutuante', 'Baixo', '', '', ''),
+(15, 'Vorup', 'Pantano Flutuante', 'Baixo', '', '', ''),
+(16, 'Croco', 'Pantano Flutuante', 'Medio', '', '', ''),
+(17, 'Hazzo', 'Pantano Flutuante', 'Medio', '', '', ''),
+(18, 'Magentaro', 'Pantano Flutuante', 'Medio', '', '', ''),
+(19, 'Safir', 'Pantano Flutuante', 'Medio', '', '', ''),
+(20, 'Torpan', 'Pantano Flutuante', 'Medio', '', '', ''),
+(21, 'Rellus', 'Pantano Flutuante', 'SemiBoss', '', '', ''),
+(22, 'Cloflower', 'Skulles', 'Baixo', '', '', ''),
+(23, 'Doom', 'Skulles', 'Baixo', '', '', ''),
+(24, 'Dregmor', 'Skulles', 'Baixo', '', '', ''),
+(25, 'Grimsoul', 'Skulles', 'Baixo', '', '', ''),
+(26, 'Ripper', 'Skulles', 'Baixo', '', '', ''),
+(27, 'Vorkus', 'Skulles', 'Baixo', '', '', ''),
+(28, 'Darak', 'Skulles', 'Medio', '', '', ''),
+(29, 'Bonecrave', 'Skulles', 'Medio', '', '', ''),
+(30, 'Netherbone', 'Skulles', 'Medio', '', '', ''),
+(31, 'Skulldread', 'Skulles', 'Medio', '', '', ''),
+(32, 'Yonno', 'Skulles', 'SemiBoss', '', '', ''),
+(33, 'Pepon', 'Vale da Lua', 'Baixo', '', '', ''),
+(34, 'Mystara', 'Vale da Lua', 'Baixo', '', '', ''),
+(35, 'Moon', 'Vale da Lua', 'Baixo', '', '', ''),
+(36, 'Dorvon', 'Vale da Lua', 'Baixo', '', '', ''),
+(37, 'Honus', 'Vale da Lua', 'Medio', '', '', ''),
+(38, 'Hyro', 'Vale da Lua', 'Medio', '', '', ''),
+(39, 'Loris', 'Vale da Lua', 'Medio', '', '', ''),
+(40, 'Glintara', 'Vale da Lua', 'Medio', '', '', ''),
+(41, 'Kyron', 'Vale da Lua', 'Alto', '', '', ''),
+(42, 'Blazen', 'Vale da Lua', 'Alto', '', '', ''),
+(43, 'Furry', 'Pedras de Fogo', 'Baixo', '', '', ''),
+(44, 'Kurupin', 'Pedras de Fogo', 'Baixo', '', '', ''),
+(45, 'Moltorix', 'Pedras de Fogo', 'Baixo', '', '', ''),
+(46, 'Vulcan', 'Pedras de Fogo', 'Baixo', '', '', ''),
+(47, 'Nalisk', 'Pedras de Fogo', 'Medio', '', '', ''),
+(48, 'Azun', 'Pedras de Fogo', 'Medio', '', '', ''),
+(49, 'Flamir', 'Pedras de Fogo', 'Medio', '', '', ''),
+(50, 'Fenix', 'Pedras de Fogo', 'Medio', '', '', ''),
+(51, 'Wuzzo', 'Pedras de Fogo', 'Alto', '', '', ''),
+(52, 'Scar', 'Pedras de Fogo', 'SemiBoss', '', '', ''),
+(53, 'Nero', 'Pedras de Fogo', 'SemiBoss', '', '', ''),
+(54, 'Snowalker', 'Colinas de Gelo', 'Baixo', '', '', ''),
+(55, 'Worpam', 'Colinas de Gelo', 'Baixo', '', '', ''),
+(56, 'Frost', 'Colinas de Gelo', 'Baixo', '', '', ''),
+(57, 'Garg', 'Colinas de Gelo', 'Baixo', '', '', ''),
+(58, 'Urinco', 'Colinas de Gelo', 'Medio', '', '', ''),
+(59, 'Tillanus', 'Colinas de Gelo', 'Medio', '', '', ''),
+(60, 'Iceblom', 'Colinas de Gelo', 'Medio', '', '', ''),
+(61, 'Icedragon', 'Colinas de Gelo', 'Alto', '', '', ''),
+(62, 'Adra', 'Colinas de Gelo', 'Alto', '', '', ''),
+(63, 'Abyssal', 'Colinas de Gelo', 'SemiBoss', '', '', ''),
+(64, 'Kimaris', 'Colinas de Gelo', 'Boss', '', '', ''),
+(65, 'Aquam', 'Koppala', 'Baixo', '', '', ''),
+(66, 'Forbie', 'Koppala', 'Baixo', '', '', ''),
+(67, 'Gale', 'Koppala', 'Baixo', '', '', ''),
+(68, 'Gloom', 'Koppala', 'Baixo', '', '', ''),
+(69, 'Erbelim', 'Koppala', 'Medio', '', '', ''),
+(70, 'Frey', 'Koppala', 'Medio', '', '', ''),
+(71, 'Vladis', 'Koppala', 'Medio', '', '', ''),
+(72, 'Zara', 'Koppala', 'Medio', '', '', ''),
+(73, 'Kova', 'Koppala', 'Alto', '', '', ''),
+(74, 'Abaddon', 'Koppala', 'Boss', '', '', ''),
+(75, 'Rex', 'Draconia', 'Baixo', '', '', ''),
+(76, 'Graven', 'Draconia', 'Baixo', '', '', ''),
+(77, 'Drakonir', 'Draconia', 'Medio', '', '', ''),
+(78, 'Gobaron', 'Draconia', 'Alto', '', '', ''),
+(79, 'Arcticus', 'Draconia', 'SemiBoss', '', '', ''),
+(80, 'Dollus', 'Draconia', 'SemiBoss', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ganolia_item`
+-- Estrutura para tabela `ganolia_historico`
+--
+
+CREATE TABLE `ganolia_historico` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `personagem_id` int(11) DEFAULT NULL,
+  `evento` varchar(255) DEFAULT NULL,
+  `item_usado` varchar(30) NOT NULL,
+  `horario` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `ganolia_historico`
+--
+
+INSERT INTO `ganolia_historico` (`id`, `personagem_id`, `evento`, `item_usado`, `horario`) VALUES
+(1, 1, 'Registrado', '', '2023-12-16 03:00:00'),
+(2, 13, 'Registrado', '', '2023-12-16 03:00:00'),
+(3, 2, 'Registrado', '', '2023-12-16 03:00:00'),
+(128, 13, 'Acertou 3 de dano no alvo.', 'Espada 1', '2023-12-17 22:36:37'),
+(129, 13, 'Acertou 1 de dano no alvo.', 'Espada 1', '2023-12-17 22:36:47'),
+(130, 1, 'Acertou 2 de dano no alvo.', 'Espada 1', '2023-12-17 22:36:57'),
+(132, 13, 'Acertou 2 de dano no alvo.', 'Espada 1', '2023-12-17 23:30:21'),
+(133, 13, 'Acertou 1 de dano no alvo.', 'Espada 1', '2023-12-17 23:30:30'),
+(134, 13, 'Acertou 2 de dano no alvo.', 'Espada 1', '2023-12-17 23:30:35'),
+(135, 16, 'Registrado', '', '2023-12-16 03:00:00'),
+(136, 16, 'Acertou 1 de dano no alvo.', 'Espada 1', '2023-12-17 23:33:48');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `ganolia_item`
 --
 
 CREATE TABLE `ganolia_item` (
@@ -89,11 +197,11 @@ CREATE TABLE `ganolia_item` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `ganolia_item`
+-- Despejando dados para a tabela `ganolia_item`
 --
 
 INSERT INTO `ganolia_item` (`id`, `nome`, `tipo`, `categoria`, `dados`, `valor`, `raridade`, `damage`, `habilidade`, `taxa_habilidade`, `descricao`, `situacao`, `situacao_mercado`, `imagem`) VALUES
-(1, '1', 'Espada', 'Ataque', 'D6', '10', 'Comum', '1;2;3', 'Freeze', '15', '[5] Pedra + [2] Ferro', 'A', 'A', '../Images/Ganolia/Espadas/1.png'),
+(1, 'Espada 1', 'Espada', 'Ataque', 'D6', '10', 'Comum', '1;2;3', 'Freeze', '15', '[5] Pedra + [2] Ferro', 'A', 'A', '../Images/Ganolia/Espadas/1.png'),
 (2, '2', 'Espada', 'Ataque', 'D6', '5', 'Incomum', '2;3;4;5', 'Critico', '20', '[5] Pedra + [2] Ferro', 'A', 'I', '../Images/Ganolia/Espadas/2.png'),
 (3, '3', 'Espada', 'Ataque', 'D8', '9', 'Comum', '', '', '', '[5] Pedra + [2] Ferro', 'A', 'A', '../Images/Ganolia/Espadas/3.png'),
 (4, '4', 'Espada', 'Ataque', '', '', 'Comum', '', '', '', '', 'A', 'A', '../Images/Ganolia/Espadas/4.png'),
@@ -145,7 +253,32 @@ INSERT INTO `ganolia_item` (`id`, `nome`, `tipo`, `categoria`, `dados`, `valor`,
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `heads`
+-- Estrutura para tabela `ganolia_personagem`
+--
+
+CREATE TABLE `ganolia_personagem` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(20) NOT NULL,
+  `classe` varchar(20) NOT NULL,
+  `sessao` varchar(20) NOT NULL,
+  `usuario_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `ganolia_personagem`
+--
+
+INSERT INTO `ganolia_personagem` (`id`, `nome`, `classe`, `sessao`, `usuario_id`) VALUES
+(1, 'Gale', 'Guerreiro', 'Aventureiros', 7),
+(2, 'Flor', 'Guerreiro', 'Aventureiros', 16),
+(13, 'Krob', 'Guerreiro', 'Aventureiros', 7),
+(14, 'Berry', 'Mago', '', 7),
+(16, 'Vast', 'Mago', '', 16);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `heads`
 --
 
 CREATE TABLE `heads` (
@@ -163,7 +296,7 @@ CREATE TABLE `heads` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `heads`
+-- Despejando dados para a tabela `heads`
 --
 
 INSERT INTO `heads` (`id`, `tag`, `modelo`, `problema`, `data_envio`, `situacao`, `previsao`, `retorno`, `garantia`, `manutencao`, `equipamento_id`) VALUES
@@ -178,7 +311,7 @@ INSERT INTO `heads` (`id`, `tag`, `modelo`, `problema`, `data_envio`, `situacao`
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `historico`
+-- Estrutura para tabela `historico`
 --
 
 CREATE TABLE `historico` (
@@ -188,7 +321,7 @@ CREATE TABLE `historico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `historico`
+-- Despejando dados para a tabela `historico`
 --
 
 INSERT INTO `historico` (`id`, `tag_id`, `usuario_id`) VALUES
@@ -203,7 +336,7 @@ INSERT INTO `historico` (`id`, `tag_id`, `usuario_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `marca`
+-- Estrutura para tabela `marca`
 --
 
 CREATE TABLE `marca` (
@@ -212,7 +345,7 @@ CREATE TABLE `marca` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `marca`
+-- Despejando dados para a tabela `marca`
 --
 
 INSERT INTO `marca` (`id`, `nome`) VALUES
@@ -226,7 +359,7 @@ INSERT INTO `marca` (`id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `problema`
+-- Estrutura para tabela `problema`
 --
 
 CREATE TABLE `problema` (
@@ -235,7 +368,7 @@ CREATE TABLE `problema` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `problema`
+-- Despejando dados para a tabela `problema`
 --
 
 INSERT INTO `problema` (`id`, `nome`) VALUES
@@ -246,7 +379,7 @@ INSERT INTO `problema` (`id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuarios`
+-- Estrutura para tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -255,50 +388,63 @@ CREATE TABLE `usuarios` (
   `senha` int(20) NOT NULL,
   `permissao` varchar(255) DEFAULT NULL,
   `email` varchar(30) NOT NULL,
-  `referencia` varchar(20) NOT NULL
+  `referencia` varchar(20) NOT NULL,
+  `personagem_ganolia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `usuarios`
+-- Despejando dados para a tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `senha`, `permissao`, `email`, `referencia`) VALUES
-(7, 'Emerson', 123, 'Admin', 'admin@admin', ''),
-(15, 'GGG', 123, 'Usuario', 'VV@VV', 'Amigo'),
-(16, 'carol', 123, 'Usuario', 'carol@carol', 'Amigo'),
-(17, 'bugatti', 123, 'Usuario', 'b@b', 'Amigo');
+INSERT INTO `usuarios` (`id`, `nome`, `senha`, `permissao`, `email`, `referencia`, `personagem_ganolia`) VALUES
+(7, 'Emerson', 123, 'Admin', 'admin@admin', '', 13),
+(16, 'carol', 123, 'Usuario', 'carol@carol', 'Amigo', 16);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `equipamento`
+-- Índices de tabela `equipamento`
 --
 ALTER TABLE `equipamento`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `ganolia_criatura`
+-- Índices de tabela `ganolia_criatura`
 --
 ALTER TABLE `ganolia_criatura`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `ganolia_item`
+-- Índices de tabela `ganolia_historico`
+--
+ALTER TABLE `ganolia_historico`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `personagem_id` (`personagem_id`);
+
+--
+-- Índices de tabela `ganolia_item`
 --
 ALTER TABLE `ganolia_item`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `heads`
+-- Índices de tabela `ganolia_personagem`
+--
+ALTER TABLE `ganolia_personagem`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_usuario_id` (`usuario_id`);
+
+--
+-- Índices de tabela `heads`
 --
 ALTER TABLE `heads`
   ADD PRIMARY KEY (`id`),
   ADD KEY `equipamento_id` (`equipamento_id`);
 
 --
--- Índices para tabela `historico`
+-- Índices de tabela `historico`
 --
 ALTER TABLE `historico`
   ADD PRIMARY KEY (`id`),
@@ -306,25 +452,26 @@ ALTER TABLE `historico`
   ADD KEY `usuario_id` (`usuario_id`);
 
 --
--- Índices para tabela `marca`
+-- Índices de tabela `marca`
 --
 ALTER TABLE `marca`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `problema`
+-- Índices de tabela `problema`
 --
 ALTER TABLE `problema`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `usuarios`
+-- Índices de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_personagem_ganolia` (`personagem_ganolia`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -337,13 +484,25 @@ ALTER TABLE `equipamento`
 -- AUTO_INCREMENT de tabela `ganolia_criatura`
 --
 ALTER TABLE `ganolia_criatura`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+
+--
+-- AUTO_INCREMENT de tabela `ganolia_historico`
+--
+ALTER TABLE `ganolia_historico`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- AUTO_INCREMENT de tabela `ganolia_item`
 --
 ALTER TABLE `ganolia_item`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT de tabela `ganolia_personagem`
+--
+ALTER TABLE `ganolia_personagem`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `heads`
@@ -373,24 +532,42 @@ ALTER TABLE `problema`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `heads`
+-- Restrições para tabelas `ganolia_historico`
+--
+ALTER TABLE `ganolia_historico`
+  ADD CONSTRAINT `ganolia_historico_ibfk_1` FOREIGN KEY (`personagem_id`) REFERENCES `ganolia_personagem` (`id`);
+
+--
+-- Restrições para tabelas `ganolia_personagem`
+--
+ALTER TABLE `ganolia_personagem`
+  ADD CONSTRAINT `fk_usuario_id` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Restrições para tabelas `heads`
 --
 ALTER TABLE `heads`
   ADD CONSTRAINT `heads_ibfk_1` FOREIGN KEY (`equipamento_id`) REFERENCES `equipamento` (`id`);
 
 --
--- Limitadores para a tabela `historico`
+-- Restrições para tabelas `historico`
 --
 ALTER TABLE `historico`
   ADD CONSTRAINT `historico_ibfk_1` FOREIGN KEY (`tag_id`) REFERENCES `heads` (`id`),
   ADD CONSTRAINT `historico_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Restrições para tabelas `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `fk_personagem_ganolia` FOREIGN KEY (`personagem_ganolia`) REFERENCES `ganolia_personagem` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
