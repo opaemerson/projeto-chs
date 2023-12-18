@@ -121,7 +121,7 @@ require_once('../config.php');
 </div>
 <div class="scrolling-container" id="scrollingContainer">
     <?php
-    $sql = "SELECT gh.evento, gp.nome , gp.classe , gp.sessao, gh.horario, gh.item_usado 
+    $sql = "SELECT gh.evento, gp.nome , gp.classe , gp.sessao, gh.horario, gh.item_usado
     from ganolia_historico gh 
     inner join ganolia_personagem gp 
     on gp.id = gh.personagem_id

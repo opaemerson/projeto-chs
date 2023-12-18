@@ -31,13 +31,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $insert = "INSERT INTO ganolia_personagem (nome, classe, sessao, usuario_id) 
             VALUES ('$nome', '$classe', '', '$usuario')";
 
-            //tratativa caso der b.o na insercao
-            if ($conn->query($insert) === TRUE) {
-                echo "<script>alert('Salvo no banco de dados!');</script>";
-                echo "<script>window.location.href = 'guia_personagem.php';</script>"; 
-            } else {
+        if ($conn->query($insert) === TRUE) {
+            $verCodigoCriado = "SELECT id FROM ganolia_personagem WHERE nome = '$nome'";
+            $resu = $conn->query($verCodigoCriado);
+            $lita = $resu->fetch_assoc();
+            $codigo = $lita['id'];
+
+            $insertHistorico = "INSERT INTO ganolia_historico (personagem_id, evento, item_usado, horario)
+            VALUES ($codigo, 'Registrado', '', '2023-12-16 00:00:00')";
+
+            if ($conn->query($insertHistorico) === FALSE) {
                 echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
-            }}
+            } else {
+                echo "<script>alert('Salvo no banco de dados!');</script>";
+                echo "<script>window.location.href = 'guia_personagem.php';</script>";
+            }
+        } else {
+            echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
+        }
     }
+}
 }
 ?>
