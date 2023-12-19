@@ -52,13 +52,10 @@ require_once('../config.php');
     <div id="resultadoAtaque"></div>
     </form>
     <br><br>
-    <button type="button" onclick="limpar()">Limpar</button>
     
     <h2>Defendendo</h2>
     <form action="processar_ataque.php" method="post">
     <label for="">Desenvolvendo[...]</label>
-
-
 
     <h2>Recolhendo Drop</h2>
     <form action="">
