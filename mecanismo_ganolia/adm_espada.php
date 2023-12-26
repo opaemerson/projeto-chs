@@ -135,7 +135,7 @@ if ($resultado->num_rows > 0) {
       data-damage = '$damage'
       data-habilidade = '$habilidade'
       data-taxahabilidade = '$taxa_habilidade'>"
-      . "<img src='../Images/editar.png' width='25' height='25'>"
+      . "<img src='../Images/CHS/editar.png' width='25' height='25'>"
       . "</button>"
       . "</td>";      
       echo '</div>';
