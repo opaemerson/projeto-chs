@@ -80,6 +80,7 @@ if (isset($_SESSION['nome'])) {
 
                     $resultado = $conn->query($sql);
                     if ($resultado) {
+                        echo "<option value=''>Selecione um personagem </option>";
                     while ($row = $resultado->fetch_assoc()) {
                         $idPersonagem = $row["id_personagem"];
                         $nome = $row["nome"];
