@@ -17,8 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $_SESSION['id'];
     $idPersonagem = $_POST['selectPersonagem'];
 
-    var_dump($idPersonagem);
-
     if (empty($idPersonagem)) {
         echo "<script>alert('Todos os campos precisam ser preenchidos');</script>";
     } else {
