@@ -156,6 +156,6 @@ while ($row = $resultadoProcurar->fetch_assoc()) {
 }
 ?>
 <br><br>
-<a href="./index_mecanismo.php" type="button" class="btn-preto">Voltar</a>
+<a href="./index_mecanismo.php" type="button" class="btn btn-danger">Voltar</a>
 </body>
 </html>

@@ -44,7 +44,7 @@ section p{
 </head>
 
 <body>
-<a href="./index_mecanismo.php" type="button" class="btn-preto">Voltar</a>
+<a href="./index_mecanismo.php" type="button" class="btn btn-danger">Voltar</a>
 <section>
 <h4>Territorios Ativos</h4>
 <p><b>Pantano Flutuante</b>: Local de drop itens diversas</p>

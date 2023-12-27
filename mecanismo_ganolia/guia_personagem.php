@@ -37,7 +37,7 @@ if (isset($_SESSION['nome'])) {
                 <option value="Mago">Mago</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-dark">Enviar</button>
     </form>
 <?php
 ?>
@@ -92,11 +92,11 @@ if (isset($_SESSION['nome'])) {
                 ?>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-dark">Enviar</button>
     </form>
 
-
-<a href="index_mecanismo.php">Voltar</a>
+<br><br>
+<a href="index_mecanismo.php" class="btn btn-danger">Voltar</a>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </body>
