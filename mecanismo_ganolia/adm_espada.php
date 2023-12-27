@@ -118,7 +118,6 @@ if ($resultado->num_rows > 0) {
       echo "<h6>Habilidade: $habilidade</h6>";
       echo "<h6>Taxa Hab: $taxa_habilidade</h6>";
       if($situacao_mercado == 'A'){
-        echo "<h6>Situacao Mercado: $situacao_mercado</h6>";
         echo "<h6>Valor: $$valor</h6>";
       } 
       echo "<h6>Forjar: $descricao</h6>";

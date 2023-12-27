@@ -18,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idPersonagem = $_POST['selectPersonagem'];
 
     if (empty($idPersonagem)) {
-        echo "<script>alert('Todos os campos precisam ser preenchidos');</script>";
+        echo "<script>alert('Nenhum personagem selecionado!');</script>";
+        echo "<script>window.location.href = 'guia_personagem.php';</script>"; 
     } else {
     
         $nomeExistente = "SELECT gp.id
@@ -40,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "<script>window.location.href = 'guia_personagem.php';</script>"; 
             } else {
                 echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
+                echo "<script>window.location.href = 'guia_personagem.php';</script>"; 
             }}
     }
 }

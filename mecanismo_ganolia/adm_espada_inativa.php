@@ -118,7 +118,6 @@ if ($resultado->num_rows > 0) {
       echo "<h6>Habilidade: $habilidade</h6>";
       echo "<h6>Taxa Hab: $taxa_habilidade</h6>";
       if($situacao_mercado == 'A'){
-        echo "<h6>Situacao Mercado: $situacao_mercado</h6>";
         echo "<h6>Valor: $$valor</h6>";
       } 
       echo "<h6>Forjar: $descricao</h6>";
@@ -129,13 +128,14 @@ if ($resultado->num_rows > 0) {
       echo "<td class='td-center text-start'>"
       . "<button type='button' class='btn btn-link btn-editar' 
       data-bs-toggle='modal' data-bs-target='#modalAdmEspadas' 
+      data-id='$codigo'
       data-nome='$nome'
       data-dados='$dados'
       data-raridade='$raridade'
       data-damage = '$damage'
       data-habilidade = '$habilidade'
       data-taxahabilidade = '$taxa_habilidade'>"
-      . "<img src='../Images/editar.png' width='25' height='25'>"
+      . "<img src='../Images/CHS/editar.png' width='25' height='25'>"
       . "</button>"
       . "</td>";      
       echo '</div>';
@@ -158,6 +158,7 @@ echo "Nenhum registro encontrado.";
             <div class="modal-body">
                 <form action="processar_espadas.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
+                        <input type="hidden" id="idEspada" name="idEspada">    
                         <label class="form-label">Nome</label>
                         <input type="text" class="form-control" id="nomeEspada" name="nomeEspada">
 
@@ -194,11 +195,14 @@ echo "Nenhum registro encontrado.";
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var btnEditar = document.querySelectorAll('.btn-editar');
+      document.addEventListener('DOMContentLoaded', function () {
+      var btnEditar = document.querySelectorAll('.btn-editar');
 
         btnEditar.forEach(function (btn) {
             btn.addEventListener('click', function () {
+                var idEspada = this.getAttribute('data-id');
+                document.getElementById('idEspada').value = idEspada;
+
                 var nomeEspada = this.getAttribute('data-nome');
                 document.getElementById('nomeEspada').value = nomeEspada;
 
