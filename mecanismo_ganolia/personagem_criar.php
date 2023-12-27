@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($nome) || empty($classe)) {
         echo "<script>alert('Todos os campos precisam ser preenchidos');</script>";
+        echo "<script>window.location.href = 'guia_personagem.php';</script>";
     } else {
     
         $nomeExistente = "SELECT gp.nome FROM ganolia_personagem gp WHERE nome = '$nome'";
@@ -27,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
         if ($resultado->num_rows > 0 || $resultado == FALSE){
             echo "<script>alert('Nome já existe / Falha na busca');</script>";
+            echo "<script>window.location.href = 'guia_personagem.php';</script>";
         } else {
             $insert = "INSERT INTO ganolia_personagem (nome, classe, sessao, usuario_id) 
             VALUES ('$nome', '$classe', '', '$usuario')";
@@ -42,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($conn->query($insertHistorico) === FALSE) {
                 echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
+                echo "<script>window.location.href = 'guia_personagem.php';</script>";
             } else {
                 echo "<script>alert('Salvo no banco de dados!');</script>";
                 echo "<script>window.location.href = 'guia_personagem.php';</script>";

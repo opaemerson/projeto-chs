@@ -24,7 +24,7 @@ if (isset($_POST['cadastro'])) {
     if ($stmt->num_rows > 0) {
         echo "Este usu�rio j� existe.";
     } else{
-        $sql = "INSERT INTO usuarios (nome, email, senha, permissao, referencia) VALUES ('$nome','$email', '$senha', '$permissao', '$referencia_select')";
+        $sql = "INSERT INTO usuarios (nome, email, senha, permissao, referencia, personagem_ganolia) VALUES ('$nome','$email', '$senha', '$permissao', '$referencia_select', 1)";
         if ($conn->query($sql) === TRUE) {
             header('Location: obrigado_cadastro.php'); 
             exit;
