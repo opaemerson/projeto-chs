@@ -44,9 +44,9 @@ section p{
 </head>
 
 <body>
-
+<a href="./index_mecanismo.php" type="button" class="btn-preto">Voltar</a>
 <section>
-<h4>Territorios</h4>
+<h4>Territorios Ativos</h4>
 <p><b>Pantano Flutuante</b>: Local de drop itens diversas</p>
 <p><b>Floresta Oculta</b>: Local de drop itens diversas, alguns itens de plantas</p>
 <p><b>Skulles</b>: Local de drop itens diversas, alguns itens de osso</p>
@@ -55,13 +55,15 @@ section p{
 <p><b>Iceborg</b>: Local de drop itens de gelo.</p>
 <p><b>Draconia</b>: Local de drop itens de dragoes</p>
 <p><b>Koppala</b>: Local de drop itens fortes</p>
+</section>
 
-<section>Territorios Inativos</section>
+<section>
+<h4>Territorios Inativos</h4>
 <p><b>Deserto de Xantras</b>: Local de drop itens diversas, alguns itens egipicios</p>
 <p><b>Prisma</b>: Local de drop itens diferentes</p>
 <p><b>Orkland</b>: Local de drop itens diversas.</p>
 <p><b>Obscuria</b>: Local de drop itens tipo obsidiana</p>
-
+</section>
 
 
 <div class="container mt-4">
@@ -71,7 +73,8 @@ section p{
                       c.nome as criatura_nome,
                       c.recompensa_id,
                       c.territorio as criatura_territorio,
-                      c.probabilidade
+                      c.probabilidade,
+                      c.imagem
                       FROM ganolia_criatura c
                       order by c.territorio";
 
@@ -85,6 +88,7 @@ section p{
             $criatura_id = $row['criatura_id'];
             $recompensa_id = $row['recompensa_id'];
             $probabilidade = $row['probabilidade'];
+            $imagem = $row['imagem'];
 
             $quebrandoRecompensa = explode(";", $recompensa_id);
             $quebrandoProbabilidade = explode(";", $probabilidade);
@@ -112,6 +116,7 @@ section p{
             echo '<div class="card-body">';
             echo "<h5 class='card-title'>$criatura_territorio</h5>";
             echo "<h6 class='card-subtitle mb-2 text-muted'>Criatura Nome: $criatura_nome</h6>";
+            echo '<h5 class="card-title"><img src="' . $imagem . '"  height="200" width="180">';
             echo "<p class='card-text'>Possiveis Recompensa: $nomesRecompensa</p>";
             echo '</div>';
             echo '</div>';
@@ -122,12 +127,9 @@ section p{
 } else {
     echo "Erro na consulta SQL: " . $conn->error;
 }
-
-
   ?>
   </div>
-  <br><br>
-  <a href="./index_mecanismo.php" type="button" class="btn-preto">Voltar</a>
+
 
 </div>
 </body>
