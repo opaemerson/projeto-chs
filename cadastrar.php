@@ -22,7 +22,7 @@ if (isset($_POST['cadastro'])) {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        echo "Este usu�rio j� existe.";
+        echo "Este usuario ja existe.";
     } else{
         $sql = "INSERT INTO usuarios (nome, email, senha, permissao, referencia, personagem_ganolia) VALUES ('$nome','$email', '$senha', '$permissao', '$referencia_select', 1)";
         if ($conn->query($sql) === TRUE) {

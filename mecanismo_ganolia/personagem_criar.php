@@ -46,13 +46,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
                 echo "<script>window.location.href = 'guia_personagem.php';</script>";
             } else {
-                echo "<script>alert('Salvo no banco de dados!');</script>";
-                echo "<script>window.location.href = 'guia_personagem.php';</script>";
+                $insertPersonagem = "UPDATE chs.usuarios 
+                SET personagem_ganolia = $codigo
+                WHERE id = $usuario;";
+
+                    if ($conn->query($insertPersonagem) === FALSE) {
+                        echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
+                        echo "<script>window.location.href = 'guia_personagem.php';</script>";
+                    } else{
+                        echo "<script>alert('Salvo no banco de dados!');</script>";
+                        echo "<script>window.location.href = 'guia_personagem.php';</script>";
+                    }
+                }
+            } else {
+                echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
             }
-        } else {
-            echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
         }
     }
-}
 }
 ?>

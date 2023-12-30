@@ -65,7 +65,7 @@ if (isset($_SESSION['nome'])) {
                     $resultadoName = $conn->query($sqlName);
 
                     $pegaPersonagem = $resultadoName->fetch_assoc();
-                    $personagemAtual = $pegaPersonagem['personagem_atual'];
+                    $personagemAtual = empty($pegaPersonagem['personagem_atual']) ? 'Nenhum' : $pegaPersonagem['personagem_atual'];
                     echo '<label  class="form-label"> <h5>' . 'Seu personagem atual é: <b>' .  $personagemAtual . '</b> </h5></label>';
                 ?>
 

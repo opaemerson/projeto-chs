@@ -116,7 +116,7 @@ section p{
             echo '<div class="card-body">';
             echo "<h5 class='card-title'>$criatura_territorio</h5>";
             echo "<h6 class='card-subtitle mb-2 text-muted'>Criatura Nome: $criatura_nome</h6>";
-            echo '<h5 class="card-title"><img src="' . $imagem . '"  height="200" width="180">';
+            echo '<img src="' . $imagem . '"  height="200" width="180">';
             echo "<p class='card-text'>Possiveis Recompensa: $nomesRecompensa</p>";
             echo '</div>';
             echo '</div>';
