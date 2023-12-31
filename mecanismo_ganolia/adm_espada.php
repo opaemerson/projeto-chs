@@ -67,8 +67,6 @@ function qtdRanking($raridade){
   }
 }
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,7 +114,7 @@ function qtdRanking($raridade){
      WHEN 'Lendario' THEN 5
      ELSE 6
    END,
-   gi.ranking ASC;";
+   gi.ranking DESC;";
 
 $resultado = $conn->query($buscarEquipamento);
 
@@ -163,16 +161,25 @@ if ($resultado->num_rows > 0) {
       echo "<h6>Ranking: $ranking / $qtdRanking";
       echo "<h6>Dados: $dados</h6>";
       echo "<h6>Damage: $damage</h6>";
-      echo "<h6>Habilidade: $habilidade</h6>";
-      echo "<h6>Taxa Hab: $taxa_habilidade</h6>";
+
+      if($habilidade !==  ''){
+        echo "<h6>Habilidade: $habilidade</h6>";
+        echo "<h6>Taxa Hab: $taxa_habilidade%</h6>";
+      }
+
       if($situacao_mercado == 'A'){
         echo "<h6>Valor: $$valor</h6>";
       } 
-      echo "<h6>Forjar: $forjar</h6>";
+
+      if($forjar !== ''){
+        echo "<h6>Forjar: $forjar</h6>";
+      }
+
       foreach ($territorio as $item) {
         echo "<h6>Territorio: " . $item['array_territorio'] . "</h6>";
         echo "<h6>Criatura: " . $item['array_criatura'] . "</h6>";
       }
+
       echo "<td class='td-center text-start'>"
       . "<button type='button' class='btn btn-link btn-editar' 
       data-bs-toggle='modal' data-bs-target='#modalAdmEspadas' 

@@ -76,7 +76,7 @@ function atacar() {
   const form = new FormData();
   form.append('codigoItemAtaque', codigoItemAtaque);
 
-  const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/atacar.php";
+  const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_ataque.php";
 
   $.ajax({
     url: url, 
@@ -116,7 +116,7 @@ function buscaCriatura() {
   const form = new FormData();
   form.append('idCriatura', idCriatura);
 
-  const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/criatura.php";
+  const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_criatura.php";
 
   $.ajax({
     url: url, 

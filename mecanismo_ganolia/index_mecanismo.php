@@ -44,7 +44,6 @@ require_once('../config.php');
     <br><br>
     </form>
 
-
     <form action="">
     <input type="hidden" id="codigoItemAtaque">
     <button type="button" style="background-color: #B22222; color: white;" onclick="atacar()">Atacar</button>
