@@ -6,7 +6,9 @@ function buscaTerritorio($codigo) {
   $arrayResultado = array();
 
   try {
-      $buscarCriatura = "SELECT * FROM ganolia_criatura gc WHERE recompensa_id LIKE '%$codigo%'";
+      $buscarCriatura = "SELECT * 
+      FROM ganolia_criatura gc 
+      WHERE recompensa_id LIKE '%$codigo%'";
 
       $result = $conn->query($buscarCriatura);
 
@@ -90,9 +92,10 @@ if ($resultado->num_rows > 0) {
     $damage = $row['damage'];
     $habilidade = $row['habilidade'];
     $taxa_habilidade = $row['taxa_habilidade'];
-    $descricao = $row['descricao'];         
+    $forjar = $row['descricao'];         
     $imagem = $row['imagem'];
-    $territorio = buscaTerritorio ($codigo);
+    $situacao = $row['situacao'];
+    $territorio = buscaTerritorio($codigo);
 
       echo '<div class="col-md-3">';
       echo '<div class="card mt-3">';
@@ -120,7 +123,7 @@ if ($resultado->num_rows > 0) {
       if($situacao_mercado == 'A'){
         echo "<h6>Valor: $$valor</h6>";
       } 
-      echo "<h6>Forjar: $descricao</h6>";
+      echo "<h6>Forjar: $forjar</h6>";
       foreach ($territorio as $item) {
         echo "<h6>Territorio: " . $item['array_territorio'] . "</h6>";
         echo "<h6>Criatura: " . $item['array_criatura'] . "</h6>";
@@ -134,7 +137,12 @@ if ($resultado->num_rows > 0) {
       data-raridade='$raridade'
       data-damage = '$damage'
       data-habilidade = '$habilidade'
-      data-taxahabilidade = '$taxa_habilidade'>"
+      data-taxahabilidade = '$taxa_habilidade'
+      data-valor = '$valor'
+      data-forjar = '$forjar'
+      data-situacaoMercado = '$situacao_mercado'
+      data-situacao = '$situacao'
+      data-imagem = '$imagem'>"
       . "<img src='../Images/CHS/editar.png' width='25' height='25'>"
       . "</button>"
       . "</td>";      
@@ -183,6 +191,27 @@ echo "Nenhum registro encontrado.";
                         <label class="form-label">Taxa Habilidade</label>
                         <input type="text" class="form-control" id="nomeTaxahabilidade" name="nomeTaxahabilidade">
                         
+                        <label class="form-label">Situacao Mercado</label>
+                        <select class="form-select" id="situacaoMercado" name="situacaoMercado">
+                            <option value="A">Ativo</option>
+                            <option value="I">Inativo</option>
+                        </select>
+                        
+                        <label class="form-label">Valor</label>
+                        <input type="text" class="form-control" id="valor" name="valor">
+
+                        <label class="form-label">Forjar</label>
+                        <input type="text" class="form-control" id="forjar" name="forjar">
+                        
+                        <label class="form-label">Situacao</label>
+                        <select class="form-select" id="situacao" name="situacao">
+                            <option value="A">Ativo</option>
+                            <option value="I">Inativo</option>
+                        </select>
+
+                        <label class="form-label">Imagem</label>
+                        <input type="text" class="form-control" id="imagem" name="imagem">
+
                       </div>                       
                     <button type="submit" class="btn btn-primary" value="cadastrar">Enviar</button>
                 </form>
@@ -193,7 +222,6 @@ echo "Nenhum registro encontrado.";
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
       document.addEventListener('DOMContentLoaded', function () {
       var btnEditar = document.querySelectorAll('.btn-editar');
@@ -204,7 +232,7 @@ echo "Nenhum registro encontrado.";
                 document.getElementById('idEspada').value = idEspada;
 
                 var nomeEspada = this.getAttribute('data-nome');
-                document.getElementById('nomeEspada').value = nomeEspada;
+                document.getElementById('nomeEspada').value = nomeEspada;   
 
                 var nomeRaridade = this.getAttribute('data-raridade');
                 document.getElementById('nomeRaridade').value = nomeRaridade;
@@ -220,6 +248,21 @@ echo "Nenhum registro encontrado.";
               
                 var nomeTaxahabilidade = this.getAttribute('data-taxahabilidade');
                 document.getElementById('nomeTaxahabilidade').value = nomeTaxahabilidade;
+
+                var situacaoMercado = this.getAttribute('data-situacaoMercado');
+                document.getElementById('situacaoMercado').value = situacaoMercado;
+
+                var valor = this.getAttribute('data-valor');
+                document.getElementById('valor').value = valor;
+
+                var forjar = this.getAttribute('data-forjar');
+                document.getElementById('forjar').value = forjar;
+
+                var situacao = this.getAttribute('data-situacao');
+                document.getElementById('situacao').value = situacao;
+
+                var imagem = this.getAttribute('data-imagem');
+                document.getElementById('imagem').value = imagem;
               
               });
         });

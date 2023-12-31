@@ -21,6 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $damage = $_POST['nomeDamage'];
     $habilidade = $_POST['nomeHabilidade'];
     $taxaHabilidade = $_POST['nomeTaxahabilidade'];
+    $situacaoMercado = $_POST['situacaoMercado'];
+    $valor = $_POST['valor'];
+    $forjar = $_POST['forjar'];
+    $situacao = $_POST['situacao'];
+    $imagem = $_POST['imagem'];
 
     if (empty($id)) {
         echo "<script>alert('Campo idEspada esta vazio');</script>";
@@ -31,7 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         dados = '$dados',
         damage = '$damage',
         habilidade = '$habilidade',
-        taxa_habilidade = '$taxaHabilidade'
+        taxa_habilidade = '$taxaHabilidade',
+        situacao_mercado = '$situacaoMercado',
+        valor = '$valor',
+        descricao = '$forjar',
+        situacao = '$situacao',
+        imagem = '$imagem'
         WHERE id = $id";
 
         if ($conn->query($update) === TRUE) {
