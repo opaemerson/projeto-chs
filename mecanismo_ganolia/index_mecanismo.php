@@ -25,7 +25,7 @@ require_once('../config.php');
   <a href="./guia.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">MANUAL</a>
   <a href="./guia_territorio.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">TERRITORIOS</a>
   <a href="./guia_item.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">ITENS</a>
-  <a href="./guia_personagem2.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">PERSONAGEM</a>
+  <a href="./guia_personagem.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">PERSONAGEM</a>
   <?php if (isset($_SESSION['permissao']) && $_SESSION['permissao'] == 'Admin') { ?>
     <a href="./adm_index.php" class="w3-bar-item w3-button w3-hover-yellow w3-padding-large custom-square" style="text-decoration: none;">ADMINISTRACAO</a>
     <?php } ?>
