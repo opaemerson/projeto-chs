@@ -41,6 +41,33 @@ function buscaTerritorio($codigo) {
 }
 
 
+function qtdRanking($raridade){
+  global $conn;
+  try{
+    $qtd = '0';
+    $qtdRanking = "SELECT count(0) as contador
+    FROM ganolia_item gi
+    WHERE gi.tipo = 'Espada'
+    AND gi.situacao = 'A'
+    AND gi.raridade = '$raridade'";
+
+    $resultado = $conn->query($qtdRanking);
+
+    if ($resultado === false) {
+        echo "Erro na consulta: " . $conn->error;
+    } else {
+      $row = $resultado->fetch_assoc();
+      $qtd = $row['contador'];
+    }
+
+    return $qtd;
+  }
+  catch (Exception $e) {
+    echo "Exceção capturada: " . $e->getMessage();
+  }
+}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -61,7 +88,21 @@ function buscaTerritorio($codigo) {
 <body>
 <div class="container mt-4">
 <a href="adm.php">Voltar</a>
-<h3>Espadas </h3>
+
+<?php
+  $contando = "SELECT count(0) as contador
+  FROM ganolia_item gi
+  WHERE gi.tipo = 'Espada'
+  AND gi.situacao = 'A'";
+
+  $sqlContando = $conn->query($contando);
+  if ($sqlContando == TRUE){
+    $busc = $sqlContando->fetch_assoc();
+    $contador = $busc['contador'];
+    echo "<h3>$contador Espadas Ativas</h3>";
+  }
+?>
+
 <?php
   $buscarEquipamento = "SELECT * from ganolia_item gi
   WHERE gi.tipo = 'Espada'
@@ -74,7 +115,8 @@ function buscaTerritorio($codigo) {
      WHEN 'Raro' THEN 4
      WHEN 'Lendario' THEN 5
      ELSE 6
-   END;";
+   END,
+   gi.ranking ASC;";
 
 $resultado = $conn->query($buscarEquipamento);
 
@@ -95,7 +137,9 @@ if ($resultado->num_rows > 0) {
     $forjar = $row['descricao'];         
     $imagem = $row['imagem'];
     $situacao = $row['situacao'];
+    $ranking = $row['ranking'];
     $territorio = buscaTerritorio($codigo);
+    $qtdRanking = qtdRanking($raridade);
 
       echo '<div class="col-md-3">';
       echo '<div class="card mt-3">';
@@ -116,6 +160,7 @@ if ($resultado->num_rows > 0) {
       elseif($raridade == 'Lendario'){
         echo "<h6>$raridade " . '<img src="../Images/Ganolia/Icons/Lendario.png" width="20" height="20">' . "</h6>";
       }
+      echo "<h6>Ranking: $ranking / $qtdRanking";
       echo "<h6>Dados: $dados</h6>";
       echo "<h6>Damage: $damage</h6>";
       echo "<h6>Habilidade: $habilidade</h6>";
@@ -140,6 +185,7 @@ if ($resultado->num_rows > 0) {
       data-taxahabilidade = '$taxa_habilidade'
       data-valor = '$valor'
       data-forjar = '$forjar'
+      data-ranking = '$ranking'
       data-situacaoMercado = '$situacao_mercado'
       data-situacao = '$situacao'
       data-imagem = '$imagem'>"
@@ -202,6 +248,9 @@ echo "Nenhum registro encontrado.";
 
                         <label class="form-label">Forjar</label>
                         <input type="text" class="form-control" id="forjar" name="forjar">
+
+                        <label class="form-label">Ranking</label>
+                        <input type="text" class="form-control" id="ranking" name="ranking">
                         
                         <label class="form-label">Situacao</label>
                         <select class="form-select" id="situacao" name="situacao">
@@ -257,6 +306,9 @@ echo "Nenhum registro encontrado.";
 
                 var forjar = this.getAttribute('data-forjar');
                 document.getElementById('forjar').value = forjar;
+
+                var ranking = this.getAttribute('data-ranking');
+                document.getElementById('ranking').value = ranking;
 
                 var situacao = this.getAttribute('data-situacao');
                 document.getElementById('situacao').value = situacao;
