@@ -14,7 +14,7 @@ require_once('../config.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/ganolia.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <title>MecanismoG</title>
+    <title>Ganolia</title>
 
 </head>
 <body>
@@ -25,9 +25,9 @@ require_once('../config.php');
   <a href="./guia.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">MANUAL</a>
   <a href="./guia_territorio.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">TERRITORIOS</a>
   <a href="./guia_item.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">ITENS</a>
-  <a href="./guia_personagem.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">PERSONAGEM</a>
+  <a href="./guia_personagem2.php" class="w3-bar-item w3-button w3-padding-large custom-square" style="text-decoration: none;">PERSONAGEM</a>
   <?php if (isset($_SESSION['permissao']) && $_SESSION['permissao'] == 'Admin') { ?>
-    <a href="./adm.php" class="w3-bar-item w3-button w3-hover-yellow w3-padding-large custom-square" style="text-decoration: none;">ADMINISTRACAO</a>
+    <a href="./adm_index.php" class="w3-bar-item w3-button w3-hover-yellow w3-padding-large custom-square" style="text-decoration: none;">ADMINISTRACAO</a>
     <?php } ?>
 </div>
 
