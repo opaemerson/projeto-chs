@@ -23,13 +23,16 @@ header('Access-Control-Allow-Origin: *');
 
         a {
             display: block;
-            margin: 10px 0;
-            padding: 10px;
+            margin: 10px auto;
+            padding: 7px;
             background-color: #4169e1; /* Azul royal */
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
             font-size: 24px;
+            width: 320px;
+            text-align: center;
+            border: 2px solid #000;
         }
 
         a:hover {
@@ -56,8 +59,8 @@ if (isset($_SESSION['nome'])) {
     echo '<label class="form-label"><h2>' . 'Seu personagem atual é: <b>' .  $personagemAtual . '</b></h2></label>';
 }
 ?>
-    <a href="page_criar_personagem.php">Criar Personagem</a>
-    <a href="page_select_personagem.php">Selecionar Personagem</a>
-    <a href="index_mecanismo.php" style="background-color: #dc143c;">Voltar</a> <!-- Botão Vermelho -->
+    <a href="page_criar_personagem.php">CRIAR PERSONAGEM</a>
+    <a href="page_select_personagem.php">SELECIONAR PERSONAGEM</a>
+    <a href="index_mecanismo.php" style="background-color: #dc143c;">VOLTAR</a> <!-- Botão Vermelho -->
 </body>
 </html>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/rpg.css">
     <style>
     body {
-    background-image: url('../Images/bg.png'); /* Caminho correto para a imagem */
+    background-image: url('../Images/Ganolia/bg.png'); /* Caminho correto para a imagem */
     background-size: cover;
     background-repeat: no-repeat;
     }
@@ -16,7 +16,7 @@
 </head>
 <body>
 <div>
-  <img src="../Images/TESTING.jpg" alt="" style="width: 150mm; padding: 10mm;">
+  <img src="../Images/Ganolia/TESTING.jpg" alt="" style="width: 150mm; padding: 10mm;">
 </div>
 
 <div class="two-columns">
