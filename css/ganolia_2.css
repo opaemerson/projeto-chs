@@ -1,0 +1,36 @@
+body {
+    background-color: #f0dbb5; /* Amarelo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+h3 {
+    color: #000080; /* Azul escuro */
+}
+
+.custom-form {
+    max-width: 400px;
+    width: 100%;
+}
+
+.btn-dark {
+    background-color: #4169e1; /* Azul royal */
+    color: #fff;
+}
+
+.btn-dark:hover {
+    background-color: #000080; /* Azul escuro */
+}
+
+.btn-danger {
+    background-color: #dc143c; /* Vermelho escuro */
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #8b0000; /* Vermelho mais escuro */
+}

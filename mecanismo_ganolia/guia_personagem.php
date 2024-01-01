@@ -29,12 +29,12 @@ header('Access-Control-Allow-Origin: *');
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
+            font-size: 24px;
         }
 
         a:hover {
             background-color: #000080; /* Azul escuro */
         }
-        
     </style>
 </head>
 <body>

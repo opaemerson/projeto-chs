@@ -20,17 +20,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($resultado === FALSE){
             echo "<script>alert('Nao existe nenhum historico');</script>";
-            echo "<script>window.location.href = 'adm.php';</script>";
+            echo "<script>window.location.href = 'adm_index.php';</script>";
         } 
         else{
             $excluir = "DELETE FROM ganolia_historico WHERE evento <> 'Registrado'";
             $resultadoExcluir = $conn->query($excluir);
             if($resultadoExcluir === FALSE){
                 echo "<script>alert('Falha ao excluir historico');</script>";
-                echo "<script>window.location.href = 'adm.php';</script>";
+                echo "<script>window.location.href = 'adm_index.php';</script>";
             } else{
                 echo "<script>alert('Historico limpado!');</script>";
-                echo "<script>window.location.href = 'adm.php';</script>";
+                echo "<script>window.location.href = 'adm_index.php';</script>";
             }
         }
     }

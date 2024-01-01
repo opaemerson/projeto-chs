@@ -45,14 +45,12 @@ $resultadoProcurar = $conn->query($procurarAtaque);
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Oswald:wght@300&family=Playfair+Display:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <script>
-
     function limpar() {
         var randomValue = new Date().getTime();
         var currentUrl = window.location.href;
         var newUrl = currentUrl + "?random=" + randomValue;
         window.location.href = newUrl;
   }
-
   </script>
 
 </head>
@@ -118,7 +116,7 @@ $resultadoProcurar = $conn->query($procurarAtaque);
     ?>
   </select>
   <br><br>
-  <button type="submit" name="filtrar">Filtrar</button>
+  <button type="submit" class="btn btn-dark"name="filtrar">Filtrar</button>
 </form>
 
 
@@ -149,7 +147,7 @@ while ($row = $resultadoProcurar->fetch_assoc()) {
     echo "<p class='card-text'>ID: $id </p>";
     echo "<p class='card-text'>Raridade: $raridade</p>";
     echo "<p class='card-text'>Dano possivel: " . (isset($damageVisual) ? $damageVisual : '-') . "</p>";
-    echo "<img src='$imagem' class='img-enviado' width='30' height='30' alt='Imagem do item'>";
+    echo "<img src='$imagem' width='240' height='300'>";
     echo '</div>';
     echo '</div>';
   }

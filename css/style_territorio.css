@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+section {
+    padding: 25px 5%;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+
+section h2{
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+section p{
+    font-size: 20px;
+    text-align: left;
+}

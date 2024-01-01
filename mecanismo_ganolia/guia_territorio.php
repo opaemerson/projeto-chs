@@ -1,6 +1,34 @@
 <?php
 require_once('../config.php');
+
+$procurarAtaque = "SELECT * FROM ganolia_criatura gc";
+$condicoes = "";
+
+if (isset($_POST['pesquisar'])) {
+    $palavra = $_POST['palavra'];
+    $condicoes .= "AND (gc.nome LIKE '%$palavra%' OR gc.id LIKE '%$palavra%')";
+}
+
+if (isset($_POST['filtrar'])) {
+  $territorioSelecionada = isset($_POST['territorio']) ? $_POST['territorio'] : '';
+  $raridadeSelecionada = isset($_POST['raridade']) ? $_POST['raridade'] : '';
+  if (!empty($territorioSelecionada)) {
+      $condicoes .= "AND gc.territorio = '$territorioSelecionada'";
+  }
+  if (!empty($raridadeSelecionada)) {
+    $condicoes .= "AND gc.raridade = '$raridadeSelecionada'";
+  }
+}
+
+$condicoes = ltrim($condicoes, "AND");
+
+if (!empty($condicoes)) {
+  $procurarAtaque .= " WHERE" . $condicoes;
+}
+
+$resultadoProcurar = $conn->query($procurarAtaque);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,34 +41,14 @@ require_once('../config.php');
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Oswald:wght@300&family=Playfair+Display:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-}
-
-section {
-    padding: 25px 5%;
-    border-bottom: 1px solid #ccc;
-    text-align: left;
-}
-
-
-section h2{
-    font-size: 1em;
-    margin-bottom: 10px;
-}
-
-section p{
-    font-size: 20px;
-    text-align: left;
-}
-</style>
+  <script>
+    function limpar() {
+        var randomValue = new Date().getTime();
+        var currentUrl = window.location.href;
+        var newUrl = currentUrl + "?random=" + randomValue;
+        window.location.href = newUrl;
+  }
+  </script>
 </head>
 
 <body>
@@ -67,70 +75,108 @@ section p{
 
 
 <div class="container mt-4">
-<h3>Criaturas por território</h3>
-  <?php
-  $buscarCriaturas = "SELECT c.id AS criatura_id, 
-                      c.nome as criatura_nome,
-                      c.recompensa_id,
-                      c.territorio as criatura_territorio,
-                      c.probabilidade,
-                      c.imagem
-                      FROM ganolia_criatura c
-                      order by c.territorio";
+<h3>Procure por Criatura</h3>
 
-  $resultado = $conn->query($buscarCriaturas);
+<form method="POST">
+  <input type="text" style="width: 220px;" name="palavra" id="palavra" placeholder="Digite o ID ou NOME da Criatura">
+  <button type="submit" name="pesquisar">Pesquisar</button>
+</form>
 
-  if ($resultado) {
-    if ($resultado->num_rows > 0) {
-        while ($row = $resultado->fetch_assoc()) {
-            $criatura_territorio = $row['criatura_territorio'];
-            $criatura_nome = $row['criatura_nome'];
-            $criatura_id = $row['criatura_id'];
-            $recompensa_id = $row['recompensa_id'];
-            $probabilidade = $row['probabilidade'];
-            $imagem = $row['imagem'];
+<br>
+<form method="POST">
+  <select name="territorio" id="territorio">
+    <option value="">Selecione um territorio</option>
+    <?php
+    $selectOpcoes = "SELECT DISTINCT gc.territorio FROM ganolia_criatura gc";
+    $resultadoOpcoes = $conn->query($selectOpcoes);
+    if ($resultadoOpcoes) {
+        while ($rowOp = $resultadoOpcoes->fetch_assoc()) {
+            $territorio = $rowOp['territorio'];
+            echo "<option value='$territorio'>$territorio</option>";
+        }
+        $resultadoOpcoes->close();
+    } else {
+        echo "Erro na consulta sql";
+    }
+    ?>
+  </select>
+  <br><br>
+  <select name="raridade" id="raridade">
+    <option value="">Selecione um nivel</option>
+    <?php
+    $selectOpcoes = "SELECT DISTINCT gc.raridade FROM ganolia_criatura gc";
+    $resultadoOpcoes = $conn->query($selectOpcoes);
+    if ($resultadoOpcoes) {
+        while ($rowOp = $resultadoOpcoes->fetch_assoc()) {
+            $raridade = $rowOp['raridade'];
+            echo "<option value='$raridade'>$raridade</option>";
+        }
+        $resultadoOpcoes->close();
+    } else {
+        echo "Erro na consulta sql";
+    }
+    ?>
+  </select>
+  <br><br>
+  <button type="submit" class="btn btn-dark"name="filtrar">Filtrar</button>
+</form>
 
-            $quebrandoRecompensa = explode(";", $recompensa_id);
-            $quebrandoProbabilidade = explode(";", $probabilidade);
-            
-            $guardarNome = array();
-            foreach ($quebrandoRecompensa as $key => $recompensa) {
-                $buscarNomeRecompensa = "SELECT gi.nome, gi.tipo FROM ganolia_item gi WHERE gi.id = $recompensa";
-                $resultadoNomeRecompensa = $conn->query($buscarNomeRecompensa);
-            
-                if ($resultadoNomeRecompensa) {
-                    if ($resultadoNomeRecompensa->num_rows > 0) {
-                        while ($rowNomeRecompensa = $resultadoNomeRecompensa->fetch_assoc()) {
-                            $nomeRecompensa = $rowNomeRecompensa['nome'];
-                            $porcentagem = $quebrandoProbabilidade[$key];
-            
-                            $guardarNome[] = "<b>" . $nomeRecompensa . "</b>[" . $porcentagem . "%] ";
-                        }
-                    } else {
-                        echo "Nao encontrou nome do item";
+<br>
+<form action="POST">
+<button type="button" onclick="limpar()">Limpar</button>
+</form>
+
+<?php
+if (isset($_POST['pesquisar']) || isset($_POST['filtrar'])) {
+while ($row = $resultadoProcurar->fetch_assoc()) {
+    $id = $row['id'];
+    $nome = $row['nome'];
+    $territorio = $row['territorio'];
+    $raridade = $row['raridade'];
+    $recompensa_id = $row['recompensa_id'];
+    $probabilidade = $row['probabilidade'];
+    $imagem = $row['imagem'];
+
+    if(!empty($recompensa_id)){
+        $quebrandoRecompensa = explode(";", $recompensa_id);
+        $quebrandoProbabilidade = explode(";", $probabilidade);
+        
+        $guardarNome = array();
+        foreach ($quebrandoRecompensa as $key => $recompensa) {
+            $buscarNomeRecompensa = "SELECT gi.nome, gi.tipo FROM ganolia_item gi WHERE gi.id = $recompensa";
+            $resultadoNomeRecompensa = $conn->query($buscarNomeRecompensa);
+    
+            if ($resultadoNomeRecompensa == TRUE) {
+                if ($resultadoNomeRecompensa->num_rows > 0) {
+                    while ($rowNomeRecompensa = $resultadoNomeRecompensa->fetch_assoc()) {
+                        $nomeRecompensa = $rowNomeRecompensa['nome'];
+                        $porcentagem = $quebrandoProbabilidade[$key];
+        
+                        $guardarNome[] = "<b>" . $nomeRecompensa . "</b>[" . $porcentagem . "%] ";
                     }
+                } else {
+                    echo "Nao encontrou nome do item";
                 }
             }
-            $nomesRecompensa = implode(", ", $guardarNome);
-            echo '<div class="card mt-3">';
-            echo '<div class="card-body">';
-            echo "<h5 class='card-title'>$criatura_territorio</h5>";
-            echo "<h6 class='card-subtitle mb-2 text-muted'>Criatura Nome: $criatura_nome</h6>";
-            echo '<img src="' . $imagem . '"  height="200" width="180">';
-            echo "<p class='card-text'>Possiveis Recompensa: $nomesRecompensa</p>";
-            echo '</div>';
-            echo '</div>';
         }
-    } else {
-        echo "Nenhum registro encontrado.";
+    
+        $nomesRecompensa = implode(", ", $guardarNome);
+    } else{
+        $nomesRecompensa = 'Vazio';
     }
-} else {
-    echo "Erro na consulta SQL: " . $conn->error;
+
+    echo '<div class="card mt-3">';
+    echo '<div class="card-body">';
+    echo "<h5 class='card-title'><b>$nome</b></h5>";
+    echo "<p class='card-text'><b>Territorio:</b> $territorio</p>";
+    echo "<p class='card-text'><b>Nivel:</b> $raridade</p>";
+    echo "<img src='$imagem' width='300' height='300'>";
+    echo "<p class='card-text'>Possiveis Recompensa: $nomesRecompensa</p>";
+    echo '</div>';
+    echo '</div>';
+    }
 }
-  ?>
-  </div>
-
-
+?>
 </div>
 </body>
 

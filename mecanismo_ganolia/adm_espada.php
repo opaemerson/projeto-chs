@@ -85,7 +85,7 @@ function qtdRanking($raridade){
 
 <body>
 <div class="container mt-4">
-<a href="adm.php">Voltar</a>
+<a href="adm_index.php">Voltar</a>
 
 <?php
   $contando = "SELECT count(0) as contador
