@@ -56,7 +56,7 @@ $resultadoProcurar = $conn->query($procurarAtaque);
 </head>
 <body>
 <div class="container mt-5">
-<h3>Procure por algo</h3>
+<h3>Procure por item</h3>
 
 <form method="POST">
   <input type="text" style="width: 220px;" name="palavra" id="palavra" placeholder="Digite o ID ou NOME do Item">

@@ -52,27 +52,6 @@ $resultadoProcurar = $conn->query($procurarAtaque);
 </head>
 
 <body>
-<a href="./index_mecanismo.php" type="button" class="btn btn-danger">Voltar</a>
-<section>
-<h4>Territorios Ativos</h4>
-<p><b>Pantano Flutuante</b>: Local de drop itens diversas</p>
-<p><b>Floresta Oculta</b>: Local de drop itens diversas, alguns itens de plantas</p>
-<p><b>Skulles</b>: Local de drop itens diversas, alguns itens de osso</p>
-<p><b>Vale da Lua</b>: Local de drop itens diversas, alguns itens brancos</p>
-<p><b>Pedras de Fogo</b>: Local de drop itens diversas, itens vermelhos, fogo</p>
-<p><b>Iceborg</b>: Local de drop itens de gelo.</p>
-<p><b>Draconia</b>: Local de drop itens de dragoes</p>
-<p><b>Koppala</b>: Local de drop itens fortes</p>
-</section>
-
-<section>
-<h4>Territorios Inativos</h4>
-<p><b>Deserto de Xantras</b>: Local de drop itens diversas, alguns itens egipicios</p>
-<p><b>Prisma</b>: Local de drop itens diferentes</p>
-<p><b>Orkland</b>: Local de drop itens diversas.</p>
-<p><b>Obscuria</b>: Local de drop itens tipo obsidiana</p>
-</section>
-
 
 <div class="container mt-4">
 <h3>Procure por Criatura</h3>
@@ -126,6 +105,9 @@ $resultadoProcurar = $conn->query($procurarAtaque);
 <button type="button" onclick="limpar()">Limpar</button>
 </form>
 
+<br>
+<a href="./index_mecanismo.php" type="button" class="btn btn-danger">Voltar</a>
+
 <?php
 if (isset($_POST['pesquisar']) || isset($_POST['filtrar'])) {
 while ($row = $resultadoProcurar->fetch_assoc()) {
@@ -178,6 +160,7 @@ while ($row = $resultadoProcurar->fetch_assoc()) {
 }
 ?>
 </div>
+
 </body>
 
 </html>
