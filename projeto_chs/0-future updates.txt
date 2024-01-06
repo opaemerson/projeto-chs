@@ -7,3 +7,5 @@
 > [] Incluir a opcao data retorno no cadastro atraves de uma checkbox que abre para inserir na mao caso contrario seja automatico
 > [] Criptografar senha dos usuarios.
 > [] Adicionar no campo Editar o Equipamento
+[] Arrumar upload pois a pasta mudou de caminho
+[] Arrumar scripts pois a pasta mudou de caminho
