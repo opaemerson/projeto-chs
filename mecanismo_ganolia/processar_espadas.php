@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $situacaoMercado = $_POST['situacaoMercado'];
     $valor = $_POST['valor'];
     $forjar = $_POST['forjar'];
+    $especial = $_POST['especial'];
     $ranking = $_POST['ranking'];
     $situacao = $_POST['situacao'];
     $imagem = $_POST['imagem'];
@@ -41,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         situacao_mercado = '$situacaoMercado',
         valor = '$valor',
         descricao = '$forjar',
+        especial = '$especial',
         ranking = '$ranking',
         situacao = '$situacao',
         imagem = '$imagem'

@@ -136,6 +136,7 @@ if ($resultado->num_rows > 0) {
     $imagem = $row['imagem'];
     $situacao = $row['situacao'];
     $ranking = $row['ranking'];
+    $especial = $row['especial'];
     $territorio = buscaTerritorio($codigo);
     $qtdRanking = qtdRanking($raridade);
 
@@ -161,6 +162,10 @@ if ($resultado->num_rows > 0) {
       echo "<h6>Ranking: $ranking / $qtdRanking";
       echo "<h6>Dados: $dados</h6>";
       echo "<h6>Damage: $damage</h6>";
+
+      if ($especial == 'A'){
+        echo "<h6><b>[ITEM ESPECIAL]</b></h6>";
+      }
 
       if($habilidade !==  ''){
         echo "<h6>Habilidade: $habilidade</h6>";
@@ -193,6 +198,7 @@ if ($resultado->num_rows > 0) {
       data-valor = '$valor'
       data-forjar = '$forjar'
       data-ranking = '$ranking'
+      data-especial = '$especial'
       data-situacaoMercado = '$situacao_mercado'
       data-situacao = '$situacao'
       data-imagem = '$imagem'>"
@@ -256,6 +262,12 @@ echo "Nenhum registro encontrado.";
                         <label class="form-label">Forjar</label>
                         <input type="text" class="form-control" id="forjar" name="forjar">
 
+                        <label class="form-label">Item Especial</label>
+                        <select class="form-select" id="especial" name="especial">
+                            <option value="A">Ativo</option>
+                            <option value="I">Inativo</option>
+                        </select>
+
                         <label class="form-label">Ranking</label>
                         <input type="text" class="form-control" id="ranking" name="ranking">
                         
@@ -313,6 +325,9 @@ echo "Nenhum registro encontrado.";
 
                 var forjar = this.getAttribute('data-forjar');
                 document.getElementById('forjar').value = forjar;
+
+                var especial = this.getAttribute('data-especial');
+                document.getElementById('especial').value = especial;
 
                 var ranking = this.getAttribute('data-ranking');
                 document.getElementById('ranking').value = ranking;
