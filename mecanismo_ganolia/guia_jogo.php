@@ -1,6 +1,9 @@
 <?php
 include('../protecao.php');
 require_once('../config.php');
+
+$usuarioId = $_SESSION['id'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -137,6 +140,58 @@ require_once('../config.php');
         }
     }
     ?>
+</div>
+
+<div class="mochila" id="mochila">
+    <button onclick="openModalMochila()">
+        <img class="iconMochila" src='../Images/Ganolia/Icons/mochila.jpg'>
+    </button>
+</div>
+
+<div class="modal" id="modalMochila">
+    <div class="modal-content">
+        <span class="close" onclick="closeModalMochila()">&times;</span>
+
+        <?php
+        $buscaItem = "SELECT gp.mochila as mochila
+            FROM ganolia_personagem gp
+            INNER JOIN usuarios u ON u.personagem_ganolia = gp.id
+            WHERE u.id = $usuarioId";
+
+        $buscaQuery = $conn->query($buscaItem);
+
+        if ($buscaQuery === FALSE) {
+            echo "<script>alert('Erro ao buscar dados');</script>";
+            echo "<script>window.location.href = 'index_mecanismo.php';</script>";
+        } else {
+            $linha = $buscaQuery->fetch_assoc();
+            $arrayItens = explode(';', $linha['mochila']);
+            echo "<div style='display: flex;'>";
+            foreach ($arrayItens as $key) {
+                $encontraImagem = "SELECT gi.imagem as imagem
+                FROM ganolia_item gi
+                WHERE gi.id = $key";
+
+                $cnBanco = $conn->query($encontraImagem);
+
+                if ($cnBanco === FALSE) {
+                    echo "<script>alert('Erro ao buscar dados');</script>";
+                    echo "<script>window.location.href = 'index_mecanismo.php';</script>";
+                } else {
+                    $img = $cnBanco->fetch_assoc();
+                    $linhaImg = $img['imagem'];
+
+                    if (!empty($linhaImg)) {
+                        echo "<div class='image-container'><img class='resized-image' src='$linhaImg'></div>";
+                    } else {
+                        echo "<div class='image-container'><span class='not-found'>Imagem não encontrada</span></div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+        ?>
+    </div>
 </div>
 
 

@@ -61,6 +61,16 @@ function sair(){
   window.location.href = 'index_mecanismo.php'
 }
 
+function openModalMochila() {
+  var modal = document.getElementById("modalMochila");
+  modal.style.display = "block";
+}
+
+function closeModalMochila() {
+  var modal = document.getElementById("modalMochila");
+  modal.style.display = "none";
+}
+
 function buscarItemAtaque() {
     const codigoItemAtaque = $('#codigoItemAtaque').val();
   

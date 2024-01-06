@@ -34,4 +34,4 @@ require_once('../config.php');
 <?php } ?>
 
 <br>
-<a href="../index.php" style="background-color: #dc143c;">SAIR</a> <!-- Botão Vermelho -->
+<a href="../index.php" style="background-color: #dc143c;">SAIR</a>

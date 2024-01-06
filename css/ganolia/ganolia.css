@@ -27,6 +27,10 @@ button:hover {
     background-color: #54575f;
 }
 
+button[sair]:hover {
+    background-color: red;
+}
+
 .centralizando{
     display: flex;
     justify-content: center;
@@ -36,7 +40,7 @@ button:hover {
 
 .linha-fina {
     width: 100%; /* Ajusta a largura da linha conforme necessário */
-    border-bottom: 1px solid #ccc; /* Adiciona a linha fina */
+    border-bottom: 1px solid #ccc;
     margin-top: 10px;
 }
 
@@ -49,18 +53,75 @@ button:hover {
     width: 50%;
 }
 
+.mochila {
+    padding: 10px;
+    float: right;
+    width: 10%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.iconMochila{
+    padding: 10px;
+    float: right;
+    width: 15%; /* Alterado para 100% */
+    height: 200px; /* Altura definida como 190 pixels */
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 40px;
+}
+
+.image-container {
+    margin: 5px;
+    text-align: center;
+}
+
+.resized-image {
+    width: 100px; /* Ajuste o tamanho conforme necessário */
+    height: auto; /* Isso garante que a proporção seja mantida */
+}
+
+.not-found {
+    color: red;
+    text-align: center;
+}
+
 hr {
     border: none;
     height: 2px;
     background-color: #333;
     background-image: linear-gradient(to right, #ccc, #333, #ccc);
     margin: 20px 0;
-}
-
-
-
-button[sair]:hover {
-    background-color: red;
 }
 
 .red-background {
@@ -71,28 +132,6 @@ padding: 5px;
 }
 
 body {font-family: "Lato", sans-serif}
-.mySlides {display: none}
-
-.floating-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.floating-button:hover {
-    background-color: #218838; 
-}
-
-.secao {
-    margin-bottom: 20px;
-    overflow: hidden; /* Limpa o float */
-}
 
 .quadro {
     float: left;
