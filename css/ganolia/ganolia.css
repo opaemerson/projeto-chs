@@ -1,10 +1,43 @@
-button {
+.button {
+    display: inline-block;
     padding: 10px 20px;
-    background-color: #191970;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
+    margin: 5px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
     cursor: pointer;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+#ataqueButton.ativo {
+    background-color: #54575f;
+}
+
+#defesaButton.ativo {
+    background-color: #54575f;
+}
+
+#recolherButton.ativo {
+    background-color: #54575f;
+}
+
+button:hover {
+    background-color: #54575f;
+}
+
+.centralizando{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+.linha-fina {
+    width: 100%; /* Ajusta a largura da linha conforme necessário */
+    border-bottom: 1px solid #ccc; /* Adiciona a linha fina */
+    margin-top: 10px;
 }
 
 .scrolling-container {
@@ -12,6 +45,8 @@ button {
     overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando o conteúdo ultrapassa a altura máxima */
     border: 1px solid #ccc; /* Adiciona uma borda para melhor visualização */
     padding: 10px; /* Adiciona algum espaço interno para o conteúdo não encostar nas bordas */
+    float: right;
+    width: 50%;
 }
 
 hr {
@@ -22,8 +57,10 @@ hr {
     margin: 20px 0;
 }
 
-button:hover {
-    background-color: #4169E1;
+
+
+button[sair]:hover {
+    background-color: red;
 }
 
 .red-background {

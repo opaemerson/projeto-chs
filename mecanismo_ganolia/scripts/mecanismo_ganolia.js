@@ -6,6 +6,61 @@ $(document).ready(function () {
     scrollingContainer.scrollTop = scrollingContainer.scrollHeight;
 });
 
+function mostrarAtaque(){
+  var divAtaque = document.getElementById('ataque');
+  var divDefesa = document.getElementById('defesa');
+  var divRecolher = document.getElementById('recolher');
+  divAtaque.style.display = 'block';
+  divDefesa.style.display = 'none';
+  divRecolher.style.display = 'none';
+
+  var divAtaqueButton = document.getElementById('ataqueButton');
+  var divDefesaButton = document.getElementById('defesaButton');
+  var divRecolherButton = document.getElementById('recolherButton');
+  
+  divAtaqueButton.classList.add('ativo');
+  divDefesaButton.classList.remove('ativo');
+  divRecolherButton.classList.remove('ativo');
+}
+
+function mostrarDefesa(){
+  var divAtaque = document.getElementById('ataque');
+  var divDefesa = document.getElementById('defesa');
+  var divRecolher = document.getElementById('recolher');
+  divAtaque.style.display = 'none';
+  divDefesa.style.display = 'block';
+  divRecolher.style.display = 'none';
+
+  var divAtaqueButton = document.getElementById('ataqueButton');
+  var divDefesaButton = document.getElementById('defesaButton');
+  var divRecolherButton = document.getElementById('recolherButton');
+
+  divAtaqueButton.classList.remove('ativo');
+  divDefesaButton.classList.add('ativo');
+  divRecolherButton.classList.remove('ativo');
+}
+
+function mostrarRecolher(){
+  var divAtaque = document.getElementById('ataque');
+  var divDefesa = document.getElementById('defesa');
+  var divRecolher = document.getElementById('recolher');
+  divAtaque.style.display = 'none';
+  divDefesa.style.display = 'none';
+  divRecolher.style.display = 'block';
+
+  var divAtaqueButton = document.getElementById('ataqueButton');
+  var divDefesaButton = document.getElementById('defesaButton');
+  var divRecolherButton = document.getElementById('recolherButton');
+
+  divAtaqueButton.classList.remove('ativo');
+  divDefesaButton.classList.remove('ativo');
+  divRecolherButton.classList.add('ativo');
+}
+
+function sair(){
+  window.location.href = 'index_mecanismo.php'
+}
+
 function buscarItemAtaque() {
     const codigoItemAtaque = $('#codigoItemAtaque').val();
   

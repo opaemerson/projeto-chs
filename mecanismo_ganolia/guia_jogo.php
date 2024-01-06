@@ -9,18 +9,27 @@ require_once('../config.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/ganolia.css">
+    <link rel="stylesheet" href="../css/ganolia/ganolia.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Ganolia</title>
 
 </head>
 <body>
+<div class="centralizando">
+    <button class="button">Jogar</button>
+    <button class="button" id="ataqueButton" onclick="mostrarAtaque()">Ataque</button>
+    <button class="button" id="defesaButton" onclick="mostrarDefesa()">Defesa</button>
+    <button class="button" id="recolherButton" onclick="mostrarRecolher()">Recolher</button>
+    <button class="button" onclick="limpar()">Limpar</button>
+    <button class="button" sair onclick="sair()">Sair</button>
+</div>
+<div class="linha-fina"></div>
 
 <div class="sessao">
     <div class="quadro">
+        <div id="ataque" style="display: none;">
     <h2>Atacando</h2>
     <form action="processar_ataque.php" method="post">
     <label for="">Selecione o ID do Item Ofensivo:</label>
@@ -39,11 +48,15 @@ require_once('../config.php');
     <div id="resultadoAtaque"></div>
     </form>
     <br><br>
+    </div>
     
+    <div id="defesa" style="display: none;">
     <h2>Defendendo</h2>
     <form action="processar_ataque.php" method="post">
     <label for="">Desenvolvendo[...]</label>
+    </div>
 
+    <div id="recolher" style="display: none;">
     <h2>Recolhendo Drop</h2>
     <form action="">
     <label for="">Selecione o ID da Criatura:</label>
@@ -92,6 +105,7 @@ require_once('../config.php');
     </div>
     <br><br></form>
 
+
     <form action="">
     <input type="hidden" id="idCriatura">
     <button type="button" onclick="buscaDrop()" style="background-color: #B22222; color: white;">Recolher</button>
@@ -99,12 +113,11 @@ require_once('../config.php');
     <img id="imagemDrop" src="" class="img-enviado" width="180" height="220" style="display: none;">
     <div id="resultadoDrop"></div>
     </form>
-    <br><br>
-    <button type="button" onclick="limpar()">Limpar</button>
-    <br><br>
-    <a href="index_mecanismo.php" class ="btn btn-danger">SAIR</a>
-    </div>
 </div>
+</div>
+</div>
+
+<!-- DIV de LOG -->
 <div class="scrolling-container" id="scrollingContainer">
     <?php
     $sql = "SELECT gh.evento, gp.nome , gp.classe , gp.sessao, gh.horario, gh.item_usado
@@ -126,8 +139,8 @@ require_once('../config.php');
     ?>
 </div>
 
+
 <script src="./scripts/mecanismo_ganolia.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </body>
 </html>
