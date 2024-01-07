@@ -3,7 +3,7 @@
 
 *-- SPRINT 01 --*
 [X] Guia biblioteca que irá conter todos os itens especiais, nela você terá sua coleção destes itens.
-[] Guia Jogo > criar Mochila que irá conter todos os itens que você tem atualmente.
+[X] Guia Jogo > criar Mochila que irá conter todos os itens que você tem atualmente.
 [] Guia Jogo > Adicionar "jogar" que irá fazer um random dos itens que você possui no campo mochila do personagem.
 [] Guia Jogo > campo "ataque" adicionar condições de acordo com sua mochila.
 [] Guia Jogo > botão no inferior de "Shop" com icon de mercado.

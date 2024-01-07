@@ -142,12 +142,14 @@ $usuarioId = $_SESSION['id'];
     ?>
 </div>
 
+
 <div class="mochila" id="mochila">
     <button onclick="openModalMochila()">
         <img class="iconMochila" src='../Images/Ganolia/Icons/mochila.jpg'>
     </button>
 </div>
 
+<!-- Modal da Mochila -->
 <div class="modal" id="modalMochila">
     <div class="modal-content">
         <span class="close" onclick="closeModalMochila()">&times;</span>
@@ -166,7 +168,7 @@ $usuarioId = $_SESSION['id'];
         } else {
             $linha = $buscaQuery->fetch_assoc();
             $arrayItens = explode(';', $linha['mochila']);
-            echo "<div style='display: flex;'>";
+            echo "<div class='flex-container'>";
             foreach ($arrayItens as $key) {
                 $encontraImagem = "SELECT gi.imagem as imagem
                 FROM ganolia_item gi

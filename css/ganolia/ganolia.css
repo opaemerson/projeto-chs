@@ -54,9 +54,10 @@ button[sair]:hover {
 }
 
 .mochila {
+    flex: 1;
     padding: 10px;
     float: right;
-    width: 10%;
+    width: 15%;
     position: fixed;
     bottom: 0;
     right: 0;
@@ -96,9 +97,19 @@ button[sair]:hover {
 .close {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 40px;
     cursor: pointer;
-    font-size: 40px;
+    font-size: 60px;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-height: 400px; /* Defina a altura máxima desejada para a barra de rolagem */
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando o conteúdo ultrapassa a altura máxima */
+    border: 1px solid #ccc; /* Adiciona uma borda para melhor visualização */
+    padding: 10px;
 }
 
 .image-container {
