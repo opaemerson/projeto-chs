@@ -72,7 +72,7 @@ $usuarioId = $_SESSION['id'];
     <div class="row">
         <div class="col-md-3">
             <div class="card mt-3" id="mt1" style="border: none;">
-                <img id="imagemCriatura1" src="" class="img-enviado card-img-top" width="150" height="220" style="display: none;">
+                <img id="imagemCriatura1" src="" class="img-enviado card-img-top" width="80" height="150" style="display: none;">
                 <div class="card-body">
                     <div id="nomeDrop1" style="display: none;"></div>
                     <div id="nomeRaridade1" style="display: none;"></div>
@@ -81,7 +81,7 @@ $usuarioId = $_SESSION['id'];
         </div>
         <div class="col-md-3">
             <div class="card mt-3" id="mt2" style="border: none;">
-                <img id="imagemCriatura2" src="" class="img-enviado card-img-top" width="150" height="220" style="display: none;">
+                <img id="imagemCriatura2" src="" class="img-enviado card-img-top" width="80" height="150" style="display: none;">
                 <div class="card-body">
                     <div id="nomeDrop2" style="display: none;"></div>
                     <div id="nomeRaridade2" style="display: none;"></div>
@@ -90,7 +90,7 @@ $usuarioId = $_SESSION['id'];
         </div>
         <div class="col-md-3">
             <div class="card mt-3" id="mt3" style="border: none;">
-                <img id="imagemCriatura3" src="" class="img-enviado card-img-top" width="150" height="220" style="display: none;">
+                <img id="imagemCriatura3" src="" class="img-enviado card-img-top" width="80" height="150" style="display: none;">
                 <div class="card-body">
                     <div id="nomeDrop3" style="display: none;"></div>
                     <div id="nomeRaridade3" style="display: none;"></div>
@@ -99,7 +99,7 @@ $usuarioId = $_SESSION['id'];
         </div>
         <div class="col-md-3">
             <div class="card mt-3" id="mt4" style="border: none;">
-                <img id="imagemCriatura4" src="" class="img-enviado card-img-top" width="150" height="220" style="display: none;">
+                <img id="imagemCriatura4" src="" class="img-enviado card-img-top" width="80" height="150" style="display: none;">
                 <div class="card-body">
                     <div id="nomeDrop4" style="display: none;"></div>
                     <div id="nomeRaridade4" style="display: none;"></div>
@@ -130,11 +130,12 @@ $usuarioId = $_SESSION['id'];
     $resultado = $conn->query($sql);
     if($resultado){
         while ($row = $resultado->fetch_assoc()) {
+            $hora = date('H:i:s', strtotime($row['horario']));
             if ($row['item_usado'] !== ''){
-            echo '<div class="">' . '[' . $row['horario'] . ']: <b>' . $row['nome'] . '</b> - ' . $row['evento'] . '<br> [' . $row['horario'] . ']: ' . ' Item Usado: ' . $row['item_usado'] . '<hr>' . '</div>';
+            echo '<div class="">' . '[' . $hora . ']: <b>' . $row['nome'] . '</b> - ' . $row['evento'] . '<br> [' . $hora . ']: ' . ' Item Usado: ' . $row['item_usado'] . '<hr>' . '</div>';
             } 
             else{
-            echo '<div class="">' . '[' . $row['horario'] . ']: <b>' . $row['nome'] . '</b> - ' . $row['evento'] . '<br>' . '<hr>' . '</div>';
+            echo '<div class="">' . $row['nome'] . '</b> - ' . $row['evento'] . '<br>' . '<hr>' . '</div>';
             }
         }
     }
