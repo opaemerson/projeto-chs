@@ -21,7 +21,7 @@ $usuarioId = $_SESSION['id'];
 </head>
 <body>
 <div class="centralizando">
-    <button class="button">Jogar</button>
+    <button class="button" id="jogarButton" onclick="mostrarJogar()">Jogar</button>
     <button class="button" id="ataqueButton" onclick="mostrarAtaque()">Ataque</button>
     <button class="button" id="defesaButton" onclick="mostrarDefesa()">Defesa</button>
     <button class="button" id="recolherButton" onclick="mostrarRecolher()">Recolher</button>
@@ -32,36 +32,37 @@ $usuarioId = $_SESSION['id'];
 
 <div class="sessao">
     <div class="quadro">
-        <div id="ataque" style="display: none;">
+
+    <div id="jogar" style="display: none;">
+    <h2>PLAY!</h2>
+    <form action="">
+
+    </form>
+    </div>
+
+    <div id="ataque" style="display: none;">
     <h2>Atacando</h2>
-    <form action="processar_ataque.php" method="post">
     <label for="">Selecione o ID do Item Ofensivo:</label>
     <input type="text" style="width: 40px;" id="codigoItemAtaque">
     <button type="button" onclick="buscarItemAtaque()">Buscar</button>
     <br><br>
     <img id="imagemItemAtaque" src="" class="img-enviado" width="150" height="220" style="display: none;">
     <div id="resultadoConsulta"></div>
-    <br><br>
-    </form>
 
-    <form action="">
     <input type="hidden" id="codigoItemAtaque">
     <button type="button" style="background-color: #B22222; color: white;" onclick="atacar()">Atacar</button>
     <br><br>
     <div id="resultadoAtaque"></div>
-    </form>
     <br><br>
     </div>
     
     <div id="defesa" style="display: none;">
     <h2>Defendendo</h2>
-    <form action="processar_ataque.php" method="post">
     <label for="">Desenvolvendo[...]</label>
     </div>
 
     <div id="recolher" style="display: none;">
     <h2>Recolhendo Drop</h2>
-    <form action="">
     <label for="">Selecione o ID da Criatura:</label>
     <input type="text" style="width: 40px;" id="idCriatura">
     <button type="button" onclick="buscaCriatura()">Buscar</button>
@@ -70,7 +71,7 @@ $usuarioId = $_SESSION['id'];
     <div style="margin-bottom: 10px;"></div>
     <div class="row">
         <div class="col-md-3">
-            <div class="card mt-3">
+            <div class="card mt-3" id="mt1" style="border: none;">
                 <img id="imagemCriatura1" src="" class="img-enviado card-img-top" width="150" height="220" style="display: none;">
                 <div class="card-body">
                     <div id="nomeDrop1" style="display: none;"></div>
@@ -79,7 +80,7 @@ $usuarioId = $_SESSION['id'];
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card mt-3">
+            <div class="card mt-3" id="mt2" style="border: none;">
                 <img id="imagemCriatura2" src="" class="img-enviado card-img-top" width="150" height="220" style="display: none;">
                 <div class="card-body">
                     <div id="nomeDrop2" style="display: none;"></div>
@@ -88,7 +89,7 @@ $usuarioId = $_SESSION['id'];
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card mt-3">
+            <div class="card mt-3" id="mt3" style="border: none;">
                 <img id="imagemCriatura3" src="" class="img-enviado card-img-top" width="150" height="220" style="display: none;">
                 <div class="card-body">
                     <div id="nomeDrop3" style="display: none;"></div>
@@ -97,7 +98,7 @@ $usuarioId = $_SESSION['id'];
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card mt-3">
+            <div class="card mt-3" id="mt4" style="border: none;">
                 <img id="imagemCriatura4" src="" class="img-enviado card-img-top" width="150" height="220" style="display: none;">
                 <div class="card-body">
                     <div id="nomeDrop4" style="display: none;"></div>
@@ -106,16 +107,14 @@ $usuarioId = $_SESSION['id'];
             </div>
         </div>
     </div>
-    <br><br></form>
+    <br><br>
 
-
-    <form action="">
+<!-- Container que irá mostrar o botão RECOLHER + Imagem do resultado do drop -->
     <input type="hidden" id="idCriatura">
     <button type="button" onclick="buscaDrop()" style="background-color: #B22222; color: white;">Recolher</button>
     <br><br>
     <img id="imagemDrop" src="" class="img-enviado" width="180" height="220" style="display: none;">
     <div id="resultadoDrop"></div>
-    </form>
 </div>
 </div>
 </div>

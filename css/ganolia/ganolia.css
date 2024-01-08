@@ -11,6 +11,10 @@
     color: white;
 }
 
+#jogarButton.ativo {
+    background-color: #54575f;
+}
+
 #ataqueButton.ativo {
     background-color: #54575f;
 }
@@ -41,15 +45,21 @@ button[sair]:hover {
 .linha-fina {
     width: 100%; /* Ajusta a largura da linha conforme necessário */
     border-bottom: 1px solid #ccc;
-    margin-top: 10px;
+    margin-top: 5px;
+    border: 1px solid rgb(140, 140, 140);
+    margin-bottom: 2px; 
 }
 
 .scrolling-container {
     max-height: 400px; /* Defina a altura máxima desejada para a barra de rolagem */
     overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando o conteúdo ultrapassa a altura máxima */
-    border: 1px solid #ccc; /* Adiciona uma borda para melhor visualização */
+    border: 1px solid rgb(20, 20, 20); /* Adiciona uma borda para melhor visualização */
     padding: 10px; /* Adiciona algum espaço interno para o conteúdo não encostar nas bordas */
     float: right;
+    width: 50%;
+    position: relative;
+    right: -2px; /* Ajuste conforme necessário para a distância desejada da borda direita */
+    top: 10px; /* Ajuste conforme necessário para a distância desejada do topo */
     width: 50%;
 }
 

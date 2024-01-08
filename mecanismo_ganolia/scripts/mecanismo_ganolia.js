@@ -6,52 +6,85 @@ $(document).ready(function () {
     scrollingContainer.scrollTop = scrollingContainer.scrollHeight;
 });
 
-function mostrarAtaque(){
+function mostrarJogar(){
+  var divJogar = document.getElementById('jogar');
   var divAtaque = document.getElementById('ataque');
   var divDefesa = document.getElementById('defesa');
   var divRecolher = document.getElementById('recolher');
-  divAtaque.style.display = 'block';
+  divJogar.style.display = 'block';
+  divAtaque.style.display = 'none';
   divDefesa.style.display = 'none';
   divRecolher.style.display = 'none';
 
+  var divJogarButton = document.getElementById('jogarButton');
   var divAtaqueButton = document.getElementById('ataqueButton');
   var divDefesaButton = document.getElementById('defesaButton');
   var divRecolherButton = document.getElementById('recolherButton');
   
+  divJogarButton.classList.add('ativo');
+  divAtaqueButton.classList.remove('ativo');
+  divDefesaButton.classList.remove('ativo');
+  divRecolherButton.classList.remove('ativo');
+}
+
+function mostrarAtaque(){
+  var divJogar = document.getElementById('jogar');
+  var divAtaque = document.getElementById('ataque');
+  var divDefesa = document.getElementById('defesa');
+  var divRecolher = document.getElementById('recolher');
+  divJogar.style.display = 'none';
+  divAtaque.style.display = 'block';
+  divDefesa.style.display = 'none';
+  divRecolher.style.display = 'none';
+
+  var divJogarButton = document.getElementById('jogarButton');
+  var divAtaqueButton = document.getElementById('ataqueButton');
+  var divDefesaButton = document.getElementById('defesaButton');
+  var divRecolherButton = document.getElementById('recolherButton');
+  
+  divJogarButton.classList.remove('ativo');
   divAtaqueButton.classList.add('ativo');
   divDefesaButton.classList.remove('ativo');
   divRecolherButton.classList.remove('ativo');
 }
 
 function mostrarDefesa(){
+  var divJogar = document.getElementById('jogar');
   var divAtaque = document.getElementById('ataque');
   var divDefesa = document.getElementById('defesa');
   var divRecolher = document.getElementById('recolher');
+  divJogar.style.display = 'none';
   divAtaque.style.display = 'none';
   divDefesa.style.display = 'block';
   divRecolher.style.display = 'none';
 
+  var divJogarButton = document.getElementById('jogarButton');
   var divAtaqueButton = document.getElementById('ataqueButton');
   var divDefesaButton = document.getElementById('defesaButton');
   var divRecolherButton = document.getElementById('recolherButton');
-
+  
+  divJogarButton.classList.remove('ativo');
   divAtaqueButton.classList.remove('ativo');
   divDefesaButton.classList.add('ativo');
   divRecolherButton.classList.remove('ativo');
 }
 
 function mostrarRecolher(){
+  var divJogar = document.getElementById('jogar');
   var divAtaque = document.getElementById('ataque');
   var divDefesa = document.getElementById('defesa');
   var divRecolher = document.getElementById('recolher');
+  divJogar.style.display = 'none';
   divAtaque.style.display = 'none';
   divDefesa.style.display = 'none';
   divRecolher.style.display = 'block';
 
+  var divJogarButton = document.getElementById('jogarButton');
   var divAtaqueButton = document.getElementById('ataqueButton');
   var divDefesaButton = document.getElementById('defesaButton');
   var divRecolherButton = document.getElementById('recolherButton');
-
+  
+  divJogarButton.classList.remove('ativo');
   divAtaqueButton.classList.remove('ativo');
   divDefesaButton.classList.remove('ativo');
   divRecolherButton.classList.add('ativo');
@@ -194,6 +227,15 @@ function buscaCriatura() {
       if (resultado.success) {
           $('#resultadoCriatura').html('Nome do Alvo: ' + resultado.nome + '<br>Raridade do Alvo: ' + resultado.raridade + '<br>Recompensas possiveis:');
           
+          var mt1 = document.getElementById('mt1');
+          var mt2 = document.getElementById('mt2');
+          var mt3 = document.getElementById('mt3');
+          var mt4 = document.getElementById('mt4');
+          mt1.style.border = '1px solid black';
+          mt2.style.border = '1px solid black';
+          mt3.style.border = '1px solid black';
+          mt4.style.border = '1px solid black';
+    
           exibirNomeDrop('#nomeDrop1', 'Nome: ' + resultado.nome1);
           exibirNomeDrop('#nomeDrop2', 'Nome: ' + resultado.nome2);
           exibirNomeDrop('#nomeDrop3', 'Nome: ' + resultado.nome3);
