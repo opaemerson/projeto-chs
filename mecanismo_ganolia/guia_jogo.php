@@ -15,9 +15,9 @@ $usuarioId = $_SESSION['id'];
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/ganolia/ganolia.css">
+    <link rel="stylesheet" href="../css/ganolia/tabuleiro.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Ganolia</title>
-
 </head>
 <body>
 <div class="centralizando">
@@ -110,14 +110,20 @@ $usuarioId = $_SESSION['id'];
     <br><br>
 
 <!-- Container que irá mostrar o botão RECOLHER + Imagem do resultado do drop -->
-    <input type="hidden" id="idCriatura">
-    <button type="button" onclick="buscaDrop()" style="background-color: #B22222; color: white;">Recolher</button>
-    <br><br>
-    <img id="imagemDrop" src="" class="img-enviado" width="180" height="220" style="display: none;">
-    <div id="resultadoDrop"></div>
+<input type="hidden" id="idCriatura">
+<button type="button" onclick="buscaDrop()" style="background-color: #B22222; color: white;">Recolher</button>
+<br><br>
+<img id="imagemDrop" src="" class="img-enviado" width="180" height="220" style="display: none;">
+<div id="resultadoDrop"></div>
 </div>
 </div>
 </div>
+
+<!-- DIV do tabuleiro -->
+<div class="corpo">
+<div class="grid-container" id="grid-container"></div>
+</div>
+
 
 <!-- DIV de LOG -->
 <div class="scrolling-container" id="scrollingContainer">
@@ -198,6 +204,7 @@ $usuarioId = $_SESSION['id'];
 
 
 <script src="./scripts/mecanismo_ganolia.js"></script>
+<script src="./scripts/tabuleiro.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>

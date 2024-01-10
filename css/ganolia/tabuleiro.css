@@ -1,0 +1,42 @@
+.corpo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(8, 48px);
+    grid-template-rows: repeat(8, 48px);
+    gap: 2px;
+    border: 5px solid black;
+    width: 410px; /* (50px * 8) + (2px * 8) */
+    margin: -400px 2px 2px 2px; /* Adicione uma pequena margem para separar as bordas dos elementos */
+    position: fixed;
+    right: 40px; /* Ajuste a distância à direita conforme necessário */
+    top: -50;
+}
+
+.grid-item {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+.player {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    cursor: pointer;
+  }
+
+  .valid-move {
+    background-color: green;
+  }
+
+.black {
+    background-color: #979595;
+}
