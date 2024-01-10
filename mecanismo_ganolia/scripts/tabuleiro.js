@@ -47,21 +47,50 @@ function movePlayer(currentPlayerSquare, targetSquare) {
             validMoveSquare.removeEventListener("click", handleValidMoveClick);
         });
 
+        const currentPlayerRow = parseInt(targetSquare.getAttribute("row"));
+        const currentPlayerCol = parseInt(targetSquare.getAttribute("col"));
+
+        // Atualizar a posição no banco de dados
+        updatePositionInDatabase(currentPlayerRow, currentPlayerCol);
+
+
         // Adicionar ouvinte de evento de clique ao novo quadrado do jogador
         targetSquare.addEventListener("click", function () {
-            // Obter a posição do jogador
-            const currentPlayerRow = parseInt(this.getAttribute("row"));
-            const currentPlayerCol = parseInt(this.getAttribute("col"));
+        // Obter a posição do jogador
+        const currentPlayerRow = parseInt(this.getAttribute("row"));
+        const currentPlayerCol = parseInt(this.getAttribute("col"));
 
-            // Destacar os quadrados ao redor do jogador
-            highlightValidMoves(currentPlayerRow, currentPlayerCol, this);
-            allowMoves = true; // Permitir movimentos quando o jogador for clicado novamente
-            this.removeEventListener("click", arguments.callee); // Remover o ouvinte de evento de clique após o primeiro clique
+        // Destacar os quadrados ao redor do jogador
+        highlightValidMoves(currentPlayerRow, currentPlayerCol, this);
+        allowMoves = true; // Permitir movimentos quando o jogador for clicado novamente
+        this.removeEventListener("click", arguments.callee); // Remover o ouvinte de evento de clique após o primeiro clique
+
         });
     }
 }
 
+function updatePositionInDatabase(row, col) {
+    // Criar um objeto com os dados a serem enviados para o servidor
+    const newRow = row;
+    const newCol = col;
 
+    const formData = new FormData();
+    formData.append('newRow', newRow);
+    formData.append('newCol', newCol);
+
+    // Fazer a requisição AJAX para update_posicao.php
+    fetch('http://127.0.0.1:80/chs/mecanismo_ganolia/processar_update_posicao.php', {
+        method: 'POST',
+        body: formData,  // Não é mais necessário usar JSON.stringify
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Resposta do servidor (update_posicao.php):', data);
+    })
+    .catch(error => {
+        console.error('Erro na requisição (update_posicao.php):', error);
+    });
+}
 
 directions.forEach(direction => {
         const newRow = row + direction.row;
@@ -101,7 +130,7 @@ for (let i = 0; i < 8; i++) {
                 // Adicionar o jogador na posição inicial
                 jogadorPosition.row = parseInt(data.row, 10);
                 jogadorPosition.col = parseInt(data.col, 10);
-                
+
                 if (i === jogadorPosition.row && j === jogadorPosition.col) {
                     gridItem.classList.add("player");
                     gridItem.style.backgroundColor = "red";
