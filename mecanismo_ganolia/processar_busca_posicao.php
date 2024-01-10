@@ -2,12 +2,12 @@
 include('../protecao.php');
 require_once('../config.php');
 
-$usuarioId = $_SESSION['id'];
+$personagemId = $_SESSION['personagem_ganolia'];
 
 ?>
 
 <?php
-$sql = "SELECT gs.row, gs.col FROM ganolia_sessao gs WHERE id = 1";
+$sql = "SELECT gs.row, gs.col FROM ganolia_sessao gs WHERE personagem_id = $personagemId";
 
 $resultado = $conn->query($sql);
 

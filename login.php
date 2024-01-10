@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['id'] = $row['id'];
             $_SESSION['nome'] = $row['nome'];
             $_SESSION['permissao'] = $row['permissao'];
+            $_SESSION['personagem_ganolia'] = $row['personagem_ganolia'];
 
             header('Location: index.php');
             exit;
