@@ -124,7 +124,6 @@ $usuarioId = $_SESSION['id'];
 <div class="grid-container" id="grid-container"></div>
 </div>
 
-
 <!-- DIV de LOG -->
 <div class="scrolling-container" id="scrollingContainer">
     <?php
