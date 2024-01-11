@@ -146,12 +146,11 @@ function inicializa(){
 })
 .then(response => response.json())
 .then(data => {
-        const jogadorPosition = data; // Supondo que a resposta seja um objeto com as propriedades "row" e "col"
-
-        // Adicionar o jogador na posição inicial
-        jogadorPosition.territorio = parseInt(data.territorio, 10);
-        jogadorPosition.row = parseInt(data.row, 10);
-        jogadorPosition.col = parseInt(data.col, 10);
+        data.forEach(jogadorPosition => {
+            // Adicionar o jogador na posição inicial
+            jogadorPosition.territorio = parseInt(jogadorPosition.territorio, 10);
+            jogadorPosition.row = parseInt(jogadorPosition.row, 10);
+            jogadorPosition.col = parseInt(jogadorPosition.col, 10);
 
         if(jogadorPosition.territorio === 1){
             // Criar o grid
@@ -235,6 +234,7 @@ function inicializa(){
             }
         }
     })
+})
     .catch(error => console.error("Erro na solicitação Ajax:", error));
 }
 
