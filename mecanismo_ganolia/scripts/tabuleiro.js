@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const gridContainer = document.getElementById("grid-container");
 let allowMoves = true; // Controle de estado para permitir ou não movimentos
 let jogadorPosition = { row: 0, col: 0 }; // Posição inicial do jogador
-let portalPosition = { row: 4, col: 5};
+let portalPosition = { row: 0, col: 0};
 
 function highlightValidMoves(row, col, currentPlayerSquare) {
     const directions = [
@@ -55,7 +55,9 @@ function movePlayer(currentPlayerSquare, targetSquare) {
         updatePositionInDatabase(currentPlayerRow, currentPlayerCol);
 
         if(currentPlayerRow === portalPosition.row && currentPlayerCol === portalPosition.col){
-            updatePositionTerritorio(2);
+            updatePositionTerritorio(currentPlayerRow, currentPlayerCol);
+            inicializa();
+            window.location.reload();
         }
 
         // Adicionar ouvinte de evento de clique ao novo quadrado do jogador
@@ -73,12 +75,14 @@ function movePlayer(currentPlayerSquare, targetSquare) {
     }
 }
 
-function updatePositionTerritorio(territorio) {
+function updatePositionTerritorio(row, col) {
     // Criar um objeto com os dados a serem enviados para o servidor
-    const newTerritorio = territorio;
+    const newRow = row;
+    const newCol = col;
 
     const formData = new FormData();
-    formData.append('newTerritorio', newTerritorio);
+    formData.append('newRow', newRow);
+    formData.append('newCol', newCol);
 
     // Fazer a requisição AJAX para update_posicao.php
     fetch('http://127.0.0.1:80/chs/mecanismo_ganolia/processar_update_posicao_t.php', {
@@ -130,7 +134,9 @@ directions.forEach(direction => {
     });
 }
 
- // Fazer uma solicitação Ajax para obter a posição do jogador
+
+function inicializa(){
+    // Fazer uma solicitação Ajax para obter a posição do jogador
  fetch('http://127.0.0.1:80/chs/mecanismo_ganolia/processar_busca_posicao.php', {
     method: 'POST',
     headers: {
@@ -159,6 +165,51 @@ directions.forEach(direction => {
 
                     gridContainer.appendChild(gridItem);
 
+                    //portal para ir para territorio 2
+                    portalPosition.row = 4;
+                    portalPosition.col = 5;
+
+                    if (i === portalPosition.row && j === portalPosition.col) {
+                        gridItem.classList.add("portal");
+                        gridItem.style.backgroundColor = "yellow";
+                    }
+
+                    if (i === jogadorPosition.row && j === jogadorPosition.col) {
+                        gridItem.classList.add("player");
+                        gridItem.style.backgroundColor = "red";
+            
+                        // Adicionar ouvinte de evento de clique ao jogador
+                        gridItem.addEventListener("click", function () {
+                        // Obter a posição do jogador
+                        const currentPlayerRow = parseInt(this.getAttribute("row"));
+                        const currentPlayerCol = parseInt(this.getAttribute("col"));
+            
+                        // Destacar os quadrados ao redor do jogador
+                        highlightValidMoves(currentPlayerRow, currentPlayerCol, this);
+                        allowMoves = true; // Permitir movimentos quando o jogador for clicado novamente
+                        this.removeEventListener("click", arguments.callee); // Remover o ouvinte de evento de clique após o primeiro clique
+                        });
+                    }
+                }
+            }
+        }
+
+        else if(jogadorPosition.territorio === 2){
+            // Criar o grid
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 8; j++) {
+
+                    const gridItem = document.createElement("div");
+                    gridItem.classList.add("grid-item");
+                    gridItem.classList.add("white");
+                    gridItem.setAttribute("row", i);
+                    gridItem.setAttribute("col", j);
+
+                    gridContainer.appendChild(gridItem);
+
+                    portalPosition.row = 2;
+                    portalPosition.col = 2;
+
                     if (i === portalPosition.row && j === portalPosition.col) {
                         gridItem.classList.add("portal");
                         gridItem.style.backgroundColor = "yellow";
@@ -185,4 +236,8 @@ directions.forEach(direction => {
         }
     })
     .catch(error => console.error("Erro na solicitação Ajax:", error));
+}
+
+inicializa();
+
 });

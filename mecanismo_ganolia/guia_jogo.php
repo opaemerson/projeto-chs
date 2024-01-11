@@ -119,9 +119,10 @@ $usuarioId = $_SESSION['id'];
 </div>
 </div>
 
-<!-- DIV do tabuleiro -->
+
+<!--DIV do tabuleiro -->
 <div class="corpo">
-<div class="grid-container" id="grid-container"></div>
+<div class="grid-container" id="grid-container"></div> 
 </div>
 
 <!-- DIV de LOG -->
