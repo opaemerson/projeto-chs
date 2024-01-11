@@ -7,7 +7,9 @@ $personagemId = $_SESSION['personagem_ganolia'];
 ?>
 
 <?php
-$sql = "SELECT gs.row, gs.col FROM ganolia_sessao gs WHERE personagem_id = $personagemId";
+$sql = "SELECT gs.row, gs.col, gs.territorio_id as territorio
+ FROM ganolia_sessao gs 
+ WHERE personagem_id = $personagemId";
 
 $resultado = $conn->query($sql);
 

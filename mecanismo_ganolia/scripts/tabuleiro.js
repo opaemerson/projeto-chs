@@ -104,52 +104,54 @@ directions.forEach(direction => {
     });
 }
 
-// Criar o grid
-for (let i = 0; i < 8; i++) {
-    for (let j = 0; j < 8; j++) {
-        const gridItem = document.createElement("div");
-        gridItem.classList.add("grid-item");
-        gridItem.classList.add("white");
-        gridItem.setAttribute("row", i);
-        gridItem.setAttribute("col", j);
+ // Fazer uma solicitação Ajax para obter a posição do jogador
+ fetch('http://127.0.0.1:80/chs/mecanismo_ganolia/processar_busca_posicao.php', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(jogadorPosition),
+})
+.then(response => response.json())
+.then(data => {
+        const jogadorPosition = data; // Supondo que a resposta seja um objeto com as propriedades "row" e "col"
 
-        gridContainer.appendChild(gridItem);
+        // Adicionar o jogador na posição inicial
+        jogadorPosition.territorio = parseInt(data.territorio, 10);
+        jogadorPosition.row = parseInt(data.row, 10);
+        jogadorPosition.col = parseInt(data.col, 10);
 
-        // Fazer uma solicitação Ajax para obter a posição do jogador
-        fetch('http://127.0.0.1:80/chs/mecanismo_ganolia/processar_busca_posicao.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(jogadorPosition),
-        })
-        .then(response => response.json())
-        .then(data => {
-                const jogadorPosition = data; // Supondo que a resposta seja um objeto com as propriedades "row" e "col"
+        if(jogadorPosition.territorio === 1){
+            // Criar o grid
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 8; j++) {
+                    const gridItem = document.createElement("div");
+                    gridItem.classList.add("grid-item");
+                    gridItem.classList.add("white");
+                    gridItem.setAttribute("row", i);
+                    gridItem.setAttribute("col", j);
 
-                // Adicionar o jogador na posição inicial
-                jogadorPosition.row = parseInt(data.row, 10);
-                jogadorPosition.col = parseInt(data.col, 10);
+                    gridContainer.appendChild(gridItem);
 
-                if (i === jogadorPosition.row && j === jogadorPosition.col) {
-                    gridItem.classList.add("player");
-                    gridItem.style.backgroundColor = "red";
-
-                    // Adicionar ouvinte de evento de clique ao jogador
-                    gridItem.addEventListener("click", function () {
-                        // Obter a posição do jogador
-                        const currentPlayerRow = parseInt(this.getAttribute("row"));
-                        const currentPlayerCol = parseInt(this.getAttribute("col"));
-
-                        // Destacar os quadrados ao redor do jogador
-                        highlightValidMoves(currentPlayerRow, currentPlayerCol, this);
-                        allowMoves = true; // Permitir movimentos quando o jogador for clicado novamente
-                        this.removeEventListener("click", arguments.callee); // Remover o ouvinte de evento de clique após o primeiro clique
-                    });
+                    if (i === jogadorPosition.row && j === jogadorPosition.col) {
+                        gridItem.classList.add("player");
+                        gridItem.style.backgroundColor = "red";
+            
+                        // Adicionar ouvinte de evento de clique ao jogador
+                        gridItem.addEventListener("click", function () {
+                            // Obter a posição do jogador
+                            const currentPlayerRow = parseInt(this.getAttribute("row"));
+                            const currentPlayerCol = parseInt(this.getAttribute("col"));
+            
+                            // Destacar os quadrados ao redor do jogador
+                            highlightValidMoves(currentPlayerRow, currentPlayerCol, this);
+                            allowMoves = true; // Permitir movimentos quando o jogador for clicado novamente
+                            this.removeEventListener("click", arguments.callee); // Remover o ouvinte de evento de clique após o primeiro clique
+                        });
+                    }
                 }
-            })
-            .catch(error => console.error("Erro na solicitação Ajax:", error));
-    }
-}
-
+            }
+        }
+    })
+    .catch(error => console.error("Erro na solicitação Ajax:", error));
 });
