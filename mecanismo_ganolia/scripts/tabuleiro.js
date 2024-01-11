@@ -134,7 +134,7 @@ directions.forEach(direction => {
     });
 }
 
-function criarGrid(portalRow, portalCol, jogadorRow, jogadorCol){
+function criarGrid(fila, territorio, portalRow, portalCol, jogadorRow, jogadorCol){
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
             const gridItem = document.createElement("div");
@@ -145,30 +145,68 @@ function criarGrid(portalRow, portalCol, jogadorRow, jogadorCol){
 
             gridContainer.appendChild(gridItem);
 
-            if (i === portalRow && j === portalCol) {
-                gridItem.classList.add("portal");
-                gridItem.style.backgroundColor = "yellow";
-            }
-
-            if (i === jogadorRow && j === jogadorCol) {
-                gridItem.classList.add("player");
-                gridItem.style.backgroundColor = "red";
-    
-                // Adicionar ouvinte de evento de clique ao jogador
-                gridItem.addEventListener("click", function () {
-                // Obter a posição do jogador
-                const currentPlayerRow = parseInt(this.getAttribute("row"));
-                const currentPlayerCol = parseInt(this.getAttribute("col"));
-    
-                // Destacar os quadrados ao redor do jogador
-                highlightValidMoves(currentPlayerRow, currentPlayerCol, this);
-                allowMoves = true; // Permitir movimentos quando o jogador for clicado novamente
-                this.removeEventListener("click", arguments.callee); // Remover o ouvinte de evento de clique após o primeiro clique
-                });
-            }
+            buscaPortal(territorio, portalRow, portalCol);
+            buscaJogador(fila, jogadorRow, jogadorCol);
         }
     }
 }
+
+function buscaJogador(fila, row, col){
+    if(fila === 1){
+        const jogadorElement = document.querySelector(`[row="${row}"][col="${col}"]`);
+    
+        if (jogadorElement) {
+            jogadorElement.classList.add("player");
+            jogadorElement.style.backgroundColor = "red";
+
+            // Adicionar ouvinte de evento de clique ao jogador
+            jogadorElement.addEventListener("click", function () {
+            // Obter a posição do jogador
+            const currentPlayerRow = parseInt(this.getAttribute("row"));
+            const currentPlayerCol = parseInt(this.getAttribute("col"));
+
+            // Destacar os quadrados ao redor do jogador
+            highlightValidMoves(currentPlayerRow, currentPlayerCol, this);
+            allowMoves = true; // Permitir movimentos quando o jogador for clicado novamente
+            this.removeEventListener("click", arguments.callee); // Remover o ouvinte de evento de clique após o primeiro clique
+            });
+        }
+    } else{
+        const jogadorElement = document.querySelector(`[row="${row}"][col="${col}"]`);
+    
+        if (jogadorElement) {
+            jogadorElement.classList.add("player");
+            jogadorElement.style.backgroundColor = "purple";
+        }
+    }
+}
+
+function buscaPortal(territorio, portalRow, portalCol) {
+
+    if(territorio === 1){
+        if(portalRow === 4 && portalCol === 5){
+            const portalElement = document.querySelector(`[row="${portalRow}"][col="${portalCol}"]`);
+    
+            if (portalElement) {
+                portalElement.classList.add("portal");
+                portalElement.style.backgroundColor = "yellow";
+            }
+        }
+    }
+
+    if(territorio === 2){
+        if(portalRow === 2 && portalCol === 2){
+            const portalElement = document.querySelector(`[row="${portalRow}"][col="${portalCol}"]`);
+    
+            if (portalElement) {
+                portalElement.classList.add("portal");
+                portalElement.style.backgroundColor = "yellow";
+            }
+        }
+    }
+
+}
+
 
 function inicializa(){
     // Fazer uma solicitação Ajax para obter a posição do jogador
@@ -183,6 +221,8 @@ function inicializa(){
 .then(data => {
         data.forEach(jogadorPosition => {
             // Adicionar o jogador na posição inicial
+            jogadorPosition.player = parseInt(jogadorPosition.player, 10);
+            jogadorPosition.fila = parseInt(jogadorPosition.fila, 10);
             jogadorPosition.territorio = parseInt(jogadorPosition.territorio, 10);
             jogadorPosition.row = parseInt(jogadorPosition.row, 10);
             jogadorPosition.col = parseInt(jogadorPosition.col, 10);
@@ -190,13 +230,13 @@ function inicializa(){
         if(jogadorPosition.territorio === 1){
             portalPosition.row = 4;
             portalPosition.col = 5;
-            criarGrid(portalPosition.row, portalPosition.col, jogadorPosition.row, jogadorPosition.col);
+            criarGrid(jogadorPosition.fila, jogadorPosition.territorio, portalPosition.row, portalPosition.col, jogadorPosition.row, jogadorPosition.col);
         }
 
         else if(jogadorPosition.territorio === 2){
             portalPosition.row = 2;
             portalPosition.col = 2;
-            criarGrid(portalPosition.row, portalPosition.col, jogadorPosition.row, jogadorPosition.col);
+            criarGrid(jogadorPosition.fila, jogadorPosition.territorio, portalPosition.row, portalPosition.col, jogadorPosition.row, jogadorPosition.col);
         }
 
     })
