@@ -5,11 +5,10 @@ require_once('../config.php');
 $personagemId = $_SESSION['personagem_ganolia'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $newRow = $_POST['newRow'];
-    $newCol = $_POST['newCol'];
+    $newTerritorio = $_POST['newTerritorio'];
 
     $sql = "UPDATE ganolia_sessao gs 
-    SET gs.row = $newRow, gs.col = $newCol
+    SET gs.territorio_id = $newTerritorio
     WHERE personagem_id = $personagemId";
 
     $resultado = $conn->query($sql);

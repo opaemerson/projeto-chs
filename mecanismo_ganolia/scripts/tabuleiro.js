@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const gridContainer = document.getElementById("grid-container");
 let allowMoves = true; // Controle de estado para permitir ou não movimentos
 let jogadorPosition = { row: 0, col: 0 }; // Posição inicial do jogador
+let portalPosition = { row: 4, col: 5};
 
 function highlightValidMoves(row, col, currentPlayerSquare) {
     const directions = [
@@ -53,6 +54,9 @@ function movePlayer(currentPlayerSquare, targetSquare) {
         // Atualizar a posição no banco de dados
         updatePositionInDatabase(currentPlayerRow, currentPlayerCol);
 
+        if(currentPlayerRow === portalPosition.row && currentPlayerCol === portalPosition.col){
+            updatePositionTerritorio(2);
+        }
 
         // Adicionar ouvinte de evento de clique ao novo quadrado do jogador
         targetSquare.addEventListener("click", function () {
@@ -68,6 +72,28 @@ function movePlayer(currentPlayerSquare, targetSquare) {
         });
     }
 }
+
+function updatePositionTerritorio(territorio) {
+    // Criar um objeto com os dados a serem enviados para o servidor
+    const newTerritorio = territorio;
+
+    const formData = new FormData();
+    formData.append('newTerritorio', newTerritorio);
+
+    // Fazer a requisição AJAX para update_posicao.php
+    fetch('http://127.0.0.1:80/chs/mecanismo_ganolia/processar_update_posicao_t.php', {
+        method: 'POST',
+        body: formData,  // Não é mais necessário usar JSON.stringify
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Resposta do servidor (update_posicao.php):', data);
+    })
+    .catch(error => {
+        console.error('Erro na requisição (update_posicao.php):', error);
+    });
+}
+
 
 function updatePositionInDatabase(row, col) {
     // Criar um objeto com os dados a serem enviados para o servidor
@@ -133,20 +159,25 @@ directions.forEach(direction => {
 
                     gridContainer.appendChild(gridItem);
 
+                    if (i === portalPosition.row && j === portalPosition.col) {
+                        gridItem.classList.add("portal");
+                        gridItem.style.backgroundColor = "yellow";
+                    }
+
                     if (i === jogadorPosition.row && j === jogadorPosition.col) {
                         gridItem.classList.add("player");
                         gridItem.style.backgroundColor = "red";
             
                         // Adicionar ouvinte de evento de clique ao jogador
                         gridItem.addEventListener("click", function () {
-                            // Obter a posição do jogador
-                            const currentPlayerRow = parseInt(this.getAttribute("row"));
-                            const currentPlayerCol = parseInt(this.getAttribute("col"));
+                        // Obter a posição do jogador
+                        const currentPlayerRow = parseInt(this.getAttribute("row"));
+                        const currentPlayerCol = parseInt(this.getAttribute("col"));
             
-                            // Destacar os quadrados ao redor do jogador
-                            highlightValidMoves(currentPlayerRow, currentPlayerCol, this);
-                            allowMoves = true; // Permitir movimentos quando o jogador for clicado novamente
-                            this.removeEventListener("click", arguments.callee); // Remover o ouvinte de evento de clique após o primeiro clique
+                        // Destacar os quadrados ao redor do jogador
+                        highlightValidMoves(currentPlayerRow, currentPlayerCol, this);
+                        allowMoves = true; // Permitir movimentos quando o jogador for clicado novamente
+                        this.removeEventListener("click", arguments.callee); // Remover o ouvinte de evento de clique após o primeiro clique
                         });
                     }
                 }
