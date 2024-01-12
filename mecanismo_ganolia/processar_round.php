@@ -3,8 +3,24 @@ include('../protecao.php');
 require_once('../config.php');
 
 $personagemId = $_SESSION['personagem_ganolia'];
-
 $resposta = array();
+
+function buscaImagem($id, $conn){
+    $sqlzin = "SELECT gi.imagem
+    FROM ganolia_item gi
+    WHERE gi.id = $id";
+
+    $result = $conn->query($sqlzin);
+
+    if ($result === FALSE) {
+        echo json_encode(array("success" => false, "message" => "Erro ao executar sql escolhendo: " . $conn->error));
+    }
+    
+    $linhaDaImagem = $result->fetch_assoc();
+    $imagem = $linhaDaImagem['imagem'];
+
+    return $imagem;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ativado = $_POST['ativado'];
@@ -29,11 +45,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mochila = $row['mochila'];
         $descarte = $row['descarte'];
 
-
         if ($mao == ''){
             $arrayDescarte = explode(";", $descarte);
             $arrayMochila = explode(";", $mochila);
             $arrayDisponivel = [];
+            $porEscrito = '';
+            $arrayImagens = [];
 
             foreach ($arrayMochila as $key) {
                 if (in_array($key, $arrayDescarte)) {
@@ -44,8 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             $pegaCinco = array_rand($arrayDisponivel, 5);
-            $porEscrito = '';
-    
+
             foreach ($pegaCinco as $indice) {
                 $valor = $arrayDisponivel[$indice];
                 $porEscrito .= $valor;
@@ -53,6 +69,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($indice !== end($pegaCinco)) {
                     $porEscrito .= ';';
                 }
+
+                $img = buscaImagem($valor, $conn);
+                $arrayImagens[] = $img;
             }
 
             $insertEscrito = "UPDATE ganolia_sessao gs
@@ -67,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $resposta['success'] = true;
             $resposta['mao'] = $porEscrito;
+            $resposta['imagem'] = $arrayImagens;
 
         } else{
             $resposta['success'] = true;

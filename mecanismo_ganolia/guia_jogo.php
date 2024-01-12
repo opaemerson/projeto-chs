@@ -56,6 +56,13 @@ $personagemId = $_SESSION['personagem_ganolia'];
         <div id="jogar" style="display: none;">
             <button type="button" id="btnManipula" onclick="mostraRound()">MANIPULAR</button>
             <div id="resultadoRound"></div>
+            <img id="imagemRound1" src="" class="img-enviado" width="120" height="190" style="display: none;">
+            <img id="imagemRound2" src="" class="img-enviado" width="120" height="190" style="display: none;">
+            <img id="imagemRound3" src="" class="img-enviado" width="120" height="190" style="display: none;">
+            <img id="imagemRound4" src="" class="img-enviado" width="120" height="190" style="display: none;">
+            <img id="imagemRound5" src="" class="img-enviado" width="120" height="190" style="display: none;">
+            <button id="btnEquip1" style="display: none;">Equipar</button>
+            <button id="btnEquip2" style="display: none;">Equipar</button>
         </div>
         <?php
     }

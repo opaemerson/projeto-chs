@@ -14,7 +14,7 @@
     width: 410px; /* (50px * 8) + (2px * 8) */
     margin: -300px 2px 2px 2px; /* Adicione uma pequena margem para separar as bordas dos elementos */
     position: fixed;
-    right: 150px; /* Ajuste a distância à direita conforme necessário */
+    right: 130px; /* Ajuste a distância à direita conforme necessário */
     top: -40;
 }
 

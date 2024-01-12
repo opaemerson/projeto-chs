@@ -8,7 +8,6 @@ date_default_timezone_set('America/Sao_Paulo');
 $codigoItemAtaque = $_POST['codigoItemAtaque'];
 $usuario = (isset($_SESSION['id']) && $_SESSION['id']) ? $_SESSION['id'] : null;
 
-
 $resposta = array();
 
 if(isset($codigoItemAtaque) && $codigoItemAtaque !== '' && !empty($usuario)){ 
