@@ -22,6 +22,8 @@ function buscaImagem($id, $conn){
     return $imagem;
 }
 
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ativado = $_POST['ativado'];
 
@@ -59,6 +61,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $arrayDisponivel[] = $key;
                 }
             }
+            
+            if(count($arrayDisponivel) !== 5){
+                $removeDescarte = "UPDATE ganolia_sessao gs
+                    SET gs.descarte = ''
+                    WHERE gs.personagem_id = $personagemId";
+        
+                $removv = $conn->query($removeDescarte);
+        
+                if ($removv === FALSE) {
+                    echo json_encode(array("success" => false, "message" => "Erro ao executar SQL escolhendo: " . $conn->error));
+                }
+            }
 
             $pegaCinco = array_rand($arrayDisponivel, 5);
 
@@ -89,8 +103,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $resposta['imagem'] = $arrayImagens;
 
         } else{
-            $resposta['success'] = true;
-            $resposta['mao'] = $mao;
+            $resposta['success'] = false;
+            $resposta['message'] = 'MAO PREENCHIDA, CONTATE O ADM';
         }
     }
 
