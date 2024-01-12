@@ -3,6 +3,7 @@ let gridContainer = document.getElementById("grid-container");
 let allowMoves = true; // Controle de estado para permitir ou não movimentos
 let jogadorPosition = { row: 0, col: 0 }; // Posição inicial do jogador
 let portalPosition = { row: 0, col: 0};
+let aliadoRepetido = [];
 
 function highlightValidMoves(row, col, currentPlayerSquare) {
     const directions = [
@@ -57,8 +58,9 @@ function movePlayer(currentPlayerSquare, targetSquare) {
         if(currentPlayerRow === portalPosition.row && currentPlayerCol === portalPosition.col){
             updatePositionTerritorio(currentPlayerRow, currentPlayerCol);
             inicializa();
-            window.location.reload();
         }
+
+        window.location.reload();  
 
         // Adicionar ouvinte de evento de clique ao novo quadrado do jogador
         targetSquare.addEventListener("click", function () {
@@ -147,7 +149,7 @@ function criarGrid(fila, territorio, portalRow, portalCol, jogadorRow, jogadorCo
 
             buscaPortal(territorio, portalRow, portalCol);
             buscaJogador(fila, jogadorRow, jogadorCol);
-            
+            buscaAliado(fila, territorio, jogadorRow, jogadorCol);
         }
     }
 }
@@ -169,7 +171,7 @@ function buscaJogador(fila, row, col){
             // Destacar os quadrados ao redor do jogador
             highlightValidMoves(currentPlayerRow, currentPlayerCol, this);
             allowMoves = true; // Permitir movimentos quando o jogador for clicado novamente
-            this.removeEventListener("click", arguments.callee); // Remover o ouvinte de evento de clique após o primeiro clique
+            this.removeEventListener("click", arguments.callee); // Remover o ouvinte de evento de clique após o primeiro clique  
             });
         }
     } else{
@@ -209,9 +211,47 @@ function buscaPortal(territorio, portalRow, portalCol) {
 }
 
 
+function buscaAliado(fila,territorio, row, col){
+    const newFila = fila;
+
+    const formData = new FormData();
+    formData.append('newFila', newFila);
+
+    // Fazer a requisição AJAX para update_posicao.php
+    fetch('http://127.0.0.1:80/chs/mecanismo_ganolia/processar_busca_aliado.php', {
+        method: 'POST',
+        body: formData,  // Não é mais necessário usar JSON.stringify
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success){
+            
+
+            data.data.forEach(item => {
+                // Verifica se o item já foi processado
+                if (!aliadoRepetido.includes(item.territorio)) {
+                    // Adiciona o item ao array de itens processados
+                    aliadoRepetido.push(item.territorio);
+
+                    if(territorio == item.territorio){
+                    const aliadoElement = document.querySelector(`[row="${item.row}"][col="${item.col}"]`);
+                    aliadoElement.classList.add("player");
+                    aliadoElement.style.backgroundColor = "purple";
+                    }
+                }
+            });
+        }else {
+            console.error('Erro na requisição JS:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Erro na requisição:', error);
+    });
+}
+
 function inicializa(){
     // Fazer uma solicitação Ajax para obter a posição do jogador
- fetch('http://127.0.0.1:80/chs/mecanismo_ganolia/processar_busca_posicao.php', {
+    fetch('http://127.0.0.1:80/chs/mecanismo_ganolia/processar_busca_posicao.php', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -221,9 +261,7 @@ function inicializa(){
 .then(response => response.json())
 .then(data => {
         const jogadorPosition = data[0];
-
-        console.log(jogadorPosition)
-          
+            
         // Aplicar a função de conversão a cada propriedade
         jogadorPosition.player = parseInt(jogadorPosition.player);
         jogadorPosition.fila = parseInt(jogadorPosition.fila);
