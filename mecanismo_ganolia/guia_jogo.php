@@ -3,6 +3,7 @@ include('../protecao.php');
 require_once('../config.php');
 
 $usuarioId = $_SESSION['id'];
+$personagemId = $_SESSION['personagem_ganolia'];
 
 ?>
 <!DOCTYPE html>
@@ -30,15 +31,34 @@ $usuarioId = $_SESSION['id'];
 </div>
 <div class="linha-fina"></div>
 
+
 <div class="sessao">
     <div class="quadro">
 
-    <div id="jogar" style="display: none;">
-    <h2>PLAY!</h2>
-    <form action="">
+    <?php
+    $verificaVez = "SELECT *
+    FROM ganolia_sessao gs
+    WHERE gs.personagem_id = $personagemId
+    AND gs.vez = 'A'";
 
-    </form>
-    </div>
+    $conexao = $conn->query($verificaVez);
+
+    if ($conexao === FALSE) {
+        echo "<script>alert('Erro ao buscar VEZ no banco de dados!');</script>";
+    } 
+
+    if($conexao->num_rows == 0){
+        echo '<h2>NÃO É SUA VEZ</h2>';
+    }
+    else {
+        ?>
+        <h2>É SUA VEZ</h2>
+        <div id="jogar" style="display: none;">
+            <button>manipular</button>
+        </div>
+        <?php
+    }
+    ?>
 
     <div id="ataque" style="display: none;">
     <h2>Atacando</h2>
