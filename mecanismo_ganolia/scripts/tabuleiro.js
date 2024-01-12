@@ -147,6 +147,7 @@ function criarGrid(fila, territorio, portalRow, portalCol, jogadorRow, jogadorCo
 
             buscaPortal(territorio, portalRow, portalCol);
             buscaJogador(fila, jogadorRow, jogadorCol);
+            
         }
     }
 }
@@ -219,13 +220,17 @@ function inicializa(){
 })
 .then(response => response.json())
 .then(data => {
-        data.forEach(jogadorPosition => {
-            // Adicionar o jogador na posição inicial
-            jogadorPosition.player = parseInt(jogadorPosition.player, 10);
-            jogadorPosition.fila = parseInt(jogadorPosition.fila, 10);
-            jogadorPosition.territorio = parseInt(jogadorPosition.territorio, 10);
-            jogadorPosition.row = parseInt(jogadorPosition.row, 10);
-            jogadorPosition.col = parseInt(jogadorPosition.col, 10);
+        const jogadorPosition = data[0];
+
+        console.log(jogadorPosition)
+          
+        // Aplicar a função de conversão a cada propriedade
+        jogadorPosition.player = parseInt(jogadorPosition.player);
+        jogadorPosition.fila = parseInt(jogadorPosition.fila);
+        jogadorPosition.territorio = parseInt(jogadorPosition.territorio);
+        jogadorPosition.row = parseInt(jogadorPosition.row);
+        jogadorPosition.col = parseInt(jogadorPosition.col);
+
 
         if(jogadorPosition.territorio === 1){
             portalPosition.row = 4;
@@ -238,8 +243,6 @@ function inicializa(){
             portalPosition.col = 2;
             criarGrid(jogadorPosition.fila, jogadorPosition.territorio, portalPosition.row, portalPosition.col, jogadorPosition.row, jogadorPosition.col);
         }
-
-    })
 })
     .catch(error => console.error("Erro na solicitação Ajax:", error));
 }

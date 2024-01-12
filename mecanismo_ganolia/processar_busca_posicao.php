@@ -12,7 +12,8 @@ gs.col,
 gs.territorio_id as territorio, 
 gs.fila as fila, 
 gs.personagem_id as player
- FROM ganolia_sessao gs";
+FROM ganolia_sessao gs
+WHERE gs.personagem_id = $personagemId";
 
 $resultado = $conn->query($sql);
 
