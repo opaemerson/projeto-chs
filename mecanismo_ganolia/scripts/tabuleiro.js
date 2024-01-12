@@ -60,14 +60,14 @@ function movePlayer(currentPlayerSquare, targetSquare) {
             inicializa();
         }
 
-        window.location.reload();  
+        window.location.reload();
 
         // Adicionar ouvinte de evento de clique ao novo quadrado do jogador
         targetSquare.addEventListener("click", function () {
         // Obter a posição do jogador
         const currentPlayerRow = parseInt(this.getAttribute("row"));
         const currentPlayerCol = parseInt(this.getAttribute("col"));
-
+ 
         // Destacar os quadrados ao redor do jogador
         highlightValidMoves(currentPlayerRow, currentPlayerCol, this);
         allowMoves = true; // Permitir movimentos quando o jogador for clicado novamente
@@ -137,8 +137,8 @@ directions.forEach(direction => {
 }
 
 function criarGrid(fila, territorio, portalRow, portalCol, jogadorRow, jogadorCol){
-    for (let i = 0; i < 8; i++) {
-        for (let j = 0; j < 8; j++) {
+    for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 10; j++) {
             const gridItem = document.createElement("div");
             gridItem.classList.add("grid-item");
             gridItem.classList.add("white");
@@ -209,7 +209,6 @@ function buscaPortal(territorio, portalRow, portalCol) {
     }
 
 }
-
 
 function buscaAliado(fila,territorio, row, col){
     const newFila = fila;
