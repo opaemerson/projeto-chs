@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     WHERE gs.personagem_id = $personagemId";
     $result = $conn->query($consulta);
 
-    if ($conn->query($consulta) === FALSE) {
+    if ($consulta === FALSE) {
         echo json_encode(array("success" => false, "message" => "ERRO AO BUSCAR POSICAO: " . $conn->error));
     }
 

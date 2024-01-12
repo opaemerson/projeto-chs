@@ -5,14 +5,15 @@ require_once('../config.php');
 $personagemId = $_SESSION['personagem_ganolia'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $newFila = $_POST['newFila'];
+    $newVez = $_POST['newVez'];
 
     $sql = "SELECT 
             gs.territorio_id as territorio,
             gs.row,
-            gs.col
+            gs.col,
+            gs.vez
             FROM ganolia_sessao gs
-            WHERE gs.fila <> $newFila";
+            WHERE gs.vez <> '$newVez'";
 
     $result = $conn->query($sql);
 

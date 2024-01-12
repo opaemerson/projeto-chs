@@ -11,7 +11,8 @@ $sql = "SELECT gs.row,
 gs.col, 
 gs.territorio_id as territorio, 
 gs.fila as fila, 
-gs.personagem_id as player
+gs.personagem_id as player,
+gs.vez as vez
 FROM ganolia_sessao gs
 WHERE gs.personagem_id = $personagemId";
 

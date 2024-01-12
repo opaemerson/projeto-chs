@@ -136,7 +136,7 @@ directions.forEach(direction => {
     });
 }
 
-function criarGrid(cores, fila, territorio, portalRow, portalCol, jogadorRow, jogadorCol){
+function criarGrid(cores, vez, territorio, portalRow, portalCol, jogadorRow, jogadorCol){
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
             const gridItem = document.createElement("div");
@@ -149,14 +149,14 @@ function criarGrid(cores, fila, territorio, portalRow, portalCol, jogadorRow, jo
 
             buscaCores(cores, territorio);
             buscaPortal(territorio, portalRow, portalCol);
-            buscaJogador(fila, jogadorRow, jogadorCol);
-            buscaAliado(fila, territorio, jogadorRow, jogadorCol);
+            buscaAliado(vez, territorio);
+            buscaJogador(vez, jogadorRow, jogadorCol);
         }
     }
 }
 
-function buscaJogador(fila, row, col){
-    if(fila === 1){
+function buscaJogador(vez, row, col){
+    if(vez === 'A'){
         const jogadorElement = document.querySelector(`[row="${row}"][col="${col}"]`);
     
         if (jogadorElement) {
@@ -234,11 +234,11 @@ function buscaPortal(territorio, portalRow, portalCol) {
 
 }
 
-function buscaAliado(fila,territorio, row, col){
-    const newFila = fila;
+function buscaAliado(vez,territorio){
+    const newVez = vez;
 
     const formData = new FormData();
-    formData.append('newFila', newFila);
+    formData.append('newVez', newVez);
 
     // Fazer a requisição AJAX para update_posicao.php
     fetch('http://127.0.0.1:80/chs/mecanismo_ganolia/processar_busca_aliado.php', {
@@ -258,8 +258,13 @@ function buscaAliado(fila,territorio, row, col){
 
                     if(territorio == item.territorio){
                     const aliadoElement = document.querySelector(`[row="${item.row}"][col="${item.col}"]`);
-                    aliadoElement.classList.add("player");
-                    aliadoElement.style.backgroundColor = "purple";
+                    
+                    if(item.vez == 'A'){
+                        aliadoElement.style.backgroundColor = "red";
+                    } else{
+                        aliadoElement.style.backgroundColor = "purple";
+                    }
+
                     }
                 }
             });
@@ -284,10 +289,11 @@ function inicializa(){
 .then(response => response.json())
 .then(data => {
         const jogadorPosition = data[0];
+        console.log (jogadorPosition);
             
         // Aplicar a função de conversão a cada propriedade
         jogadorPosition.player = parseInt(jogadorPosition.player);
-        jogadorPosition.fila = parseInt(jogadorPosition.fila);
+        jogadorPosition.vez = jogadorPosition.vez;
         jogadorPosition.territorio = parseInt(jogadorPosition.territorio);
         jogadorPosition.row = parseInt(jogadorPosition.row);
         jogadorPosition.col = parseInt(jogadorPosition.col);
@@ -308,13 +314,13 @@ function inicializa(){
             }
 
             console.log(cores);
-            criarGrid(cores, jogadorPosition.fila, jogadorPosition.territorio, portalPosition.row, portalPosition.col, jogadorPosition.row, jogadorPosition.col);
+            criarGrid(cores, jogadorPosition.vez, jogadorPosition.territorio, portalPosition.row, portalPosition.col, jogadorPosition.row, jogadorPosition.col);
         }
 
         else if(jogadorPosition.territorio === 2){
             portalPosition.row = 2;
             portalPosition.col = 2;
-            criarGrid(cores, jogadorPosition.fila, jogadorPosition.territorio, portalPosition.row, portalPosition.col, jogadorPosition.row, jogadorPosition.col);
+            criarGrid(cores, jogadorPosition.vez, jogadorPosition.territorio, portalPosition.row, portalPosition.col, jogadorPosition.row, jogadorPosition.col);
         }
 })
     .catch(error => console.error("Erro na solicitação Ajax:", error));
