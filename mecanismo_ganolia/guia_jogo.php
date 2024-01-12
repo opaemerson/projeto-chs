@@ -54,7 +54,8 @@ $personagemId = $_SESSION['personagem_ganolia'];
         ?>
         <h2>É SUA VEZ</h2>
         <div id="jogar" style="display: none;">
-            <button>manipular</button>
+            <button type="button" id="btnManipula" onclick="mostraRound()">MANIPULAR</button>
+            <div id="resultadoRound"></div>
         </div>
         <?php
     }
@@ -222,7 +223,7 @@ $personagemId = $_SESSION['personagem_ganolia'];
     </div>
 </div>
 
-
+<script src="./scripts/round.js"></script>
 <script src="./scripts/mecanismo_ganolia.js"></script>
 <script src="./scripts/tabuleiro.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

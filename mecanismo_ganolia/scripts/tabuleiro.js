@@ -252,9 +252,9 @@ function buscaAliado(vez,territorio){
 
             data.data.forEach(item => {
                 // Verifica se o item já foi processado
-                if (!aliadoRepetido.includes(item.territorio)) {
+                if (!aliadoRepetido.includes(item.personagem)) {
                     // Adiciona o item ao array de itens processados
-                    aliadoRepetido.push(item.territorio);
+                    aliadoRepetido.push(item.personagem);
 
                     if(territorio == item.territorio){
                     const aliadoElement = document.querySelector(`[row="${item.row}"][col="${item.col}"]`);
@@ -289,7 +289,6 @@ function inicializa(){
 .then(response => response.json())
 .then(data => {
         const jogadorPosition = data[0];
-        console.log (jogadorPosition);
             
         // Aplicar a função de conversão a cada propriedade
         jogadorPosition.player = parseInt(jogadorPosition.player);
@@ -313,7 +312,6 @@ function inicializa(){
                 }
             }
 
-            console.log(cores);
             criarGrid(cores, jogadorPosition.vez, jogadorPosition.territorio, portalPosition.row, portalPosition.col, jogadorPosition.row, jogadorPosition.col);
         }
 
