@@ -8,8 +8,8 @@
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(10, 48px);
-    grid-template-rows: repeat(10, 48px);
+    grid-template-columns: repeat(9, 48px);
+    grid-template-rows: repeat(9, 48px);
     gap: 2px;
     width: 410px; /* (50px * 8) + (2px * 8) */
     margin: -300px 2px 2px 2px; /* Adicione uma pequena margem para separar as bordas dos elementos */

@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $linha = $result->fetch_assoc();
 
     if($linha['terr'] == 1){
-        if($newRow == 4 && $newCol == 5){
+        if($newRow == 8 && $newCol == 8){
             $newTerritorio = 2;
     
             $sql = "UPDATE ganolia_sessao gs 

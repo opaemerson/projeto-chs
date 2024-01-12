@@ -31,7 +31,6 @@ function handleValidMoveClick() {
     }
 }
 
-
 function movePlayer(currentPlayerSquare, targetSquare) {
     // Verificar se o jogador está sendo movido para um novo quadrado
     if (currentPlayerSquare !== targetSquare) {
@@ -131,14 +130,15 @@ directions.forEach(direction => {
         const validMove = document.querySelector(`.grid-item[row="${newRow}"][col="${newCol}"]`);
         if (validMove) {
             validMove.classList.add("valid-move");
+            validMove.style.backgroundColor = "green";
             validMove.addEventListener("click", handleValidMoveClick);
         }
     });
 }
 
-function criarGrid(fila, territorio, portalRow, portalCol, jogadorRow, jogadorCol){
-    for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < 10; j++) {
+function criarGrid(cores, fila, territorio, portalRow, portalCol, jogadorRow, jogadorCol){
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
             const gridItem = document.createElement("div");
             gridItem.classList.add("grid-item");
             gridItem.classList.add("white");
@@ -147,6 +147,7 @@ function criarGrid(fila, territorio, portalRow, portalCol, jogadorRow, jogadorCo
 
             gridContainer.appendChild(gridItem);
 
+            buscaCores(cores, territorio);
             buscaPortal(territorio, portalRow, portalCol);
             buscaJogador(fila, jogadorRow, jogadorCol);
             buscaAliado(fila, territorio, jogadorRow, jogadorCol);
@@ -184,25 +185,48 @@ function buscaJogador(fila, row, col){
     }
 }
 
+function buscaCores(cores, territorio) {
+    const arrayTerritorio1 = [
+        { row: 0, col: 1 },
+        { row: 1, col: 0 },
+        { row: 0, col: 0 }
+    ];
+
+    if(territorio == 1){
+        for (const posicao of arrayTerritorio1) {
+            const { row, col } = posicao;
+    
+            // Verificando se a cor está presente nas cores fornecidas
+            if (cores[row] && cores[row][col]) {
+                const corElement = document.querySelector(`[row="${row}"][col="${col}"]`);
+                
+                // Verificando se o elemento foi encontrado
+                if (corElement) {
+                    corElement.style.backgroundColor = "blue";
+                }
+            }
+        }
+    }
+
+}
+
 function buscaPortal(territorio, portalRow, portalCol) {
 
     if(territorio === 1){
-        if(portalRow === 4 && portalCol === 5){
+        if(portalRow && portalCol){
             const portalElement = document.querySelector(`[row="${portalRow}"][col="${portalCol}"]`);
     
             if (portalElement) {
-                portalElement.classList.add("portal");
                 portalElement.style.backgroundColor = "yellow";
             }
         }
     }
 
     if(territorio === 2){
-        if(portalRow === 2 && portalCol === 2){
+        if(portalRow && portalCol){
             const portalElement = document.querySelector(`[row="${portalRow}"][col="${portalCol}"]`);
     
             if (portalElement) {
-                portalElement.classList.add("portal");
                 portalElement.style.backgroundColor = "yellow";
             }
         }
@@ -270,15 +294,27 @@ function inicializa(){
 
 
         if(jogadorPosition.territorio === 1){
-            portalPosition.row = 4;
-            portalPosition.col = 5;
-            criarGrid(jogadorPosition.fila, jogadorPosition.territorio, portalPosition.row, portalPosition.col, jogadorPosition.row, jogadorPosition.col);
+            portalPosition.row = 8;
+            portalPosition.col = 8;
+            var cores = {};
+
+            for (let i = 0; i < 9; i++) {
+                for (let j = 0; j < 9; j++) {
+                    if (!cores[i]) {
+                        cores[i] = {};
+                    }
+                    cores[i][j] = { row: i, col: j };
+                }
+            }
+
+            console.log(cores);
+            criarGrid(cores, jogadorPosition.fila, jogadorPosition.territorio, portalPosition.row, portalPosition.col, jogadorPosition.row, jogadorPosition.col);
         }
 
         else if(jogadorPosition.territorio === 2){
             portalPosition.row = 2;
             portalPosition.col = 2;
-            criarGrid(jogadorPosition.fila, jogadorPosition.territorio, portalPosition.row, portalPosition.col, jogadorPosition.row, jogadorPosition.col);
+            criarGrid(cores, jogadorPosition.fila, jogadorPosition.territorio, portalPosition.row, portalPosition.col, jogadorPosition.row, jogadorPosition.col);
         }
 })
     .catch(error => console.error("Erro na solicitação Ajax:", error));
