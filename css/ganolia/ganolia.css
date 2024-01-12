@@ -154,6 +154,10 @@ color: black;
 padding: 5px;
 }
 
+.espacamento{
+    margin-right: 50px;
+}
+
 body {font-family: "Lato", sans-serif}
 
 .quadro {

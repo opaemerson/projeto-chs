@@ -61,7 +61,7 @@ $personagemId = $_SESSION['personagem_ganolia'];
             <img id="imagemRound3" src="" class="img-enviado" width="120" height="190" style="display: none;">
             <img id="imagemRound4" src="" class="img-enviado" width="120" height="190" style="display: none;">
             <img id="imagemRound5" src="" class="img-enviado" width="120" height="190" style="display: none;">
-            <button id="btnEquip1" style="display: none;">Equipar</button>
+            <button id="btnEquip1" style="display: none; margin-right: 50px;">Equipar</button>
             <button id="btnEquip2" style="display: none;">Equipar</button>
         </div>
         <?php
