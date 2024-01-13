@@ -6,7 +6,7 @@ $personagemId = $_SESSION['personagem_ganolia'];
 $resposta = array();
 
 function buscaImagem($id, $conn){
-    $sqlzin = "SELECT gi.imagem
+    $sqlzin = "SELECT gi.imagem as imagem
     FROM ganolia_item gi
     WHERE gi.id = $id";
 
@@ -21,6 +21,24 @@ function buscaImagem($id, $conn){
 
     return $imagem;
 }
+
+function buscaCategoria($id, $conn){
+    $sqlzin = "SELECT gi.categoria as categoria
+    FROM ganolia_item gi
+    WHERE gi.id = $id";
+
+    $result = $conn->query($sqlzin);
+
+    if ($result === FALSE) {
+        echo json_encode(array("success" => false, "message" => "Erro ao executar sql escolhendo: " . $conn->error));
+    }
+    
+    $linhaDaCategoria = $result->fetch_assoc();
+    $categoria = $linhaDaCategoria['categoria'];
+
+    return $categoria;
+}
+
 
 
 
@@ -53,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $arrayDisponivel = [];
             $porEscrito = '';
             $arrayImagens = [];
+            $arrayCategorias = [];
 
             foreach ($arrayMochila as $key) {
                 if (in_array($key, $arrayDescarte)) {
@@ -85,7 +104,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
 
                 $img = buscaImagem($valor, $conn);
+                $categoria = buscaCategoria($valor, $conn);
+
                 $arrayImagens[] = $img;
+                $arrayCategorias[] = $categoria;
             }
 
             $insertEscrito = "UPDATE ganolia_sessao gs
@@ -101,6 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $resposta['success'] = true;
             $resposta['mao'] = $porEscrito;
             $resposta['imagem'] = $arrayImagens;
+            $resposta['categoria'] = $arrayCategorias;
 
         } else{
             $resposta['success'] = false;

@@ -150,12 +150,12 @@ function criarGrid(cores, vez, territorio, portalRow, portalCol, jogadorRow, jog
             buscaCores(cores, territorio);
             buscaPortal(territorio, portalRow, portalCol);
             buscaAliado(vez, territorio);
-            buscaJogador(vez, jogadorRow, jogadorCol);
+            buscaJogador(vez, territorio, jogadorRow, jogadorCol);
         }
     }
 }
 
-function buscaJogador(vez, row, col){
+function buscaJogador(vez, territorio, row, col){
     if(vez === 'A'){
         const jogadorElement = document.querySelector(`[row="${row}"][col="${col}"]`);
     
@@ -181,6 +181,7 @@ function buscaJogador(vez, row, col){
         if (jogadorElement) {
             jogadorElement.classList.add("player");
             jogadorElement.style.backgroundColor = "purple";
+            buscaAliado(vez,territorio);
         }
     }
 }
@@ -259,6 +260,12 @@ function buscaAliado(vez,territorio){
                     if(territorio == item.territorio){
                     const aliadoElement = document.querySelector(`[row="${item.row}"][col="${item.col}"]`);
                     
+                    if(vez == 'A'){
+                        aliadoElement.style.backgroundColor = "purple";
+                    } else{
+                        aliadoElement.style.backgroundColor = "red";
+                    }
+
                     if(item.vez == 'A'){
                         aliadoElement.style.backgroundColor = "red";
                     } else{

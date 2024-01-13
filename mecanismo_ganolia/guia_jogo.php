@@ -36,8 +36,11 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <div class="quadro">
 
     <?php
-    $verificaVez = "SELECT *
+    $verificaVez = "SELECT gs.vez,
+    gst.qtd_ataque as qtd_ataque
     FROM ganolia_sessao gs
+    INNER JOIN ganolia_sessao_tmp gst
+    ON gst.personagem_id = gs.personagem_id
     WHERE gs.personagem_id = $personagemId
     AND gs.vez = 'A'";
 
@@ -45,12 +48,14 @@ $personagemId = $_SESSION['personagem_ganolia'];
 
     if ($conexao === FALSE) {
         echo "<script>alert('Erro ao buscar VEZ no banco de dados!');</script>";
-    } 
+    }
 
     if($conexao->num_rows == 0){
         echo '<h2>NÃO É SUA VEZ</h2>';
     }
     else {
+        $row = $conexao->fetch_assoc();
+        $qtdAtaque = $row['qtd_ataque'];
         ?>
         <h2>É SUA VEZ</h2>
         <div id="jogar" style="display: none;">
@@ -61,10 +66,12 @@ $personagemId = $_SESSION['personagem_ganolia'];
             <img id="imagemRound3" src="" class="img-enviado" width="120" height="190" style="display: none;">
             <img id="imagemRound4" src="" class="img-enviado" width="120" height="190" style="display: none;">
             <img id="imagemRound5" src="" class="img-enviado" width="120" height="190" style="display: none;">
-            <button id="btnEquip1" style="display: none; margin-right: 50px;">Equipar</button>
-            <button id="btnEquip2" style="display: none;">Equipar</button>
         </div>
+
         <?php
+        echo "<div>";
+        echo "<span id='qtdAtaque'>Quantidade de Ataque: " . $qtdAtaque . "</span>";
+        echo "</div>";
     }
     ?>
 
