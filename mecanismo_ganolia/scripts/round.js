@@ -19,23 +19,31 @@ function mostraRound() {
                 exibicao('#imagemRound1','#imagemRound2','#imagemRound3','#imagemRound4','#imagemRound5', resultado.imagem);
                 
                 arrayMao = [];
-                console.log(resultado.categoria);
-                
-                // Remover os botões existentes
+
                 $('[id^=btnEquip]').remove();
                 $('[id^=btnCombinar]').remove();
+
+                let partes = resultado.mao.split(';');
+
+                for (let i = 0; i < partes.length; i++) {
+                    let valorInteiro = parseInt(partes[i], 10);
+                    arrayMao.push(valorInteiro);
+                }
+                
+                console.log(arrayMao);
                 
                 for (let i = 0; i < resultado.categoria.length; i++) {
                     if (resultado.categoria[i] == 'Ataque') {
-                        // Criar o botão Equipar
+
                         let novoBotaoEquipar = $('<button>', {
                             id: `btnEquip${i + 1}`,
                             name: arrayMao[i],
                             text: 'Equipar',
                             style: 'margin-right: 50px;',
                             click: function() {
-                                // Lógica a ser executada quando o botão é clicado
-                                mostraName(); // Substitua pela lógica desejada
+                                $(`#btnEquip${i + 1}`).css('background-color', 'green');
+                                $(`#btnEquip${i + 1}`).removeAttr('onclick');                    
+                                geraAtk(arrayMao[i]); 
                             }
                         });
                         
@@ -46,6 +54,7 @@ function mostraRound() {
                         // Criar o botão Combinar
                         let novoBotaoCombinar = $('<button>', {
                             id: `btnCombinar${i + 1}`,
+                            name: arrayMao[i],
                             text: 'Combinar',
                             style: 'margin-right: 50px;',
                             click: function() {
@@ -100,12 +109,10 @@ function exibicao(um,dois,tres,quatro,cinco,imagens) {
     }
 }
 
-function mostraName(){
-    const ativo = 1;
-
+function geraAtk(atk){
 
     const form = new FormData();
-    form.append('ativo', ativo);
+    form.append('atk', atk);
 
 
     const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_qtd_ataque.php";
@@ -119,7 +126,7 @@ function mostraName(){
         dataType: 'json',
         success: function (resultado) { 
             if (resultado.success) {
-
+                alert('pqp0');
             }else{
                 alert('oi');
             } 
@@ -128,7 +135,4 @@ function mostraName(){
             console.log(erro); 
         }
     });
-
-    btnEquip1.css('background-color', 'green');
-    btnEquip1.removeAttr('onclick');
 }
