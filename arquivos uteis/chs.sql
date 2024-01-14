@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02/01/2024 às 01:49
+-- Tempo de geração: 14/01/2024 às 18:34
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -164,10 +164,8 @@ CREATE TABLE `ganolia_historico` (
 INSERT INTO `ganolia_historico` (`id`, `personagem_id`, `evento`, `item_usado`, `horario`) VALUES
 (1, 1, 'Registrado', '', '2023-12-16 03:00:00'),
 (3, 2, 'Registrado', '', '2023-12-16 03:00:00'),
-(154, 1, 'Acertou 3 de dano no alvo.', 'Espada 1', '2023-12-31 22:24:25'),
-(155, 3, 'Acertou 3 de dano no alvo.', 'Espada 1', '2023-12-31 22:29:26'),
 (158, 26, 'Registrado', '', '2023-12-16 03:00:00'),
-(159, 26, 'Acertou 2 de dano no alvo.', 'Espada 1', '2024-01-01 22:29:57');
+(179, 3, 'Acertou 2 de dano no alvo.', 'Espada 1', '2024-01-08 00:52:57');
 
 -- --------------------------------------------------------
 
@@ -221,16 +219,16 @@ INSERT INTO `ganolia_item` (`id`, `nome`, `tipo`, `categoria`, `dados`, `valor`,
 (20, '20', 'Espada', 'Ataque', '', '', 'Incomum', '', '', '', '', 12, '', 'A', 'I', '../Images/Ganolia/Espadas/20.png'),
 (21, '21', 'Espada', 'Ataque', '', '', 'Comum', '', '', '', '', 4, '', 'A', 'I', '../Images/Ganolia/Espadas/21.png'),
 (22, '22', 'Espada', 'Ataque', '', '', 'Comum', '', '', '', '', 10, '', 'A', 'I', '../Images/Ganolia/Espadas/22.png'),
-(23, '23', 'Espada', 'Ataque', '', '', 'Comum', '', '', '', '', 11, '', 'A', 'I', '../Images/Ganolia/Espadas/23.png'),
+(23, '23', 'Espada', 'Ataque', '', '', 'Comum', '', '', '', '', 11, 'A', 'A', 'I', '../Images/Ganolia/Espadas/23.png'),
 (24, '24', 'Espada', 'Ataque', '', '', 'Comum', '', '', '', '', 3, '', 'A', 'I', '../Images/Ganolia/Espadas/24.png'),
 (25, '25', 'Espada', 'Ataque', '', '', 'Incomum', '', '', '', '', 4, '', 'A', 'I', '../Images/Ganolia/Espadas/25.png'),
 (26, '26', 'Espada', 'Ataque', '', '', 'Incomum', '', '', '', '', 8, '', 'A', 'I', '../Images/Ganolia/Espadas/26.png'),
-(27, '27', 'Espada', 'Ataque', '', '', 'Magico', '', '', '', '', 2, '', 'A', 'I', '../Images/Ganolia/Espadas/27.png'),
+(27, '27', 'Espada', 'Ataque', '', '', 'Magico', '', '', '', '', 2, 'A', 'A', 'I', '../Images/Ganolia/Espadas/27.png'),
 (28, '28', 'Espada', 'Ataque', '', '', 'Raro', '', '', '', '', 5, '', 'A', 'I', '../Images/Ganolia/Espadas/28.png'),
 (29, '29', 'Espada', 'Ataque', '', '', 'Raro', '', '', '', '', 2, '', 'A', 'I', '../Images/Ganolia/Espadas/29.png'),
 (30, '30', 'Espada', 'Ataque', '', '', 'Incomum', '', '', '', '', 9, '', 'A', 'I', '../Images/Ganolia/Espadas/30.png'),
 (31, '31', 'Espada', 'Ataque', '', '', 'Comum', '', '', '', '', 0, '', 'I', 'I', '../Images/Ganolia/Espadas/31.png'),
-(32, '32', 'Espada', 'Ataque', '', '', 'Raro', '', '', '', '', 4, '', 'A', 'I', '../Images/Ganolia/Espadas/32.png'),
+(32, '32', 'Espada', 'Ataque', '', '', 'Raro', '', '', '', '', 4, 'A', 'A', 'I', '../Images/Ganolia/Espadas/32.png'),
 (33, '33', 'Espada', 'Ataque', '', '', 'Magico', '', '', '', '', 1, '', 'A', 'I', '../Images/Ganolia/Espadas/33.png'),
 (34, '34', 'Espada', 'Ataque', '', '', 'Raro', '', '', '', '', 3, '', 'A', 'I', '../Images/Ganolia/Espadas/34.png'),
 (35, '35', 'Espada', 'Ataque', '', '', 'Incomum', '', '', '', '', 6, '', 'A', 'I', '../Images/Ganolia/Espadas/35.png'),
@@ -246,7 +244,8 @@ INSERT INTO `ganolia_item` (`id`, `nome`, `tipo`, `categoria`, `dados`, `valor`,
 (46, '46', 'Espada', 'Ataque', '', '', 'Incomum', '', '', '', '', 3, '', 'A', 'I', '../Images/Ganolia/Espadas/46.png'),
 (47, '47', 'Espada', 'Ataque', '', '', 'Incomum', '', '', '', '', 10, '', 'A', 'I', '../Images/Ganolia/Espadas/47.png'),
 (48, '48', 'Espada', 'Ataque', '', '', 'Raro', '', '', '', '', 1, '', 'A', 'I', '../Images/Ganolia/Espadas/48.png'),
-(49, '49', 'Espada', 'Ataque', '', '', 'Incomum', '', '', '', '', 0, '', 'I', 'I', '../Images/Ganolia/Espadas/49.png');
+(49, '49', 'Espada', 'Ataque', '', '', 'Incomum', '', '', '', '', 0, '', 'I', 'I', '../Images/Ganolia/Espadas/49.png'),
+(50, 'Moeda 1', 'Moeda', 'Moeda', '', '', '', '', '', '', '', 5, '', 'A', 'I', '../Images/Ganolia/Moedas/1.png');
 
 -- --------------------------------------------------------
 
@@ -270,9 +269,57 @@ CREATE TABLE `ganolia_personagem` (
 
 INSERT INTO `ganolia_personagem` (`id`, `nome`, `classe`, `sessao`, `mochila`, `especial_id`, `usuario_id`) VALUES
 (1, 'Exemplar', 'Guerreiro', '', '', '', 7),
-(2, 'Flor', 'Guerreiro', '', '', '', 16),
-(3, 'Krob', 'Guerreiro', '', '', '', 7),
+(2, 'Flor', 'Guerreiro', '', '1;2;3', '', 16),
+(3, 'Krob', 'Guerreiro', '', '1;50;2;3;12', '32', 7),
 (26, 'Visko', 'Guerreiro', '', '', '', 7);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `ganolia_sessao`
+--
+
+CREATE TABLE `ganolia_sessao` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(20) NOT NULL,
+  `personagem_id` int(11) NOT NULL,
+  `territorio_id` int(11) NOT NULL,
+  `mao` varchar(200) NOT NULL,
+  `descarte` varchar(200) NOT NULL,
+  `row` int(11) NOT NULL,
+  `col` int(11) NOT NULL,
+  `fila` int(11) NOT NULL,
+  `vez` varchar(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `ganolia_sessao`
+--
+
+INSERT INTO `ganolia_sessao` (`id`, `nome`, `personagem_id`, `territorio_id`, `mao`, `descarte`, `row`, `col`, `fila`, `vez`) VALUES
+(1, 'Aventura', 3, 1, '1;50;2;3;12', '', 4, 1, 1, 'A'),
+(2, 'Aventura', 2, 1, '', '', 5, 4, 2, 'I');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `ganolia_sessao_tmp`
+--
+
+CREATE TABLE `ganolia_sessao_tmp` (
+  `id` int(11) NOT NULL,
+  `personagem_id` int(11) NOT NULL,
+  `ataque_ativo` varchar(30) NOT NULL,
+  `qtd_ataque` int(11) NOT NULL,
+  `qtd_moeda` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `ganolia_sessao_tmp`
+--
+
+INSERT INTO `ganolia_sessao_tmp` (`id`, `personagem_id`, `ataque_ativo`, `qtd_ataque`, `qtd_moeda`) VALUES
+(1, 3, '12;', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -427,7 +474,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `senha`, `permissao`, `email`, `referencia`, `personagem_ganolia`) VALUES
-(7, 'Emerson', 123, 'Admin', 'admin@admin', '', 26),
+(7, 'Emerson', 123, 'Admin', 'admin@admin', '', 3),
 (16, 'carol', 123, 'Usuario', 'carol@carol', 'Amigo', 2),
 (22, 'Raul', 123, 'Usuario', 'raul@raul', 'Amigo', 1);
 
@@ -466,6 +513,20 @@ ALTER TABLE `ganolia_item`
 ALTER TABLE `ganolia_personagem`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_usuario_id` (`usuario_id`);
+
+--
+-- Índices de tabela `ganolia_sessao`
+--
+ALTER TABLE `ganolia_sessao`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_personagem` (`personagem_id`);
+
+--
+-- Índices de tabela `ganolia_sessao_tmp`
+--
+ALTER TABLE `ganolia_sessao_tmp`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ganolia_sessao_tmp_FK` (`personagem_id`);
 
 --
 -- Índices de tabela `ganolia_territorio`
@@ -527,7 +588,7 @@ ALTER TABLE `ganolia_criatura`
 -- AUTO_INCREMENT de tabela `ganolia_historico`
 --
 ALTER TABLE `ganolia_historico`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
 
 --
 -- AUTO_INCREMENT de tabela `ganolia_item`
@@ -540,6 +601,18 @@ ALTER TABLE `ganolia_item`
 --
 ALTER TABLE `ganolia_personagem`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT de tabela `ganolia_sessao`
+--
+ALTER TABLE `ganolia_sessao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `ganolia_sessao_tmp`
+--
+ALTER TABLE `ganolia_sessao_tmp`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `ganolia_territorio`
@@ -592,6 +665,18 @@ ALTER TABLE `ganolia_historico`
 --
 ALTER TABLE `ganolia_personagem`
   ADD CONSTRAINT `fk_usuario_id` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Restrições para tabelas `ganolia_sessao`
+--
+ALTER TABLE `ganolia_sessao`
+  ADD CONSTRAINT `fk_personagem` FOREIGN KEY (`personagem_id`) REFERENCES `ganolia_personagem` (`id`);
+
+--
+-- Restrições para tabelas `ganolia_sessao_tmp`
+--
+ALTER TABLE `ganolia_sessao_tmp`
+  ADD CONSTRAINT `ganolia_sessao_tmp_FK` FOREIGN KEY (`personagem_id`) REFERENCES `ganolia_personagem` (`id`);
 
 --
 -- Restrições para tabelas `heads`
