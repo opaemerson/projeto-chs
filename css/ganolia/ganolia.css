@@ -1,8 +1,8 @@
 .button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 5px 10px;
     margin: 5px;
-    font-size: 16px;
+    font-size: 12px;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
@@ -37,8 +37,8 @@ button[sair]:hover {
 
 .centralizando{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
     height: 7vh;
 }
 
@@ -53,7 +53,7 @@ button[sair]:hover {
     position: fixed;
     bottom: 0;
     width: 100%;
-    max-height: 200px; /* Ajuste conforme necessário para a altura desejada */
+    max-height: 100px; /* Ajuste conforme necessário para a altura desejada */
     overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando o conteúdo ultrapassa a altura máxima */
     border: 1px solid rgb(78, 78, 78); /* Adiciona uma borda para melhor visualização */
     padding: 10px; /* Adiciona algum espaço interno para o conteúdo não encostar nas bordas */
@@ -62,7 +62,8 @@ button[sair]:hover {
 
 /* Estilo para as mensagens dentro da div */
 #scrollingContainer div {
-    margin-bottom: 10px; /* Adiciona um espaçamento entre as mensagens, ajuste conforme necessário */
+    margin-bottom: 2px; /* Adiciona um espaçamento entre as mensagens, ajuste conforme necessário */
+    font-size: 12px;
 }
 
 .mochila {
@@ -78,8 +79,8 @@ button[sair]:hover {
 .iconMochila{
     padding: 10px;
     float: right;
-    width: 15%; /* Alterado para 100% */
-    height: 200px; /* Altura definida como 190 pixels */
+    width: 10%; /* Alterado para 100% */
+    height: 100px; /* Altura definida como 190 pixels */
     position: fixed;
     bottom: 0;
     right: 0;

@@ -21,6 +21,7 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <title>Ganolia</title>
 </head>
 <body>
+    
 <div class="centralizando">
     <button class="button" id="jogarButton" onclick="mostrarJogar()">Jogar</button>
     <button class="button" id="ataqueButton" onclick="mostrarAtaque()">Ataque</button>
@@ -29,8 +30,6 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <button class="button" onclick="limpar()">Limpar</button>
     <button class="button" sair onclick="sair()">Sair</button>
 </div>
-<div class="linha-fina"></div>
-
 
 <div class="sessao">
     <div class="quadro">

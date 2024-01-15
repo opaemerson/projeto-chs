@@ -243,7 +243,7 @@ function pesquisar() {
           class: "btn btn-link",
           "data-bs-toggle": "modal",
           "data-bs-target": "#editModal",
-          html: `<img src='../Images/editar.png' width='30' height='30' alt='Editar'>`,
+          html: `<img src='../Images/CHS/editar.png' width='30' height='30' alt='Editar'>`,
           click: function () {
             lerUsuario(obj.id);
           },
@@ -252,7 +252,7 @@ function pesquisar() {
         const deleteButton = $("<button>", {
           type: "button",
           class: "btn btn-link",
-          html: `<img src='../Images/excluir.png' width='30' height='30'alt='Excluir'>`,
+          html: `<img src='../Images/CHS/excluir.png' width='30' height='30'alt='Excluir'>`,
           click: function () {
             remove(obj.id);
           },
