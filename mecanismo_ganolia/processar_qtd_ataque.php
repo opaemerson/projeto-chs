@@ -4,7 +4,6 @@ require_once('../config.php');
 
 $personagemId = $_SESSION['personagem_ganolia'];
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $atk = $_POST['atk'];
 
@@ -24,11 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row = $resu->fetch_assoc();
         $qtdAtual = $row['qtd'];
         $atkAtual = $row['atk'];
-
-        //parei aqui tenho que remover o ultimo ;
-        // if($atkAtual !== ''){
-        //     $atkAtual = rtrim($atkAtual, ';');
-        // }
 
         $qtdAtk = $qtdAtual + 1;
         $atk = $atkAtual . $atk . ";";

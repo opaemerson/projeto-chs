@@ -13,7 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $senha = limparEntrada($_POST['senha']);
 
         // para evitar SQL Injection
-        $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = ? AND senha = ?");
+        $stmt = $conn->prepare("SELECT u.id,
+        u.nome,
+        u.permissao,
+        u.personagem_ganolia,
+        gp.classe as personagem_classe
+        FROM usuarios u 
+        LEFT JOIN ganolia_personagem gp
+        ON gp.id = u.personagem_ganolia
+        WHERE email = ? AND senha = ?");
         $stmt->bind_param("ss", $email, $senha);
         $stmt->execute();
         $resultado = $stmt->get_result();
@@ -27,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['nome'] = $row['nome'];
             $_SESSION['permissao'] = $row['permissao'];
             $_SESSION['personagem_ganolia'] = $row['personagem_ganolia'];
+            $_SESSION['personagem_classe'] = $row['personagem_classe'];
 
             header('Location: index.php');
             exit;

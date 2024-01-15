@@ -69,7 +69,7 @@ $personagemId = $_SESSION['personagem_ganolia'];
 
         <?php
         echo "<div>";
-        echo "<span id='qtdAtaque'>Quantidade de Ataque: " . $qtdAtaque . "</span>";
+        echo "<span id='qtdAtaque' style='display: none;'>Quantidade de Ataque: " . $qtdAtaque . "</span>";
         echo "</div>";
     }
     ?>
@@ -233,6 +233,14 @@ $personagemId = $_SESSION['personagem_ganolia'];
         }
         echo "</div>";
         ?>
+    </div>
+</div>
+
+<!-- Modal de Ataques -->
+<div class="modal" id="modalAtaques">
+    <div class="modal-content">
+        <span class="close" onclick="closeModalAtaques()">&times;</span>
+        <div>oiii</div>
     </div>
 </div>
 

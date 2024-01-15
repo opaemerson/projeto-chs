@@ -15,7 +15,6 @@ function mostraRound() {
         dataType: 'json',
         success: function (resultado) { 
             if (resultado.success) {
-                $('#resultadoRound').html('Id: ' + resultado.mao);
                 exibicao('#imagemRound1','#imagemRound2','#imagemRound3','#imagemRound4','#imagemRound5', resultado.imagem);
                 
                 arrayMao = [];
@@ -68,10 +67,10 @@ function mostraRound() {
                 
                 let novoBotaoFinaliza = $('<button>', {
                     id: 'btnFinaliza',
-                    text: 'FINALIZAR MANIPULAÇÃO',
+                    text: 'FINALIZAR MANIPULACAO',
                     style: 'position: relative; left: 200px; top: 20px;',
                     click: function() {
-                        // Lógica a ser executada quando o botão é clicado
+                        finalizaManipulacao();
                     }
                 });
                 $('#jogar').append(novoBotaoFinaliza);
@@ -129,6 +128,79 @@ function geraAtk(atk){
                 alert('pqp0');
             }else{
                 alert('oi');
+            } 
+        },
+        error: function (erro) {
+            console.log(erro); 
+        }
+    });
+}
+
+function finalizaManipulacao(){
+    const ativado = 1;
+    
+    const form = new FormData();
+    form.append('ativado', ativado);
+
+    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_finaliza_manipulacao.php";
+
+    $.ajax({
+        url: url, 
+        method: 'POST',
+        data: form, 
+        processData: false, 
+        contentType: false,
+        dataType: 'json',
+        success: function (resultado) { 
+            if (resultado.success) {
+                $('#imagemRound1, #imagemRound2, #imagemRound3, #imagemRound4, #imagemRound5').hide();
+                $('#btnEquip1, #btnEquip2, #btnEquip3, #btnEquip4, #btnEquip5').hide();
+                $('#btnCombinar1, #btnCombinar2, #btnCombinar3, #btnCombinar4, #btnCombinar5').hide();
+                $('#btnFinaliza').hide();
+
+                $('#qtdAtaque').html("Ataques disponíveis:" + resultado.quantidade + "<br><br><br>").show();
+
+                let novoBotaoFinaliza = $('<button>', {
+                    id: 'btnAtacar',
+                    text: 'ATACAR',
+                    style: 'position: relative; left: 10px; top: 60px;',
+                    click: function() {
+                        mostraAtaques(resultado.ataques);
+                    }
+                });
+                $('#jogar').append(novoBotaoFinaliza);
+
+            }else{
+                alert('erro1');
+            } 
+        },
+        error: function (erro) {
+            console.log(erro); 
+        }
+    });
+}
+
+function mostraAtaques(ataques) {
+    const arrayAtaques = ataques;
+
+    const form = new FormData();
+    form.append('arrayAtaques', arrayAtaques);
+
+    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_finaliza_manipulacao.php";
+
+    $.ajax({
+        url: url, 
+        method: 'POST',
+        data: form, 
+        processData: false, 
+        contentType: false,
+        dataType: 'json',
+        success: function (resultado) { 
+            if (resultado.success) {
+                var modal = document.getElementById("modalAtaques");
+                modal.style.display = "block";
+            }else{
+                alert('erro1');
             } 
         },
         error: function (erro) {
