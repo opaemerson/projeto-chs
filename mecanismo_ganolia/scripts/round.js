@@ -30,8 +30,6 @@ function mostraRound() {
                     arrayMao.push(valorInteiro);
                 }
                 
-                console.log(arrayMao);
-                
                 for (let i = 0; i < resultado.categoria.length; i++) {
                     if (resultado.categoria[i] == 'Ataque') {
 
@@ -218,9 +216,6 @@ function mostraAtaques(ataques,imagens,criaturas) {
                 }
                 var imagensArray = imagens.split(";");
 
-                console.log(imagensArray);
-                console.log(qtdImagem);
-
                 if (criaturas.length !== 0) {
                     let selectCriatura = $('<select>');
                     
@@ -232,31 +227,37 @@ function mostraAtaques(ataques,imagens,criaturas) {
                     }
 
                     let containerImagens = $('<div>')
-                    
+                    console.log(ataques);
                     for (let i = 0; i < qtdImagem; i++) {
-
                         let imagem = $('<img>', {
-                            src: imagensArray[i]
+                            src: imagensArray[i],
+                            click: function() {
+                                $('img').css('border', 'none');
+                                $(this).css('border', '2px solid green');
+                            }
                         });
                     
                         imagem.appendTo(containerImagens);
 
                         imagem.css({
                             'width': '50px',
-                            'height': '120px'
+                            'height': '120px',
+                            'margin-bottom': '20px',
+                            'margin-right': '10px',
+                            'margin-top': '10px'
                         });
                     }
-
-                    selectCriatura.css({
-                        'position': 'absolute',
-                        'left': '50%',
-                        'top': '50%',
-                        'transform': 'translate(-50%, -50%)',
-                        'display': 'block'
-                    });
                     
                     $('#modal-do-ataque').append(selectCriatura);
                     $('#modal-do-ataque').append(containerImagens);
+
+                    $('#modal-do-ataque').css({
+                        'display': 'flex',
+                        'flexDirection': 'column',
+                        'alignItems': 'center',
+                        'justifyContent': 'flex-start',
+                    });
+
                 }                
             }else{
                 alert('erro1');
