@@ -4,6 +4,7 @@ let allowMoves = true; // Controle de estado para permitir ou não movimentos
 let jogadorPosition = { row: 0, col: 0 }; // Posição inicial do jogador
 let portalPosition = { row: 0, col: 0};
 let aliadoRepetido = [];
+let criaturaRepetido = [];
 
 function highlightValidMoves(row, col, currentPlayerSquare) {
     const directions = [
@@ -253,9 +254,10 @@ function buscaAliado(vez,territorio){
 
             data.data.forEach(item => {
                 // Verifica se o item já foi processado
-                if (!aliadoRepetido.includes(item.personagem)) {
+                if (!aliadoRepetido.includes(item.personagem) || !criaturaRepetido.includes(item.criatura)) {
                     // Adiciona o item ao array de itens processados
                     aliadoRepetido.push(item.personagem);
+                    criaturaRepetido.push(item.criatura);
 
                     if(territorio == item.territorio){
                     const aliadoElement = document.querySelector(`[row="${item.row}"][col="${item.col}"]`);
@@ -270,6 +272,10 @@ function buscaAliado(vez,territorio){
                         aliadoElement.style.backgroundColor = "red";
                     } else{
                         aliadoElement.style.backgroundColor = "purple";
+                    }
+
+                    if(item.personagem == 99){
+                        aliadoElement.style.backgroundColor = "orange";
                     }
 
                     }

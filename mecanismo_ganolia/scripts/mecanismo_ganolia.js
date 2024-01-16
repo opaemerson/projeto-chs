@@ -104,11 +104,6 @@ function closeModalMochila() {
   modal.style.display = "none";
 }
 
-function closeModalAtaques() {
-  var modal = document.getElementById("modalAtaques");
-  modal.style.display = "none";
-}
-
 function buscarItemAtaque() {
     const codigoItemAtaque = $('#codigoItemAtaque').val();
   

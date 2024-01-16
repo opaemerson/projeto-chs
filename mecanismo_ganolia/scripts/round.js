@@ -15,6 +15,7 @@ function mostraRound() {
         dataType: 'json',
         success: function (resultado) { 
             if (resultado.success) {
+                $('#btnManipula').hide();
                 exibicao('#imagemRound1','#imagemRound2','#imagemRound3','#imagemRound4','#imagemRound5', resultado.imagem);
                 
                 arrayMao = [];
@@ -76,7 +77,6 @@ function mostraRound() {
                 $('#jogar').append(novoBotaoFinaliza);
                 
                 $('#btnFinaliza').show();
-                $('#btnManipula').hide();
             }else{
                 $('#resultadoRound').html('Erro: ' + resultado.message);
             } 
@@ -158,17 +158,27 @@ function finalizaManipulacao(){
                 $('#btnCombinar1, #btnCombinar2, #btnCombinar3, #btnCombinar4, #btnCombinar5').hide();
                 $('#btnFinaliza').hide();
 
+                if (resultado.nome_criatura.length !== 0) {
+                    let novoBotaoFinaliza = $('<button>', {
+                        id: 'btnAtacar',
+                        text: 'ATACAR',
+                        style: 'position: relative; left: 10px; top: 60px;',
+                        click: function() {
+                            mostraAtaques(resultado.ataques, resultado.nome_criatura);
+                        }
+                    });
+    
+                    $('#jogar').append(novoBotaoFinaliza);
+                } else{
+                    let infoAtaque = $('<span>',{
+                        text: 'VOCE NAO ALCANCE PARA NENHUMA CRIATURA PARA ATACAR!'
+                    });
+                    
+                    $('#jogar').append(infoAtaque);
+                }
+                
                 $('#qtdAtaque').html("Ataques disponíveis:" + resultado.quantidade + "<br><br><br>").show();
-
-                let novoBotaoFinaliza = $('<button>', {
-                    id: 'btnAtacar',
-                    text: 'ATACAR',
-                    style: 'position: relative; left: 10px; top: 60px;',
-                    click: function() {
-                        mostraAtaques(resultado.ataques);
-                    }
-                });
-                $('#jogar').append(novoBotaoFinaliza);
+                
 
             }else{
                 alert('erro1');
@@ -180,13 +190,13 @@ function finalizaManipulacao(){
     });
 }
 
-function mostraAtaques(ataques) {
+function mostraAtaques(ataques, criaturas) {
     const arrayAtaques = ataques;
 
     const form = new FormData();
     form.append('arrayAtaques', arrayAtaques);
 
-    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_finaliza_manipulacao.php";
+    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_verifica_ataques.php";
 
     $.ajax({
         url: url, 
@@ -208,3 +218,8 @@ function mostraAtaques(ataques) {
         }
     });
 }
+
+function closeModalAtaques() {
+    var modal = document.getElementById("modalAtaques");
+    modal.style.display = "none";
+  }

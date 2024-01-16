@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "SELECT 
             gs.personagem_id as personagem,
             gs.territorio_id as territorio,
+            gs.criatura_id as criatura,
             gs.row,
             gs.col,
             gs.vez
