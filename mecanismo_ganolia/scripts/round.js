@@ -162,7 +162,7 @@ function finalizaManipulacao(){
                 if (resultado.nome_criatura.length !== 0 && resultado.quantidade !== '0') {
                     let novoBotaoFinaliza = $('<button>', {
                         id: 'btnAtacar',
-                        text: 'ATACAR',
+                        text: 'COMBATE',
                         style: 'position: relative; left: 10px; top: 60px;',
                         click: function() {
                             mostraAtaques(resultado.ataques,resultado.imagens,resultado.nome_criatura);
@@ -215,9 +215,14 @@ function mostraAtaques(ataques,imagens,criaturas) {
                     }
                 }
                 var imagensArray = imagens.split(";");
+                var ataquesArray = ataques.split(";");
 
                 if (criaturas.length !== 0) {
-                    let selectCriatura = $('<select>');
+                    let formulario = $('<form>');
+
+                    let selectCriatura = $('<select>', {
+                        id: 'selectCriatura',
+                    });
                     
                     for (let i = 0; i < criaturas.length; i++) {
                         $('<option>', {
@@ -226,14 +231,19 @@ function mostraAtaques(ataques,imagens,criaturas) {
                         }).appendTo(selectCriatura);
                     }
 
+                    selectCriatura.appendTo(formulario);
+
                     let containerImagens = $('<div>')
-                    console.log(ataques);
+
                     for (let i = 0; i < qtdImagem; i++) {
                         let imagem = $('<img>', {
                             src: imagensArray[i],
+                            value: ataquesArray[i],
                             click: function() {
                                 $('img').css('border', 'none');
                                 $(this).css('border', '2px solid green');
+
+                                inputAtaqueSelecionado.val(ataquesArray[i]);
                             }
                         });
                     
@@ -247,10 +257,28 @@ function mostraAtaques(ataques,imagens,criaturas) {
                             'margin-top': '10px'
                         });
                     }
+                    containerImagens.appendTo(formulario);
+                    let inputAtaqueSelecionado = $('<input>', {
+                        type: 'hidden',
+                        name: 'ataqueSelecionado',
+                    });
                     
-                    $('#modal-do-ataque').append(selectCriatura);
-                    $('#modal-do-ataque').append(containerImagens);
+                    inputAtaqueSelecionado.appendTo(formulario);
 
+                    let btnSubmit = $('<button>', {
+                        type: 'submit',
+                        text: 'Atacar',
+                    });
+
+                    btnSubmit.appendTo(formulario);
+
+                    formulario.on('submit', function(event) {
+                        event.preventDefault(); 
+                        let ataqueSelecionado = inputAtaqueSelecionado.val();
+                        console.log('Ataque Selecionado:', ataqueSelecionado);
+                    });
+                    
+                    $('#modal-do-ataque').append(formulario);
                     $('#modal-do-ataque').css({
                         'display': 'flex',
                         'flexDirection': 'column',
