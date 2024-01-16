@@ -239,7 +239,6 @@ $personagemId = $_SESSION['personagem_ganolia'];
 <!-- Modal de Ataques -->
 <div class="modal" id="modalAtaques">
     <div id="modal-do-ataque">
-        <span class="close" onclick="closeModalAtaques()">&times;</span>
     </div>
 </div>
 

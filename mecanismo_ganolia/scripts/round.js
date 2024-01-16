@@ -1,3 +1,5 @@
+const ataqueEnviado = [];
+
 function mostraRound() {
     const ativado = 1;
 
@@ -208,7 +210,6 @@ function mostraAtaques(ataques,imagens,criaturas) {
             if (resultado.success) {
                 openModalAtaques();
                 qtdImagem = 0;
-                let ataqueEnviado = [];
                 
                 for (let i = 0; i < imagens.length; i++) {
                     if (imagens[i] === ';') {
@@ -248,7 +249,7 @@ function mostraAtaques(ataques,imagens,criaturas) {
                             
                                 if (!ataqueEnviado.includes(ataqueAtual)) {
                                     $('img').css('border', 'none');
-                                    $(this).css('border', '2px solid green');
+                                    $(this).css('border', '5px solid green');
                             
                                     inputAtaqueSelecionado.val(ataqueAtual);
                                 }
@@ -288,14 +289,25 @@ function mostraAtaques(ataques,imagens,criaturas) {
                         let ataqueSelecionado = inputAtaqueSelecionado.val();
                         let idCriaturaSeleccionada = selectCriatura.val();
                         ataqueEnviado.push(ataqueSelecionado);
-                        console.log('atkenviado',ataqueEnviado);
+                        closeModalAtaques();
 
+                        console.log('atkenviado',ataqueEnviado);
                         console.log('Criatura:', idCriaturaSeleccionada)
                         console.log('Ataque Selecionado:', ataqueSelecionado);
                     });
 
+                    let botaoClose = $('<span>', {
+                        class: 'close',
+                        text: 'X',
+                        click: function () {
+                            closeModalAtaques();
+                        }
+                    });
+
 //APLICANDO TODO CONTEÚDO DENTRO DO MODAL
+                    $('#modal-do-ataque').append(botaoClose);
                     $('#modal-do-ataque').append(formulario);
+
                     $('#modal-do-ataque').css({
                         'display': 'flex',
                         'flexDirection': 'column',
@@ -316,6 +328,7 @@ function mostraAtaques(ataques,imagens,criaturas) {
 function closeModalAtaques() {
     var modal = document.getElementById("modalAtaques");
     modal.style.display = "none";
+    $('#modal-do-ataque').empty();
 }
 
 function openModalAtaques() {
