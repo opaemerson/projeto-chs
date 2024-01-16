@@ -208,6 +208,7 @@ function mostraAtaques(ataques,imagens,criaturas) {
             if (resultado.success) {
                 openModalAtaques();
                 qtdImagem = 0;
+                let ataqueEnviado = [];
                 
                 for (let i = 0; i < imagens.length; i++) {
                     if (imagens[i] === ';') {
@@ -220,33 +221,40 @@ function mostraAtaques(ataques,imagens,criaturas) {
                 if (criaturas.length !== 0) {
                     let formulario = $('<form>');
 
-                    let selectCriatura = $('<select>', {
-                        id: 'selectCriatura',
-                    });
-                    
-                    for (let i = 0; i < criaturas.length; i++) {
-                        $('<option>', {
-                            value: criaturas[i].id_criatura,
-                            text: criaturas[i].nome_criatura
-                        }).appendTo(selectCriatura);
-                    }
+//CONTAINER RELACIONADO A SELEÇÃO DE CRIATURAS
+                let selectCriatura = $('<select>', {
+                    id: 'selectCriatura',
+                });
 
-                    selectCriatura.appendTo(formulario);
+                for (let i = 0; i < criaturas.length; i++) {
+                    $('<option>', {
+                        value: criaturas[i].id_criatura,
+                        text: criaturas[i].nome_criatura,
+                    }).appendTo(selectCriatura);
+                }
 
+                selectCriatura.appendTo(formulario);
+
+//CONTAINER RELACIONADO A IMAGEM
                     let containerImagens = $('<div>')
-
                     for (let i = 0; i < qtdImagem; i++) {
                         let imagem = $('<img>', {
+                            id: 'idImage' + i,
                             src: imagensArray[i],
                             value: ataquesArray[i],
-                            click: function() {
-                                $('img').css('border', 'none');
-                                $(this).css('border', '2px solid green');
 
-                                inputAtaqueSelecionado.val(ataquesArray[i]);
+                            click: function() {
+                                const ataqueAtual = ataquesArray[i];
+                            
+                                if (!ataqueEnviado.includes(ataqueAtual)) {
+                                    $('img').css('border', 'none');
+                                    $(this).css('border', '2px solid green');
+                            
+                                    inputAtaqueSelecionado.val(ataqueAtual);
+                                }
                             }
                         });
-                    
+
                         imagem.appendTo(containerImagens);
 
                         imagem.css({
@@ -258,13 +266,16 @@ function mostraAtaques(ataques,imagens,criaturas) {
                         });
                     }
                     containerImagens.appendTo(formulario);
+
                     let inputAtaqueSelecionado = $('<input>', {
                         type: 'hidden',
                         name: 'ataqueSelecionado',
                     });
-                    
+            
                     inputAtaqueSelecionado.appendTo(formulario);
 
+
+//BOTAO ATACAR
                     let btnSubmit = $('<button>', {
                         type: 'submit',
                         text: 'Atacar',
@@ -275,9 +286,15 @@ function mostraAtaques(ataques,imagens,criaturas) {
                     formulario.on('submit', function(event) {
                         event.preventDefault(); 
                         let ataqueSelecionado = inputAtaqueSelecionado.val();
+                        let idCriaturaSeleccionada = selectCriatura.val();
+                        ataqueEnviado.push(ataqueSelecionado);
+                        console.log('atkenviado',ataqueEnviado);
+
+                        console.log('Criatura:', idCriaturaSeleccionada)
                         console.log('Ataque Selecionado:', ataqueSelecionado);
                     });
-                    
+
+//APLICANDO TODO CONTEÚDO DENTRO DO MODAL
                     $('#modal-do-ataque').append(formulario);
                     $('#modal-do-ataque').css({
                         'display': 'flex',
@@ -285,7 +302,6 @@ function mostraAtaques(ataques,imagens,criaturas) {
                         'alignItems': 'center',
                         'justifyContent': 'flex-start',
                     });
-
                 }                
             }else{
                 alert('erro1');
