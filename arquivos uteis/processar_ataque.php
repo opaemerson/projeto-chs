@@ -5,14 +5,14 @@ header('Content-Type: application/json');
 require_once('../config.php');
 date_default_timezone_set('America/Sao_Paulo');
 
-$itemAtaque = $_POST['itemAtaque'];
+$codigoItemAtaque = $_POST['codigoItemAtaque'];
 
 $usuario = (isset($_SESSION['id']) && $_SESSION['id']) ? $_SESSION['id'] : null;
 
 $resposta = array();
 
-if(isset($itemAtaque) && $itemAtaque !== '' && !empty($usuario)){ 
-    $select = "SELECT * FROM ganolia_item WHERE id = '$itemAtaque'";
+if(isset($codigoItemAtaque) && $codigoItemAtaque !== '' && !empty($usuario)){ 
+    $select = "SELECT * FROM ganolia_item WHERE id = '$codigoItemAtaque'";
     $resultado = $conn->query($select);
 
     if ($resultado->num_rows > 0){

@@ -289,11 +289,9 @@ function mostraAtaques(ataques,imagens,criaturas) {
                         let ataqueSelecionado = inputAtaqueSelecionado.val();
                         let idCriaturaSeleccionada = selectCriatura.val();
                         ataqueEnviado.push(ataqueSelecionado);
-                        closeModalAtaques();
+                        
+                        concessaoAtk(idCriaturaSeleccionada, ataqueSelecionado);
 
-                        console.log('atkenviado',ataqueEnviado);
-                        console.log('Criatura:', idCriaturaSeleccionada)
-                        console.log('Ataque Selecionado:', ataqueSelecionado);
                     });
 
                     let botaoClose = $('<span>', {
@@ -324,6 +322,39 @@ function mostraAtaques(ataques,imagens,criaturas) {
         }
     });
 }
+
+function concessaoAtk(criatura, itemAtaque){
+    const form = new FormData();
+    form.append('criatura', criatura);
+    form.append('itemAtaque', itemAtaque);
+
+
+    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_ataque.php";
+
+    $.ajax({
+        url: url, 
+        method: 'POST',
+        data: form, 
+        processData: false, 
+        contentType: false,
+        dataType: 'json',
+        success: function (resultado) { 
+          if (resultado.success) {
+            var danoConcedido = resultado.damageAleatorio;
+            alert('Dano Realizado: ' + danoConcedido);
+
+            closeModalAtaques();
+            
+          } else {
+            console.error('deu melda.');
+          }
+        },
+        error: function (erro) {
+          console.log(erro); 
+          $('#resultadoAtaque').html('[js] - Erro ao realizar ataque.');
+        }
+      });
+    }
 
 function closeModalAtaques() {
     var modal = document.getElementById("modalAtaques");
