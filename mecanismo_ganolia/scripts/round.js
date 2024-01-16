@@ -153,32 +153,32 @@ function finalizaManipulacao(){
         dataType: 'json',
         success: function (resultado) { 
             if (resultado.success) {
+
                 $('#imagemRound1, #imagemRound2, #imagemRound3, #imagemRound4, #imagemRound5').hide();
                 $('#btnEquip1, #btnEquip2, #btnEquip3, #btnEquip4, #btnEquip5').hide();
                 $('#btnCombinar1, #btnCombinar2, #btnCombinar3, #btnCombinar4, #btnCombinar5').hide();
                 $('#btnFinaliza').hide();
 
-                if (resultado.nome_criatura.length !== 0) {
+                $('#qtdAtaque').html("Ataques disponíveis:" + resultado.quantidade).show();
+                
+                if (resultado.nome_criatura.length !== 0 && resultado.quantidade !== '0') {
                     let novoBotaoFinaliza = $('<button>', {
                         id: 'btnAtacar',
                         text: 'ATACAR',
                         style: 'position: relative; left: 10px; top: 60px;',
                         click: function() {
-                            mostraAtaques(resultado.ataques, resultado.nome_criatura);
+                            mostraAtaques(resultado.ataques,resultado.imagens,resultado.nome_criatura);
                         }
                     });
     
                     $('#jogar').append(novoBotaoFinaliza);
                 } else{
                     let infoAtaque = $('<span>',{
-                        text: 'VOCE NAO ALCANCE PARA NENHUMA CRIATURA PARA ATACAR!'
+                        text: 'NAO EXISTE ATAQUE DISPONIVEL OU CRIATURA EM SEU ALCANCE'
                     });
                     
                     $('#jogar').append(infoAtaque);
                 }
-                
-                $('#qtdAtaque').html("Ataques disponíveis:" + resultado.quantidade + "<br><br><br>").show();
-                
 
             }else{
                 alert('erro1');
@@ -190,7 +190,8 @@ function finalizaManipulacao(){
     });
 }
 
-function mostraAtaques(ataques, criaturas) {
+function mostraAtaques(ataques,imagens,criaturas) {
+    console.log(ataques);
     const arrayAtaques = ataques;
 
     const form = new FormData();
@@ -207,8 +208,56 @@ function mostraAtaques(ataques, criaturas) {
         dataType: 'json',
         success: function (resultado) { 
             if (resultado.success) {
-                var modal = document.getElementById("modalAtaques");
-                modal.style.display = "block";
+                openModalAtaques();
+                qtdImagem = 0;
+                
+                for (let i = 0; i < imagens.length; i++) {
+                    if (imagens[i] === ';') {
+                        qtdImagem++;
+                    }
+                }
+                var imagensArray = imagens.split(";");
+
+                console.log(imagensArray);
+                console.log(qtdImagem);
+
+                if (criaturas.length !== 0) {
+                    let selectCriatura = $('<select>');
+                    
+                    for (let i = 0; i < criaturas.length; i++) {
+                        $('<option>', {
+                            value: criaturas[i].id_criatura,
+                            text: criaturas[i].nome_criatura
+                        }).appendTo(selectCriatura);
+                    }
+
+                    let containerImagens = $('<div>')
+                    
+                    for (let i = 0; i < qtdImagem; i++) {
+
+                        let imagem = $('<img>', {
+                            src: imagensArray[i]
+                        });
+                    
+                        imagem.appendTo(containerImagens);
+
+                        imagem.css({
+                            'width': '50px',
+                            'height': '120px'
+                        });
+                    }
+
+                    selectCriatura.css({
+                        'position': 'absolute',
+                        'left': '50%',
+                        'top': '50%',
+                        'transform': 'translate(-50%, -50%)',
+                        'display': 'block'
+                    });
+                    
+                    $('#modal-do-ataque').append(selectCriatura);
+                    $('#modal-do-ataque').append(containerImagens);
+                }                
             }else{
                 alert('erro1');
             } 
@@ -222,4 +271,9 @@ function mostraAtaques(ataques, criaturas) {
 function closeModalAtaques() {
     var modal = document.getElementById("modalAtaques");
     modal.style.display = "none";
-  }
+}
+
+function openModalAtaques() {
+    var modal = document.getElementById("modalAtaques");
+    modal.style.display = "block";
+}

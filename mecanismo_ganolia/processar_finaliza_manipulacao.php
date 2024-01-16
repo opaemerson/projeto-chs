@@ -4,6 +4,30 @@ require_once('../config.php');
 
 $personagemId = $_SESSION['personagem_ganolia'];
 
+function buscaImagem($ataques, $conn){
+    $quebraAtaque = explode(";", $ataques);
+    $imagens = '';
+
+    foreach($quebraAtaque as $att){
+        $sqlImagem = "SELECT
+        gi.imagem as imagem
+        FROM ganolia_item gi
+        WHERE gi.id = $att";
+
+        $conexao = $conn->query($sqlImagem);
+
+        if ($conexao === FALSE) {
+            continue;
+        } else {
+            $lita = $conexao->fetch_assoc();
+            $img = $lita['imagem'];
+            $imagens = $imagens . $img . ";";
+        }
+    }
+    
+    return $imagens;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ativo = $_POST['ativado'];
 
@@ -28,6 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row = $resultado->fetch_assoc();
         $quantidade = $row['qtd_atq'];
         $ataques = $row['ataque_ativo'];
+
+        if(!empty($ataques)){
+            $img = buscaImagem($ataques, $conn);
+        }
+
         $rowJogador = intval($row['row']);
         $colJogador = intval($row['col']);        
 
@@ -114,6 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $resposta['quantidade'] = $quantidade;
         $resposta['ataques'] = $ataques;
         $resposta['nome_criatura'] = $criaDisponivel;
+        $resposta['imagens'] = $img;
 
         echo json_encode($resposta);
     }
