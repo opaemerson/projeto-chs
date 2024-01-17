@@ -328,7 +328,6 @@ function concessaoAtk(criatura, itemAtaque){
     form.append('criatura', criatura);
     form.append('itemAtaque', itemAtaque);
 
-
     const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_ataque.php";
 
     $.ajax({
@@ -340,18 +339,26 @@ function concessaoAtk(criatura, itemAtaque){
         dataType: 'json',
         success: function (resultado) { 
           if (resultado.success) {
+            $('#qtdAtaque').html("Ataques disponiveis:" + resultado.quantidade).show();
+            
             var danoConcedido = resultado.damageAleatorio;
-            alert('Dano Realizado: ' + danoConcedido);
+            console.log(danoConcedido);
+
+            if (danoConcedido !== ''){
+                alert('-' + danoConcedido + ' de HP em ' + resultado.criatura);
+            } else{
+                alert(resultado.criatura + '[defendeu]');
+            }
 
             closeModalAtaques();
             
           } else {
-            console.error('deu melda.');
+            alert('Nao ha ataques disponiveis');
+            console.error('[js] - Erro ao realizar ataque.');
           }
         },
         error: function (erro) {
           console.log(erro); 
-          $('#resultadoAtaque').html('[js] - Erro ao realizar ataque.');
         }
       });
     }
