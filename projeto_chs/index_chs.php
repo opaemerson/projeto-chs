@@ -47,7 +47,6 @@ require_once('../config.php');
       </div>
 </div>
 
-
       <!-- Campo Exibição -->
       <div class="amarelo-papel">
         <span class="listar_usuarios"></span>

@@ -49,6 +49,20 @@ button[sair]:hover {
     border: 1px solid rgb(140, 140, 140);
 }
 
+.criatura-label {
+    display: block; /* Cada label em uma nova linha */
+    margin-bottom: 5px; /* Adapte conforme necess·rio para o espaÁamento desejado */
+}
+
+.info_sessao{
+    gap: 2px;
+    width: 500px; /* (50px * 8) + (2px * 8) */
+    margin: -730px -460px 2px 2px; /* Adicione uma pequena margem para separar as bordas dos elementos */
+    position: fixed;
+    right: 130px; /* Ajuste a dist√¢ncia √† direita conforme necess√°rio */
+    top: -40;
+}
+
 #scrollingContainer {
     position: fixed;
     bottom: 0;

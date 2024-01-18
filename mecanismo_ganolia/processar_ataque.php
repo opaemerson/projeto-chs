@@ -103,6 +103,55 @@ function updateQtd($personagemId, $conn){
     }
 }
 
+function infoGeral($conn){
+$sqlInfo = "SELECT
+(select gp.nome from ganolia_personagem gp where gs.personagem_id = gp.id and gs.personagem_id <> 99) as nome_personagem,
+(select gs.personagem_hp from ganolia_personagem x where gs.personagem_id = x.id and gs.personagem_id <> 99) as hp_personagem,
+(select y.nome from ganolia_criatura y where y.id = gs.criatura_id and gs.personagem_id = 99) as nome_criatura,
+(select gs.criatura_hp from ganolia_criatura y where y.id = gs.criatura_id and gs.personagem_id = 99) as hp_criatura
+FROM ganolia_criatura gc
+INNER JOIN ganolia_sessao gs
+ON gs.criatura_id = gc.id";
+
+$rr = $conn->query($sqlInfo);
+
+$arrayNomePersonagem = [];
+$arrayHpPersonagem = [];
+$arrayNomeCriatura = [];
+$arrayHpCriatura = [];
+
+if ($rr) {
+    while ($lita = $rr->fetch_assoc()) {
+    $nomePersonagem = $lita['nome_personagem'];
+    $hpPersonagem = $lita['hp_personagem'];
+    $nomeCriatura = $lita['nome_criatura'];
+    $hpCriatura = $lita['hp_criatura'];
+
+    if($nomePersonagem !== NULL ){
+        $arrayNomePersonagem[] = $nomePersonagem;
+        $arrayHpPersonagem[] = $hpPersonagem;
+    }
+
+     if($nomeCriatura !== NULL){
+        $arrayNomeCriatura[] = $nomeCriatura;
+        $arrayHpCriatura[] = $hpCriatura;
+     }
+    
+    }
+
+    return [
+        'nomePersonagem' => $arrayNomePersonagem,
+        'hpPersonagem' => $arrayHpPersonagem,
+        'nomeCriatura' => $arrayNomeCriatura,
+        'hpCriatura' => $arrayHpCriatura
+    ];
+
+    $rr->close();
+} else {
+    return false;
+}
+}
+
 if(isset($itemAtaque) && $itemAtaque !== '' && !empty($usuario)){ 
     $select = "SELECT * FROM ganolia_item WHERE id = '$itemAtaque'";
     $resultado = $conn->query($select);
@@ -126,6 +175,13 @@ if(isset($itemAtaque) && $itemAtaque !== '' && !empty($usuario)){
             $damageAleatorio = $damagePossivel[$indiceAleatorio];
 
             subtraiDano($damageAleatorio, $arrayCria['criatura_id'], $conn);
+
+            $arrayInfo = infoGeral($conn);
+            $array_nome_personagem = $arrayInfo['nomePersonagem'];
+            $array_hp_personagem = $arrayInfo['hpPersonagem'];
+            $array_nome_criatura = $arrayInfo['nomeCriatura'];
+            $array_hp_criatura = $arrayInfo['hpCriatura'];
+
             $quantidade = updateQtd($personagemId, $conn);
             $criatura_nome = $arrayCria['criatura_nome'];
 
@@ -133,6 +189,10 @@ if(isset($itemAtaque) && $itemAtaque !== '' && !empty($usuario)){
             $resposta['quantidade'] = $quantidade;
             $resposta['damageAleatorio'] = isset($damageAleatorio) ? $damageAleatorio : '';
             $resposta['criatura'] = $criatura_nome;
+            $resposta['array_nome_personagem'] = $array_nome_personagem;
+            $resposta['array_nome_criatura'] = $array_nome_criatura;
+            $resposta['array_hp_personagem'] = $array_hp_personagem;
+            $resposta['array_hp_criatura'] = $array_hp_criatura;
     
             $verPersonagem = "SELECT gh.evento as evento, 
             (select x.nome from ganolia_personagem x where x.id = u.personagem_ganolia) as personagem_atual,

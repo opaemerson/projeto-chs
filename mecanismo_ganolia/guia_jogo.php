@@ -158,6 +158,47 @@ $personagemId = $_SESSION['personagem_ganolia'];
 <div class="grid-container" id="grid-container"></div> 
 </div>
 
+<!-- Informacoes da sessao ao lado do mapa -->
+<div class="info_sessao" id="info-sessao">
+<?php
+$sqlInfo = "SELECT
+(select gp.nome from ganolia_personagem gp where gs.personagem_id = gp.id and gs.personagem_id <> 99) as nome_personagem,
+(select gs.personagem_hp from ganolia_personagem x where gs.personagem_id = x.id and gs.personagem_id <> 99) as hp_personagem,
+(select y.nome from ganolia_criatura y where y.id = gs.criatura_id and gs.personagem_id = 99) as nome_criatura,
+(select gs.criatura_hp from ganolia_criatura y where y.id = gs.criatura_id and gs.personagem_id = 99) as hp_criatura
+FROM ganolia_criatura gc
+INNER JOIN ganolia_sessao gs
+ON gs.criatura_id = gc.id";
+
+$rr = $conn->query($sqlInfo);
+if ($rr) {
+    while ($lita = $rr->fetch_assoc()) {
+    $nomePersonagem = $lita['nome_personagem'];
+    $hpPersonagem = $lita['hp_personagem'];
+    $nomeCriatura = $lita['nome_criatura'];
+    $hpCriatura = $lita['hp_criatura'];
+
+    if($nomePersonagem !== NULL){
+        echo "$nomePersonagem <br>";
+        echo "$hpPersonagem <br>";
+    }
+    
+    if($nomeCriatura !== NULL ){
+        echo "$nomeCriatura <br>";
+        echo "$hpCriatura <br>";
+    }
+    }
+    $rr->close();
+} else {
+    echo "Erro na consulta: " . $conn->error;
+}
+?>
+</div>
+
+<div class="info_sessao" id="info_js">
+    
+</div>
+
 <!-- DIV de LOG -->
 <div class="scrolling-container" id="scrollingContainer">
     <?php
@@ -181,7 +222,7 @@ $personagemId = $_SESSION['personagem_ganolia'];
     ?>
 </div>
 
-
+<!-- Mochila -->
 <div class="mochila" id="mochila">
     <button onclick="openModalMochila()">
         <img class="iconMochila" src='../Images/Ganolia/Icons/mochila.jpg'>
