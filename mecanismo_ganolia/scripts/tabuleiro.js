@@ -60,7 +60,9 @@ function movePlayer(currentPlayerSquare, targetSquare) {
             inicializa();
         }
 
-        window.location.reload();
+        setTimeout(function() {
+            window.location.reload();
+        }, 2000);        
 
         // Adicionar ouvinte de evento de clique ao novo quadrado do jogador
         targetSquare.addEventListener("click", function () {

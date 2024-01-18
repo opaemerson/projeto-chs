@@ -341,29 +341,43 @@ function concessaoAtk(criatura, itemAtaque){
 
                 const labelNomePersonagem = $('<label>').text(resultado.array_nome_personagem[i]);
                 const labelHpPersonagem = $('<label>').text(resultado.array_hp_personagem[i]);
-
-                // Adiciona uma classe CSS para criar espaço entre criaturas
-                labelNomePersonagem.addClass('criatura-label');
-                labelHpPersonagem.addClass('criatura-label');
-                
+  
                 info_sessao_js.show();
 
                 info_sessao_js.append(labelNomePersonagem);
+                info_sessao_js.append('<br>');
+
+                info_sessao_js.append(
+                    $('<img>').attr({
+                        'src': '../Images/Ganolia/Icons/coracao.png',
+                        'width': '30px',
+                        'height': '30px'
+                    }).addClass('icone-coracao')
+                );
+
                 info_sessao_js.append(labelHpPersonagem);
+                info_sessao_js.append('<br>');
             }
 
             for (let i = 0; i < resultado.array_nome_criatura.length; i++) {
                 const labelNomeCriatura = $('<label>').text(resultado.array_nome_criatura[i]);
                 const labelHpCriatura = $('<label>').text(resultado.array_hp_criatura[i]);
-            
-                // Adiciona uma classe CSS para criar espaço entre criaturas
-                labelNomeCriatura.addClass('criatura-label');
-                labelHpCriatura.addClass('criatura-label');
 
                 info_sessao_js.show();
             
                 info_sessao_js.append(labelNomeCriatura);
+                info_sessao_js.append('<br>');
+
+                info_sessao_js.append(
+                    $('<img>').attr({
+                        'src': '../Images/Ganolia/Icons/coracao.png',
+                        'width': '30px',
+                        'height': '30px'
+                    }).addClass('icone-coracao')
+                );
+
                 info_sessao_js.append(labelHpCriatura);
+                info_sessao_js.append('<br>');
             }
 
             info_sessao_js.show();

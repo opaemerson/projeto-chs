@@ -227,12 +227,21 @@ if(isset($itemAtaque) && $itemAtaque !== '' && !empty($usuario)){
             $quantidade = updateQtd($personagemId, $conn);
             $arrayCria = buscaCriatura($criatura, $conn);
             $criatura_nome = $arrayCria['criatura_nome'];
+            $arrayInfo = infoGeral($conn);
+            $array_nome_personagem = $arrayInfo['nomePersonagem'];
+            $array_hp_personagem = $arrayInfo['hpPersonagem'];
+            $array_nome_criatura = $arrayInfo['nomeCriatura'];
+            $array_hp_criatura = $arrayInfo['hpCriatura'];
 
             $resposta['success'] = true;
             $damageAleatorio = '';
             $resposta['damageAleatorio'] = $damageAleatorio;
             $resposta['quantidade'] = $quantidade;
             $resposta['criatura'] = $criatura_nome;
+            $resposta['array_nome_personagem'] = $array_nome_personagem;
+            $resposta['array_nome_criatura'] = $array_nome_criatura;
+            $resposta['array_hp_personagem'] = $array_hp_personagem;
+            $resposta['array_hp_criatura'] = $array_hp_criatura;
         }
     } else {
         $resposta['success'] = false;
