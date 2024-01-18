@@ -125,9 +125,9 @@ function geraAtk(atk){
         dataType: 'json',
         success: function (resultado) { 
             if (resultado.success) {
-                alert('pqp0');
+                alert('Item equipado');
             }else{
-                alert('oi');
+                alert('Erro ao equipar item');
             } 
         },
         error: function (erro) {
@@ -172,13 +172,7 @@ function finalizaManipulacao(){
                     });
     
                     $('#jogar').append(novoBotaoFinaliza);
-                } else{
-                    let infoAtaque = $('<span>',{
-                        text: 'NAO EXISTE ATAQUE DISPONIVEL OU CRIATURA EM SEU ALCANCE'
-                    });
-                    
-                    $('#jogar').append(infoAtaque);
-                }
+                } 
 
             }else{
                 alert('erro1');

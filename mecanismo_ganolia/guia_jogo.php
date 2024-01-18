@@ -24,7 +24,6 @@ $personagemId = $_SESSION['personagem_ganolia'];
     
 <div class="centralizando">
     <button class="button" id="jogarButton" onclick="mostrarJogar()">Jogar</button>
-    <button class="button" id="ataqueButton" onclick="mostrarAtaque()">Ataque</button>
     <button class="button" id="defesaButton" onclick="mostrarDefesa()">Defesa</button>
     <button class="button" id="recolherButton" onclick="mostrarRecolher()">Recolher</button>
     <button class="button" onclick="limpar()">Limpar</button>
