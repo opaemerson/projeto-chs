@@ -173,7 +173,7 @@ function finalizaManipulacao(){
                     });
     
                     $('#jogar').append(novoBotaoFinaliza);
-                } 
+                }
                 
                 let botaoFinish = $('<button>', {
                     id: 'btnFinish',
@@ -183,7 +183,7 @@ function finalizaManipulacao(){
                         finish();
                     }
                 });
-                
+                    
                 $('#jogar').append(botaoFinish);
 
             }else{
@@ -402,8 +402,6 @@ function concessaoAtk(criatura, itemAtaque){
             } else{
                 alert(resultado.criatura + '[defendeu]');
             }
-            
-            $('#btnFinaliza').show();
 
             closeModalAtaques();
             
@@ -445,14 +443,13 @@ function finish(){
         contentType: false,
         dataType: 'json',
         success: function (resultado) { 
-            console.log(resultado.correto);
 
             if(resultado.correto == 1){
                 window.location.reload();
             } else{
                 alert('Erro no js do fim de round')
             }
-            
+
         },
         error: function (erro) {
             console.log(erro); 

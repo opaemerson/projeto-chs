@@ -140,10 +140,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(array("success" => false, "message" => "Erro ao encontra CRIATURA: " . $conn->error));
     }      
         $resposta['success'] = true;
-        $resposta['quantidade'] = $quantidade;
-        $resposta['ataques'] = $ataques;
-        $resposta['nome_criatura'] = $criaDisponivel;
-        $resposta['imagens'] = $img;
+        $resposta['quantidade'] = isset($quantidade) ? $quantidade : '';
+        $resposta['ataques'] = isset($ataques) ? $ataques : '';
+        $resposta['nome_criatura'] = isset($criaDisponivel) ? $criaDisponivel : '';
+        $resposta['imagens'] = isset($img) ? $img : '';
 
         echo json_encode($resposta);
     }
