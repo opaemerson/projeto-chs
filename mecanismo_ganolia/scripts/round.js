@@ -74,6 +74,7 @@ function mostraRound() {
                         finalizaManipulacao();
                     }
                 });
+
                 $('#jogar').append(novoBotaoFinaliza);
                 
                 $('#btnFinaliza').show();
@@ -173,6 +174,17 @@ function finalizaManipulacao(){
     
                     $('#jogar').append(novoBotaoFinaliza);
                 } 
+                
+                let botaoFinish = $('<button>', {
+                    id: 'btnFinish',
+                    text: 'FINALIZAR ROUND',
+                    style: 'position: relative; left: -85px; top: 100px;',
+                    click: function() {
+                        finish();
+                    }
+                });
+                
+                $('#jogar').append(botaoFinish);
 
             }else{
                 alert('erro1');
@@ -216,7 +228,7 @@ function mostraAtaques(ataques,imagens,criaturas) {
                 if (criaturas.length !== 0) {
                     let formulario = $('<form>');
 
-//CONTAINER RELACIONADO A SELEÇÃO DE CRIATURAS
+//CONTAINER RELACIONADO A SELEï¿½ï¿½O DE CRIATURAS
                 let selectCriatura = $('<select>', {
                     id: 'selectCriatura',
                 });
@@ -296,7 +308,7 @@ function mostraAtaques(ataques,imagens,criaturas) {
                         }
                     });
 
-//APLICANDO TODO CONTEÚDO DENTRO DO MODAL
+//APLICANDO TODO CONTEï¿½DO DENTRO DO MODAL
                     $('#modal-do-ataque').append(botaoClose);
                     $('#modal-do-ataque').append(formulario);
 
@@ -390,6 +402,8 @@ function concessaoAtk(criatura, itemAtaque){
             } else{
                 alert(resultado.criatura + '[defendeu]');
             }
+            
+            $('#btnFinaliza').show();
 
             closeModalAtaques();
             
@@ -402,7 +416,7 @@ function concessaoAtk(criatura, itemAtaque){
           console.log(erro); 
         }
       });
-    }
+}
 
 function closeModalAtaques() {
     var modal = document.getElementById("modalAtaques");
@@ -413,4 +427,35 @@ function closeModalAtaques() {
 function openModalAtaques() {
     var modal = document.getElementById("modalAtaques");
     modal.style.display = "block";
+}
+
+function finish(){
+    const ativo = 1;
+
+    const form = new FormData();
+    form.append('ativo', ativo);
+
+    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_fim_round.php";
+
+    $.ajax({
+        url: url, 
+        method: 'POST',
+        data: form, 
+        processData: false, 
+        contentType: false,
+        dataType: 'json',
+        success: function (resultado) { 
+            console.log(resultado.correto);
+
+            if(resultado.correto == 1){
+                window.location.reload();
+            } else{
+                alert('Erro no js do fim de round')
+            }
+            
+        },
+        error: function (erro) {
+            console.log(erro); 
+        }
+    });
 }

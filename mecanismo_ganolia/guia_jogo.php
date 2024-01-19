@@ -180,11 +180,13 @@ if ($rr) {
 
     if($nomePersonagem !== NULL){
         echo "$nomePersonagem <br>";
+        echo "<img src='../Images/Ganolia/Icons/coracao.png' width='30' height='30'>";
         echo "$hpPersonagem <br>";
     }
     
     if($nomeCriatura !== NULL ){
         echo "$nomeCriatura <br>";
+        echo "<img src='../Images/Ganolia/Icons/coracao.png' width='30' height='30'>";
         echo "$hpCriatura <br>";
     }
     }
@@ -196,7 +198,7 @@ if ($rr) {
 </div>
 
 <div class="info_sessao" id="info_js">
-    
+
 </div>
 
 <!-- DIV de LOG -->

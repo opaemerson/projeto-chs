@@ -104,52 +104,52 @@ function updateQtd($personagemId, $conn){
 }
 
 function infoGeral($conn){
-$sqlInfo = "SELECT
-(select gp.nome from ganolia_personagem gp where gs.personagem_id = gp.id and gs.personagem_id <> 99) as nome_personagem,
-(select gs.personagem_hp from ganolia_personagem x where gs.personagem_id = x.id and gs.personagem_id <> 99) as hp_personagem,
-(select y.nome from ganolia_criatura y where y.id = gs.criatura_id and gs.personagem_id = 99) as nome_criatura,
-(select gs.criatura_hp from ganolia_criatura y where y.id = gs.criatura_id and gs.personagem_id = 99) as hp_criatura
-FROM ganolia_criatura gc
-INNER JOIN ganolia_sessao gs
-ON gs.criatura_id = gc.id";
+    $sqlInfo = "SELECT
+    (select gp.nome from ganolia_personagem gp where gs.personagem_id = gp.id and gs.personagem_id <> 99) as nome_personagem,
+    (select gs.personagem_hp from ganolia_personagem x where gs.personagem_id = x.id and gs.personagem_id <> 99) as hp_personagem,
+    (select y.nome from ganolia_criatura y where y.id = gs.criatura_id and gs.personagem_id = 99) as nome_criatura,
+    (select gs.criatura_hp from ganolia_criatura y where y.id = gs.criatura_id and gs.personagem_id = 99) as hp_criatura
+    FROM ganolia_criatura gc
+    INNER JOIN ganolia_sessao gs
+    ON gs.criatura_id = gc.id";
 
-$rr = $conn->query($sqlInfo);
+    $rr = $conn->query($sqlInfo);
 
-$arrayNomePersonagem = [];
-$arrayHpPersonagem = [];
-$arrayNomeCriatura = [];
-$arrayHpCriatura = [];
+    $arrayNomePersonagem = [];
+    $arrayHpPersonagem = [];
+    $arrayNomeCriatura = [];
+    $arrayHpCriatura = [];
 
-if ($rr) {
-    while ($lita = $rr->fetch_assoc()) {
-    $nomePersonagem = $lita['nome_personagem'];
-    $hpPersonagem = $lita['hp_personagem'];
-    $nomeCriatura = $lita['nome_criatura'];
-    $hpCriatura = $lita['hp_criatura'];
+    if ($rr) {
+        while ($lita = $rr->fetch_assoc()) {
+        $nomePersonagem = $lita['nome_personagem'];
+        $hpPersonagem = $lita['hp_personagem'];
+        $nomeCriatura = $lita['nome_criatura'];
+        $hpCriatura = $lita['hp_criatura'];
 
-    if($nomePersonagem !== NULL ){
-        $arrayNomePersonagem[] = $nomePersonagem;
-        $arrayHpPersonagem[] = $hpPersonagem;
+        if($nomePersonagem !== NULL ){
+            $arrayNomePersonagem[] = $nomePersonagem;
+            $arrayHpPersonagem[] = $hpPersonagem;
+        }
+
+        if($nomeCriatura !== NULL){
+            $arrayNomeCriatura[] = $nomeCriatura;
+            $arrayHpCriatura[] = $hpCriatura;
+        }
+        
+        }
+
+        return [
+            'nomePersonagem' => $arrayNomePersonagem,
+            'hpPersonagem' => $arrayHpPersonagem,
+            'nomeCriatura' => $arrayNomeCriatura,
+            'hpCriatura' => $arrayHpCriatura
+        ];
+
+        $rr->close();
+    } else {
+        return false;
     }
-
-     if($nomeCriatura !== NULL){
-        $arrayNomeCriatura[] = $nomeCriatura;
-        $arrayHpCriatura[] = $hpCriatura;
-     }
-    
-    }
-
-    return [
-        'nomePersonagem' => $arrayNomePersonagem,
-        'hpPersonagem' => $arrayHpPersonagem,
-        'nomeCriatura' => $arrayNomeCriatura,
-        'hpCriatura' => $arrayHpCriatura
-    ];
-
-    $rr->close();
-} else {
-    return false;
-}
 }
 
 if(isset($itemAtaque) && $itemAtaque !== '' && !empty($usuario)){ 
