@@ -39,14 +39,12 @@ function buscaCategoria($id, $conn){
     return $categoria;
 }
 
-
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ativado = $_POST['ativado'];
 
     if($ativado == 1){
         $sql_escolhendo = "SELECT gp.mochila as mochila,
+        gp.mochila_indice as mochila_indice,
         gs.mao as mao,
         gs.descarte as descarte
         FROM ganolia_personagem gp
@@ -63,21 +61,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row = $resultado->fetch_assoc();
         $mao = $row['mao'];
         $mochila = $row['mochila'];
+        $mochila_indice = $row['mochila_indice'];
         $descarte = $row['descarte'];
 
         if ($mao == ''){
             $arrayDescarte = explode(";", $descarte);
             $arrayMochila = explode(";", $mochila);
+            $arrayMochilaIndice = explode(";", $mochila_indice);
             $arrayDisponivel = [];
             $porEscrito = '';
             $arrayImagens = [];
             $arrayCategorias = [];
 
-            foreach ($arrayMochila as $key) {
-                if (in_array($key, $arrayDescarte)) {
+            foreach ($arrayMochilaIndice as $k){
+                if (in_array($k, $arrayDescarte)){
                     continue;
-                } else {
-                    $arrayDisponivel[] = $key;
+                }else{
+                    $disponivel = $arrayMochila[$k];
+                    $arrayDisponivel[] = $disponivel;
                 }
             }
             
@@ -95,9 +96,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $pegaCinco = array_rand($arrayDisponivel, 5);
 
+
             foreach ($pegaCinco as $indice) {
                 $valor = $arrayDisponivel[$indice];
-                $porEscrito .= $valor;
+                $porEscrito .= $indice;
 
                 if ($indice !== end($pegaCinco)) {
                     $porEscrito .= ';';
