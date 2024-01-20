@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $quantidade = $row['qtd_atq'];
         $ataques = $row['ataque_ativo'];
 
-        if(!empty($ataques)){
+        if(!empty($ataques) || $ataques !== ''){
             $img = buscaImagem($ataques, $conn);
         }
 

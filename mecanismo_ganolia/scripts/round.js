@@ -197,7 +197,6 @@ function finalizaManipulacao(){
 }
 
 function mostraAtaques(ataques,imagens,criaturas) {
-    console.log(ataques);
     const arrayAtaques = ataques;
 
     const form = new FormData();
@@ -345,7 +344,21 @@ function concessaoAtk(criatura, itemAtaque){
         dataType: 'json',
         success: function (resultado) { 
           if (resultado.success) {
+
+            var danoConcedido = resultado.damageAleatorio;
+
+            if (danoConcedido !== ''){
+                alert('-' + danoConcedido + ' de HP em ' + resultado.criatura);
+            } else{
+                alert(resultado.criatura + '[defendeu]');
+            }
+
+            if (resultado.kill == 1) {
+                recolheDrop(resultado.id_criatura);
+            }
+
             $('#qtdAtaque').html("Ataques disponiveis:" + resultado.quantidade).show();
+
             $('#info-sessao').hide();
             let info_sessao_js = $('#info_js').empty();
 
@@ -394,15 +407,6 @@ function concessaoAtk(criatura, itemAtaque){
 
             info_sessao_js.show();
 
-            var danoConcedido = resultado.damageAleatorio;
-            console.log(danoConcedido);
-
-            if (danoConcedido !== ''){
-                alert('-' + danoConcedido + ' de HP em ' + resultado.criatura);
-            } else{
-                alert(resultado.criatura + '[defendeu]');
-            }
-
             closeModalAtaques();
             
           } else {
@@ -415,6 +419,35 @@ function concessaoAtk(criatura, itemAtaque){
         }
       });
 }
+
+function recolheDrop(criatura) {
+  
+    const form = new FormData();
+    form.append('criatura', criatura);
+  
+    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_recolher_drop.php";
+  
+    $.ajax({
+      url: url, 
+      method: 'POST',
+      data: form, 
+      processData: false, 
+      contentType: false,
+      dataType: 'json',
+      success: function (resultado) { 
+        if (resultado.success) {
+            alert('Voce matou o alvo');
+            alert('O Alvo dropou: \n' +  'Nome: ' + resultado.nomeEscolhido + '\nRaridade: ' + resultado.raridadeEscolhido);
+  
+        } else {
+            console.log('erro no js do buscar drop');
+        }
+      },
+      error: function (erro) {
+        console.log(erro); 
+      }
+    });
+  }
 
 function closeModalAtaques() {
     var modal = document.getElementById("modalAtaques");

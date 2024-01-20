@@ -4,14 +4,46 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 require_once('../config.php');
 
-$idCriatura = $_POST['idCriatura'];
+$criatura = $_POST['criatura'];
+$personagemId = (isset($_SESSION['personagem_ganolia']) && $_SESSION['personagem_ganolia']) ? $_SESSION['personagem_ganolia'] : null;
 
 $resposta = array();
 
-if(isset($idCriatura) && $idCriatura !== ''){ 
-    $select = "SELECT gc.nome as nome, gc.raridade as raridade, gc.recompensa_id as recompensa, gc.probabilidade as probabilidade
+function insereMochila($id, $personagemId, $conn){
+    $sql = "SELECT gp.mochila as mochila
+    FROM ganolia_personagem gp
+    WHERE gp.id = $personagemId";
+
+    $resultado = $conn->query($sql);
+
+    if ($resultado === FALSE) {
+        return false;
+    }
+
+    $linha = $resultado->fetch_assoc();
+    $mochila_antes = $linha['mochila'];
+    $mochila_agora = $mochila_antes . ";" . $id;
+
+    $update = "UPDATE ganolia_personagem gp
+    SET gp.mochila = '$mochila_agora'
+    WHERE gp.id = $personagemId";
+
+    $rr = $conn->query($update);
+
+    if($rr === FALSE){
+        return false;
+    }
+
+    return true;
+}
+
+if(isset($criatura) && $criatura !== ''){ 
+    $select = "SELECT gc.nome as nome,
+     gc.raridade as raridade,
+    gc.recompensa_id as recompensa, 
+    gc.probabilidade as probabilidade
     FROM ganolia_criatura gc
-    WHERE gc.id = '$idCriatura'";
+    WHERE gc.id = '$criatura'";
     $resultado = $conn->query($select);
 
     if ($resultado->num_rows > 0){
@@ -59,6 +91,8 @@ if(isset($idCriatura) && $idCriatura !== ''){
                 break;
             }
         }
+
+        insereMochila($idEscolhido, $personagemId, $conn);
         
         $resposta['success'] = true;
         $resposta['idEscolhido'] = $idEscolhido;

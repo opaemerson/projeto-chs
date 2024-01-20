@@ -62,7 +62,20 @@ function subtraiDano($dano,$criatura_id,$conn){
             throw new Exception("Erro na consulta SQL: " . $conn->error);
         }
 
-        return true;
+        $consulta_hp = "SELECT gs.criatura_hp as criatura_hp
+        FROM ganolia_sessao gs
+        WHERE gs.criatura_id = $criatura_id";
+
+        $res = $conn->query($consulta_hp);
+
+        if ($res === FALSE) {
+            throw new Exception("Erro na consulta SQL: " . $conn->error);
+        }
+
+        $row = $res->fetch_assoc();
+        $hp_alvo = $row['criatura_hp'];
+
+        return $hp_alvo;
 
     }catch (Exception $e) {
         error_log("Erro na buscaCriatura: " . $e->getMessage());
@@ -152,6 +165,40 @@ function infoGeral($conn){
     }
 }
 
+function removeAlvo($criatura, $conn){
+    $delete = "DELETE
+    FROM ganolia_sessao 
+    WHERE criatura_id = '$criatura'";
+
+    $resultado = $conn->query($delete);
+
+    if ($resultado === FALSE) {
+        return false;
+    }
+
+    return true;
+}
+
+function buscaIdCriatura($criatura, $conn){
+    $sql = "SELECT
+    gs.criatura_id as criatura_id
+    FROM ganolia_criatura gc
+    INNER JOIN ganolia_sessao gs 
+    ON gc.id = gs.criatura_id
+    WHERE gc.nome = '$criatura'";
+
+    $resultado = $conn->query($sql);
+
+    if ($resultado === FALSE) {
+    return false;
+    } else{
+        $linha = $resultado->fetch_assoc();
+        $id = $linha['criatura_id'];
+        return $id;
+    }
+
+}
+
 if(isset($itemAtaque) && $itemAtaque !== '' && !empty($usuario)){ 
     $select = "SELECT * FROM ganolia_item WHERE id = '$itemAtaque'";
     $resultado = $conn->query($select);
@@ -173,8 +220,16 @@ if(isset($itemAtaque) && $itemAtaque !== '' && !empty($usuario)){
             $damagePossivel = explode(";", $damage);
             $indiceAleatorio = rand(0, count($damagePossivel) - 1);
             $damageAleatorio = $damagePossivel[$indiceAleatorio];
+            $idCriatura = buscaIdCriatura($criatura, $conn);
 
-            subtraiDano($damageAleatorio, $arrayCria['criatura_id'], $conn);
+            $hp_alvo = subtraiDano($damageAleatorio, $arrayCria['criatura_id'], $conn);
+            
+            if ($hp_alvo <= 0){
+                removeAlvo($arrayCria['criatura_id'], $conn);
+                $kill = 1;
+            } else{
+                $kill = 0;
+            }
 
             $arrayInfo = infoGeral($conn);
             $array_nome_personagem = $arrayInfo['nomePersonagem'];
@@ -193,6 +248,8 @@ if(isset($itemAtaque) && $itemAtaque !== '' && !empty($usuario)){
             $resposta['array_nome_criatura'] = $array_nome_criatura;
             $resposta['array_hp_personagem'] = $array_hp_personagem;
             $resposta['array_hp_criatura'] = $array_hp_criatura;
+            $resposta['kill'] = $kill;
+            $resposta['id_criatura'] = $idCriatura;
     
             $verPersonagem = "SELECT gh.evento as evento, 
             (select x.nome from ganolia_personagem x where x.id = u.personagem_ganolia) as personagem_atual,
@@ -232,6 +289,8 @@ if(isset($itemAtaque) && $itemAtaque !== '' && !empty($usuario)){
             $array_hp_personagem = $arrayInfo['hpPersonagem'];
             $array_nome_criatura = $arrayInfo['nomeCriatura'];
             $array_hp_criatura = $arrayInfo['hpCriatura'];
+            $kill = 0;
+            $idCriatura = buscaIdCriatura($criatura, $conn);
 
             $resposta['success'] = true;
             $damageAleatorio = '';
@@ -242,6 +301,8 @@ if(isset($itemAtaque) && $itemAtaque !== '' && !empty($usuario)){
             $resposta['array_nome_criatura'] = $array_nome_criatura;
             $resposta['array_hp_personagem'] = $array_hp_personagem;
             $resposta['array_hp_criatura'] = $array_hp_criatura;
+            $resposta['kill'] = $kill;
+            $resposta['id_criatura'] = $idCriatura;
         }
     } else {
         $resposta['success'] = false;
