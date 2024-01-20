@@ -1,4 +1,4 @@
-const ataqueEnviado = [];
+const indexEnviado = [];
 
 function mostraRound() {
     const ativado = 1;
@@ -247,22 +247,30 @@ function mostraAtaques(ataques,imagens,criaturas) {
 
 //CONTAINER RELACIONADO A IMAGEM
                     let containerImagens = $('<div>')
+
                     for (let i = 0; i < qtdImagem; i++) {
                         let imagem = $('<img>', {
                             id: 'idImage' + i,
                             src: imagensArray[i],
                             value: ataquesArray[i],
-
-                            click: function() {
-                                const ataqueAtual = ataquesArray[i];
-                            
-                                if (!ataqueEnviado.includes(ataqueAtual)) {
-                                    $('img').css('border', 'none');
-                                    $(this).css('border', '5px solid green');
-                            
-                                    inputAtaqueSelecionado.val(ataqueAtual);
-                                }
-                            }
+                    
+                            click: (function(index) {
+                                return function() {
+                                    const ataqueAtual = ataquesArray[index];
+                                    const indexAtual = index;
+                                    console.log(indexAtual);
+                    
+                                    if (!indexEnviado.includes(parseInt(indexAtual))) {
+                                        console.log('index enviado ' + indexEnviado);
+                                        
+                                        $('img').css('border', 'none');
+                                        $(this).css('border', '5px solid green');
+                    
+                                        inputAtaqueSelecionado.val(ataqueAtual);
+                                        inputIndexSelecionado.val(indexAtual);
+                                    }
+                                };
+                            })(i)
                         });
 
                         imagem.appendTo(containerImagens);
@@ -284,8 +292,16 @@ function mostraAtaques(ataques,imagens,criaturas) {
             
                     inputAtaqueSelecionado.appendTo(formulario);
 
+                    let inputIndexSelecionado = $('<input>', {
+                        type: 'hidden',
+                        name: 'indexSelecionado',
+                    });
+            
+                    inputIndexSelecionado.appendTo(formulario);
 
-//BOTAO ATACAR
+
+
+//BOTAO SUBMIT DO MODAL DE ATAQUE
                     let btnSubmit = $('<button>', {
                         type: 'submit',
                         text: 'Atacar',
@@ -295,10 +311,13 @@ function mostraAtaques(ataques,imagens,criaturas) {
 
                     formulario.on('submit', function(event) {
                         event.preventDefault(); 
-                        let ataqueSelecionado = inputAtaqueSelecionado.val();
                         let idCriaturaSeleccionada = selectCriatura.val();
-                        ataqueEnviado.push(ataqueSelecionado);
-                        
+                        let ataqueSelecionado = inputAtaqueSelecionado.val();
+                        let indexSelecionado = inputIndexSelecionado.val();
+
+                        console.log('Index enviado para submit: ' + indexSelecionado);
+
+                        indexEnviado.push(parseInt(indexSelecionado));
                         concessaoAtk(idCriaturaSeleccionada, ataqueSelecionado);
 
                     });
