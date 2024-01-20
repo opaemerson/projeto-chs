@@ -39,6 +39,32 @@ function buscaCategoria($id, $conn){
     return $categoria;
 }
 
+function buscaIdImagem($fila, $personagem, $conn){
+    $sql = "SELECT gp.mochila,
+    gp.mochila_indice
+    FROM ganolia_personagem gp
+    WHERE gp.id = $personagem";
+
+    $result = $conn->query($sql);
+
+    if ($result === FALSE) {
+        return false;
+    }
+
+    $row = $result->fetch_assoc();
+    $mochila = $row['mochila'];
+
+    $arrayQuebra = explode(";", $mochila);
+
+    if (isset($arrayQuebra[$fila])) {
+        return $arrayQuebra[$fila];
+    } else {
+        // Retorna um valor padrão ou false, dependendo do seu requisito
+        return false;
+    }
+
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ativado = $_POST['ativado'];
 
@@ -69,6 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $arrayMochila = explode(";", $mochila);
             $arrayMochilaIndice = explode(";", $mochila_indice);
             $arrayDisponivel = [];
+            $arrayIndiceDisponivel = [];
             $porEscrito = '';
             $arrayImagens = [];
             $arrayCategorias = [];
@@ -77,6 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (in_array($k, $arrayDescarte)){
                     continue;
                 }else{
+                    $arrayIndiceDisponivel[] = $k;
                     $disponivel = $arrayMochila[$k];
                     $arrayDisponivel[] = $disponivel;
                 }
@@ -94,21 +122,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
 
-            $pegaCinco = array_rand($arrayDisponivel, 5);
+            if(count($arrayIndiceDisponivel) > 5){
+                $pegaCinco = array_rand($arrayIndiceDisponivel, 5);
+            }
+
             $mao_js = '';
 
             foreach ($pegaCinco as $indice) {
-                $valor = $arrayDisponivel[$indice];
-                $porEscrito .= $indice;
-                $mao_js .= $valor;
+                $valor = $arrayIndiceDisponivel[$indice];
+                $porEscrito .= $valor;
+                $mao_retorno = buscaIdImagem($valor, $personagemId, $conn);
+                $mao_js .= $mao_retorno;
 
                 if ($indice !== end($pegaCinco)) {
                     $porEscrito .= ';';
                     $mao_js .= ';';
                 }
 
-                $img = buscaImagem($valor, $conn);
-                $categoria = buscaCategoria($valor, $conn);
+                $img = buscaImagem($mao_retorno, $conn);
+                $categoria = buscaCategoria($mao_retorno, $conn);
 
                 $arrayImagens[] = $img;
                 $arrayCategorias[] = $categoria;

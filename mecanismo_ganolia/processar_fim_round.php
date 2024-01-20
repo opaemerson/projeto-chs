@@ -37,8 +37,22 @@ function buscaMao($personagemId, $conn){
 }
 
 function insereDescarte($personagemId, $mao, $conn){
+    $select = "SELECT gs.descarte as descarte_antes
+    FROM ganolia_sessao gs
+    WHERE gs.personagem_id = $personagemId";
+
+    $rr = $conn->query($select);
+
+    if ($rr === FALSE) {
+        return false;
+    }
+
+    $row = $rr->fetch_assoc();
+    $descarte_antes = $row['descarte_antes'];
+    $descarte_atual = $descarte_antes . ";" . $mao;
+    
     $update = "UPDATE ganolia_sessao gs
-    SET gs.descarte = '$mao',
+    SET gs.descarte = '$descarte_atual',
     gs.mao = ''
     WHERE personagem_id = $personagemId";
 
