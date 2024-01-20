@@ -10,7 +10,8 @@ $personagemId = (isset($_SESSION['personagem_ganolia']) && $_SESSION['personagem
 $resposta = array();
 
 function insereMochila($id, $personagemId, $conn){
-    $sql = "SELECT gp.mochila as mochila
+    $sql = "SELECT gp.mochila as mochila,
+    gp.mochila_indice as mochila_indice
     FROM ganolia_personagem gp
     WHERE gp.id = $personagemId";
 
@@ -22,10 +23,18 @@ function insereMochila($id, $personagemId, $conn){
 
     $linha = $resultado->fetch_assoc();
     $mochila_antes = $linha['mochila'];
+    $indice_antes = $linha['mochila_indice'];
+
+    $arrayIndice = explode(";", $indice_antes);
+    $ultimoValor = end($arrayIndice);
+    $newValor = $ultimoValor + 1;
+
     $mochila_agora = $mochila_antes . ";" . $id;
+    $indice_agora = $indice_antes . ";" . $newValor;
 
     $update = "UPDATE ganolia_personagem gp
-    SET gp.mochila = '$mochila_agora'
+    SET gp.mochila = '$mochila_agora',
+    gp.mochila_indice = '$indice_agora'
     WHERE gp.id = $personagemId";
 
     $rr = $conn->query($update);

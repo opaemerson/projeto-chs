@@ -161,6 +161,8 @@ function finalizaManipulacao(){
                 $('#btnFinaliza').hide();
 
                 $('#qtdAtaque').html("Ataques disponíveis:" + resultado.quantidade).show();
+
+                console.log(resultado.nome_criatura);
                 
                 if (resultado.nome_criatura.length !== 0 && resultado.quantidade !== '0') {
                     let novoBotaoFinaliza = $('<button>', {
@@ -174,7 +176,7 @@ function finalizaManipulacao(){
     
                     $('#jogar').append(novoBotaoFinaliza);
                 } else{
-                    alert('Nao ha criatura alvo');
+                    alert('Nao ha ataque disponivel');
                 }
                 
                 let botaoFinish = $('<button>', {

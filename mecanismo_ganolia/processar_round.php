@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
             
-            if(count($arrayDisponivel) !== 5){
+            if(count($arrayDisponivel) < 5){
                 $removeDescarte = "UPDATE ganolia_sessao gs
                     SET gs.descarte = ''
                     WHERE gs.personagem_id = $personagemId";
