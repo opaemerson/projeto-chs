@@ -173,6 +173,8 @@ function finalizaManipulacao(){
                     });
     
                     $('#jogar').append(novoBotaoFinaliza);
+                } else{
+                    alert('Nao ha criatura alvo');
                 }
                 
                 let botaoFinish = $('<button>', {
