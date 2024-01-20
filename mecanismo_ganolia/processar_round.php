@@ -95,14 +95,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             $pegaCinco = array_rand($arrayDisponivel, 5);
-
+            $mao_js = '';
 
             foreach ($pegaCinco as $indice) {
                 $valor = $arrayDisponivel[$indice];
                 $porEscrito .= $indice;
+                $mao_js .= $valor;
 
                 if ($indice !== end($pegaCinco)) {
                     $porEscrito .= ';';
+                    $mao_js .= ';';
                 }
 
                 $img = buscaImagem($valor, $conn);
@@ -123,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } 
 
             $resposta['success'] = true;
-            $resposta['mao'] = $porEscrito;
+            $resposta['mao'] = $mao_js;
             $resposta['imagem'] = $arrayImagens;
             $resposta['categoria'] = $arrayCategorias;
 
@@ -139,7 +141,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode(array("success" => false, "message" => "Método de requisição inválido"));
 }
 ?>
-
-
-
-
