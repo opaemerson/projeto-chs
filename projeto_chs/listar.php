@@ -21,7 +21,7 @@ if (!empty($pagina)) {
     (SELECT u.id FROM historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as idUsuario,
     e.nome as equipamento
     FROM heads a
-    LEFT JOIN equipamento e
+    LEFT JOIN chs_equipamento e
     ON e.id = a.equipamento_id
     ORDER BY a.id ASC LIMIT $inicio, $qnt_result_pg";
     $result_registros = mysqli_query($conn, $query_registros);

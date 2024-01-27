@@ -72,7 +72,7 @@ require_once('../config.php');
                   <label class="form-label">Equipamento</label>
                   <select class="form-select" id="id_equip" name="id_equip" aria-label="Default select example">
                     <?php
-                    $sqlEquipamento = "SELECT id, nome FROM equipamento";
+                    $sqlEquipamento = "SELECT id, nome FROM chs_equipamento";
                     $resultadoEquip = $conn->query($sqlEquipamento);
                     if ($resultadoEquip) {
                       echo "<option value=''>Selecione uma opcao</option>";
