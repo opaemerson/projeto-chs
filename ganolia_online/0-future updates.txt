@@ -4,15 +4,13 @@
 *-- SPRINT 01 --*
 [X] Guia biblioteca que irá conter todos os itens especiais, nela você terá sua coleção destes itens.
 [X] Guia Jogo > criar Mochila que irá conter todos os itens que você tem atualmente.
-[] Guia Jogo > Adicionar "jogar" que irá fazer um random dos itens que você possui no campo mochila do personagem.
-[] Guia Jogo > campo "ataque" adicionar condições de acordo com sua mochila.
+[X] Guia Jogo > Adicionar "jogar" que irá fazer um random dos itens que você possui no campo mochila do personagem.
+[X] Guia Jogo > campo "ataque" adicionar condições de acordo com sua mochila.
 [] Guia Jogo > botão no inferior de "Shop" com icon de mercado.
 
 *-- SPRINT 02 --*
 [] Adicionar um alerta que se passar dos 50 itens "A mochila está cheia".
 [] Guia Mochila > Adicionar um DELETE nos itens indesejados.
-[] Guia Personagem > Adicionar EG (End Games) e mostrar este status.
-
 
 *-- IDEA --*
 [] Presentear Cósmeticos aos avatares que completarem o jogo.
