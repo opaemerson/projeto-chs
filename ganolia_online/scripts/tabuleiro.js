@@ -89,7 +89,7 @@ function updatePositionTerritorio(row, col) {
     formData.append('newCol', newCol);
 
     // Fazer a requisição AJAX para update_posicao.php
-    fetch('http://127.0.0.1:80/chs/mecanismo_ganolia/processar_update_posicao_t.php', {
+    fetch('http://127.0.0.1:80/chs/ganolia_online/processar_update_posicao_t.php', {
         method: 'POST',
         body: formData,  // Não é mais necessário usar JSON.stringify
     })
@@ -113,7 +113,7 @@ function updatePositionInDatabase(row, col) {
     formData.append('newCol', newCol);
 
     // Fazer a requisição AJAX para update_posicao.php
-    fetch('http://127.0.0.1:80/chs/mecanismo_ganolia/processar_update_posicao.php', {
+    fetch('http://127.0.0.1:80/chs/ganolia_online/processar_update_posicao.php', {
         method: 'POST',
         body: formData,  // Não é mais necessário usar JSON.stringify
     })
@@ -245,7 +245,7 @@ function buscaAliado(vez,territorio){
     formData.append('newVez', newVez);
 
     // Fazer a requisição AJAX para update_posicao.php
-    fetch('http://127.0.0.1:80/chs/mecanismo_ganolia/processar_busca_aliado.php', {
+    fetch('http://127.0.0.1:80/chs/ganolia_online/processar_busca_aliado.php', {
         method: 'POST',
         body: formData,  // Não é mais necessário usar JSON.stringify
     })
@@ -294,7 +294,7 @@ function buscaAliado(vez,territorio){
 
 function inicializa(){
     // Fazer uma solicitação Ajax para obter a posição do jogador
-    fetch('http://127.0.0.1:80/chs/mecanismo_ganolia/processar_busca_posicao.php', {
+    fetch('http://127.0.0.1:80/chs/ganolia_online/processar_busca_posicao.php', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',

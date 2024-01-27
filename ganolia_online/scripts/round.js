@@ -6,7 +6,7 @@ function mostraRound() {
     const form = new FormData();
     form.append('ativado', ativado);
 
-    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_round.php";
+    const url = "http://127.0.0.1:80/chs/ganolia_online/processar_round.php";
 
     $.ajax({
         url: url, 
@@ -115,7 +115,7 @@ function geraAtk(atk){
     form.append('atk', atk);
 
 
-    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_qtd_ataque.php";
+    const url = "http://127.0.0.1:80/chs/ganolia_online/processar_qtd_ataque.php";
 
     $.ajax({
         url: url, 
@@ -143,7 +143,7 @@ function finalizaManipulacao(){
     const form = new FormData();
     form.append('ativado', ativado);
 
-    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_finaliza_manipulacao.php";
+    const url = "http://127.0.0.1:80/chs/ganolia_online/processar_finaliza_manipulacao.php";
 
     $.ajax({
         url: url, 
@@ -206,7 +206,7 @@ function mostraAtaques(ataques,imagens,criaturas) {
     const form = new FormData();
     form.append('arrayAtaques', arrayAtaques);
 
-    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_verifica_ataques.php";
+    const url = "http://127.0.0.1:80/chs/ganolia_online/processar_verifica_ataques.php";
 
     $.ajax({
         url: url, 
@@ -356,7 +356,7 @@ function concessaoAtk(criatura, itemAtaque){
     form.append('criatura', criatura);
     form.append('itemAtaque', itemAtaque);
 
-    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_ataque.php";
+    const url = "http://127.0.0.1:80/chs/ganolia_online/processar_ataque.php";
 
     $.ajax({
         url: url, 
@@ -448,7 +448,7 @@ function recolheDrop(criatura) {
     const form = new FormData();
     form.append('criatura', criatura);
   
-    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_recolher_drop.php";
+    const url = "http://127.0.0.1:80/chs/ganolia_online/processar_recolher_drop.php";
   
     $.ajax({
       url: url, 
@@ -489,7 +489,7 @@ function finish(){
     const form = new FormData();
     form.append('ativo', ativo);
 
-    const url = "http://127.0.0.1:80/chs/mecanismo_ganolia/processar_fim_round.php";
+    const url = "http://127.0.0.1:80/chs/ganolia_online/processar_fim_round.php";
 
     $.ajax({
         url: url, 

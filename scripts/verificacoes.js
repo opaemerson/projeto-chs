@@ -14,7 +14,7 @@ function verificarLoginMecanismo() {
     if (!permissaoUsuario && permissaoUsuario !== 'Amigo' && permissaoUsuario !== 'Admin') {
         alert("Voce nao possui permissao para acesso");
     } else {
-        window.location.href = 'mecanismo_ganolia/index_mecanismo.php';
+        window.location.href = 'escolhe_ganolia.php';
     }
 }
 

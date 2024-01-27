@@ -288,7 +288,7 @@ if ($rr) {
 </div>
 
 <script src="./scripts/round.js"></script>
-<script src="./scripts/mecanismo_ganolia.js"></script>
+<script src="./scripts/ganolia_online.js"></script>
 <script src="./scripts/tabuleiro.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
