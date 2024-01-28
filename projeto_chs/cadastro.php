@@ -19,7 +19,7 @@ if (empty($tag) || empty($modelo)) {
     echo "<script>alert('Todos os campos precisam ser preenchidos');</script>";
 } else {
 
-    $tagExistente = "SELECT id, manutencao, situacao FROM heads WHERE tag = '$tag'";
+    $tagExistente = "SELECT id, manutencao, situacao FROM chs_controle WHERE tag = '$tag'";
     $resultado = $conn->query($tagExistente);
 
     if ($resultado->num_rows > 0){
@@ -35,14 +35,14 @@ if (empty($tag) || empty($modelo)) {
                 $data_retorno = ('Pendente');
                 $data_garantia = ('Nao');
                 $manutencao_novo = $manutencao + 1;
-                $sql = "UPDATE heads SET modelo = '".$modelo."', problema = '".$problema."', data_envio = '".$data_envio."', situacao = '".$situacao."', previsao = '".$data_previsao."', retorno = '".$data_retorno."', garantia = '".$data_garantia."', manutencao = '".$manutencao_novo."' WHERE tag = '".$tag."'";
+                $sql = "UPDATE chs_controle SET modelo = '".$modelo."', problema = '".$problema."', data_envio = '".$data_envio."', situacao = '".$situacao."', previsao = '".$data_previsao."', retorno = '".$data_retorno."', garantia = '".$data_garantia."', manutencao = '".$manutencao_novo."' WHERE tag = '".$tag."'";
               } 
               else {
                 $data_envio = ('Pendente');
                 $data_previsao = ('Pendente');
                 $data_retorno = ('Pendente');
                 $data_garantia = ('Nao');
-                $sql = "UPDATE heads SET modelo = '".$modelo."', problema = '".$problema."', data_envio = '".$data_envio."', situacao = '".$situacao."', previsao = '".$data_previsao."', retorno = '".$data_retorno."', garantia = '".$data_garantia."' WHERE tag = '".$tag."'";
+                $sql = "UPDATE chs_controle SET modelo = '".$modelo."', problema = '".$problema."', data_envio = '".$data_envio."', situacao = '".$situacao."', previsao = '".$data_previsao."', retorno = '".$data_retorno."', garantia = '".$data_garantia."' WHERE tag = '".$tag."'";
               }
     
               if ($conn->query($sql) === TRUE) {
@@ -63,14 +63,14 @@ if (empty($tag) || empty($modelo)) {
                 $data_retorno = ('Pendente');
                 $data_garantia = ('Nao');
                 $manutencao = 1;
-                $sql = "INSERT INTO heads (equipamento_id, tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia, manutencao) VALUES ('".$id_equip."', '".$tag."', '".$modelo."', '".$problema."', '".$data_envio."', '".$situacao."', '".$data_previsao."', '".$data_retorno."', '".$data_garantia."', '".$manutencao."')";
+                $sql = "INSERT INTO chs_controle (equipamento_id, tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia, manutencao) VALUES ('".$id_equip."', '".$tag."', '".$modelo."', '".$problema."', '".$data_envio."', '".$situacao."', '".$data_previsao."', '".$data_retorno."', '".$data_garantia."', '".$manutencao."')";
               } 
               else {
                 $data_envio = ('Pendente');
                 $data_previsao = ('Pendente');
                 $data_retorno = ('Pendente');
                 $data_garantia = ('Nao');
-                $sql = "INSERT INTO heads (equipamento_id, tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia) VALUES ('".$id_equip."', '".$tag."', '".$modelo."', '".$problema."', '".$data_envio."', '".$situacao."', '".$data_previsao."', '".$data_retorno."', '".$data_garantia."')";
+                $sql = "INSERT INTO chs_controle (equipamento_id, tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia) VALUES ('".$id_equip."', '".$tag."', '".$modelo."', '".$problema."', '".$data_envio."', '".$situacao."', '".$data_previsao."', '".$data_retorno."', '".$data_garantia."')";
               }
     
               if ($conn->query($sql) === TRUE) {
@@ -79,14 +79,14 @@ if (empty($tag) || empty($modelo)) {
                 echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
             }
 
-            $consulta_id = "SELECT id FROM heads WHERE tag = '$tag'";
+            $consulta_id = "SELECT id FROM chs_controle WHERE tag = '$tag'";
             $resultado_consulta = $conn->query($consulta_id);
             if ($resultado_consulta->num_rows > 0){
 
                 $row_resultado = $resultado_consulta->fetch_assoc();
                 $id = $row_resultado['id'];
 
-                $sql_dois = "INSERT INTO historico (tag_id, usuario_id) VALUES ('".$id."', '".$usuario."')";
+                $sql_dois = "INSERT INTO chs_historico (tag_id, usuario_id) VALUES ('".$id."', '".$usuario."')";
 
             if ($conn->query($sql_dois) === TRUE){
                 echo "<script>alert('Salvo no banco de dados!');</script>";

@@ -30,8 +30,8 @@ if (empty($condicao)) {
   $echo = "Nenhum critério de pesquisa especificado.";
 } else {
   $sql = "SELECT a.*,
-  (SELECT u.nome FROM historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as usuario
-   FROM heads a WHERE $condicao";
+  (SELECT u.nome FROM chs_historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as usuario
+   FROM chs_controle a WHERE $condicao";
 
   $response = $conn->query($sql);
 

@@ -16,7 +16,7 @@ require_once('../config.php');
 <body>
   <label for=""><b>Quantidade pela Categoria - Problemas</b></label>
   <?php
-      $problema = "SELECT problema, count(problema) as quantidade FROM heads GROUP BY problema";
+      $problema = "SELECT problema, count(problema) as quantidade FROM chs_controle GROUP BY problema";
       $resultado = $conn->query($problema);
       if ($resultado->num_rows > 0){
         while ($row = $resultado->fetch_assoc()) {
@@ -33,7 +33,7 @@ require_once('../config.php');
 
       <?php
 
-      $marca = "SELECT modelo, count(modelo) as quantidade_marca FROM heads GROUP BY modelo";
+      $marca = "SELECT modelo, count(modelo) as quantidade_marca FROM chs_controle GROUP BY modelo";
       $resultado_marca = $conn->query($marca);
       if ($resultado_marca->num_rows > 0){
         while ($row = $resultado_marca->fetch_assoc()) {
@@ -51,7 +51,7 @@ require_once('../config.php');
 
       <?php
 
-      $situacao = "SELECT situacao, count(situacao) as quantidade_situacao FROM heads GROUP BY situacao";
+      $situacao = "SELECT situacao, count(situacao) as quantidade_situacao FROM chs_controle GROUP BY situacao";
       $resultado_situacao = $conn->query($situacao);
       if ($resultado_situacao->num_rows > 0){
         while ($row = $resultado_situacao->fetch_assoc()) {

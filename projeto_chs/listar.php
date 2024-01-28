@@ -17,10 +17,10 @@ if (!empty($pagina)) {
     
 
     $query_registros = "SELECT a.*,
-    (SELECT u.nome FROM historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as usuario,
-    (SELECT u.id FROM historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as idUsuario,
+    (SELECT u.nome FROM chs_historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as usuario,
+    (SELECT u.id FROM chs_historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as idUsuario,
     e.nome as equipamento
-    FROM heads a
+    FROM chs_controle a
     LEFT JOIN chs_equipamento e
     ON e.id = a.equipamento_id
     ORDER BY a.id ASC LIMIT $inicio, $qnt_result_pg";
@@ -86,7 +86,7 @@ if (!empty($pagina)) {
     </div>";
 
     // Paginação - Somar a quantidade de usuários
-    $query_pg = "SELECT COUNT(id) AS num_result FROM heads";
+    $query_pg = "SELECT COUNT(id) AS num_result FROM chs_controle";
     $result_pg = mysqli_query($conn, $query_pg);
     $row_pg = mysqli_fetch_assoc($result_pg);
 

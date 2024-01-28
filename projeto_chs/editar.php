@@ -18,7 +18,7 @@ if (empty($id)) {
     $data_envio = date('d-m-Y');
   }
   
-  $queryEnviadoExiste = "SELECT situacao FROM heads WHERE tag = '$tag'";
+  $queryEnviadoExiste = "SELECT situacao FROM chs_controle WHERE tag = '$tag'";
   $consultaEnviadoExiste = $conn->query($queryEnviadoExiste);
   $rowEnviado = $consultaEnviadoExiste->fetch_assoc();
   $situacaoAtual = $rowEnviado["situacao"];
@@ -27,7 +27,7 @@ if (empty($id)) {
     $data_previsao = date('d-m-Y', strtotime($data_envio . ' +7 days'));
     $data_retorno = ('Pendente');
     $data_garantia = ('Nao');
-    $sql = "UPDATE heads SET 
+    $sql = "UPDATE chs_controle SET 
     tag = '".$tag."', 
     modelo = '".$modelo."', 
     problema = '".$problema."', 
@@ -42,13 +42,13 @@ if (empty($id)) {
     $data_previsao = date('d-m-Y', strtotime($data_envio . ' +7 days'));
     $data_retorno = ('Pendente');
     $data_garantia = ('Nao');
-    $manutencaoExistente = "SELECT manutencao FROM heads WHERE tag = '$tag'";
+    $manutencaoExistente = "SELECT manutencao FROM chs_controle WHERE tag = '$tag'";
     $resultadoExistente = $conn->query($manutencaoExistente);
     $row = $resultadoExistente->fetch_assoc();
     $manutencao = $row["manutencao"];
     $manutencao_novo = $manutencao + 1;
     
-    $sql = "UPDATE heads SET 
+    $sql = "UPDATE chs_controle SET 
     tag = '".$tag."', 
     modelo = '".$modelo."', 
     problema = '".$problema."', 
@@ -74,7 +74,7 @@ if (empty($id)) {
     $diferenca_dias = floor($diferenca_dias / (60 * 60 * 24)); // converte para dias
     $garantia = ($diferenca_dias > 30) ? 'Nao' : 'Sim';
 
-    $sql = "UPDATE heads SET 
+    $sql = "UPDATE chs_controle SET 
     tag = '".$tag."', 
     modelo = '".$modelo."', 
     problema = '".$problema."', 
@@ -92,7 +92,7 @@ if (empty($id)) {
     $data_retorno = ('Pendente');
     $data_garantia = ('Nao');
     $data_envio = ('Pendente');
-    $sql = "UPDATE heads SET 
+    $sql = "UPDATE chs_controle SET 
     tag = '".$tag."', 
     modelo = '".$modelo."', 
     problema = '".$problema."', 

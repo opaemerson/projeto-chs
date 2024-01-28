@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $problema = $valor[2];
                 $situacao = $valor[3];
 
-                $tagExistente = "SELECT id, data_envio, manutencao FROM heads WHERE tag = '$tag'";
+                $tagExistente = "SELECT id, data_envio, manutencao FROM chs_controle WHERE tag = '$tag'";
                 $resultado = $conn->query($tagExistente);
 
                 if ($resultado->num_rows > 0){
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $diferenca_dias = strtotime($data_retorno) - strtotime($data_envio);
                         $diferenca_dias = floor($diferenca_dias / (60 * 60 * 24)); // converte para dias
                         $garantia = ($diferenca_dias > 30) ? 'Nao' : 'Sim';
-                        $updateQuery = "UPDATE heads SET modelo = '$modelo', problema = '$problema', situacao = '$situacao', previsao = '$data_previsao', retorno = '$data_retorno', garantia = '$garantia' WHERE tag = '$tag'";
+                        $updateQuery = "UPDATE chs_controle SET modelo = '$modelo', problema = '$problema', situacao = '$situacao', previsao = '$data_previsao', retorno = '$data_retorno', garantia = '$garantia' WHERE tag = '$tag'";
                         $conn->query($updateQuery);
                         }
 
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $data_garantia = ('Nao');
                         $manutencao = $row["manutencao"];
                         $manutencao_novo = $manutencao + 1;
-                        $updateQuery = "UPDATE heads SET modelo = '".$modelo."', problema = '".$problema."', data_envio = '".$data_envio."', situacao = '".$situacao."', previsao = '".$data_previsao."', retorno = '".$data_retorno."', garantia = '".$data_garantia."', manutencao = '".$manutencao_novo."' WHERE tag = '".$tag."'";
+                        $updateQuery = "UPDATE chs_controle SET modelo = '".$modelo."', problema = '".$problema."', data_envio = '".$data_envio."', situacao = '".$situacao."', previsao = '".$data_previsao."', retorno = '".$data_retorno."', garantia = '".$data_garantia."', manutencao = '".$manutencao_novo."' WHERE tag = '".$tag."'";
                         $conn->query($updateQuery);
                     }
 
@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $garantia = ($diferenca_dias > 30) ? 'Nao' : 'Sim';
                         }
 
-                        $sql = "INSERT INTO heads (tag, modelo, problema, situacao, data_envio, previsao, retorno, garantia, manutencao) VALUES ('$tag', '$modelo', '$problema', '$situacao', '$data_envio' , '$data_previsao' , '$data_retorno', '$garantia', '$manutencao')";
+                        $sql = "INSERT INTO chs_controle (tag, modelo, problema, situacao, data_envio, previsao, retorno, garantia, manutencao) VALUES ('$tag', '$modelo', '$problema', '$situacao', '$data_envio' , '$data_previsao' , '$data_retorno', '$garantia', '$manutencao')";
                         $conn->query($sql) === TRUE;
                         }
                     }

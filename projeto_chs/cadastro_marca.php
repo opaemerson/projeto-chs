@@ -6,13 +6,13 @@ require_once('../config.php');
 $nomeMarca = $_POST['nomeMarca'];
 
 if(isset($nomeMarca) && $nomeMarca !== ''){ 
-    $marcaExistente = "SELECT * FROM marca WHERE nome = '$nomeMarca'";
+    $marcaExistente = "SELECT * FROM chs_marca WHERE nome = '$nomeMarca'";
     $resultado = $conn->query($marcaExistente);
 
     if ($resultado->num_rows > 0){
         echo json_encode(['erro' => 1,'mensagem' => "Ja existe esta marca!"]);
     } else{
-        $sql = "INSERT INTO marca (nome) VALUES ('".$nomeMarca."')";
+        $sql = "INSERT INTO chs_marca (nome) VALUES ('".$nomeMarca."')";
         if ($conn->query($sql) === TRUE) {
             echo json_encode(['erro' => 0,'mensagem' => "Marca Inserida!"]);
         } else {

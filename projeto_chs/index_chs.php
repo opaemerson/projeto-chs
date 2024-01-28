@@ -96,7 +96,7 @@ require_once('../config.php');
                   <label class="form-label">Marca</label>
                   <select class="form-select" id="modelo" name="modelo" aria-label="Default select example">
                     <?php
-                    $sqlMarca = "SELECT nome FROM marca";
+                    $sqlMarca = "SELECT nome FROM chs_marca";
                     $resultado = $conn->query($sqlMarca);
                     if ($resultado) {
                       echo "<option value=''>Selecione uma opcao</option>";
@@ -115,7 +115,7 @@ require_once('../config.php');
                     <label class="form-label">Problema</label>
                     <select class="form-select" id="problema" name="problema" aria-label="Default select example">
                       <?php
-                      $sql = "SELECT nome FROM problema";
+                      $sql = "SELECT nome FROM chs_problema";
                       $result = $conn->query($sql);
                       if ($result) {
                         echo "<option value=''>Selecione uma opcao</option>";
@@ -190,7 +190,7 @@ require_once('../config.php');
                   <label for="editModelo" class="form-label">Marca</label>
                   <select class="form-select" id="editModelo" name="editModelo" aria-label="Default select example">
                     <?php
-                    $sqlMarca = "SELECT nome FROM marca";
+                    $sqlMarca = "SELECT nome FROM chs_marca";
                     $resultado = $conn->query($sqlMarca);
                     if ($resultado) {
                       while ($rowMarca = $resultado->fetch_assoc()) {
@@ -208,7 +208,7 @@ require_once('../config.php');
                   <label class="form-label">Problema</label>
                   <select class="form-select" id="editProblema" name="editProblema" aria-label="Default select example">
                       <?php
-                      $sql = "SELECT nome FROM problema";
+                      $sql = "SELECT nome FROM chs_problema";
                       $result = $conn->query($sql);
                       if ($result) {
                         while ($row = $result->fetch_assoc()) {
@@ -253,7 +253,7 @@ require_once('../config.php');
                 <label class="form-label">Marca</label>
                 <select class="form-select" id="editModeloFiltro" name="editModeloFiltro" aria-label="Default select example">
                     <?php
-                    $sqlMarca = "SELECT nome FROM marca";
+                    $sqlMarca = "SELECT nome FROM chs_marca";
                     $resultado = $conn->query($sqlMarca);
                     if ($resultado) {
                       echo "<option value=''>Selecione uma opcao</option>";
@@ -270,7 +270,7 @@ require_once('../config.php');
                 <label class="form-label">Problema</label>
                 <select class="form-select" id="problemaFiltro" name="problemaFiltro" aria-label="Default select example">
                       <?php
-                      $sql = "SELECT nome FROM problema";
+                      $sql = "SELECT nome FROM chs_problema";
                       $result = $conn->query($sql);
                       if ($result) {
                         echo "<option value=''>Selecione uma opcao</option>";

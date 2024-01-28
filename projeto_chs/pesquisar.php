@@ -8,8 +8,8 @@ if (empty($procurarPalavra)) {
     echo json_encode(["message" => "Não encontrado!"]);
   } else {
     $sql = "SELECT a.*,
-    (SELECT u.nome FROM historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as usuario
-     FROM heads a WHERE tag LIKE '%$procurarPalavra%'";
+    (SELECT u.nome FROM chs_historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as usuario
+     FROM chs_controle a WHERE tag LIKE '%$procurarPalavra%'";
     
     $response = $conn->query($sql);
   

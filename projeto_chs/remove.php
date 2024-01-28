@@ -9,7 +9,7 @@ if (isset($_POST['id'])) {
     $usuario = $_POST['idUsuario'];
     $usuarioSessao = $_POST['usuarioSessao'];
     $permissaoSessao = $_POST['permissaoSessao'];
-    $sql = "SELECT * FROM historico WHERE tag_id = '$id' order by id DESC";
+    $sql = "SELECT * FROM chs_historico WHERE tag_id = '$id' order by id DESC";
     $resultado = $conn->query($sql) or die("Falha na execucao do codigo SQL: " . $conn->error);
     $row = $resultado->fetch_assoc();
     $usuarioConsultado = $row['usuario_id'];
@@ -17,7 +17,7 @@ if (isset($_POST['id'])) {
     $permissaoUsuario = 'Usuario';
     
     if ($usuarioConsultado === $usuarioSessao || $permissaoSessao === 'Admin'){
-        $sqlDeleteHistorico = "DELETE FROM historico WHERE tag_id = $id";
+        $sqlDeleteHistorico = "DELETE FROM chs_historico WHERE tag_id = $id";
         
         $response = [];
         
@@ -27,7 +27,7 @@ if (isset($_POST['id'])) {
             $response['historico'] = ['erro' => 1,'mensagem' => "Erro ao remover o item"];
         }
         
-        $sqlDelete = "DELETE FROM heads WHERE id = $id";
+        $sqlDelete = "DELETE FROM chs_controle WHERE id = $id";
         
         if ($conn->query($sqlDelete) === TRUE) {
             $response['heads'] = ['erro' => 0,'mensagem' => "ok"];
