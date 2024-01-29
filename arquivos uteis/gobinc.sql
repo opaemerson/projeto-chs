@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-Jan-2024 às 23:21
--- Versão do servidor: 10.1.38-MariaDB
--- versão do PHP: 5.6.40
+-- Tempo de geração: 29/01/2024 às 01:48
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,32 +18,125 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `chs`
+-- Banco de dados: `gobinc`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `equipamento`
+-- Estrutura para tabela `chs_controle`
 --
 
-CREATE TABLE `equipamento` (
+CREATE TABLE `chs_controle` (
+  `id` int(11) NOT NULL,
+  `tag` varchar(100) NOT NULL,
+  `modelo` varchar(100) NOT NULL,
+  `problema` varchar(255) DEFAULT NULL,
+  `data_envio` varchar(50) DEFAULT NULL,
+  `situacao` varchar(50) DEFAULT NULL,
+  `previsao` varchar(50) DEFAULT NULL,
+  `retorno` varchar(50) NOT NULL,
+  `garantia` varchar(50) DEFAULT NULL,
+  `manutencao` int(50) NOT NULL,
+  `equipamento_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `chs_controle`
+--
+
+INSERT INTO `chs_controle` (`id`, `tag`, `modelo`, `problema`, `data_envio`, `situacao`, `previsao`, `retorno`, `garantia`, `manutencao`, `equipamento_id`) VALUES
+(10690, '32', 'C', 'B', '18-10-2023', 'Concluido', 'Concluido', '02-12-2023', 'Nao', 2, 1),
+(10696, 'r3443', 'A', 'A', '20-10-2023', 'Enviado', '27-10-2023', 'Pendente', 'Nao', 1, 2),
+(10702, '123', 'A', 'B', '15-01-2024', 'Concluido', 'Concluido', '15-01-2024', 'Sim', 1, 2),
+(10703, '4444', 'A', 'A', '28-01-2024', 'Enviado', '04-02-2024', 'Pendente', 'Nao', 1, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `chs_equipamento`
+--
+
+CREATE TABLE `chs_equipamento` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `equipamento`
+-- Despejando dados para a tabela `chs_equipamento`
 --
 
-INSERT INTO `equipamento` (`id`, `nome`) VALUES
+INSERT INTO `chs_equipamento` (`id`, `nome`) VALUES
 (1, 'Headphone'),
-(2, 'Teclado');
+(2, 'Teclado'),
+(3, 'Bsas');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ganolia_criatura`
+-- Estrutura para tabela `chs_historico`
+--
+
+CREATE TABLE `chs_historico` (
+  `id` int(11) NOT NULL,
+  `tag_id` int(11) DEFAULT NULL,
+  `usuario_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `chs_historico`
+--
+
+INSERT INTO `chs_historico` (`id`, `tag_id`, `usuario_id`) VALUES
+(105, 10690, 7),
+(111, 10696, 7),
+(117, 10702, 7),
+(118, 10703, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `chs_marca`
+--
+
+CREATE TABLE `chs_marca` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `chs_marca`
+--
+
+INSERT INTO `chs_marca` (`id`, `nome`) VALUES
+(10, 'A'),
+(11, 'B'),
+(12, 'C');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `chs_problema`
+--
+
+CREATE TABLE `chs_problema` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `chs_problema`
+--
+
+INSERT INTO `chs_problema` (`id`, `nome`) VALUES
+(5, 'A'),
+(6, 'B'),
+(7, 'C');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `ganolia_criatura`
 --
 
 CREATE TABLE `ganolia_criatura` (
@@ -58,10 +150,10 @@ CREATE TABLE `ganolia_criatura` (
   `probabilidade` varchar(20) NOT NULL,
   `situacao` varchar(2) NOT NULL,
   `imagem` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `ganolia_criatura`
+-- Despejando dados para a tabela `ganolia_criatura`
 --
 
 INSERT INTO `ganolia_criatura` (`id`, `nome`, `hp`, `cp`, `territorio`, `raridade`, `recompensa_id`, `probabilidade`, `situacao`, `imagem`) VALUES
@@ -150,7 +242,7 @@ INSERT INTO `ganolia_criatura` (`id`, `nome`, `hp`, `cp`, `territorio`, `raridad
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ganolia_historico`
+-- Estrutura para tabela `ganolia_historico`
 --
 
 CREATE TABLE `ganolia_historico` (
@@ -158,11 +250,11 @@ CREATE TABLE `ganolia_historico` (
   `personagem_id` int(11) DEFAULT NULL,
   `evento` varchar(255) DEFAULT NULL,
   `item_usado` varchar(30) NOT NULL,
-  `horario` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `horario` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `ganolia_historico`
+-- Despejando dados para a tabela `ganolia_historico`
 --
 
 INSERT INTO `ganolia_historico` (`id`, `personagem_id`, `evento`, `item_usado`, `horario`) VALUES
@@ -200,12 +292,13 @@ INSERT INTO `ganolia_historico` (`id`, `personagem_id`, `evento`, `item_usado`, 
 (379, 3, 'Acertou 6 de dano no alvo.', 'Espada 2', '2024-01-20 22:48:07'),
 (380, 3, 'Acertou 6 de dano no alvo.', 'Espada 2', '2024-01-20 22:48:13'),
 (381, 3, 'Acertou 6 de dano no alvo.', 'Espada 2', '2024-01-20 22:48:15'),
-(382, 3, 'Acertou 6 de dano no alvo.', 'Espada 2', '2024-01-21 15:57:05');
+(382, 3, 'Acertou 6 de dano no alvo.', 'Espada 2', '2024-01-21 15:57:05'),
+(383, 101, 'Registrado', '', '2023-12-16 03:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ganolia_item`
+-- Estrutura para tabela `ganolia_item`
 --
 
 CREATE TABLE `ganolia_item` (
@@ -225,10 +318,10 @@ CREATE TABLE `ganolia_item` (
   `situacao` varchar(2) NOT NULL,
   `situacao_mercado` varchar(2) NOT NULL,
   `imagem` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `ganolia_item`
+-- Despejando dados para a tabela `ganolia_item`
 --
 
 INSERT INTO `ganolia_item` (`id`, `nome`, `tipo`, `categoria`, `dados`, `valor`, `raridade`, `damage`, `habilidade`, `taxa_habilidade`, `descricao`, `ranking`, `especial`, `situacao`, `situacao_mercado`, `imagem`) VALUES
@@ -285,7 +378,7 @@ INSERT INTO `ganolia_item` (`id`, `nome`, `tipo`, `categoria`, `dados`, `valor`,
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ganolia_personagem`
+-- Estrutura para tabela `ganolia_personagem`
 --
 
 CREATE TABLE `ganolia_personagem` (
@@ -297,10 +390,10 @@ CREATE TABLE `ganolia_personagem` (
   `mochila_indice` varchar(200) NOT NULL,
   `especial_id` varchar(200) NOT NULL,
   `usuario_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `ganolia_personagem`
+-- Despejando dados para a tabela `ganolia_personagem`
 --
 
 INSERT INTO `ganolia_personagem` (`id`, `nome`, `classe`, `sessao`, `mochila`, `mochila_indice`, `especial_id`, `usuario_id`) VALUES
@@ -309,12 +402,13 @@ INSERT INTO `ganolia_personagem` (`id`, `nome`, `classe`, `sessao`, `mochila`, `
 (3, 'Krob', 'Guerreiro', '', '1;50;2;3;12;1;2;2;2;3;3;2;2;2', '0;1;2;3;4;5;6;7;8;9;10;11;12;13', '32', 7),
 (26, 'Visko', 'Guerreiro', '', '', '', '', 7),
 (99, 'Criatura', 'Criatura', '', '', '', '', 99),
-(100, 'rrrq', 'Guerreiro', '', '', '', '', 100);
+(100, 'rrrq', 'Guerreiro', '', '', '', '', 100),
+(101, 'Emerson', 'Guerreiro', '', '', '', '', 7);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ganolia_sessao`
+-- Estrutura para tabela `ganolia_sessao`
 --
 
 CREATE TABLE `ganolia_sessao` (
@@ -331,21 +425,21 @@ CREATE TABLE `ganolia_sessao` (
   `col` int(11) NOT NULL,
   `fila` int(11) NOT NULL,
   `vez` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `ganolia_sessao`
+-- Despejando dados para a tabela `ganolia_sessao`
 --
 
 INSERT INTO `ganolia_sessao` (`id`, `nome`, `personagem_id`, `personagem_hp`, `criatura_id`, `criatura_hp`, `territorio_id`, `mao`, `descarte`, `row`, `col`, `fila`, `vez`) VALUES
-(1, 'Aventura', 3, 10, 99, 0, 1, '', ';0;1;5;11;12;3;7;8;10;13', 3, 3, 1, 'A'),
+(1, 'Aventura', 3, 10, 99, 0, 1, '0;1;3;7;9', '', 3, 3, 1, 'A'),
 (2, 'Aventura', 2, 10, 99, 0, 1, '', '', 5, 4, 2, 'I'),
 (4, 'Aventura', 99, 0, 1, 76, 1, '', '', 3, 4, 2, 'I');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ganolia_sessao_tmp`
+-- Estrutura para tabela `ganolia_sessao_tmp`
 --
 
 CREATE TABLE `ganolia_sessao_tmp` (
@@ -356,19 +450,19 @@ CREATE TABLE `ganolia_sessao_tmp` (
   `qtd_ataque` int(11) NOT NULL,
   `qtd_moeda` int(11) NOT NULL,
   `qtd_acoes` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `ganolia_sessao_tmp`
+-- Despejando dados para a tabela `ganolia_sessao_tmp`
 --
 
 INSERT INTO `ganolia_sessao_tmp` (`id`, `personagem_id`, `ataque_ativo`, `imagem_ataque`, `qtd_ataque`, `qtd_moeda`, `qtd_acoes`) VALUES
-(1, 3, '', '', 0, 0, 0);
+(1, 3, '3;', '', 1, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ganolia_territorio`
+-- Estrutura para tabela `ganolia_territorio`
 --
 
 CREATE TABLE `ganolia_territorio` (
@@ -376,10 +470,10 @@ CREATE TABLE `ganolia_territorio` (
   `nome` varchar(20) NOT NULL,
   `descricao` varchar(55) NOT NULL,
   `situacao` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `ganolia_territorio`
+-- Despejando dados para a tabela `ganolia_territorio`
 --
 
 INSERT INTO `ganolia_territorio` (`id`, `nome`, `descricao`, `situacao`) VALUES
@@ -399,97 +493,7 @@ INSERT INTO `ganolia_territorio` (`id`, `nome`, `descricao`, `situacao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `heads`
---
-
-CREATE TABLE `heads` (
-  `id` int(11) NOT NULL,
-  `tag` varchar(100) NOT NULL,
-  `modelo` varchar(100) NOT NULL,
-  `problema` varchar(255) DEFAULT NULL,
-  `data_envio` varchar(50) DEFAULT NULL,
-  `situacao` varchar(50) DEFAULT NULL,
-  `previsao` varchar(50) DEFAULT NULL,
-  `retorno` varchar(50) NOT NULL,
-  `garantia` varchar(50) DEFAULT NULL,
-  `manutencao` int(50) NOT NULL,
-  `equipamento_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `heads`
---
-
-INSERT INTO `heads` (`id`, `tag`, `modelo`, `problema`, `data_envio`, `situacao`, `previsao`, `retorno`, `garantia`, `manutencao`, `equipamento_id`) VALUES
-(10690, '32', 'C', 'B', '18-10-2023', 'Concluido', 'Concluido', '02-12-2023', 'Nao', 2, 1),
-(10696, 'r3443', 'A', 'A', '20-10-2023', 'Enviado', '27-10-2023', 'Pendente', 'Nao', 1, 2),
-(10702, '123', 'A', 'B', '15-01-2024', 'Concluido', 'Concluido', '15-01-2024', 'Sim', 1, 2);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `historico`
---
-
-CREATE TABLE `historico` (
-  `id` int(11) NOT NULL,
-  `tag_id` int(11) DEFAULT NULL,
-  `usuario_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `historico`
---
-
-INSERT INTO `historico` (`id`, `tag_id`, `usuario_id`) VALUES
-(105, 10690, 7),
-(111, 10696, 7),
-(117, 10702, 7);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `marca`
---
-
-CREATE TABLE `marca` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `marca`
---
-
-INSERT INTO `marca` (`id`, `nome`) VALUES
-(10, 'A'),
-(11, 'B'),
-(12, 'C');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `problema`
---
-
-CREATE TABLE `problema` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `problema`
---
-
-INSERT INTO `problema` (`id`, `nome`) VALUES
-(5, 'A'),
-(6, 'B'),
-(7, 'C');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `usuarios`
+-- Estrutura para tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -500,10 +504,10 @@ CREATE TABLE `usuarios` (
   `email` varchar(30) NOT NULL,
   `referencia` varchar(20) NOT NULL,
   `personagem_ganolia` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `usuarios`
+-- Despejando dados para a tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `senha`, `permissao`, `email`, `referencia`, `personagem_ganolia`) VALUES
@@ -514,43 +518,70 @@ INSERT INTO `usuarios` (`id`, `nome`, `senha`, `permissao`, `email`, `referencia
 (100, 'dinho', 123, 'Usuario', 'dinho@dinho', 'Amigo', 100);
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `equipamento`
+-- Índices de tabela `chs_controle`
 --
-ALTER TABLE `equipamento`
+ALTER TABLE `chs_controle`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `equipamento_id` (`equipamento_id`);
+
+--
+-- Índices de tabela `chs_equipamento`
+--
+ALTER TABLE `chs_equipamento`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ganolia_criatura`
+-- Índices de tabela `chs_historico`
+--
+ALTER TABLE `chs_historico`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tag_id` (`tag_id`),
+  ADD KEY `usuario_id` (`usuario_id`);
+
+--
+-- Índices de tabela `chs_marca`
+--
+ALTER TABLE `chs_marca`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `chs_problema`
+--
+ALTER TABLE `chs_problema`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `ganolia_criatura`
 --
 ALTER TABLE `ganolia_criatura`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ganolia_historico`
+-- Índices de tabela `ganolia_historico`
 --
 ALTER TABLE `ganolia_historico`
   ADD PRIMARY KEY (`id`),
   ADD KEY `personagem_id` (`personagem_id`);
 
 --
--- Indexes for table `ganolia_item`
+-- Índices de tabela `ganolia_item`
 --
 ALTER TABLE `ganolia_item`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ganolia_personagem`
+-- Índices de tabela `ganolia_personagem`
 --
 ALTER TABLE `ganolia_personagem`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_usuario_id` (`usuario_id`);
 
 --
--- Indexes for table `ganolia_sessao`
+-- Índices de tabela `ganolia_sessao`
 --
 ALTER TABLE `ganolia_sessao`
   ADD PRIMARY KEY (`id`),
@@ -558,178 +589,151 @@ ALTER TABLE `ganolia_sessao`
   ADD KEY `ganolia_sessao_FK` (`criatura_id`);
 
 --
--- Indexes for table `ganolia_sessao_tmp`
+-- Índices de tabela `ganolia_sessao_tmp`
 --
 ALTER TABLE `ganolia_sessao_tmp`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ganolia_sessao_tmp_FK` (`personagem_id`);
 
 --
--- Indexes for table `ganolia_territorio`
+-- Índices de tabela `ganolia_territorio`
 --
 ALTER TABLE `ganolia_territorio`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `heads`
---
-ALTER TABLE `heads`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `equipamento_id` (`equipamento_id`);
-
---
--- Indexes for table `historico`
---
-ALTER TABLE `historico`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tag_id` (`tag_id`),
-  ADD KEY `usuario_id` (`usuario_id`);
-
---
--- Indexes for table `marca`
---
-ALTER TABLE `marca`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `problema`
---
-ALTER TABLE `problema`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `usuarios`
+-- Índices de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_personagem_ganolia` (`personagem_ganolia`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `equipamento`
+-- AUTO_INCREMENT de tabela `chs_controle`
 --
-ALTER TABLE `equipamento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `chs_controle`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10704;
 
 --
--- AUTO_INCREMENT for table `ganolia_criatura`
+-- AUTO_INCREMENT de tabela `chs_equipamento`
+--
+ALTER TABLE `chs_equipamento`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `chs_historico`
+--
+ALTER TABLE `chs_historico`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+
+--
+-- AUTO_INCREMENT de tabela `chs_marca`
+--
+ALTER TABLE `chs_marca`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de tabela `chs_problema`
+--
+ALTER TABLE `chs_problema`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de tabela `ganolia_criatura`
 --
 ALTER TABLE `ganolia_criatura`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
--- AUTO_INCREMENT for table `ganolia_historico`
+-- AUTO_INCREMENT de tabela `ganolia_historico`
 --
 ALTER TABLE `ganolia_historico`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=383;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=384;
 
 --
--- AUTO_INCREMENT for table `ganolia_item`
+-- AUTO_INCREMENT de tabela `ganolia_item`
 --
 ALTER TABLE `ganolia_item`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT for table `ganolia_personagem`
+-- AUTO_INCREMENT de tabela `ganolia_personagem`
 --
 ALTER TABLE `ganolia_personagem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
--- AUTO_INCREMENT for table `ganolia_sessao`
+-- AUTO_INCREMENT de tabela `ganolia_sessao`
 --
 ALTER TABLE `ganolia_sessao`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `ganolia_sessao_tmp`
+-- AUTO_INCREMENT de tabela `ganolia_sessao_tmp`
 --
 ALTER TABLE `ganolia_sessao_tmp`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `ganolia_territorio`
+-- AUTO_INCREMENT de tabela `ganolia_territorio`
 --
 ALTER TABLE `ganolia_territorio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `heads`
---
-ALTER TABLE `heads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10703;
-
---
--- AUTO_INCREMENT for table `historico`
---
-ALTER TABLE `historico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
-
---
--- AUTO_INCREMENT for table `marca`
---
-ALTER TABLE `marca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `problema`
---
-ALTER TABLE `problema`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
--- Constraints for dumped tables
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `ganolia_historico`
+-- Restrições para tabelas `chs_controle`
+--
+ALTER TABLE `chs_controle`
+  ADD CONSTRAINT `chs_controle_ibfk_1` FOREIGN KEY (`equipamento_id`) REFERENCES `chs_equipamento` (`id`);
+
+--
+-- Restrições para tabelas `chs_historico`
+--
+ALTER TABLE `chs_historico`
+  ADD CONSTRAINT `chs_historico_ibfk_1` FOREIGN KEY (`tag_id`) REFERENCES `chs_controle` (`id`),
+  ADD CONSTRAINT `chs_historico_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Restrições para tabelas `ganolia_historico`
 --
 ALTER TABLE `ganolia_historico`
   ADD CONSTRAINT `ganolia_historico_ibfk_1` FOREIGN KEY (`personagem_id`) REFERENCES `ganolia_personagem` (`id`);
 
 --
--- Limitadores para a tabela `ganolia_personagem`
+-- Restrições para tabelas `ganolia_personagem`
 --
 ALTER TABLE `ganolia_personagem`
   ADD CONSTRAINT `fk_usuario_id` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
 
 --
--- Limitadores para a tabela `ganolia_sessao`
+-- Restrições para tabelas `ganolia_sessao`
 --
 ALTER TABLE `ganolia_sessao`
   ADD CONSTRAINT `fk_personagem` FOREIGN KEY (`personagem_id`) REFERENCES `ganolia_personagem` (`id`),
   ADD CONSTRAINT `ganolia_sessao_FK` FOREIGN KEY (`criatura_id`) REFERENCES `ganolia_criatura` (`id`);
 
 --
--- Limitadores para a tabela `ganolia_sessao_tmp`
+-- Restrições para tabelas `ganolia_sessao_tmp`
 --
 ALTER TABLE `ganolia_sessao_tmp`
   ADD CONSTRAINT `ganolia_sessao_tmp_FK` FOREIGN KEY (`personagem_id`) REFERENCES `ganolia_personagem` (`id`);
 
 --
--- Limitadores para a tabela `heads`
---
-ALTER TABLE `heads`
-  ADD CONSTRAINT `heads_ibfk_1` FOREIGN KEY (`equipamento_id`) REFERENCES `equipamento` (`id`);
-
---
--- Limitadores para a tabela `historico`
---
-ALTER TABLE `historico`
-  ADD CONSTRAINT `historico_ibfk_1` FOREIGN KEY (`tag_id`) REFERENCES `heads` (`id`),
-  ADD CONSTRAINT `historico_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
-
---
--- Limitadores para a tabela `usuarios`
+-- Restrições para tabelas `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `fk_personagem_ganolia` FOREIGN KEY (`personagem_ganolia`) REFERENCES `ganolia_personagem` (`id`);
