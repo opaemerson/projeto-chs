@@ -9,7 +9,7 @@ let criaturaRepetido = [];
 function highlightValidMoves(row, col, currentPlayerSquare) {
     const directions = [
         { row: -1, col: 0 }, // acima
-        { row: 1, col: 0 },  // abaixo
+        { row: 1, col: 0 },  // abaixos
         { row: 0, col: -1 }, // à esquerda
         { row: 0, col: 1 }   // à direita
     ];
@@ -64,9 +64,7 @@ function movePlayer(currentPlayerSquare, targetSquare) {
             window.location.reload();
         }, 2000);        
 
-        // Adicionar ouvinte de evento de clique ao novo quadrado do jogador
         targetSquare.addEventListener("click", function () {
-        // Obter a posição do jogador
         const currentPlayerRow = parseInt(this.getAttribute("row"));
         const currentPlayerCol = parseInt(this.getAttribute("col"));
  
@@ -80,7 +78,6 @@ function movePlayer(currentPlayerSquare, targetSquare) {
 }
 
 function updatePositionTerritorio(row, col) {
-    // Criar um objeto com os dados a serem enviados para o servidor
     const newRow = row;
     const newCol = col;
 
@@ -88,10 +85,10 @@ function updatePositionTerritorio(row, col) {
     formData.append('newRow', newRow);
     formData.append('newCol', newCol);
 
-    // Fazer a requisição AJAX para update_posicao.php
+
     fetch('http://127.0.0.1:80/chs/ganolia_online/processar_update_posicao_t.php', {
         method: 'POST',
-        body: formData,  // Não é mais necessário usar JSON.stringify
+        body: formData, 
     })
     .then(response => response.json())
     .then(data => {
@@ -104,7 +101,6 @@ function updatePositionTerritorio(row, col) {
 
 
 function updatePositionInDatabase(row, col) {
-    // Criar um objeto com os dados a serem enviados para o servidor
     const newRow = row;
     const newCol = col;
 
@@ -112,10 +108,9 @@ function updatePositionInDatabase(row, col) {
     formData.append('newRow', newRow);
     formData.append('newCol', newCol);
 
-    // Fazer a requisição AJAX para update_posicao.php
     fetch('http://127.0.0.1:80/chs/ganolia_online/processar_update_posicao.php', {
         method: 'POST',
-        body: formData,  // Não é mais necessário usar JSON.stringify
+        body: formData,  
     })
     .then(response => response.json())
     .then(data => {
@@ -166,7 +161,6 @@ function buscaJogador(vez, territorio, row, col){
             jogadorElement.classList.add("player");
             jogadorElement.style.backgroundColor = "red";
 
-            // Adicionar ouvinte de evento de clique ao jogador
             jogadorElement.addEventListener("click", function () {
             // Obter a posição do jogador
             const currentPlayerRow = parseInt(this.getAttribute("row"));
@@ -200,11 +194,9 @@ function buscaCores(cores, territorio) {
         for (const posicao of arrayTerritorio1) {
             const { row, col } = posicao;
     
-            // Verificando se a cor está presente nas cores fornecidas
             if (cores[row] && cores[row][col]) {
                 const corElement = document.querySelector(`[row="${row}"][col="${col}"]`);
                 
-                // Verificando se o elemento foi encontrado
                 if (corElement) {
                     corElement.style.backgroundColor = "blue";
                 }
@@ -244,10 +236,9 @@ function buscaAliado(vez,territorio){
     const formData = new FormData();
     formData.append('newVez', newVez);
 
-    // Fazer a requisição AJAX para update_posicao.php
     fetch('http://127.0.0.1:80/chs/ganolia_online/processar_busca_aliado.php', {
         method: 'POST',
-        body: formData,  // Não é mais necessário usar JSON.stringify
+        body: formData,  
     })
     .then(response => response.json())
     .then(data => {
@@ -255,9 +246,8 @@ function buscaAliado(vez,territorio){
             
 
             data.data.forEach(item => {
-                // Verifica se o item já foi processado
                 if (!aliadoRepetido.includes(item.personagem) || !criaturaRepetido.includes(item.criatura)) {
-                    // Adiciona o item ao array de itens processados
+
                     aliadoRepetido.push(item.personagem);
                     criaturaRepetido.push(item.criatura);
 
@@ -293,7 +283,6 @@ function buscaAliado(vez,territorio){
 }
 
 function inicializa(){
-    // Fazer uma solicitação Ajax para obter a posição do jogador
     fetch('http://127.0.0.1:80/chs/ganolia_online/processar_busca_posicao.php', {
     method: 'POST',
     headers: {
@@ -305,7 +294,6 @@ function inicializa(){
 .then(data => {
         const jogadorPosition = data[0];
             
-        // Aplicar a função de conversão a cada propriedade
         jogadorPosition.player = parseInt(jogadorPosition.player);
         jogadorPosition.vez = jogadorPosition.vez;
         jogadorPosition.territorio = parseInt(jogadorPosition.territorio);
