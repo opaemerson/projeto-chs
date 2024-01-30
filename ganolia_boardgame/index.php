@@ -20,8 +20,6 @@ require_once('../config.php');
 <br>
 <a href="guia_personagem.php">PERSONAGEM</a>
 <br>
-<a href="guia_biblioteca.php">BIBLIOTECA</a>
-<br>
 <a href="guia_criatura.php">CRIATURAS</a>
 <br>
 <a href="guia_item.php">ITENS</a>
