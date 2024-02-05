@@ -1,0 +1,14 @@
+.centralizando {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Isso garante que a div centralizando ocupe toda a altura da tela */
+}
+
+.button {
+    margin: 10px;
+    padding: 10px;
+    width: 200px; /* Defina a largura desejada para os botões */
+    font-size: 16px;
+}
