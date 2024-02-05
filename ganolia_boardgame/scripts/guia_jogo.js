@@ -28,63 +28,51 @@ function mostrarJogar(){
 }
 
 function mostrarAtaque(){
-  var divJogar = document.getElementById('jogar');
   var divAtaque = document.getElementById('ataque');
   var divDefesa = document.getElementById('defesa');
   var divRecolher = document.getElementById('recolher');
-  divJogar.style.display = 'none';
   divAtaque.style.display = 'block';
   divDefesa.style.display = 'none';
   divRecolher.style.display = 'none';
 
-  var divJogarButton = document.getElementById('jogarButton');
   var divAtaqueButton = document.getElementById('ataqueButton');
   var divDefesaButton = document.getElementById('defesaButton');
   var divRecolherButton = document.getElementById('recolherButton');
   
-  divJogarButton.classList.remove('ativo');
   divAtaqueButton.classList.add('ativo');
   divDefesaButton.classList.remove('ativo');
   divRecolherButton.classList.remove('ativo');
 }
 
 function mostrarDefesa(){
-  var divJogar = document.getElementById('jogar');
   var divAtaque = document.getElementById('ataque');
   var divDefesa = document.getElementById('defesa');
   var divRecolher = document.getElementById('recolher');
-  divJogar.style.display = 'none';
   divAtaque.style.display = 'none';
   divDefesa.style.display = 'block';
   divRecolher.style.display = 'none';
 
-  var divJogarButton = document.getElementById('jogarButton');
   var divAtaqueButton = document.getElementById('ataqueButton');
   var divDefesaButton = document.getElementById('defesaButton');
   var divRecolherButton = document.getElementById('recolherButton');
   
-  divJogarButton.classList.remove('ativo');
   divAtaqueButton.classList.remove('ativo');
   divDefesaButton.classList.add('ativo');
   divRecolherButton.classList.remove('ativo');
 }
 
 function mostrarRecolher(){
-  var divJogar = document.getElementById('jogar');
   var divAtaque = document.getElementById('ataque');
   var divDefesa = document.getElementById('defesa');
   var divRecolher = document.getElementById('recolher');
-  divJogar.style.display = 'none';
   divAtaque.style.display = 'none';
   divDefesa.style.display = 'none';
   divRecolher.style.display = 'block';
 
-  var divJogarButton = document.getElementById('jogarButton');
   var divAtaqueButton = document.getElementById('ataqueButton');
   var divDefesaButton = document.getElementById('defesaButton');
   var divRecolherButton = document.getElementById('recolherButton');
   
-  divJogarButton.classList.remove('ativo');
   divAtaqueButton.classList.remove('ativo');
   divDefesaButton.classList.remove('ativo');
   divRecolherButton.classList.add('ativo');

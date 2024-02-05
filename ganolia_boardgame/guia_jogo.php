@@ -23,17 +23,14 @@ $personagemId = $_SESSION['personagem_ganolia'];
 <body>
     
 <div class="centralizando">
-    <button class="button" id="jogarButton" onclick="mostrarJogar()">Jogar</button>
     <button class="button" id="defesaButton" onclick="mostrarDefesa()">Defesa</button>
     <button class="button" id="recolherButton" onclick="mostrarRecolher()">Recolher</button>
     <button class="button" onclick="limpar()">Limpar</button>
     <button class="button" sair onclick="sair()">Sair</button>
 </div>
 
-<div class="sessao">
-    <div class="quadro">
 
-    <div id="ataque" style="display: none;">
+<div id="ataque" style="display: none;">
     <h2>Atacando</h2>
     <label for="">Selecione o ID do Item Ofensivo:</label>
     <input type="text" style="width: 40px;" id="codigoItemAtaque">
@@ -47,12 +44,12 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <br><br>
     <div id="resultadoAtaque"></div>
     <br><br>
-    </div>
+</div>
     
-    <div id="defesa" style="display: none;">
+<div id="defesa" style="display: none;">
     <h2>Defendendo</h2>
     <label for="">Desenvolvendo[...]</label>
-    </div>
+</div>
 
     <div id="recolher" style="display: none;">
     <h2>Recolhendo Drop</h2>
@@ -108,8 +105,6 @@ $personagemId = $_SESSION['personagem_ganolia'];
 <br><br>
 <img id="imagemDrop" src="" class="img-enviado" width="180" height="220" style="display: none;">
 <div id="resultadoDrop"></div>
-</div>
-</div>
 </div>
 
 <!-- DIV de LOG -->
