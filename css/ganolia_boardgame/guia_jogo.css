@@ -34,6 +34,25 @@
     font-size: 16px;
 }
 
+#scrollingContainer {
+    position: fixed;
+    left: 0; /* Adiciona a propriedade left para garantir que o container comece da borda esquerda */
+    bottom: 0;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid rgb(78, 78, 78);
+    padding: 10px;
+    background-color: #fffff7;
+}
+
+
+/* Estilo para as mensagens dentro da div */
+#scrollingContainer div {
+    margin-bottom: 2px; /* Adiciona um espaçamento entre as mensagens, ajuste conforme necessário */
+    font-size: 12px;
+}
+
 
 #jogarButton.ativo {
     background-color: #54575f;

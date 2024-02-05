@@ -162,7 +162,7 @@ function atacar() {
   const form = new FormData();
   form.append('codigoItemAtaque', codigoItemAtaque);
 
-  const url = "http://127.0.0.1:80/chs/ganolia_online/processar_ataque.php";
+  const url = "http://127.0.0.1:80/chs/ganolia_boardgame/processar_ataque.php";
 
   $.ajax({
     url: url, 

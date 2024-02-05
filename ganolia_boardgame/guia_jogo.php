@@ -110,7 +110,7 @@ $personagemId = $_SESSION['personagem_ganolia'];
 </div>
 
 <!-- DIV de LOG -->
-<!-- <div class="scrolling-container" id="scrollingContainer">
+<div class="scrolling-container" id="scrollingContainer">
     <?php
     $sql = "SELECT gh.evento, gp.nome , gp.classe , gp.sessao, gh.horario, gh.item_usado
     from ganolia_historico gh 
@@ -130,7 +130,7 @@ $personagemId = $_SESSION['personagem_ganolia'];
         }
     }
     ?>
-</div> -->
+</div>
 
 <script src="./scripts/guia_jogo.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
