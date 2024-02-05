@@ -15,22 +15,23 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/ganolia/index_mecanismo.css">
     <link rel="stylesheet" href="../css/ganolia_boardgame/guia_jogo.css">
+    <link rel="stylesheet" href="../css/ganolia/index_mecanismo.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Ganolia</title>
 </head>
 <body>
-    
-<div class="centralizando">
+
+<div class="container">
+<div class="centralizando_esquerda">
+    <button class="button" id="ataqueButton" onclick="mostrarAtaque()">Atacar</button>
     <button class="button" id="defesaButton" onclick="mostrarDefesa()">Defesa</button>
     <button class="button" id="recolherButton" onclick="mostrarRecolher()">Recolher</button>
     <button class="button" onclick="limpar()">Limpar</button>
-    <button class="button" sair onclick="sair()">Sair</button>
+    <button class="button" id="limparButton" sair onclick="sair()">Sair</button>
 </div>
 
-
-<div id="ataque" style="display: none;">
+<div id="ataque" class="centralizando_direita" style="display: none;">
     <h2>Atacando</h2>
     <label for="">Selecione o ID do Item Ofensivo:</label>
     <input type="text" style="width: 40px;" id="codigoItemAtaque">
@@ -50,8 +51,9 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <h2>Defendendo</h2>
     <label for="">Desenvolvendo[...]</label>
 </div>
+</div>
 
-    <div id="recolher" style="display: none;">
+<div id="recolher" style="display: none;">
     <h2>Recolhendo Drop</h2>
     <label for="">Selecione o ID da Criatura:</label>
     <input type="text" style="width: 40px;" id="idCriatura">
@@ -96,8 +98,8 @@ $personagemId = $_SESSION['personagem_ganolia'];
                 </div>
             </div>
         </div>
-    </div>
-    <br><br>
+</div>
+<br><br>
 
 <!-- Container que irá mostrar o botão RECOLHER + Imagem do resultado do drop -->
 <input type="hidden" id="idCriatura">

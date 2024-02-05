@@ -1,9 +1,30 @@
-.centralizando {
+.container {
+    display: flex;
+    justify-content: space-between; /* Isso distribuirá o espaço disponível entre as duas divs */
+    width: 100%; /* Garante que a largura seja 100% da largura do pai (pode ser ajustado conforme necessário) */
+}
+
+.centralizando_esquerda {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* Alinha os itens à esquerda */
+    justify-content: flex-start; /* Alinha a div no topo da tela */
+    height: 100vh;
+    width: 50%;
+    margin-left: 0; /* Remove a margem à esquerda */
+    margin-right: auto; /* Empurra a div para a parte esquerda da tela */
+}
+
+
+.centralizando_direita {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alinha os itens à direita */
     justify-content: center;
-    height: 100vh; /* Isso garante que a div centralizando ocupe toda a altura da tela */
+    height: 100vh;
+    width: 50%;
+    margin-left: auto; /* Empurra a div para a parte direita da tela */
+    margin-right: 0; /* Remove a margem à direita */
 }
 
 .button {
