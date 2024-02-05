@@ -51,7 +51,7 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <h2>Defendendo</h2>
     <label for="">Desenvolvendo[...]</label>
 </div>
-</div>
+
 
 <div id="recolher" style="display: none;">
     <h2>Recolhendo Drop</h2>
@@ -61,43 +61,6 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <br><br>
     <div id="resultadoCriatura"></div>
     <div style="margin-bottom: 10px;"></div>
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card mt-3" id="mt1" style="border: none;">
-                <img id="imagemCriatura1" src="" class="img-enviado card-img-top" width="80" height="150" style="display: none;">
-                <div class="card-body">
-                    <div id="nomeDrop1" style="display: none;"></div>
-                    <div id="nomeRaridade1" style="display: none;"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card mt-3" id="mt2" style="border: none;">
-                <img id="imagemCriatura2" src="" class="img-enviado card-img-top" width="80" height="150" style="display: none;">
-                <div class="card-body">
-                    <div id="nomeDrop2" style="display: none;"></div>
-                    <div id="nomeRaridade2" style="display: none;"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card mt-3" id="mt3" style="border: none;">
-                <img id="imagemCriatura3" src="" class="img-enviado card-img-top" width="80" height="150" style="display: none;">
-                <div class="card-body">
-                    <div id="nomeDrop3" style="display: none;"></div>
-                    <div id="nomeRaridade3" style="display: none;"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card mt-3" id="mt4" style="border: none;">
-                <img id="imagemCriatura4" src="" class="img-enviado card-img-top" width="80" height="150" style="display: none;">
-                <div class="card-body">
-                    <div id="nomeDrop4" style="display: none;"></div>
-                    <div id="nomeRaridade4" style="display: none;"></div>
-                </div>
-            </div>
-        </div>
 </div>
 <br><br>
 
@@ -107,6 +70,7 @@ $personagemId = $_SESSION['personagem_ganolia'];
 <br><br>
 <img id="imagemDrop" src="" class="img-enviado" width="180" height="220" style="display: none;">
 <div id="resultadoDrop"></div>
+</div>
 </div>
 
 <!-- DIV de LOG -->

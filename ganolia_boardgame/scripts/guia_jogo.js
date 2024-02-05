@@ -260,7 +260,7 @@ function buscaDrop() {
   const form = new FormData();
   form.append('idCriatura', idCriatura);
 
-  const url = "http://127.0.0.1:80/chs/ganolia_online/recolher_drop.php";
+  const url = "http://127.0.0.1:80/chs/ganolia_boardgame/processar_recolher_drop.php";
 
   $.ajax({
     url: url, 
