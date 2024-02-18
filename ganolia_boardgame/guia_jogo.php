@@ -17,6 +17,10 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/ganolia/ganolia.css">
     <link rel="stylesheet" href="../css/ganolia/tabuleiro.css">
+    <script src="./scripts/round.js"></script>
+    <script src="./scripts/ganolia_boardgame.js"></script>
+    <script src="./scripts/tabuleiro.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Ganolia</title>
 </head>
@@ -27,7 +31,7 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <button class="button" id="defesaButton" onclick="mostrarDefesa()">Defesa</button>
     <button class="button" id="recolherButton" onclick="mostrarRecolher()">Recolher</button>
     <button class="button" onclick="limpar()">Limpar</button>
-    <button class="button" sair onclick="sair()">Sair</button>
+    <button class="button" onclick="sair()">Sair</button>
 </div>
 
 <div class="sessao">
@@ -135,69 +139,11 @@ $personagemId = $_SESSION['personagem_ganolia'];
     ?>
 </div>
 
-<!-- Mochila -->
-<div class="mochila" id="mochila">
-    <button onclick="openModalMochila()">
-        <img class="iconMochila" src='../Images/Ganolia/Icons/mochila.jpg'>
-    </button>
-</div>
-
-<!-- Modal da Mochila -->
-<div class="modal" id="modalMochila">
-    <div class="modal-content">
-        <span class="close" onclick="closeModalMochila()">&times;</span>
-
-        <?php
-        $buscaItem = "SELECT gp.mochila as mochila
-            FROM ganolia_personagem gp
-            INNER JOIN usuarios u ON u.personagem_ganolia = gp.id
-            WHERE u.id = $usuarioId";
-
-        $buscaQuery = $conn->query($buscaItem);
-
-        if ($buscaQuery === FALSE) {
-            echo "<script>alert('Erro ao buscar dados');</script>";
-            echo "<script>window.location.href = 'index.php';</script>";
-        } else {
-            $linha = $buscaQuery->fetch_assoc();
-            $arrayItens = explode(';', $linha['mochila']);
-            echo "<div class='flex-container'>";
-            foreach ($arrayItens as $key) {
-                $encontraImagem = "SELECT gi.imagem as imagem
-                FROM ganolia_item gi
-                WHERE gi.id = $key";
-
-                $cnBanco = $conn->query($encontraImagem);
-
-                if ($cnBanco === FALSE) {
-                    echo "<script>alert('Erro ao buscar dados');</script>";
-                    echo "<script>window.location.href = 'index.php';</script>";
-                } else {
-                    $img = $cnBanco->fetch_assoc();
-                    $linhaImg = $img['imagem'];
-
-                    if (!empty($linhaImg)) {
-                        echo "<div class='image-container'><img class='resized-image' src='$linhaImg'></div>";
-                    } else {
-                        echo "<div class='image-container'><span class='not-found'>Imagem não encontrada</span></div>";
-                    }
-                }
-            }
-        }
-        echo "</div>";
-        ?>
-    </div>
-</div>
-
 <!-- Modal de Ataques -->
 <div class="modal" id="modalAtaques">
     <div id="modal-do-ataque">
     </div>
 </div>
 
-<script src="./scripts/round.js"></script>
-<script src="./scripts/ganolia_online.js"></script>
-<script src="./scripts/tabuleiro.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>
