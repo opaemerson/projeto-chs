@@ -164,7 +164,7 @@ function finalizaManipulacao(){
 
                 console.log(resultado.nome_criatura);
                 
-                if (resultado.nome_criatura.length !== 0 && resultado.quantidade !== '0') {
+                if (resultado.nome_criatura.length !== 0 && resultado.quantidade !== '') {
                     let novoBotaoFinaliza = $('<button>', {
                         id: 'btnAtacar',
                         text: 'COMBATE',

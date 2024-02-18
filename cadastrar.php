@@ -45,7 +45,7 @@ if (isset($_POST['cadastro'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/chs/login.css">
     <style>
                 input, select {
             width: 100%;

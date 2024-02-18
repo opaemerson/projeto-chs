@@ -136,9 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     }
                 }                
             }
-    }else{
-        echo json_encode(array("success" => false, "message" => "Erro ao encontra CRIATURA: " . $conn->error));
-    }      
+        }    
         $resposta['success'] = true;
         $resposta['quantidade'] = isset($quantidade) ? $quantidade : '';
         $resposta['ataques'] = isset($ataques) ? $ataques : '';

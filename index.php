@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/gobinc/styles.css">
     <link rel="stylesheet" href="css/chs/cabecalho.css">
-    <link rel="stylesheet" href="css/template1.css">
+    <link rel="stylesheet" href="css/gobinc/template1.css">
     <title>Projeto</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -37,7 +37,7 @@
 
                     <?php
                     if (isset($_SESSION['nome'])) {
-                    echo '<a href="sair.php">SAIR</a>';
+                    echo '<a href="gobinc/sair.php">SAIR</a>';
                     } else{
                     echo '<a href="login.php">ENTRAR</a>';
                     }
@@ -92,6 +92,6 @@
         var usuarioLogado = <?php echo isset($_SESSION['nome']) ? 'true' : 'false'; ?>;
         var permissaoUsuario = <?php echo isset($_SESSION['permissao']) ? 'true' : 'false'; ?>;
 </script>
-<script src="./scripts/verificacoes.js"></script>
+<script src="./gobinc/scripts/verificacoes.js"></script>
 </body>
 </html>

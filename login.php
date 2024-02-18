@@ -54,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/erro.css">
+    <link rel="stylesheet" href="css//chs/login.css">
+    <link rel="stylesheet" href="css/chs/erro.css">
     <title>Login e Cadastro</title>
     <style>
   .link-container a {
