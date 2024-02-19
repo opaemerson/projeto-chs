@@ -33,7 +33,6 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <button class="button" id="defesaButton" onclick="mostrarDefesa()">Defesa</button>
     <button class="button" id="recolherButton" onclick="mostrarRecolher()">Recolher</button>
     <button class="button" onclick="limpar()">Limpar</button>
-    <button class="button" onclick="sair()">Sair</button>
     <button class="button" id="limparButton" sair onclick="sair()">Sair</button>
 </div>
 
