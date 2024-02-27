@@ -49,7 +49,9 @@ require_once('../config.php');
       <div class="modal-body">
         <form id="formMarca">
           <div class="mb-3">
-            <label class="form-label">Nome</label>
+            <label class="form-label">Cadastrar:</label>
+            <input id=nomeEquipamento></input>
+            <button type="button" value="cadastrar" onclick="criarEquipamento()">Cadastrar</button>
               <?php
                 $sql = "SELECT id, nome FROM chs_equipamento";
                 $resultado = $conn->query($sql);
@@ -57,13 +59,14 @@ require_once('../config.php');
                     $idEquip = $row["id"];
                     $nomeEquip = $row["nome"];
                     echo "<br>";
-                    echo "<input type='text' value='$nomeEquip'>";
-                    echo "<button type='button' class='btnExcluir' data-name='$nomeEquip' data-id='$idEquip'>Excluir</button>";
+                    echo "<input type='text' id='newName' value='$nomeEquip'>";
+                    echo "<button type='button' onclick='alterar(this, $idEquip)'>Alterar</button>";
+                    echo "&nbsp;";
+                    echo "<button type='button' onclick='ctzExcluir($idEquip)'>Excluir</button>";
                   }
-                  $resultado->close();
               ?>
           </div>
-          <button type="button" class="btn btn-primary" value="cadastrar" onclick="criarEquipamento()">Enviar</button>
+          
         </form>
       </div>
     </div>
