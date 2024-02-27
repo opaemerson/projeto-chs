@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
   buttons.forEach(function(button) {
       button.addEventListener('click', function() {
           var idEquip = this.getAttribute('data-id');
-          excluir(idEquip);
+          if (confirm('Tem certeza? Isso fara com que exclua todo o historico deste equipamento!')) {
+            excluir(idEquip);
+        }
       });
   });
 });
@@ -23,7 +25,7 @@ function excluir(id){
     dataType: 'json',
     success: function (resultado) { 
       if (resultado.success) {
-          console.log('certo');
+          window.location.href = "incluir_categoria.php";
       } else {
           console.log('erro no js');
       }
