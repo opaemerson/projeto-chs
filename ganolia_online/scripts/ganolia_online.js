@@ -91,7 +91,7 @@ function mostrarRecolher(){
 }
 
 function sair(){
-  window.location.href = 'index_mecanismo.php'
+  window.location.href = '../gobinc/escolhe_ganolia.php'
 }
 
 function openModalMochila() {

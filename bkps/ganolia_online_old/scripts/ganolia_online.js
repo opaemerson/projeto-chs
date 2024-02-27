@@ -91,7 +91,7 @@ function mostrarRecolher(){
 }
 
 function sair(){
-  window.location.href = 'index.php'
+  window.location.href = 'index_mecanismo.php'
 }
 
 function openModalMochila() {
@@ -341,10 +341,3 @@ function limpar(){
   location.reload();
 }
 
-function verificarLoginMecanismo() {
-  if (!permissaoUsuario && permissaoUsuario !== 'Amigo' || permissaoUsuario !== 'Admin') {
-      alert("Voce nao possui permissao para acesso");
-  } else {
-      window.location.href = 'gobinc/escolhe_ganolia.php';
-  }
-}

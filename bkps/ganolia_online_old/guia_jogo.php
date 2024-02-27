@@ -23,17 +23,17 @@ $personagemId = $_SESSION['personagem_ganolia'];
 <body>
     
 <div class="centralizando">
-    <!-- <button class="button" id="jogarButton" onclick="mostrarJogar()">Jogar</button>
+    <button class="button" id="jogarButton" onclick="mostrarJogar()">Jogar</button>
     <button class="button" id="defesaButton" onclick="mostrarDefesa()">Defesa</button>
     <button class="button" id="recolherButton" onclick="mostrarRecolher()">Recolher</button>
-    <button class="button" onclick="limpar()">Limpar</button> -->
+    <button class="button" onclick="limpar()">Limpar</button>
     <button class="button" sair onclick="sair()">Sair</button>
 </div>
 
 <div class="sessao">
     <div class="quadro">
 
-    <!-- <?php
+    <?php
     $verificaVez = "SELECT gs.vez,
     gst.qtd_ataque as qtd_ataque
     FROM ganolia_sessao gs
@@ -71,7 +71,7 @@ $personagemId = $_SESSION['personagem_ganolia'];
         echo "<span id='qtdAtaque' style='display: none;'>Quantidade de Ataque: " . $qtdAtaque . "</span>";
         echo "</div>";
     }
-    ?> -->
+    ?>
 
     <div id="ataque" style="display: none;">
     <h2>Atacando</h2>

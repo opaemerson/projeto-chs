@@ -1,0 +1,38 @@
+<?php
+include('../protecao.php');
+require_once('../config.php');
+
+$personagemId = $_SESSION['personagem_ganolia'];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $newVez = $_POST['newVez'];
+
+    $sql = "SELECT 
+            gs.personagem_id as personagem,
+            gs.territorio_id as territorio,
+            gs.criatura_id as criatura,
+            gs.row,
+            gs.col,
+            gs.vez
+            FROM ganolia_sessao gs
+            WHERE gs.vez <> '$newVez'";
+
+    $result = $conn->query($sql);
+
+    if ($result !== false) {
+        // Verifica se há pelo menos uma linha retornada
+        if ($result->num_rows > 0) {
+            $rows = $result->fetch_all(MYSQLI_ASSOC);
+            echo json_encode(array("success" => true, "message" => "Aliado envidenciado", "data" => $rows));
+        } else {
+            echo json_encode(array("success" => true, "message" => "Nenhum aliado encontrado"));
+        }
+    } else {
+        echo json_encode(array("success" => false, "message" => "Erro ao buscar fila. Detalhes do erro: " . $conn->error));
+    }
+
+    $conn->close();
+} else {
+    echo json_encode(array("success" => false, "message" => "Método de requisição inválido"));
+}
+?>

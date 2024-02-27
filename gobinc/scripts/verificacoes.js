@@ -2,19 +2,17 @@ if (usuarioLogado) {
     document.getElementById('loginLi').style.display = 'none';
 }
 
-function verificarLogin() {
+function verificarLogin(projeto) {
     if (!usuarioLogado) {
-        window.location.href = 'login.php';
+        window.location.href = 'gobinc/login.php';
     } else {
-        window.location.href = 'projeto_chs/index_chs.php';
-    }
-}
+        if(projeto == 'chs'){
+            window.location.href = 'projeto_chs/index_chs.php';
+        }
 
-function verificarLoginMecanismo() {
-    if (!permissaoUsuario && permissaoUsuario !== 'Amigo' && permissaoUsuario !== 'Admin') {
-        alert("Voce nao possui permissao para acesso");
-    } else {
-        window.location.href = 'gobinc/escolhe_ganolia.php';
-    }
+        if(projeto == 'ganolia'){
+            window.location.href = 'gobinc/escolhe_ganolia.php';
+        }
+    }  
 }
 

@@ -9,7 +9,7 @@ require_once('../config.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/ganolia/index_mecanismo.css">
-    <title>Ganolia Boardgame</title>
+    <title>Ganolia</title>
 </head>
 <body>
     
@@ -20,11 +20,13 @@ require_once('../config.php');
 <br>
 <a href="guia_personagem.php">PERSONAGEM</a>
 <br>
+<a href="guia_biblioteca.php">BIBLIOTECA</a>
+<br>
 <a href="guia_criatura.php">CRIATURAS</a>
 <br>
 <a href="guia_item.php">ITENS</a>
 <br>
-<a href="guia_manual.php" onclick="verificarLoginMecanismo()">MANUAL</a>
+<a href="guia_manual.php">MANUAL</a>
 
 <?php if (isset($_SESSION['permissao']) && $_SESSION['permissao'] == 'Admin') { ?>
     <br>
