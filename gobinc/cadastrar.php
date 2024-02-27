@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-require_once('config.php');
+require_once('../config.php');
 
 if (isset($_POST['cadastro'])) {
     $nome = $_POST['nome'];
@@ -26,7 +26,7 @@ if (isset($_POST['cadastro'])) {
     } else{
         $sql = "INSERT INTO usuarios (nome, email, senha, permissao, referencia, personagem_ganolia) VALUES ('$nome','$email', '$senha', '$permissao', '$referencia_select', 1)";
         if ($conn->query($sql) === TRUE) {
-            header('Location: obrigado_cadastro.php'); 
+            header('Location: gobinc/obrigado_cadastro.php'); 
             exit;
         } else {
             echo "erro de conexao";
@@ -45,7 +45,7 @@ if (isset($_POST['cadastro'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/chs/login.css">
+    <link rel="stylesheet" href="../css/chs/login.css">
     <style>
                 input, select {
             width: 100%;
@@ -58,7 +58,7 @@ if (isset($_POST['cadastro'])) {
             color: #333;
         }
     </style>
-    <title>Document</title>
+    <title>Cadastro</title>
 </head>
 <body>
 

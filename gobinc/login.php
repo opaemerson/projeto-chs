@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-require_once('config.php');
+require_once('../config.php');
 
 function limparEntrada($entrada) {
     global $conn;
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['personagem_ganolia'] = $row['personagem_ganolia'];
             $_SESSION['personagem_classe'] = $row['personagem_classe'];
 
-            header('Location: index.php');
+            header('Location: ../index.php');
             exit;
         } else {
             $erro_login = 'Credenciais inválidas. Por favor, tente novamente.';
@@ -54,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css//chs/login.css">
-    <link rel="stylesheet" href="css/chs/erro.css">
+    <link rel="stylesheet" href="../css//chs/login.css">
+    <link rel="stylesheet" href="../css/chs/erro.css">
     <title>Login e Cadastro</title>
     <style>
   .link-container a {
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <button type="submit" class="enterenter" name="login">Enter</button>
       <div class="link-container">
       <a class="enter" href="cadastrar.php">Cadastrar</a>
-      <a class="enter" href="index.php">Voltar</a>
+      <a class="enter" href="../index.php">Voltar</a>
       </div>
     </div>
   </form>

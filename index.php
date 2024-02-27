@@ -33,13 +33,13 @@
             <div class="menu">
                 <nav>
                     <a href="index.php">PROJETOS</a>
-                    <a href="contato.php">CONTATO</a>
+                    <a href="gobinc/contato.php">CONTATO</a>
 
                     <?php
                     if (isset($_SESSION['nome'])) {
                     echo '<a href="gobinc/sair.php">SAIR</a>';
                     } else{
-                    echo '<a href="login.php">ENTRAR</a>';
+                    echo '<a href="gobinc/login.php">ENTRAR</a>';
                     }
                     ?>
                 </nav>

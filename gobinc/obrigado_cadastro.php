@@ -22,7 +22,7 @@
         <h1>Obrigado por cadastrar!</h1>
         <p>Espero que goste dos projetos.</p>
         <hr>
-        <a href="login.php">Acessar</a>
+        <a href="gobinc/login.php">Acessar</a>
     </div>
 </body>
 </html>
