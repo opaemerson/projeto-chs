@@ -1,17 +1,17 @@
-> [] Alterar a tabela heads para controle
-> [] Inserir chaves de ligações na tabela modelo e problema igual a equipamento
+> [27/02/24] Alterar a tabela heads para controle
+> [27/02/24] Inserir chaves de ligações na tabela modelo e problema igual a equipamento
 > [OK] Verificar se ocorre normalização nas funcionalidades do Editar
-> [] Fazer todos os ajustes no arquivo de importação
+> [] Crud no inserir_categoria em todas categorias [Equipamento/Modelo/Problema]
+> [] Arrumar layout do campo pesquisar, inserir um icone de pesquisa para clicar
 > [] Adicionar segurança de usuario não poder inserir tags
-> [] Modificar o like no filtrar para pegar das chaves das tabelas das categorias
-> [] Incluir a opcao data retorno no cadastro atraves de uma checkbox que abre para inserir na mao caso contrario seja automatico
-> [] Criptografar senha dos usuarios.
+> [] Se o filtrar estiver vazio, buscar todos dados
+> [] Previsao de data de retorno ser vinculado ao equipamento em inserir_categoria
 > [] Adicionar no campo Editar o Equipamento
+> [] Adicionar modelo no campo de importacao
+> [] Fazer todos os ajustes no arquivo de importação
+> [] Adicionar um icone de concluido que ao clicar ja conclui o recebimento do equipamento.
 
-[] Arrumar upload pois a pasta mudou de caminho
-[] Arrumar scripts pois a pasta mudou de caminho
-
-Upgrade futuro:
+Upgrade CHS PRO -> futuro:
 
 > O funcionario identifica que o aparelho est� quebrado, pede uma solicita��o � lideran�a para emiss�o da nota
 > Se estiver autorizado o funcionario tem que solicitar nota. (n� aprova��o)
