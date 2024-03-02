@@ -3,7 +3,8 @@ Control Handling Sytem - CHS
 > [27/02/24] Alterar a tabela heads para controle
 > [27/02/24] Inserir chaves de ligações na tabela modelo e problema igual a equipamento
 > [OK] Verificar se ocorre normalização nas funcionalidades do Editar
-> [] Crud no inserir_categoria em todas categorias [Equipamento/Modelo/Problema]
+> [01/03/24] Crud no inserir_categoria em todas categorias [Equipamento/Modelo/Problema]
+> [] No crud falta a acao alterar de Modelo/Problema
 > [] Arrumar layout do campo pesquisar, inserir um icone de pesquisa para clicar
 > [] Adicionar segurança de usuario não poder inserir tags
 > [] Se o filtrar estiver vazio, buscar todos dados

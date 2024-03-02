@@ -1,23 +1,35 @@
-document.addEventListener('DOMContentLoaded', function() {
-  var button = document.getElementById('excluir');
-  button.addEventListener('click', function() {
-    var idEquip = this.getAttribute('data-id');
-
-  });
-});
-
-function ctzExcluir(id){
-  console.log(id);
-  if (confirm('Tem certeza? Isso fara com que exclua todo o historico!')) {
-    excluir(id);
+function ctzExcluir(id, tipo){
+  
+  if(tipo == 'Equipamento'){
+    if (confirm('Tem certeza? Isso fara com que exclua todo o historico!')) {
+      excluir(id,tipo);
+    }
+  }else{
+    if(confirm('Tem certeza?')){
+      excluir(id,tipo);
+    }
   }
 }
 
-function excluir(id){
+function excluir(id,tipo){
   const form = new FormData();
   form.append('id', id);
+  form.append('tipo', tipo);
 
-  const url = "http://127.0.0.1:80/chs/projeto_chs/servicos/repositorios/excluir_equip.php";
+  let url;
+
+  if(tipo == 'Equipamento'){
+    url = "http://127.0.0.1:80/chs/projeto_chs/servicos/excluir_equip.php";
+  }
+
+  if(tipo == 'Marca'){
+    url = "http://127.0.0.1:80/chs/projeto_chs/servicos/excluir_marca.php";
+  }
+
+  if(tipo == 'Problema'){
+    url = "http://127.0.0.1:80/chs/projeto_chs/servicos/excluir_problema.php";
+  }
+
 
   $.ajax({
     url: url, 
@@ -47,7 +59,7 @@ function alterar(botao, id){
   form.append('id', id);
   form.append('nome', nome);
 
-  const url = "http://127.0.0.1:80/chs/projeto_chs/servicos/repositorios/alterar_equip.php";
+  const url = "http://127.0.0.1:80/chs/projeto_chs/servicos/alterar_equip.php";
 
   $.ajax({
     url: url, 
@@ -77,7 +89,7 @@ function criarEquipamento() {
     const form = new FormData();
     form.append('nomeEquipamento', nomeEquipamento);
   
-    const url = "http://127.0.0.1:80/chs/projeto_chs/servicos/repositorios/incluir_equip.php";
+    const url = "http://127.0.0.1:80/chs/projeto_chs/servicos/incluir_equip.php";
   
     $.ajax({
       url: url, 
@@ -106,7 +118,7 @@ function criarMarca() {
   const form = new FormData();
   form.append('nomeMarca', nomeMarca);
 
-  const url = "http://127.0.0.1:80/chs/projeto_chs/cadastro_marca.php";
+  const url = "http://127.0.0.1:80/chs/projeto_chs/servicos/incluir_marca.php";
 
   $.ajax({
     url: url, 
@@ -135,7 +147,7 @@ function criarProblema() {
   const form = new FormData();
   form.append('nomeProblema', nomeProblema);
 
-  const url = "http://127.0.0.1:80/chs/projeto_chs/cadastro_problema.php";
+  const url = "http://127.0.0.1:80/chs/projeto_chs/servicos/incluir_problema.php";
 
   $.ajax({
     url: url, 

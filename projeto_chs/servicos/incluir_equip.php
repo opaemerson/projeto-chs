@@ -1,9 +1,10 @@
 <?php
 session_start();
 header('Access-Control-Allow-Origin: *');
-require_once('../../../config.php');
+require_once('../../config.php');
 
 $nomeEquipamento = $_POST['nomeEquipamento'];
+$tipo = 'Equipamento';
 
 if(isset($nomeEquipamento) && $nomeEquipamento !== ''){ 
     $queryExistente = "SELECT * FROM chs_equipamento WHERE nome = '$nomeEquipamento'";
@@ -12,7 +13,7 @@ if(isset($nomeEquipamento) && $nomeEquipamento !== ''){
     if ($resultado->num_rows > 0){
         echo json_encode(['erro' => 1,'mensagem' => "Ja existe este nome!"]);
     } else{
-        $sql = "INSERT INTO chs_equipamento (nome) VALUES ('".$nomeEquipamento."')";
+        $sql = "INSERT INTO chs_equipamento (nome, tipo) VALUES ('" . $nomeEquipamento . "','" . $tipo . "')";
         if ($conn->query($sql) === TRUE) {
             echo json_encode(['erro' => 0,'mensagem' => "Inserido!"]);
         } else {

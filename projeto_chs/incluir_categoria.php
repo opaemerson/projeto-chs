@@ -53,20 +53,20 @@ require_once('../config.php');
             <input id=nomeEquipamento></input>
             <button type="button" value="cadastrar" onclick="criarEquipamento()">Cadastrar</button>
               <?php
-                $sql = "SELECT id, nome FROM chs_equipamento";
+                $sql = "SELECT id, nome, tipo FROM chs_equipamento";
                 $resultado = $conn->query($sql);
                   while ($row = $resultado->fetch_assoc()) {
                     $idEquip = $row["id"];
                     $nomeEquip = $row["nome"];
+                    $tipo = $row["tipo"];
                     echo "<br>";
                     echo "<input type='text' id='newName' value='$nomeEquip'>";
                     echo "<button type='button' onclick='alterar(this, $idEquip)'>Alterar</button>";
                     echo "&nbsp;";
-                    echo "<button type='button' onclick='ctzExcluir($idEquip)'>Excluir</button>";
+                    echo "<button type='button' onclick='ctzExcluir($idEquip, \"$tipo\")'>Excluir</button>";
                   }
               ?>
           </div>
-          
         </form>
       </div>
     </div>
@@ -83,10 +83,24 @@ require_once('../config.php');
       <div class="modal-body">
         <form id="formMarca">
           <div class="mb-3">
-            <label class="form-label">Nome</label>
-            <input type="text" class="form-control" name="nomeMarca" id="nomeMarca">
+            <label class="form-label">Cadastrar:</label>
+            <input name="nomeMarca" id="nomeMarca">
+            <button type="button" value="cadastrar" onclick="criarMarca()">Cadastrar</button>
+            <?php
+                $sql = "SELECT id, nome, tipo FROM chs_marca";
+                $resultado = $conn->query($sql);
+                  while ($row = $resultado->fetch_assoc()) {
+                    $idMarca = $row["id"];
+                    $nomeMarca = $row["nome"];
+                    $tipo = $row["tipo"];
+                    echo "<br>";
+                    echo "<input type='text' id='newName' value='$nomeMarca'>";
+                    echo "<button type='button' onclick='alterar(this, $idMarca)'>Alterar</button>";
+                    echo "&nbsp;";
+                    echo "<button type='button' onclick='ctzExcluir($idMarca, \"$tipo\")'>Excluir</button>";
+                  }
+              ?>
           </div>
-          <button type="button" class="btn btn-primary" value="cadastrar" onclick="criarMarca()">Enviar</button>
         </form>
       </div>
     </div>
@@ -101,12 +115,26 @@ require_once('../config.php');
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="formProblema">
+      <form id="formProblema">
           <div class="mb-3">
-            <label class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nomeProblema">
+            <label class="form-label">Cadastrar:</label>
+            <input name="nomeProblema" id="nomeProblema">
+            <button type="button" value="cadastrar" onclick="criarProblema()">Cadastrar</button>
+            <?php
+                $sql = "SELECT id, nome, tipo FROM chs_problema";
+                $resultado = $conn->query($sql);
+                  while ($row = $resultado->fetch_assoc()) {
+                    $idProblema = $row["id"];
+                    $nomeProblema = $row["nome"];
+                    $tipo = $row["tipo"];
+                    echo "<br>";
+                    echo "<input type='text' id='newName' value='$nomeProblema'>";
+                    echo "<button type='button' onclick='alterar(this, $idProblema)'>Alterar</button>";
+                    echo "&nbsp;";
+                    echo "<button type='button' onclick='ctzExcluir($idProblema, \"$tipo\")'>Excluir</button>";
+                  }
+              ?>
           </div>
-          <button type="button" class="btn btn-primary" value="cadastrar" onclick="criarProblema()">Enviar</button>
         </form>
       </div>
     </div>
