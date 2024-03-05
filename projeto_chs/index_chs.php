@@ -39,13 +39,12 @@ require_once('../config.php');
   <a class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#myModal">REGISTRO UNICO</a>
   <a class="w3-bar-item w3-button w3-padding-large custom-square" data-bs-toggle="modal" data-bs-target="#modalColetivo">IMPORTAR</a>
   <a class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#filtroModal">FILTRAGEM</a>
-  <?php echo '<a  class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="validaPermissaoCategoria(\'' . $permissao . '\')">INCLUIR</a>'; ?>
-  <a href="estatisticas.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square">ESTATISTICAS</a>
+  <a href="adm.php" class="w3-bar-item w3-button w3-hover-yellow w3-padding-large w3-hide-small custom-square">ADMINISTRACAO</a>
   <div class="coluna-pesquisar">
         <input type="text" class="" id="searchInput" placeholder="Pesquise a tag">
         <button type="button" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="pesquisar()">PESQUISAR</button>
       </div>
-</div>
+  </div>
 
       <!-- Campo Exibição -->
       <div class="amarelo-papel">

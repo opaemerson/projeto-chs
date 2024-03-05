@@ -34,7 +34,7 @@ require_once('../config.php');
 <br>
 <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#addProblema">Problema</button>
 <br>
-<a href="index_chs.php">Voltar</a>
+<a href="adm.php">Voltar</a>
 </div>
 
 
@@ -143,7 +143,6 @@ require_once('../config.php');
 
 <br>
 <br>
-<a href="index_chs.php" type="button" class="btn-preto">Voltar</a>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="./scripts/incluir_categoria.js"></script>

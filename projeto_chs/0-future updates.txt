@@ -4,8 +4,9 @@ Control Handling Sytem - CHS
 > [27/02/24] Inserir chaves de ligações na tabela modelo e problema igual a equipamento
 > [OK] Verificar se ocorre normalização nas funcionalidades do Editar
 > [01/03/24] Crud no inserir_categoria em todas categorias [Equipamento/Modelo/Problema]
-> [] No crud falta a acao alterar de Modelo/Problema
+> [05/03/24] No crud falta a acao alterar de Modelo/Problema
 > [] Arrumar layout do campo pesquisar, inserir um icone de pesquisa para clicar
+> [] Adicionar condicao de adicoes limitando a 05 para todos usuarios.
 > [] Adicionar segurança de usuario não poder inserir tags
 > [] Se o filtrar estiver vazio, buscar todos dados
 > [] Previsao de data de retorno ser vinculado ao equipamento em inserir_categoria
@@ -16,14 +17,14 @@ Control Handling Sytem - CHS
 
 Upgrade CHS PRO -> futuro:
 
-> O funcionario identifica que o aparelho est� quebrado, pede uma solicita��o � lideran�a para emiss�o da nota
-> Se estiver autorizado o funcionario tem que solicitar nota. (n� aprova��o)
-> Criar Ordem de Servi�o com o anexo da nota fiscal de envio e faz o evnio do equipamento.
+> O funcionario identifica que o aparelho esta quebrado, pede uma solicitacao a lideranca para emissao da nota
+> Se estiver autorizado o funcionario tem que solicitar nota. (na aprovacao)
+> Criar Ordem de servico com o anexo da nota fiscal de envio e faz o evnio do equipamento.
 
-Processo de aprova��o do trabalho
-> Quem faz o envio fica responsavel de receber o or�amento e realizar o processo de aprova��o do conserto.
-> Ap�s aprova��o, anexar a ordem de compra do servi�o. (status liberado para conserto) atualiza data de envio.
+Processo de aprovacaoo do trabalho
+> Quem faz o envio fica responsavel de receber o orcamento e realizar o processo de aprovacaoo do conserto.
+> Apos aprovacao, anexar a ordem de compra do servico. (status liberado para conserto) atualiza data de envio.
 
 Processo de retorno
-> Nota de devolu��o de simples remessa e a nota fiscal de ordem de compra.
-> s� vai dar concluido ap�s todos estes anexos.
+> Nota de devolucaoo de simples remessa e a nota fiscal de ordem de compra.
+> so vai dar concluido apos todos estes anexos.
