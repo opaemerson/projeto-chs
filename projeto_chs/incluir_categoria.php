@@ -61,7 +61,7 @@ require_once('../config.php');
                     $tipo = $row["tipo"];
                     echo "<br>";
                     echo "<input type='text' id='newName' value='$nomeEquip'>";
-                    echo "<button type='button' onclick='alterar(this, $idEquip)'>Alterar</button>";
+                    echo "<button type='button' onclick='alterar(this, $idEquip, \"$tipo\")'>Alterar</button>";
                     echo "&nbsp;";
                     echo "<button type='button' onclick='ctzExcluir($idEquip, \"$tipo\")'>Excluir</button>";
                   }
@@ -95,7 +95,7 @@ require_once('../config.php');
                     $tipo = $row["tipo"];
                     echo "<br>";
                     echo "<input type='text' id='newName' value='$nomeMarca'>";
-                    echo "<button type='button' onclick='alterar(this, $idMarca)'>Alterar</button>";
+                    echo "<button type='button' onclick='alterar(this, $idMarca, \"$tipo\")'>Alterar</button>";
                     echo "&nbsp;";
                     echo "<button type='button' onclick='ctzExcluir($idMarca, \"$tipo\")'>Excluir</button>";
                   }
@@ -129,7 +129,7 @@ require_once('../config.php');
                     $tipo = $row["tipo"];
                     echo "<br>";
                     echo "<input type='text' id='newName' value='$nomeProblema'>";
-                    echo "<button type='button' onclick='alterar(this, $idProblema)'>Alterar</button>";
+                    echo "<button type='button' onclick='alterar(this, $idProblema, \"$tipo\")'>Alterar</button>";
                     echo "&nbsp;";
                     echo "<button type='button' onclick='ctzExcluir($idProblema, \"$tipo\")'>Excluir</button>";
                   }
