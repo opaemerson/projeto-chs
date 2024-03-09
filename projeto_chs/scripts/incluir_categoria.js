@@ -51,15 +51,28 @@ function excluir(id,tipo){
   });
 }
 
-function alterar(botao, id){
+function alterar(botao, id, tipo){
 
   var nome = botao.previousElementSibling.value;
 
   const form = new FormData();
   form.append('id', id);
+  form.append('tipo', tipo);
   form.append('nome', nome);
 
-  const url = "http://127.0.0.1:80/chs/projeto_chs/servicos/alterar_equip.php";
+  let url;
+
+  if(tipo == 'Equipamento'){
+    url = "http://127.0.0.1:80/chs/projeto_chs/servicos/alterar_equip.php";
+  }
+
+  if(tipo == 'Marca'){
+    url = "http://127.0.0.1:80/chs/projeto_chs/servicos/alterar_marca.php";
+  }
+
+  if(tipo == 'Problema'){
+    url = "http://127.0.0.1:80/chs/projeto_chs/servicos/alterar_problema.php";
+  }
 
   $.ajax({
     url: url, 

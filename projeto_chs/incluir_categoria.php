@@ -34,7 +34,7 @@ require_once('../config.php');
 <br>
 <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#addProblema">Problema</button>
 <br>
-<a href="index_chs.php">Voltar</a>
+<a href="adm.php">Voltar</a>
 </div>
 
 
@@ -61,7 +61,7 @@ require_once('../config.php');
                     $tipo = $row["tipo"];
                     echo "<br>";
                     echo "<input type='text' id='newName' value='$nomeEquip'>";
-                    echo "<button type='button' onclick='alterar(this, $idEquip)'>Alterar</button>";
+                    echo "<button type='button' onclick='alterar(this, $idEquip, \"$tipo\")'>Alterar</button>";
                     echo "&nbsp;";
                     echo "<button type='button' onclick='ctzExcluir($idEquip, \"$tipo\")'>Excluir</button>";
                   }
@@ -95,7 +95,7 @@ require_once('../config.php');
                     $tipo = $row["tipo"];
                     echo "<br>";
                     echo "<input type='text' id='newName' value='$nomeMarca'>";
-                    echo "<button type='button' onclick='alterar(this, $idMarca)'>Alterar</button>";
+                    echo "<button type='button' onclick='alterar(this, $idMarca, \"$tipo\")'>Alterar</button>";
                     echo "&nbsp;";
                     echo "<button type='button' onclick='ctzExcluir($idMarca, \"$tipo\")'>Excluir</button>";
                   }
@@ -129,7 +129,7 @@ require_once('../config.php');
                     $tipo = $row["tipo"];
                     echo "<br>";
                     echo "<input type='text' id='newName' value='$nomeProblema'>";
-                    echo "<button type='button' onclick='alterar(this, $idProblema)'>Alterar</button>";
+                    echo "<button type='button' onclick='alterar(this, $idProblema, \"$tipo\")'>Alterar</button>";
                     echo "&nbsp;";
                     echo "<button type='button' onclick='ctzExcluir($idProblema, \"$tipo\")'>Excluir</button>";
                   }
@@ -143,7 +143,6 @@ require_once('../config.php');
 
 <br>
 <br>
-<a href="index_chs.php" type="button" class="btn-preto">Voltar</a>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="./scripts/incluir_categoria.js"></script>
