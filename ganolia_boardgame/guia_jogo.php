@@ -18,9 +18,10 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <link rel="stylesheet" href="../css/ganolia/ganolia.css">
     <link rel="stylesheet" href="../css/ganolia/tabuleiro.css">
     <link rel="stylesheet" href="../css/ganolia_boardgame/guia_jogo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="./scripts/ganolia_boardgame.js"></script>
     <script src="./scripts/guia_jogo.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Ganolia</title>
 </head>
 <body>
@@ -107,6 +108,6 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <div id="modal-do-ataque">
     </div>
 </div>
-
 </body>
+
 </html>

@@ -69,7 +69,7 @@ if(isset($codigoItemAtaque) && $codigoItemAtaque !== '' && !empty($usuario)){
     }
 } else {
     $resposta['success'] = false;
-    $resposta['message'] = 'Código do item não fornecido.';
+    $resposta['message'] = 'Código do item não fornecido - processar_ataque.php';
 }
 
 $conn->close();
