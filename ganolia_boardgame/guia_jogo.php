@@ -17,12 +17,10 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/ganolia/ganolia.css">
     <link rel="stylesheet" href="../css/ganolia/tabuleiro.css">
-    <script src="./scripts/round.js"></script>
-    <script src="./scripts/ganolia_boardgame.js"></script>
-    <script src="./scripts/tabuleiro.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../css/ganolia_boardgame/guia_jogo.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="./scripts/ganolia_boardgame.js"></script>
+    <script src="./scripts/guia_jogo.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Ganolia</title>
 </head>
 <body>
@@ -66,15 +64,17 @@ $personagemId = $_SESSION['personagem_ganolia'];
     <br><br>
     <div id="resultadoCriatura"></div>
     <div style="margin-bottom: 10px;"></div>
-</div>
-<br><br>
-
-<!-- Container que irá mostrar o botão RECOLHER + Imagem do resultado do drop -->
-<input type="hidden" id="idCriatura">
-<button type="button" onclick="buscaDrop()" style="background-color: #B22222; color: white;">Recolher</button>
-<br><br>
+    <br><br>
+    <!-- Container que irá mostrar o botão RECOLHER + Imagem do resultado do drop -->
+    <input type="hidden" id="idCriatura">
+    <button type="button" onclick="buscaDrop()" style="background-color: #B22222; color: white;">Recolher</button>
+    <br><br>
 <img id="imagemDrop" src="" class="img-enviado" width="180" height="220" style="display: none;">
 <div id="resultadoDrop"></div>
+</div>
+
+
+
 </div>
 </div>
 
@@ -101,16 +101,12 @@ $personagemId = $_SESSION['personagem_ganolia'];
     ?>
 </div>
 
-<<<<<<< HEAD
+
 <!-- Modal de Ataques -->
 <div class="modal" id="modalAtaques">
     <div id="modal-do-ataque">
     </div>
 </div>
 
-=======
-<script src="./scripts/guia_jogo.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
->>>>>>> 89553a0fc4fa7f3fdd70cb47bd438f818d208e2a
 </body>
 </html>

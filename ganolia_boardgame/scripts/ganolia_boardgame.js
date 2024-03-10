@@ -110,7 +110,7 @@ function buscarItemAtaque() {
     const form = new FormData();
     form.append('codigoItemAtaque', codigoItemAtaque);
   
-    const url = "http://127.0.0.1:80/chs/ganolia_online/item_ataque.php";
+    const url = "http://127.0.0.1:80/chs/ganolia_boardgame/item_ataque.php";
   
     $.ajax({
       url: url, 
@@ -174,7 +174,7 @@ function atacar() {
   const form = new FormData();
   form.append('codigoItemAtaque', codigoItemAtaque);
 
-  const url = "http://127.0.0.1:80/chs/ganolia_online/processar_ataque.php";
+  const url = "http://127.0.0.1:80/chs/ganolia_boardgame/processar_ataque.php";
 
   $.ajax({
     url: url, 
@@ -214,7 +214,7 @@ function buscaCriatura() {
   const form = new FormData();
   form.append('idCriatura', idCriatura);
 
-  const url = "http://127.0.0.1:80/chs/ganolia_online/processar_criatura.php";
+  const url = "http://127.0.0.1:80/chs/ganolia_boardgame/processar_criatura.php";
 
   $.ajax({
     url: url, 
@@ -272,7 +272,7 @@ function buscaDrop() {
   const form = new FormData();
   form.append('idCriatura', idCriatura);
 
-  const url = "http://127.0.0.1:80/chs/ganolia_online/recolher_drop.php";
+  const url = "http://127.0.0.1:80/chs/ganolia_boardgame/recolher_drop.php";
 
   $.ajax({
     url: url, 
