@@ -32,20 +32,14 @@ require_once('../config.php');
   $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
   ?>
 
-<!-- <div class="w3-row">
-  <div class="w3-col" style="width:20%"><p>20%</p></div>
-  <div class="w3-col" style="width:60%"><p>60%</p></div>
-  <div class="w3-col" style="width:20%"><p>20%</p></div>
-</div> -->
-
-<div class="w3-row w3-black w3-card">
-  <a style="width:14%" href="../index.php" class="w3-bar-item w3-button w3-hover-red w3-padding-large custom-square">VOLTAR </a>
-  <a style="width:14%" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#myModal">REGISTRO UNICO</a>
-  <a style="width:14%" class="w3-bar-item w3-button w3-padding-large custom-square" data-bs-toggle="modal" data-bs-target="#modalColetivo">IMPORTAR</a>
-  <a style="width:14%" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#filtroModal">FILTRAGEM</a>
-  <a style="width:14%" href="adm.php" class="w3-bar-item w3-button w3-hover-yellow w3-padding-large w3-hide-small custom-square">ADMINISTRACAO</a>
-  <input style="width:18%" type="text" class="w3-ripple w3-light-grey w3-padding-large" id="searchInput" placeholder="Pesquise a tag">
-  <button style="width:10%" type="button" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="pesquisar()">PESQUISAR</button>
+<div class="w3-black">
+  <a style="width:14%; line-height:30px;" href="../index.php" class="w3-bar-item w3-button w3-hover-red w3-padding-large custom-square">VOLTAR </a>
+  <a style="width:14%; line-height:30px;" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#myModal">REGISTRO UNICO</a>
+  <a style="width:14%; line-height:30px;" class="w3-bar-item w3-button w3-padding-large custom-square" data-bs-toggle="modal" data-bs-target="#modalColetivo">IMPORTAR</a>
+  <a style="width:14%; line-height:30px;" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#filtroModal">FILTRAGEM</a>
+  <a style="width:14%; line-height:30px;" href="adm.php" class="w3-bar-item w3-button w3-hover-yellow w3-padding-large w3-hide-small custom-square">ADMINISTRACAO</a>
+  <input style="width:18%; line-height:30px;" type="text" class="w3-ripple w3-light-grey w3-padding-medium" id="searchInput" placeholder="Pesquise a tag">
+  <button style="width:10%;  line-height:30px;" type="button" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="pesquisar()">PESQUISAR</button>
 </div>
 
       <!-- Campo Exibição -->
