@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/gobinc/styles.css">
     <link rel="stylesheet" href="css/chs/cabecalho.css">
     <link rel="stylesheet" href="css/gobinc/template1.css">
+    <link rel="stylesheet" href="css/gobinc/caroussel.css">
     <title>Projeto</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -23,8 +24,9 @@
     .mySlides {display: none}
     </style>
 </head>
+
 <body>
-    <?php
+<?php
     session_start();
     ?>
     <header>
@@ -56,42 +58,42 @@
         </div>
     </header>
 
-    <section id="home">
-        <div class="container1">
-            <h2>CHS</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum culpa et ad, itaque ipsum impedit ducimus vero fugit amet earum deserunt omnis possimus minima ipsam quia est quaerat illo quidem.</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem, repudiandae corporis possimus veritatis fugiat facilis nihil sapiente facere delectus ex vel voluptatibus cumque recusandae quaerat dignissimos. Illum, exercitationem recusandae? Cum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus molestias sapiente qui odio aspernatur vitae dolores ab optio accusamus sint pariatur, maxime facere ullam eveniet, reiciendis dolore quia rerum architecto.</p>
-            <button type="button" onclick="verificarLogin('chs')">Acessar</button>
+<div class="container">
+    <div class="gallery-wrapper">
+        <div class="gallery">
+            <div class="image-x">
+                <div class="centered">
+                    <img src="./Images/Gobinc/chs.jpg" class="item">
+                    <p>ullam eveniet, reiciendis dolore quia rerum architecto.</p>
+                    <button type="button" onclick="verificarLogin('chs')">Acessar</button>
+                </div>
+            </div>
+            <div class="image-x">
+                <div class="centered">
+                    <img src="./Images/Gobinc/ganolia.jpg" class="item">
+                    <p>quia rerum architecto.</p>
+                    <button type="button" onclick="verificarLogin('ganolia')">Acessar</button>
+                </div>
+            </div>
+            <div class="image-x">
+                <div class="centered">
+                    <img src="./Images/Gobinc/ganolia.jpg" class="item">
+                    <p>quia rerum architecto.</p>
+                    <button type="button" onclick="verificarLogin('ganolia')">Acessar</button>
+                </div>
+            </div>
         </div>
-    </section>
+        <button class="prev-button">&lt;</button>
+        <button class="next-button">&gt;</button>
+    </div>
+</div>
 
-    <section id="sobre">
-        <div class="container1">
-            <h2>Ganolia</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum culpa et ad, itaque ipsum impedit ducimus vero fugit amet earum deserunt omnis possimus minima ipsam quia est quaerat illo quidem.</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem, repudiandae corporis possimus veritatis fugiat facilis nihil sapiente facere delectus ex vel voluptatibus cumque recusandae quaerat dignissimos. Illum, exercitationem recusandae? Cum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus molestias sapiente qui odio aspernatur vitae dolores ab optio accusamus sint pariatur, maxime facere ullam eveniet, reiciendis dolore quia rerum architecto.</p>
-            <button type="button" onclick="verificarLogin('ganolia')">Acessar</button>
-        </div>
-    </section>
-
-<?php
-    if (isset($_SESSION['nome'])) {
-        echo '<ul class="navbar-nav ml-auto">';
-        echo '<li class="nav-item">';
-        echo '<p class="text-light">Bem-Vindo, ' . $_SESSION['nome'] . ' | Permissao: ' . $_SESSION['permissao'] . ' | ID: ' . $_SESSION['id'] . '</p>';
-        echo '</li>';
-        echo '<li class="nav-item">';
-        echo '</li>';
-        echo '</ul>';
-    }
-?>
-
-                    
 
 <script>
         var usuarioLogado = <?php echo isset($_SESSION['nome']) ? 'true' : 'false'; ?>;
         var permissaoUsuario = <?php echo isset($_SESSION['permissao']) ? 'true' : 'false'; ?>;
 </script>
 <script src="./gobinc/scripts/verificacoes.js"></script>
+<script src="./gobinc/scripts/caroussel.js"></script>
 </body>
 </html>
