@@ -1,0 +1,64 @@
+body {
+    background-color: white; 
+    text-align: center;
+    padding: 20px;
+}
+
+h2 {
+    color: #000080; /* Azul escuro */
+}
+
+a {
+    display: block;
+    margin: 10px auto;
+    padding: 7px;
+    background-color: #4169e1; /* Azul royal */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 24px;
+    width: 305px;
+    text-align: center;
+    border: 2px solid #000;
+}
+
+a:hover {
+    background-color: #000080; /* Azul escuro */
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+    padding: 7px;
+    background-color: #4169e1; /* Azul royal */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 24px;
+    width: 320px;
+    text-align: center;
+    border: 2px solid #000;
+}
+
+button:hover{
+    background-color: #000080; /* Azul escuro */
+}
+
+select {
+    display: block;
+    margin: 10px auto;
+    padding: 7px;
+    background-color: #4169e1; /* Azul royal */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 24px;
+    width: 320px;
+    text-align: center;
+    border: 2px solid #000;
+}
+
+select:hover{
+    background-color: #000080; /* Azul escuro */
+}
+

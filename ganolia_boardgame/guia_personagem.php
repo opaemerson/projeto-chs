@@ -9,36 +9,8 @@ header('Access-Control-Allow-Origin: *');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/ganolia_boardgame/guia_personagem.css">
     <title>Guia Personagem</title>
-    <style>
-        body {
-            background-color: #f0dbb5; /* Amarelo */
-            text-align: center;
-            padding: 20px;
-        }
-
-        h2 {
-            color: #000080; /* Azul escuro */
-        }
-
-        a {
-            display: block;
-            margin: 10px auto;
-            padding: 7px;
-            background-color: #4169e1; /* Azul royal */
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 24px;
-            width: 320px;
-            text-align: center;
-            border: 2px solid #000;
-        }
-
-        a:hover {
-            background-color: #000080; /* Azul escuro */
-        }
-    </style>
 </head>
 <body>
 <?php

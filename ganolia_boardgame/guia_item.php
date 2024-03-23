@@ -38,20 +38,16 @@ $resultadoProcurar = $conn->query($procurarAtaque);
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/ganolia_boardgame/guia_personagem.css">
   <title>Estatisticas</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dosis:wght@500&family=Oswald:wght@300&family=Playfair+Display:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
-  <script>
+<script>
     function limpar() {
         var randomValue = new Date().getTime();
         var currentUrl = window.location.href;
         var newUrl = currentUrl + "?random=" + randomValue;
         window.location.href = newUrl;
   }
-  </script>
+</script>
 
 </head>
 <body>
@@ -59,7 +55,7 @@ $resultadoProcurar = $conn->query($procurarAtaque);
 <h3>Procure por item</h3>
 
 <form method="POST">
-  <input type="text" style="width: 220px;" name="palavra" id="palavra" placeholder="Digite o ID ou NOME do Item">
+  <input type="text" style="width: 300px; height: 30px;" name="palavra" id="palavra" placeholder="Digite o ID ou NOME da Criatura">
   <button type="submit" name="pesquisar">Pesquisar</button>
 </form>
 
@@ -116,7 +112,7 @@ $resultadoProcurar = $conn->query($procurarAtaque);
     ?>
   </select>
   <br><br>
-  <button type="submit" class="btn btn-dark"name="filtrar">Filtrar</button>
+  <button type="submit" style="background-color: green;" name="filtrar">Filtrar</button>
 </form>
 
 
@@ -154,6 +150,6 @@ while ($row = $resultadoProcurar->fetch_assoc()) {
 }
 ?>
 <br><br>
-<a href="./index.php" type="button" class="btn btn-danger">Voltar</a>
+<a href="./index.php" style="background-color: #dc143c;" type="button">Voltar</a>
 </body>
 </html>
