@@ -35,7 +35,7 @@
             <div class="menu">
                 <nav>
                     <a href="index.php">PROJETOS</a>
-                    <a href="gobinc/contato.php">CONTATO</a>
+                    <a href="gobinc/contato.php">SOBRE</a>
 
                     <?php
                     if (isset($_SESSION['nome'])) {
@@ -57,36 +57,26 @@
             </div>
         </div>
     </header>
-
-<div class="container">
-    <div class="gallery-wrapper">
-        <div class="gallery">
-            <div class="image-x">
-                <div class="centered">
-                    <img src="./Images/Gobinc/chs.jpg" class="item">
-                    <p>ullam eveniet, reiciendis dolore quia rerum architecto.</p>
-                    <button type="button" onclick="verificarLogin('chs')">Acessar</button>
-                </div>
-            </div>
-            <div class="image-x">
-                <div class="centered">
-                    <img src="./Images/Gobinc/ganolia.jpg" class="item">
-                    <p>quia rerum architecto.</p>
-                    <button type="button" onclick="verificarLogin('ganolia')">Acessar</button>
-                </div>
-            </div>
-            <div class="image-x">
-                <div class="centered">
-                    <img src="./Images/Gobinc/ganolia.jpg" class="item">
-                    <p>quia rerum architecto.</p>
-                    <button type="button" onclick="verificarLogin('ganolia')">Acessar</button>
-                </div>
-            </div>
-        </div>
-        <button class="prev-button">&lt;</button>
-        <button class="next-button">&gt;</button>
-    </div>
+<br><br>
+<div class="carousel">
+<div class="slide">
+<img class="carousel-img" src="./Images/Gobinc/chs.jpg">
+<br>
+<p><b>Projeto:</b> Control Handling Sytem - CHS</p>
+<br><br>
+<button type="button" class="botao-carousel" onclick="verificarLogin('chs')">Acessar</button>
 </div>
+<div class="slide">
+<img class="carousel-img" src="./Images/Gobinc/ganolia.jpg">
+<br>
+<p><b>Projeto:</b> Ganolia</p>
+<br><br>
+<button type="button" class="botao-carousel" onclick="verificarLogin('ganolia')">Acessar</button>
+</div> 
+            
+</div> 
+<button class="prev" onclick="plusSlides(-1)">Anterior</button>
+<button class="next" onclick="plusSlides(1)">Próximo</button>  
 
 
 <script>
