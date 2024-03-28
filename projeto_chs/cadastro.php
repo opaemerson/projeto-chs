@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-require_once('../config.php');
+require_once('classes/regras_chs.php');
 session_start();
 
 $tag = $_POST['tag'];
@@ -23,7 +23,6 @@ if (empty($tag) || empty($modelo)) {
     $resultado = $conn->query($tagExistente);
 
     if ($resultado->num_rows > 0){
-
         $row = $resultado->fetch_assoc();
         $manutencao = $row["manutencao"];
         $situacao_original = $row["situacao"];
@@ -45,55 +44,55 @@ if (empty($tag) || empty($modelo)) {
                 $sql = "UPDATE chs_controle SET modelo = '".$modelo."', problema = '".$problema."', data_envio = '".$data_envio."', situacao = '".$situacao."', previsao = '".$data_previsao."', retorno = '".$data_retorno."', garantia = '".$data_garantia."' WHERE tag = '".$tag."'";
               }
     
-              if ($conn->query($sql) === TRUE) {
-                echo "<script>alert('Salvo no banco de dados!');</script>";
-                $conn->close();
-            } else {
+              if ($conn->query($sql) === FALSE) {
                 echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
-            }
+              }
+
         } else {
-            echo "<script>alert('Não foi possível inserir dados.');</script>";
+            echo "<script>alert('Nao foi possivel inserir dados.');</script>";
         }
 
         }else{
-            $data_envio = date('d-m-Y');
 
-            if ($situacao === 'Enviado') {
-                $data_previsao = date('d-m-Y', strtotime($data_envio . '+7 days'));
-                $data_retorno = ('Pendente');
-                $data_garantia = ('Nao');
-                $manutencao = 1;
-                $sql = "INSERT INTO chs_controle (equipamento_id, tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia, manutencao) VALUES ('".$id_equip."', '".$tag."', '".$modelo."', '".$problema."', '".$data_envio."', '".$situacao."', '".$data_previsao."', '".$data_retorno."', '".$data_garantia."', '".$manutencao."')";
-              } 
-              else {
-                $data_envio = ('Pendente');
-                $data_previsao = ('Pendente');
-                $data_retorno = ('Pendente');
-                $data_garantia = ('Nao');
-                $sql = "INSERT INTO chs_controle (equipamento_id, tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia) VALUES ('".$id_equip."', '".$tag."', '".$modelo."', '".$problema."', '".$data_envio."', '".$situacao."', '".$data_previsao."', '".$data_retorno."', '".$data_garantia."')";
-              }
-    
-              if ($conn->query($sql) === TRUE) {
-                echo "<script>alert('Salvo no banco de dados!');</script>";
-            } else {
-                echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
+            try {
+                $valida_regra = (new Regras())->limite_cinco($usuario, 'chs_controle');
+
+                if ($valida_regra == FALSE){
+                    throw new Exception("Limite excedido " . $conn->error);
+                }
+                
+                $data_envio = date('Y-m-d');
+                $data_previsao = date('Y-m-d', strtotime($data_envio . '+7 days'));
+                
+                if ($situacao === 'Enviado') {
+                    $data_retorno = 'Pendente';
+                    $data_garantia = 'Nao';
+                    $manutencao = 1;
+                } else {
+                    $data_envio = 'Pendente';
+                    $data_retorno = 'Pendente';
+                    $data_garantia = 'Nao';
+                    $manutencao = 0;
+                }
+            
+                $sql = "INSERT INTO chs_controle (equipamento_id, tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia, manutencao) 
+                        VALUES ('$id_equip', '$tag', '$modelo', '$problema', '$data_envio', '$situacao', '$data_previsao', '$data_retorno', '$data_garantia', '$manutencao')";
+                
+                if ($conn->query($sql) === FALSE) {
+                    throw new Exception("Erro ao inserir no controle: " . $conn->error);
+                }
+            
+                $tag_id = $conn->insert_id;
+            
+                $sql = "INSERT INTO chs_historico (tag_id, usuario_id) VALUES ('$tag_id', '$usuario')";
+                
+                if ($conn->query($sql) === FALSE) {
+                    throw new Exception("Erro ao inserir no hist�rico: " . $conn->error);
+                }
+            
+            } catch (Exception $e) {
+                echo "Erro: " . $e->getMessage();
             }
-
-            $consulta_id = "SELECT id FROM chs_controle WHERE tag = '$tag'";
-            $resultado_consulta = $conn->query($consulta_id);
-            if ($resultado_consulta->num_rows > 0){
-
-                $row_resultado = $resultado_consulta->fetch_assoc();
-                $id = $row_resultado['id'];
-
-                $sql_dois = "INSERT INTO chs_historico (tag_id, usuario_id) VALUES ('".$id."', '".$usuario."')";
-
-            if ($conn->query($sql_dois) === TRUE){
-                echo "<script>alert('Salvo no banco de dados!');</script>";
-            }else {
-                echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
-            }
-        }
     }
 }
 $conn->close();
