@@ -10,7 +10,6 @@ const listarUsuarios = async (pagina) => {
 
 listarUsuarios(1);
 
-
 function formatarData(data) {
   const partes = data.split('-');
   const dia = partes[2];
@@ -52,8 +51,8 @@ function createUser() {
     data: form, // Dados enviados na requisição (objeto FormData)
     processData: false, // Indica que os dados não devem ser processados automaticamente, é recomendado manter esses atributos como false quando se trabalha com FormData.
     contentType: false, // Indica que o tipo de conteúdo não deve ser definido automaticamente, é recomendado manter esses atributos como false quando se trabalha com FormData.
-    success: function (resultado) { // Função de callback em caso de sucesso na requisição
-      console.log(resultado); // Exibe o resultado no console
+    success: function (resultado) { 
+      console.log(resultado); 
       location.reload();
     },
     error: function (erro) { // Função de callback em caso de erro na requisição
@@ -94,21 +93,21 @@ function remove(id, idUsuario, usuarioSessao, permissaoSessao) {
 }
 
 function lerUsuario(id) {
-  var form = new FormData(); // Cria um novo objeto FormData para enviar os dados
-  form.append('id', id); // Adiciona o parâmetro 'id' ao FormData com o valor de 'id'
+  var form = new FormData();
+  form.append('id', id); 
 
-  const url = "http://127.0.0.1:80/chs/projeto_chs/ler.php"; // Define a URL do arquivo PHP para onde enviar a requisição
+  const url = "http://127.0.0.1:80/chs/projeto_chs/ler.php"; 
 
   $.ajax({
-    url: url, // Define a URL para a requisição AJAX
-    method: "POST", // Define o método HTTP como POST
-    data: form, // Define os dados a serem enviados como o objeto FormData
-    processData: false, // Desativa o processamento automático dos dados
-    contentType: false, // Define o tipo de conteúdo como falso para permitir o envio de dados binários
-    success: function (data) { // Função de callback executada em caso de sucesso na requisição
-      window.localStorage.setItem('user', JSON.stringify(data)); // Armazena os dados no localStorage convertendo-os para uma string JSON
+    url: url, 
+    method: "POST", 
+    data: form,
+    processData: false, 
+    contentType: false,
+    success: function (data) { 
+      window.localStorage.setItem('user', JSON.stringify(data));
       console.log(data);
-      abrirModalEdicao(); // Chama a função para abrir o modal de edição
+      abrirModalEdicao(); 
     }
   });
 }
@@ -171,7 +170,7 @@ function editarUsuario() {
 function pesquisar() {
   const procurarPalavra = document.getElementById('searchInput').value;
 
-  if (!procurarPalavra || procurarPalavra.trim() === ''){
+  if (!procurarPalavra || procurarPalavra.trim() == ''){
     listarUsuarios(1);
     return;
   }
@@ -191,10 +190,9 @@ function pesquisar() {
       resultado = JSON.parse(resultado);
       console.log(resultado);
 
-      // Limpar a lista de usuários antes de adicionar novos
+
       $('.listar_usuarios').empty();
 
-      // Criação da tabela e do cabeçalho
       const table = $("<table>").addClass("table table-striped table-bordered amarelo-papel borda-preta");
       const thead = $("<thead>").appendTo(table);
       const tbody = $("<tbody>").appendTo(table);
@@ -268,7 +266,6 @@ function pesquisar() {
         tbody.append(novaLista);
       });
 
-      // Adicionando a tabela à div com a classe "listar_usuarios"
       $('.listar_usuarios').append(table);
     },
     error: function (erro) {
@@ -383,7 +380,6 @@ function filtrar() {
           tbody.append(novaLista);
         });
 
-        // Adicionando a tabela à div com a classe "listar_usuarios"
         $('.listar_usuarios').append(table);
       }
     },

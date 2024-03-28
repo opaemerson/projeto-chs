@@ -61,8 +61,8 @@ if (empty($tag) || empty($modelo)) {
                     throw new Exception("Limite excedido " . $conn->error);
                 }
                 
-                $data_envio = date('Y-m-d');
-                $data_previsao = date('Y-m-d', strtotime($data_envio . '+7 days'));
+                $data_envio = date('d-m-Y');
+                $data_previsao = date('d-m-Y', strtotime($data_envio . '+7 days'));
                 
                 if ($situacao === 'Enviado') {
                     $data_retorno = 'Pendente';
