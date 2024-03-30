@@ -1,21 +1,28 @@
 Control Handling Sytem - CHS
 
-> [27/02/24] Alterar a tabela heads para controle
-> [27/02/24] Inserir chaves de ligações na tabela modelo e problema igual a equipamento
-> [OK] Verificar se ocorre normalização nas funcionalidades do Editar
-> [01/03/24] Crud no inserir_categoria em todas categorias [Equipamento/Modelo/Problema]
-> [05/03/24] No crud falta a acao alterar de Modelo/Problema
-> [nao-precisa] Arrumar layout do campo pesquisar, inserir um icone de pesquisa para clicar
+[27/02/24] Alterar a tabela heads para controle
+[27/02/24] Inserir chaves de ligações na tabela modelo e problema igual a equipamento
+[OK] Verificar se ocorre normalização nas funcionalidades do Editar
+[01/03/24] Crud no inserir_categoria em todas categorias [Equipamento/Modelo/Problema]
+[05/03/24] No crud falta a acao alterar de Modelo/Problema
+[nao-precisa] Arrumar layout do campo pesquisar, inserir um icone de pesquisa para clicar
+
 [] Adicionar condicao de adicoes limitando a 05 para todos usuarios.
->[28/03/24] Adicionar limite de 3 registros na tabela chs_controle
->
-> [] Adicionar seguranca de usuario nao poder inserir tags
-> [] Se o filtrar estiver vazio, buscar todos dados
-> [] Previsao de data de retorno ser vinculado ao equipamento em inserir_categoria
-> [] Adicionar no campo Editar o Equipamento
-> [] Adicionar modelo no campo de importacao
-> [] Fazer todos os ajustes no arquivo de importacao
-> [] Adicionar um icone de concluido que ao clicar ja conclui o recebimento do equipamento.
+[28/03/24] Adicionar limite de 3 registros na tabela chs_controle
+[]
+[]
+[]
+[]
+[]
+
+[] Adicionar seguranca de usuario nao poder inserir tags
+[] Se o filtrar estiver vazio, buscar todos dados
+[] Criar guias dentro do modal de Cadastro e Lista em inserir_categoria
+[] No cadastro do inserir_categoria colocar campos Nome e Tempo Estimado de Retorno.
+[] Adicionar no campo Editar o Equipamento
+[] Fazer todos os ajustes no arquivo de importacao
+[] Adicionar modelo no campo de importacao
+[] Adicionar um icone de concluido que ao clicar ja conclui o recebimento do equipamento.
 
 Upgrade CHS PRO -> futuro:
 
