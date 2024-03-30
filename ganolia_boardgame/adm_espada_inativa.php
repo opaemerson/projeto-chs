@@ -91,13 +91,13 @@ function qtdRanking($raridade){
   $contando = "SELECT count(0) as contador
   FROM ganolia_item gi
   WHERE gi.tipo = 'Espada'
-  AND gi.situacao = 'A'";
+  AND gi.situacao = 'I'";
 
   $sqlContando = $conn->query($contando);
   if ($sqlContando == TRUE){
     $busc = $sqlContando->fetch_assoc();
     $contador = $busc['contador'];
-    echo "<h3>$contador Espadas Ativas</h3>";
+    echo "<h3>$contador Espadas Inativas</h3>";
   }
 ?>
 
