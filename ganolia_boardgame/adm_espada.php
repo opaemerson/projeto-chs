@@ -225,6 +225,7 @@ echo "Nenhum registro encontrado.";
             <div class="modal-body">
                 <form action="processar_espadas.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
+                        <input type="hidden" name="tipo" id="tipo" value="<?php echo $tipo = 'Espada' ?>">
                         <input type="hidden" id="idEspada" name="idEspada">    
                         <label class="form-label">Nome</label>
                         <input type="text" class="form-control" id="nomeEspada" name="nomeEspada">

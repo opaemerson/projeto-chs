@@ -14,6 +14,7 @@ header('Access-Control-Allow-Origin: *');
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $tipo = $_POST['tipo'];
     $id = $_POST['idEspada'];
     $nomeEspada = $_POST['nomeEspada'];
     $raridade = $_POST['nomeRaridade'];
@@ -49,8 +50,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         WHERE id = $id";
 
         if ($conn->query($update) === TRUE) {
-            echo "<script>alert('Sucesso!');</script>";
-            echo "<script>window.location.href = 'adm_espada.php';</script>"; 
+            if($tipo == 'Espada'){
+                echo "<script>alert('Sucesso!');</script>";
+                echo "<script>window.location.href = 'adm_espada.php';</script>"; 
+            }
+
+            if($tipo == 'Machado'){
+                echo "<script>alert('Sucesso!');</script>";
+                echo "<script>window.location.href = 'adm_machado.php';</script>"; 
+            }
+
         } else {
             echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
         }

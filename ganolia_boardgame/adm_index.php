@@ -9,7 +9,9 @@
 <body>
     <a href="adm_espada.php">Espadas</a>
     <br>
-    <a href="adm_espada_inativa.php">Espadas Inativas</a>
+    <a href="adm_machado.php">Machados</a>
+    <br>
+    <a href="adm_espada_inativa.php">Inativos - Espada</a>
     <br>
 
     <form action="adm_limpar_historico.php" method="POST">
