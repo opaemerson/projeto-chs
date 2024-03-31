@@ -47,8 +47,7 @@ function qtdRanking($raridade){
     $qtd = '0';
     $qtdRanking = "SELECT count(0) as contador
     FROM ganolia_item gi
-    WHERE gi.tipo = 'Espada'
-    AND gi.situacao = 'A'
+    WHERE gi.situacao = 'A'
     AND gi.raridade = '$raridade'";
 
     $resultado = $conn->query($qtdRanking);
@@ -90,21 +89,19 @@ function qtdRanking($raridade){
 <?php
   $contando = "SELECT count(0) as contador
   FROM ganolia_item gi
-  WHERE gi.tipo = 'Espada'
-  AND gi.situacao = 'A'";
+  WHERE gi.situacao = 'A'";
 
   $sqlContando = $conn->query($contando);
   if ($sqlContando == TRUE){
     $busc = $sqlContando->fetch_assoc();
     $contador = $busc['contador'];
-    echo "<h3>$contador Espadas Ativas</h3>";
+    echo "<h3>$contador Equipamentos Ativos</h3>";
   }
 ?>
 
 <?php
   $buscarEquipamento = "SELECT * from ganolia_item gi
-  WHERE gi.tipo = 'Espada'
-  AND gi.situacao = 'A'
+  WHERE gi.situacao = 'A'
   ORDER BY
    CASE raridade
      WHEN 'Comum' THEN 1
@@ -219,7 +216,7 @@ echo "Nenhum registro encontrado.";
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar Espada</h5>
+                <h5 class="modal-title">Editar Equipamento</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

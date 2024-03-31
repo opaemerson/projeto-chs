@@ -50,16 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         WHERE id = $id";
 
         if ($conn->query($update) === TRUE) {
-            if($tipo == 'Espada'){
-                echo "<script>alert('Sucesso!');</script>";
-                echo "<script>window.location.href = 'adm_espada.php';</script>"; 
-            }
-
-            if($tipo == 'Machado'){
-                echo "<script>alert('Sucesso!');</script>";
-                echo "<script>window.location.href = 'adm_machado.php';</script>"; 
-            }
-
+            echo "<script>alert('Sucesso!');</script>";
+            echo "<script>window.location.href = 'adm_espada.php';</script>"; 
         } else {
             echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
         }

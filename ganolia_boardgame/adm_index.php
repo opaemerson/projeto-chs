@@ -7,11 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="adm_espada.php">Espadas</a>
+    <a href="adm_espada.php">Equipamentos</a>
     <br>
-    <a href="adm_machado.php">Machados</a>
-    <br>
-    <a href="adm_espada_inativa.php">Inativos - Espada</a>
+    <a href="adm_espada_inativa.php">Equipamentos Inativos</a>
     <br>
 
     <form action="adm_limpar_historico.php" method="POST">

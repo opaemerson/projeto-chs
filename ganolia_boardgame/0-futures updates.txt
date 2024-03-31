@@ -1,7 +1,5 @@
 [29/03/2024] Criação de 20 Espadas.
-[] Criação de 20 Machados.
-[] Criação de 20 Cajados.
-[] Criação de 20 Arcos.
-[] 
-[]
-[]
+[30/03/2024] Criação de 20 Machados.
+[] Criação de 15 Encantamentos.
+[] Criação de 15 Vantagem.
+[] Criação de 5 tipos de Moedas [1,2,3 e 5].
