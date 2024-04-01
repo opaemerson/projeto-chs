@@ -122,7 +122,6 @@ if ($resultado->num_rows > 0) {
     while ($row = $resultado->fetch_assoc()) {
     $codigo = $row['id'];
     $nome = $row['nome'];
-    $dados = $row['dados'];
     $valor = $row['valor'];
     $situacao_mercado = $row['situacao_mercado'];
     $raridade = $row['raridade'];
@@ -157,7 +156,6 @@ if ($resultado->num_rows > 0) {
         echo "<h6>$raridade " . '<img src="../Images/Ganolia/Icons/Lendario.png" width="20" height="20">' . "</h6>";
       }
       echo "<h6>Ranking: $ranking / $qtdRanking";
-      echo "<h6>Dados: $dados</h6>";
       echo "<h6>Damage: $damage</h6>";
 
       if ($especial == 'A'){
@@ -187,7 +185,6 @@ if ($resultado->num_rows > 0) {
       data-bs-toggle='modal' data-bs-target='#modalAdmEspadas' 
       data-id='$codigo'
       data-nome='$nome'
-      data-dados='$dados'
       data-raridade='$raridade'
       data-damage = '$damage'
       data-habilidade = '$habilidade'
@@ -235,9 +232,6 @@ echo "Nenhum registro encontrado.";
                             <option value="Raro">Raro</option>
                             <option value="Lendario">Lendário</option>
                         </select> 
-
-                        <label class="form-label">Dados</label>
-                        <input type="text" class="form-control" id="nomeDados" name="nomeDados">
                         
                         <label class="form-label">Damage</label>
                         <input type="text" class="form-control" id="nomeDamage" name="nomeDamage">
@@ -302,9 +296,6 @@ echo "Nenhum registro encontrado.";
 
                 var nomeRaridade = this.getAttribute('data-raridade');
                 document.getElementById('nomeRaridade').value = nomeRaridade;
-
-                var nomeDados = this.getAttribute('data-dados');
-                document.getElementById('nomeDados').value = nomeDados;
               
                 var nomeDamage = this.getAttribute('data-damage');
                 document.getElementById('nomeDamage').value = nomeDamage;
