@@ -128,7 +128,7 @@ if ($resultado->num_rows > 0) {
     $damage = $row['damage'];
     $habilidade = $row['habilidade'];
     $taxa_habilidade = $row['taxa_habilidade'];
-    $forjar = $row['descricao'];         
+    $acc = $row['acc'];         
     $imagem = $row['imagem'];
     $situacao = $row['situacao'];
     $ranking = $row['ranking'];
@@ -171,8 +171,8 @@ if ($resultado->num_rows > 0) {
         echo "<h6>Valor: $$valor</h6>";
       } 
 
-      if($forjar !== ''){
-        echo "<h6>Forjar: $forjar</h6>";
+      if($acc !== ''){
+        echo "<h6>Acc: $acc</h6>";
       }
 
       foreach ($territorio as $item) {
@@ -190,7 +190,7 @@ if ($resultado->num_rows > 0) {
       data-habilidade = '$habilidade'
       data-taxahabilidade = '$taxa_habilidade'
       data-valor = '$valor'
-      data-forjar = '$forjar'
+      data-acc = '$acc'
       data-ranking = '$ranking'
       data-especial = '$especial'
       data-situacaoMercado = '$situacao_mercado'
@@ -251,8 +251,8 @@ echo "Nenhum registro encontrado.";
                         <label class="form-label">Valor</label>
                         <input type="text" class="form-control" id="valor" name="valor">
 
-                        <label class="form-label">Forjar</label>
-                        <input type="text" class="form-control" id="forjar" name="forjar">
+                        <label class="form-label">Acc</label>
+                        <input type="text" class="form-control" id="acc" name="acc">
 
                         <label class="form-label">Item Especial</label>
                         <select class="form-select" id="especial" name="especial">
@@ -312,8 +312,8 @@ echo "Nenhum registro encontrado.";
                 var valor = this.getAttribute('data-valor');
                 document.getElementById('valor').value = valor;
 
-                var forjar = this.getAttribute('data-forjar');
-                document.getElementById('forjar').value = forjar;
+                var acc = this.getAttribute('data-acc');
+                document.getElementById('acc').value = acc;
 
                 var especial = this.getAttribute('data-especial');
                 document.getElementById('especial').value = especial;

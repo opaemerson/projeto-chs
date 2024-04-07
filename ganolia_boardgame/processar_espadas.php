@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $taxaHabilidade = $_POST['nomeTaxahabilidade'];
     $situacaoMercado = $_POST['situacaoMercado'];
     $valor = $_POST['valor'];
-    $forjar = $_POST['forjar'];
+    $acc = $_POST['acc'];
     $especial = empty($row['especial']) ? $row['especial'] : '';
     $ranking = $_POST['ranking'];
     $situacao = $_POST['situacao'];
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         taxa_habilidade = '$taxaHabilidade',
         situacao_mercado = '$situacaoMercado',
         valor = '$valor',
-        descricao = '$forjar',
+        acc = '$acc',
         especial = '$especial',
         ranking = '$ranking',
         situacao = '$situacao',

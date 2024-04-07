@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         taxa_habilidade = '$taxaHabilidade',
         situacao_mercado = '$situacaoMercado',
         valor = '$valor',
-        descricao = '$forjar',
+        acc = '$forjar',
         especial = '$especial',
         ranking = '$ranking',
         situacao = '$situacao',

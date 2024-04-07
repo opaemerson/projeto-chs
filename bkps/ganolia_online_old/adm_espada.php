@@ -132,7 +132,7 @@ if ($resultado->num_rows > 0) {
     $damage = $row['damage'];
     $habilidade = $row['habilidade'];
     $taxa_habilidade = $row['taxa_habilidade'];
-    $forjar = $row['descricao'];         
+    $forjar = $row['acc'];         
     $imagem = $row['imagem'];
     $situacao = $row['situacao'];
     $ranking = $row['ranking'];
