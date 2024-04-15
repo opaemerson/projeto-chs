@@ -100,7 +100,8 @@ function qtdRanking($raridade){
 ?>
 
 <?php
-  $buscarEquipamento = "SELECT * from ganolia_item gi
+  $buscarEquipamento = "SELECT * from 
+  ganolia_item gi
   WHERE gi.situacao = 'A'
   ORDER BY
    CASE raridade
@@ -111,7 +112,7 @@ function qtdRanking($raridade){
      WHEN 'Lendario' THEN 5
      ELSE 6
    END,
-   gi.ranking DESC;";
+   gi.damage ASC;";
 
 $resultado = $conn->query($buscarEquipamento);
 
@@ -155,7 +156,7 @@ if ($resultado->num_rows > 0) {
       elseif($raridade == 'Lendario'){
         echo "<h6>$raridade " . '<img src="../Images/Ganolia/Icons/Lendario.png" width="20" height="20">' . "</h6>";
       }
-      echo "<h6>Ranking: $ranking / $qtdRanking";
+      
       echo "<h6>Damage: $damage</h6>";
 
       if ($especial == 'A'){
@@ -170,10 +171,6 @@ if ($resultado->num_rows > 0) {
       if($situacao_mercado == 'A'){
         echo "<h6>Valor: $$valor</h6>";
       } 
-
-      if($acc !== ''){
-        echo "<h6>Acc: $acc</h6>";
-      }
 
       foreach ($territorio as $item) {
         echo "<h6>Territorio: " . $item['array_territorio'] . "</h6>";
@@ -195,6 +192,7 @@ if ($resultado->num_rows > 0) {
       data-especial = '$especial'
       data-situacaoMercado = '$situacao_mercado'
       data-situacao = '$situacao'
+      data-qtdRanking = '$qtdRanking'
       data-imagem = '$imagem'>"
       . "<img src='../Images/CHS/editar.png' width='25' height='25'>"
       . "</button>"
@@ -220,7 +218,7 @@ echo "Nenhum registro encontrado.";
                 <form action="processar_espadas.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <input type="hidden" name="tipo" id="tipo" value="<?php echo $tipo = 'Espada' ?>">
-                        <input type="hidden" id="idEspada" name="idEspada">    
+                        <input type="hidden" id="idEspada" name="idEspada">
                         <label class="form-label">Nome</label>
                         <input type="text" class="form-control" id="nomeEspada" name="nomeEspada">
 
@@ -319,7 +317,8 @@ echo "Nenhum registro encontrado.";
                 document.getElementById('especial').value = especial;
 
                 var ranking = this.getAttribute('data-ranking');
-                document.getElementById('ranking').value = ranking;
+                var qtdRanking = this.getAttribute('data-qtdRanking');
+                document.getElementById('ranking').value = ranking + ' / ' + qtdRanking;
 
                 var situacao = this.getAttribute('data-situacao');
                 document.getElementById('situacao').value = situacao;
