@@ -47,8 +47,7 @@ function qtdRanking($raridade){
     $qtd = '0';
     $qtdRanking = "SELECT count(0) as contador
     FROM ganolia_item gi
-    WHERE gi.tipo = 'Espada'
-    AND gi.situacao = 'A'
+    WHERE gi.situacao = 'I'
     AND gi.raridade = '$raridade'";
 
     $resultado = $conn->query($qtdRanking);
@@ -90,21 +89,20 @@ function qtdRanking($raridade){
 <?php
   $contando = "SELECT count(0) as contador
   FROM ganolia_item gi
-  WHERE gi.tipo = 'Espada'
-  AND gi.situacao = 'I'";
+  WHERE gi.situacao = 'I'";
 
   $sqlContando = $conn->query($contando);
   if ($sqlContando == TRUE){
     $busc = $sqlContando->fetch_assoc();
     $contador = $busc['contador'];
-    echo "<h3>$contador Espadas Inativas</h3>";
+    echo "<h3>$contador Equipamentos Inativos</h3>";
   }
 ?>
 
 <?php
-  $buscarEquipamento = "SELECT * from ganolia_item gi
-  WHERE gi.tipo = 'Espada'
-  AND gi.situacao = 'I'
+  $buscarEquipamento = "SELECT * from 
+  ganolia_item gi
+  WHERE gi.situacao = 'I'
   ORDER BY
    CASE raridade
      WHEN 'Comum' THEN 1
@@ -114,7 +112,7 @@ function qtdRanking($raridade){
      WHEN 'Lendario' THEN 5
      ELSE 6
    END,
-   gi.ranking DESC;";
+   gi.damage ASC;";
 
 $resultado = $conn->query($buscarEquipamento);
 
@@ -125,14 +123,13 @@ if ($resultado->num_rows > 0) {
     while ($row = $resultado->fetch_assoc()) {
     $codigo = $row['id'];
     $nome = $row['nome'];
-    $dados = $row['dados'];
     $valor = $row['valor'];
     $situacao_mercado = $row['situacao_mercado'];
     $raridade = $row['raridade'];
     $damage = $row['damage'];
     $habilidade = $row['habilidade'];
     $taxa_habilidade = $row['taxa_habilidade'];
-    $forjar = $row['acc'];         
+    $acc = $row['acc'];         
     $imagem = $row['imagem'];
     $situacao = $row['situacao'];
     $ranking = $row['ranking'];
@@ -159,11 +156,10 @@ if ($resultado->num_rows > 0) {
       elseif($raridade == 'Lendario'){
         echo "<h6>$raridade " . '<img src="../Images/Ganolia/Icons/Lendario.png" width="20" height="20">' . "</h6>";
       }
-      echo "<h6>Ranking: $ranking / $qtdRanking";
-      echo "<h6>Dados: $dados</h6>";
+      
       echo "<h6>Damage: $damage</h6>";
 
-      if ($especial == 'A'){
+      if ($especial == 'I'){
         echo "<h6><b>[ITEM ESPECIAL]</b></h6>";
       }
 
@@ -172,13 +168,9 @@ if ($resultado->num_rows > 0) {
         echo "<h6>Taxa Hab: $taxa_habilidade%</h6>";
       }
 
-      if($situacao_mercado == 'A'){
+      if($situacao_mercado == 'I'){
         echo "<h6>Valor: $$valor</h6>";
       } 
-
-      if($forjar !== ''){
-        echo "<h6>Forjar: $forjar</h6>";
-      }
 
       foreach ($territorio as $item) {
         echo "<h6>Territorio: " . $item['array_territorio'] . "</h6>";
@@ -190,17 +182,17 @@ if ($resultado->num_rows > 0) {
       data-bs-toggle='modal' data-bs-target='#modalAdmEspadas' 
       data-id='$codigo'
       data-nome='$nome'
-      data-dados='$dados'
       data-raridade='$raridade'
       data-damage = '$damage'
       data-habilidade = '$habilidade'
       data-taxahabilidade = '$taxa_habilidade'
       data-valor = '$valor'
-      data-forjar = '$forjar'
+      data-acc = '$acc'
       data-ranking = '$ranking'
       data-especial = '$especial'
       data-situacaoMercado = '$situacao_mercado'
       data-situacao = '$situacao'
+      data-qtdRanking = '$qtdRanking'
       data-imagem = '$imagem'>"
       . "<img src='../Images/CHS/editar.png' width='25' height='25'>"
       . "</button>"
@@ -219,13 +211,14 @@ echo "Nenhum registro encontrado.";
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar Espada</h5>
+                <h5 class="modal-title">Editar Equipamento</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="processar_espadas.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <input type="hidden" id="idEspada" name="idEspada">    
+                        <input type="hidden" name="tipo" id="tipo" value="<?php echo $tipo = 'Espada' ?>">
+                        <input type="hidden" id="idEspada" name="idEspada">
                         <label class="form-label">Nome</label>
                         <input type="text" class="form-control" id="nomeEspada" name="nomeEspada">
 
@@ -237,9 +230,6 @@ echo "Nenhum registro encontrado.";
                             <option value="Raro">Raro</option>
                             <option value="Lendario">Lendário</option>
                         </select> 
-
-                        <label class="form-label">Dados</label>
-                        <input type="text" class="form-control" id="nomeDados" name="nomeDados">
                         
                         <label class="form-label">Damage</label>
                         <input type="text" class="form-control" id="nomeDamage" name="nomeDamage">
@@ -259,8 +249,8 @@ echo "Nenhum registro encontrado.";
                         <label class="form-label">Valor</label>
                         <input type="text" class="form-control" id="valor" name="valor">
 
-                        <label class="form-label">Forjar</label>
-                        <input type="text" class="form-control" id="forjar" name="forjar">
+                        <label class="form-label">Acc</label>
+                        <input type="text" class="form-control" id="acc" name="acc">
 
                         <label class="form-label">Item Especial</label>
                         <select class="form-select" id="especial" name="especial">
@@ -304,9 +294,6 @@ echo "Nenhum registro encontrado.";
 
                 var nomeRaridade = this.getAttribute('data-raridade');
                 document.getElementById('nomeRaridade').value = nomeRaridade;
-
-                var nomeDados = this.getAttribute('data-dados');
-                document.getElementById('nomeDados').value = nomeDados;
               
                 var nomeDamage = this.getAttribute('data-damage');
                 document.getElementById('nomeDamage').value = nomeDamage;
@@ -323,14 +310,15 @@ echo "Nenhum registro encontrado.";
                 var valor = this.getAttribute('data-valor');
                 document.getElementById('valor').value = valor;
 
-                var forjar = this.getAttribute('data-forjar');
-                document.getElementById('forjar').value = forjar;
+                var acc = this.getAttribute('data-acc');
+                document.getElementById('acc').value = acc;
 
                 var especial = this.getAttribute('data-especial');
                 document.getElementById('especial').value = especial;
 
                 var ranking = this.getAttribute('data-ranking');
-                document.getElementById('ranking').value = ranking;
+                var qtdRanking = this.getAttribute('data-qtdRanking');
+                document.getElementById('ranking').value = ranking + ' / ' + qtdRanking;
 
                 var situacao = this.getAttribute('data-situacao');
                 document.getElementById('situacao').value = situacao;

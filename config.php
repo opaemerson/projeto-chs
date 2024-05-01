@@ -3,7 +3,6 @@
     $user = "root";
     $password= "";
     $dbname= "gobinc";
-    // $dbname= "chs_home";
 
     $conn = new mysqli($host, $user, $password, $dbname);
 
