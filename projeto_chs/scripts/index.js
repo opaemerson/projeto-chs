@@ -43,7 +43,7 @@ function createUser() {
   form.append('usuario', usuario);
   form.append('id_equip', id_equip);
 
-  const url = "http://127.0.0.1:80/chs/projeto_chs/cadastro.php";
+  const url = "http://127.0.0.1:80/gobinc/projeto_chs/cadastro.php";
 
   $.ajax({
     url: url, // URL da requisição
@@ -64,7 +64,7 @@ function createUser() {
 
 function remove(id, idUsuario, usuarioSessao, permissaoSessao) {
   if (confirm('Deseja realmente excluir este item?')) {
-    const url = 'http://127.0.0.1:80/chs/projeto_chs/remove.php';
+    const url = 'http://127.0.0.1:80/gobinc/projeto_chs/remove.php';
 
     $.ajax({
       url: url,
@@ -96,7 +96,7 @@ function lerUsuario(id) {
   var form = new FormData();
   form.append('id', id); 
 
-  const url = "http://127.0.0.1:80/chs/projeto_chs/ler.php"; 
+  const url = "http://127.0.0.1:80/gobinc/projeto_chs/ler.php"; 
 
   $.ajax({
     url: url, 
@@ -149,7 +149,7 @@ function editarUsuario() {
   form.append('data_envio', data_envio);
   form.append('situacao', situacao);
 
-  const url = "http://127.0.0.1:80/chs/projeto_chs/editar.php";
+  const url = "http://127.0.0.1:80/gobinc/projeto_chs/editar.php";
 
   $.ajax({
     url: url,
@@ -178,7 +178,7 @@ function pesquisar() {
   const form = new FormData();
   form.append('procurarPalavra', procurarPalavra);
 
-  const url = "http://127.0.0.1:80/chs/projeto_chs/pesquisar.php";
+  const url = "http://127.0.0.1:80/gobinc/projeto_chs/pesquisar.php";
 
   $.ajax({
     url: url,
@@ -241,7 +241,7 @@ function pesquisar() {
           class: "btn btn-link",
           "data-bs-toggle": "modal",
           "data-bs-target": "#editModal",
-          html: `<img src='../Images/CHS/editar.png' width='30' height='30' alt='Editar'>`,
+          html: `<img src='../Images/gobinc/editar.png' width='30' height='30' alt='Editar'>`,
           click: function () {
             lerUsuario(obj.id);
           },
@@ -250,7 +250,7 @@ function pesquisar() {
         const deleteButton = $("<button>", {
           type: "button",
           class: "btn btn-link",
-          html: `<img src='../Images/CHS/excluir.png' width='30' height='30'alt='Excluir'>`,
+          html: `<img src='../Images/gobinc/excluir.png' width='30' height='30'alt='Excluir'>`,
           click: function () {
             remove(obj.id);
           },
@@ -282,16 +282,12 @@ function filtrar() {
   const situacaoOption = $('select[name="situacaoFiltro"]');
   const procurarSituacao = situacaoOption.val();
 
-  if (procurarModelo === '' && procurarProblema === '' && procurarSituacao === '') {
-    return;
-  }
-
   const form = new FormData();
   form.append('procurarModelo', procurarModelo);
   form.append('procurarProblema', procurarProblema);
   form.append('procurarSituacao', procurarSituacao);
 
-  const url = "http://127.0.0.1:80/chs/projeto_chs/filtrar.php";
+  const url = "http://127.0.0.1:80/gobinc/projeto_chs/filtrar.php";
 
   $.ajax({
     url: url,

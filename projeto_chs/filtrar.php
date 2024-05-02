@@ -9,29 +9,26 @@ $procurarSituacao = $_POST['procurarSituacao'];
 $condicao = '';
 
 if (!empty($procurarModelo)) {
-  $condicao .= "modelo LIKE '%$procurarModelo%'";
+  $condicao .= "WHERE modelo LIKE '%$procurarModelo%'";
 }
 
 if (!empty($procurarProblema)) {
   if (!empty($condicao)) {
     $condicao .= " AND ";
   }
-  $condicao .= "problema LIKE '%$procurarProblema%'";
+  $condicao .= "WHERE problema LIKE '%$procurarProblema%'";
 }
 
 if (!empty($procurarSituacao)) {
   if (!empty($condicao)) {
     $condicao .= " AND ";
   }
-  $condicao .= "situacao LIKE '%$procurarSituacao%'";
+  $condicao .= "WHERE situacao LIKE '%$procurarSituacao%'";
 }
 
-if (empty($condicao)) {
-  $echo = "Nenhum critério de pesquisa especificado.";
-} else {
   $sql = "SELECT a.*,
   (SELECT u.nome FROM chs_historico h INNER JOIN usuarios u ON u.id = h.usuario_id WHERE h.tag_id = a.id order by h.id DESC limit 1) as usuario
-   FROM chs_controle a WHERE $condicao";
+   FROM chs_controle a $condicao";
 
   $response = $conn->query($sql);
 
@@ -44,4 +41,3 @@ if (empty($condicao)) {
   }else{
       echo json_encode(["message" => "Não possui marca cadastrada"]);
   }
-}
