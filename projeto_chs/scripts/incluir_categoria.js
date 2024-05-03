@@ -102,7 +102,7 @@ function criarEquipamento() {
     const form = new FormData();
     form.append('nomeEquipamento', nomeEquipamento);
   
-    const url = "http://127.0.0.1:80/gobinc/projeto_chs/servicos/incluir_equip.php";
+    const url = "http://127.0.0.1/gobinc/projeto_chs/servicos/incluir_equip.php";
   
     $.ajax({
       url: url, 

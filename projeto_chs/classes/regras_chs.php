@@ -1,18 +1,29 @@
 <?php
-require_once('../config.php');
+require_once('C:/xampp/htdocs/gobinc/config.php');
 
 class Regras{
 
     public function limite_cinco($usuario, $tabela){
 
         global $conn;
+        $sql = '';
 
-        $sql = "SELECT count(0) as count from $tabela a
-        left join chs_historico b
-        on b.tag_id = a.id
-        left join usuarios c 
-        on c.id = b.usuario_id
-        where c.id = $usuario";
+        switch ($tabela) {
+            case 'chs_controle':
+                $sql = "SELECT count(0) as count from chs_controle a
+                    left join usuarios c 
+                    on c.id = (select x.usuario_id from chs_historico x where x.tag_id = a.id)
+                    where c.id = 7";
+                break;
+            
+            default:
+                $sql = "SELECT count(0) as count from $tabela a
+                    left join usuarios c 
+                    on c.id = a.usuario_id
+                    where c.id = $usuario";
+                break;
+        }
+        
 
         $resultado = $conn->query($sql);
 
