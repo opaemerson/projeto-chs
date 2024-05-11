@@ -13,7 +13,7 @@ class Regras{
                 $sql = "SELECT count(0) as count from chs_controle a
                     left join usuarios c 
                     on c.id = (select x.usuario_id from chs_historico x where x.tag_id = a.id)
-                    where c.id = 7";
+                    where c.id = $usuario";
                 break;
             
             default:

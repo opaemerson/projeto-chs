@@ -149,7 +149,7 @@ function editarUsuario() {
   form.append('data_envio', data_envio);
   form.append('situacao', situacao);
 
-  const url = "http://127.0.0.1:80/gobinc/projeto_chs/editar.php";
+  const url = "http://127.0.0.1:80/gobinc/projeto_chs/servicos/editar.php";
 
   $.ajax({
     url: url,
@@ -287,7 +287,7 @@ function filtrar() {
   form.append('procurarProblema', procurarProblema);
   form.append('procurarSituacao', procurarSituacao);
 
-  const url = "http://127.0.0.1:80/gobinc/projeto_chs/filtrar.php";
+  const url = "http://127.0.0.1:80/gobinc/projeto_chs/servicos/filtrar.php";
 
   $.ajax({
     url: url,
