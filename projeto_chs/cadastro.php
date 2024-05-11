@@ -28,28 +28,33 @@ if (empty($tag) || empty($modelo)) {
         $situacao_original = $row["situacao"];
         
         if ($situacao_original === 'Pendente' || $situacao_original === 'Concluido'){ 
+            $data_envio = ('Pendente');
+            $data_previsao = ('Pendente');
+            $data_retorno = ('Pendente');
+            $data_garantia = ('Nao');
+            $sql = "UPDATE chs_controle SET modelo = ?, problema = ?, data_envio = ?, situacao = ?, previsao = ?, retorno = ?, garantia = ?, manutencao = ? WHERE tag = ?";
+            
             if ($situacao === 'Enviado') {
                 $data_envio = date('d-m-Y');
                 $data_previsao = date('d-m-Y', strtotime($data_envio . '+7 days'));
                 $data_retorno = ('Pendente');
                 $data_garantia = ('Nao');
                 $manutencao_novo = $manutencao + 1;
-                $sql = "UPDATE chs_controle SET modelo = '".$modelo."', problema = '".$problema."', data_envio = '".$data_envio."', situacao = '".$situacao."', previsao = '".$data_previsao."', retorno = '".$data_retorno."', garantia = '".$data_garantia."', manutencao = '".$manutencao_novo."' WHERE tag = '".$tag."'";
-              } 
-              else {
-                $data_envio = ('Pendente');
-                $data_previsao = ('Pendente');
-                $data_retorno = ('Pendente');
-                $data_garantia = ('Nao');
-                $sql = "UPDATE chs_controle SET modelo = '".$modelo."', problema = '".$problema."', data_envio = '".$data_envio."', situacao = '".$situacao."', previsao = '".$data_previsao."', retorno = '".$data_retorno."', garantia = '".$data_garantia."' WHERE tag = '".$tag."'";
-              }
-    
-              if ($conn->query($sql) === FALSE) {
-                echo "<script>alert('Erro ao inserir no banco de dados!');</script>";
-              }
+                $sql = "UPDATE chs_controle SET modelo = ?, problema = ?, data_envio = ?, situacao = ?, previsao = ?, retorno = ?, garantia = ?, manutencao = ? WHERE tag = ?";
+            }
 
-        } else {
-            echo "<script>alert('Nao foi possivel inserir dados.');</script>";
+            $stmt = $conn->prepare($sql);
+
+            if (!$stmt) {
+                throw new Exception("Erro ao preparar a consulta para atualização no controle: " . $conn->error);
+            }
+            
+            $stmt->bind_param("ssssssssi", $modelo, $problema, $data_envio, $situacao, $data_previsao, $data_retorno, $data_garantia, $manutencao_novo, $tag);
+            
+            if (!$stmt->execute()) {
+                throw new Exception("Erro ao atualizar no controle: " . $stmt->error);
+            }
+
         }
 
         }else{
@@ -75,19 +80,40 @@ if (empty($tag) || empty($modelo)) {
                     $manutencao = 0;
                 }
             
-                $sql = "INSERT INTO chs_controle (equipamento_id, tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia, manutencao) 
-                        VALUES ('$id_equip', '$tag', '$modelo', '$problema', '$data_envio', '$situacao', '$data_previsao', '$data_retorno', '$data_garantia', '$manutencao')";
-                
-                if ($conn->query($sql) === FALSE) {
-                    throw new Exception("Erro ao inserir no controle: " . $conn->error);
+                // Preparação da primeira consulta
+                $sql_controle = "INSERT INTO chs_controle (equipamento_id, tag, modelo, problema, data_envio, situacao, previsao, retorno, garantia, manutencao) 
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $stmt_controle = $conn->prepare($sql_controle);
+
+                if (!$stmt_controle) {
+                    throw new Exception("Erro ao preparar a consulta para inserção no controle: " . $conn->error);
                 }
-            
-                $tag_id = $conn->insert_id;
-            
-                $sql = "INSERT INTO chs_historico (tag_id, usuario_id) VALUES ('$tag_id', '$usuario')";
-                
-                if ($conn->query($sql) === FALSE) {
-                    throw new Exception("Erro ao inserir no histórico: " . $conn->error);
+
+                // Associação dos parâmetros
+                $stmt_controle->bind_param("isssssssss", $id_equip, $tag, $modelo, $problema, $data_envio, $situacao, $data_previsao, $data_retorno, $data_garantia, $manutencao);
+
+                // Execução da primeira consulta
+                if (!$stmt_controle->execute()) {
+                    throw new Exception("Erro ao inserir no controle: " . $stmt_controle->error);
+                }
+
+                // Obtendo o ID inserido
+                $tag_id = $stmt_controle->insert_id;
+
+                // Preparação da segunda consulta
+                $sql_historico = "INSERT INTO chs_historico (tag_id, usuario_id) VALUES (?, ?)";
+                $stmt_historico = $conn->prepare($sql_historico);
+
+                if (!$stmt_historico) {
+                    throw new Exception("Erro ao preparar a consulta para inserção no histórico: " . $conn->error);
+                }
+
+                // Associação dos parâmetros
+                $stmt_historico->bind_param("ii", $tag_id, $usuario);
+
+                // Execução da segunda consulta
+                if (!$stmt_historico->execute()) {
+                    throw new Exception("Erro ao inserir no histórico: " . $stmt_historico->error);
                 }
             
             } catch (Exception $e) {

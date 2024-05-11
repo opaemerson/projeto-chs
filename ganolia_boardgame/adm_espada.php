@@ -157,6 +157,7 @@ if ($resultado->num_rows > 0) {
         echo "<h6>$raridade " . '<img src="../Images/Ganolia/Icons/Lendario.png" width="20" height="20">' . "</h6>";
       }
       
+      echo "<h6>ID: $codigo</h6>";
       echo "<h6>Damage: $damage</h6>";
 
       if ($especial == 'A'){
