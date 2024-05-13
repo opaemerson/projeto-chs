@@ -43,14 +43,14 @@ function createUser() {
   form.append('usuario', usuario);
   form.append('id_equip', id_equip);
 
-  const url = "http://127.0.0.1:80/gobinc/projeto_chs/cadastro.php";
+  const url = "http://127.0.0.1/gobinc/projeto_chs/cadastro.php";
 
   $.ajax({
     url: url, // URL da requisição
     method: 'POST', // Método HTTP usado na requisição
-    data: form, // Dados enviados na requisição (objeto FormData)
-    processData: false, // Indica que os dados não devem ser processados automaticamente, é recomendado manter esses atributos como false quando se trabalha com FormData.
-    contentType: false, // Indica que o tipo de conteúdo não deve ser definido automaticamente, é recomendado manter esses atributos como false quando se trabalha com FormData.
+    data: form, 
+    processData: false, 
+    contentType: false, 
     success: function (resultado) { 
       console.log(resultado); 
       location.reload();
@@ -64,7 +64,7 @@ function createUser() {
 
 function remove(id, idUsuario, usuarioSessao, permissaoSessao) {
   if (confirm('Deseja realmente excluir este item?')) {
-    const url = 'http://127.0.0.1:80/gobinc/projeto_chs/remove.php';
+    const url = 'http://127.0.0.1/gobinc/projeto_chs/remove.php';
 
     $.ajax({
       url: url,
@@ -96,7 +96,7 @@ function lerUsuario(id) {
   var form = new FormData();
   form.append('id', id); 
 
-  const url = "http://127.0.0.1:80/gobinc/projeto_chs/ler.php"; 
+  const url = "http://127.0.0.1/gobinc/projeto_chs/ler.php"; 
 
   $.ajax({
     url: url, 
@@ -113,17 +113,17 @@ function lerUsuario(id) {
 }
 
 function abrirModalEdicao() {
-  var userData = JSON.parse(window.localStorage.getItem('user')); // Obtém os dados do usuário do localStorage e faz o parsing para objeto JavaScript
-  userData = JSON.parse(userData); // Faz o parsing adicional (se necessário) para o objeto userData
-  var editIdInput = document.getElementById('editId'); //Obtém o elemento de input com o ID "editID"
-  var editTagInput = document.getElementById('editTag'); // Obtém o elemento de input com o ID "editTag"
-  var editModeloInput = document.getElementById('editModelo'); // Obtém o elemento de select com o atributo name igual a "editModelo" usando jQuery
+  var userData = JSON.parse(window.localStorage.getItem('user')); 
+  userData = JSON.parse(userData); 
+  var editIdInput = document.getElementById('editId'); 
+  var editTagInput = document.getElementById('editTag'); 
+  var editModeloInput = document.getElementById('editModelo'); 
   var editProblemaInput = document.getElementById('editProblema');
   var editDataEnvio = document.getElementById('editDataEnvio');
   var editSituacao = $('select[name="editSituacao"]');
 
   editIdInput.value = userData[0]['ID'];
-  editTagInput.value = userData[0]['TAG']; // Define o valor do input com ID "editTag" com o valor da propriedade "TAG" do objeto userData
+  editTagInput.value = userData[0]['TAG']; 
   editModeloInput.value = userData[0]['MODELO'];
   editProblemaInput.value = userData[0]['PROBLEMA'];
   editDataEnvio.value = userData[0]['DATA_ENVIO'];
@@ -149,7 +149,7 @@ function editarUsuario() {
   form.append('data_envio', data_envio);
   form.append('situacao', situacao);
 
-  const url = "http://127.0.0.1:80/gobinc/projeto_chs/servicos/editar.php";
+  const url = "http://127.0.0.1/gobinc/projeto_chs/servicos/editar.php";
 
   $.ajax({
     url: url,
@@ -158,7 +158,7 @@ function editarUsuario() {
     processData: false,
     contentType: false,
     success: function (response) {
-      console.log(response);
+      console.log("aaa" + response);
       location.reload();
     },
     error: function (xhr, status, error) {
@@ -178,7 +178,7 @@ function pesquisar() {
   const form = new FormData();
   form.append('procurarPalavra', procurarPalavra);
 
-  const url = "http://127.0.0.1:80/gobinc/projeto_chs/pesquisar.php";
+  const url = "http://127.0.0.1/gobinc/projeto_chs/pesquisar.php";
 
   $.ajax({
     url: url,
@@ -287,7 +287,7 @@ function filtrar() {
   form.append('procurarProblema', procurarProblema);
   form.append('procurarSituacao', procurarSituacao);
 
-  const url = "http://127.0.0.1:80/gobinc/projeto_chs/servicos/filtrar.php";
+  const url = "http://127.0.0.1/gobinc/projeto_chs/servicos/filtrar.php";
 
   $.ajax({
     url: url,

@@ -101,9 +101,9 @@ if (empty($id)) {
   $stmt->execute();
   
   if ($stmt->affected_rows > 0) {
-      echo json_encode(["message" => "Usuário editado com sucesso"]);
+      echo json_encode(["message" => "Dado editado com sucesso"]);
   } else {
-      echo json_encode(["message" => "Erro ao editar o usuário"]);
+      echo json_encode(["message" => "Erro ao editar o dado"]);
   }
   
   $stmt->close();
