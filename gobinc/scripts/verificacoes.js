@@ -11,7 +11,7 @@ function verificarLogin(projeto) {
         }
 
         if(projeto == 'ganolia'){
-            window.location.href = 'gobinc/escolhe_ganolia.php';
+            window.location.href = 'ganolia_boardgame/index.php';
         }
     }  
 }
