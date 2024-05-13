@@ -19,15 +19,15 @@ function excluir(id,tipo){
   let url;
 
   if(tipo == 'Equipamento'){
-    url = "http://127.0.0.1:80/gobinc/projeto_chs/servicos/excluir_equip.php";
+    url = "http://127.0.0.1/gobinc/projeto_chs/servicos/excluir_equip.php";
   }
 
   if(tipo == 'Marca'){
-    url = "http://127.0.0.1:80/gobinc/projeto_chs/servicos/excluir_marca.php";
+    url = "http://127.0.0.1/gobinc/projeto_chs/servicos/excluir_marca.php";
   }
 
   if(tipo == 'Problema'){
-    url = "http://127.0.0.1:80/gobinc/projeto_chs/servicos/excluir_problema.php";
+    url = "http://127.0.0.1/gobinc/projeto_chs/servicos/excluir_problema.php";
   }
 
 
@@ -63,15 +63,15 @@ function alterar(botao, id, tipo){
   let url;
 
   if(tipo == 'Equipamento'){
-    url = "http://127.0.0.1:80/gobinc/projeto_chs/servicos/alterar_equip.php";
+    url = "http://127.0.0.1/gobinc/projeto_chs/servicos/alterar_equip.php";
   }
 
   if(tipo == 'Marca'){
-    url = "http://127.0.0.1:80/gobinc/projeto_chs/servicos/alterar_marca.php";
+    url = "http://127.0.0.1/gobinc/projeto_chs/servicos/alterar_marca.php";
   }
 
   if(tipo == 'Problema'){
-    url = "http://127.0.0.1:80/gobinc/projeto_chs/servicos/alterar_problema.php";
+    url = "http://127.0.0.1/gobinc/projeto_chs/servicos/alterar_problema.php";
   }
 
   $.ajax({
@@ -131,7 +131,7 @@ function criarMarca() {
   const form = new FormData();
   form.append('nomeMarca', nomeMarca);
 
-  const url = "http://127.0.0.1:80/gobinc/projeto_chs/servicos/incluir_marca.php";
+  const url = "http://127.0.0.1/gobinc/projeto_chs/servicos/incluir_marca.php";
 
   $.ajax({
     url: url, 
@@ -160,7 +160,7 @@ function criarProblema() {
   const form = new FormData();
   form.append('nomeProblema', nomeProblema);
 
-  const url = "http://127.0.0.1:80/gobinc/projeto_chs/servicos/incluir_problema.php";
+  const url = "http://127.0.0.1/gobinc/projeto_chs/servicos/incluir_problema.php";
 
   $.ajax({
     url: url, 
