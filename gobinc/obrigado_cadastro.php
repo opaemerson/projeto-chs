@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="css/chs/login.css">
+    <link rel="stylesheet" href="../css/chs/login.css">
     <style>
         body {
-            text-align: center; /* Centraliza o conte�do na horizontal */
-            margin: 0; /* Remove as margens padr�o do body */
-            padding: 0; /* Remove o preenchimento padr�o do body */
-            height: 100vh; /* Faz com que o body ocupe a altura completa da viewport */
-            display: flex; /* Usa o modelo de layout flex�vel para centralizar verticalmente */
-            align-items: center; /* Centraliza o conte�do na vertical */
+            text-align: center; 
+            margin: 0; 
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center; 
         }
 
     </style>
@@ -22,7 +22,7 @@
         <h1>Obrigado por cadastrar!</h1>
         <p>Espero que goste dos projetos.</p>
         <hr>
-        <a href="gobinc/login.php">Acessar</a>
+        <a href="../gobinc/login.php">Acessar</a>
     </div>
 </body>
 </html>

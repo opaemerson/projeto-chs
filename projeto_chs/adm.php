@@ -30,5 +30,5 @@ require_once('../config.php');
 <br>
 <a href="estatisticas.php">Estatisticas</a>
 <br>
-<a href="index_chs.php">Voltar</a>
+<a href="index.php">Voltar</a>
 </div>

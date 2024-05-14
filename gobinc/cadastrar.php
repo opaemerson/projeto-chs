@@ -9,33 +9,49 @@ if (isset($_POST['cadastro'])) {
     $referencia_select = $_POST['referencia_select'];
     $permissao = 'Usuario';
 
-    if($referencia_select == ''){
-        echo "Por favor,  selecione uma opcao de referencia.";
-    }
-
-    if (!strpos($email, '@')) {
-        echo "O campo de e-mail deve conter o caractere '@'.";
-    } else {
-    $stmt = $conn->prepare("SELECT email FROM usuarios WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->store_result();
-
-    if ($stmt->num_rows > 0) {
-        echo "Este usuario ja existe.";
-    } else{
-        $sql = "INSERT INTO usuarios (nome, email, senha, permissao, referencia, personagem_ganolia) VALUES ('$nome','$email', '$senha', '$permissao', '$referencia_select', 1)";
-        if ($conn->query($sql) === TRUE) {
-            header('Location: gobinc/obrigado_cadastro.php'); 
-            exit;
-        } else {
-            echo "erro de conexao";
+    try {
+        if ($referencia_select == '') {
+            echo "Por favor, selecione uma opção de referência.";
+            throw new Exception();
         }
+    
+        if (strlen($senha) != 3) {
+            echo "<script>alert('O campo senha deve ter apenas 3 dígitos.');</script>";
+            throw new Exception(); 
+        }
+    
+        if (!strpos($email, '@')) {
+            echo "<script>alert('O campo de e-mail deve conter o caractere @.');</script>";
+            throw new Exception();
+        } else {
+            $stmt = $conn->prepare("SELECT email FROM usuarios WHERE email = ?");
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $stmt->store_result();
+    
+            if ($stmt->num_rows > 0) {
+                echo "<script>alert('Esse usuário já existe');</script>";
+                throw new Exception();
+            } else {
+                $sql = "INSERT INTO usuarios (nome, email, senha, permissao, referencia, personagem_ganolia) VALUES ('$nome','$email', '$senha', '$permissao', '$referencia_select', 1)";
+                if ($conn->query($sql) === TRUE) {
+                    header('Location: ../gobinc/obrigado_cadastro.php');
+                    exit;
+                } else {
+                    echo "<script>alert('Erro de conexao ao Banco de Dados, tente novamente mais tarde.');</script>";
+                    throw new Exception();
+                }
+            }
+    
+            $stmt->close();
+            $conn->close();
+        }
+    } catch (Exception $e) {
+        header("Refresh:0");
+        exit;
     }
+    
 
-    $stmt->close();
-    $conn->close();
-    }
 }
 ?>
 
@@ -64,6 +80,7 @@ if (isset($_POST['cadastro'])) {
 
 <form method="POST" action="cadastrar.php" class="card">
     <div class="card">
+    <a>Projeto Login</a>
     <a class="login">Cadastrar</a>
         <label for="nome" class="inputBox">
             Nome:
@@ -76,7 +93,7 @@ if (isset($_POST['cadastro'])) {
             <span>E-mail</span>
         </label>
         <label for="senha_cadastro" class="inputBox">
-            Senha:
+            Senha [3 digitos]:
             <input type="password" id="senha_cadastro" name="senha" required>
             <span>Senha</span>
         </label>

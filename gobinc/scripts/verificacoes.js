@@ -7,7 +7,7 @@ function verificarLogin(projeto) {
         window.location.href = 'gobinc/login.php';
     } else {
         if(projeto == 'chs'){
-            window.location.href = 'projeto_chs/index_chs.php';
+            window.location.href = 'projeto_chs/index.php';
         }
 
         if(projeto == 'ganolia'){
