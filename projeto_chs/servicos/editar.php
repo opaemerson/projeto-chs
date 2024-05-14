@@ -28,7 +28,7 @@ if (empty($id)) {
   $data_garantia = 'Nao';
   $manutencao = $rowEnviado['manutencao'];
   
-  // Preparando a consulta SQL com base na situação atual
+  // Preparando a consulta SQL com base na situaï¿½ï¿½o atual
   if ($situacaoAtual === 'Enviado') { 
       $sql = "UPDATE chs_controle SET 
       tag = ?, 
@@ -85,7 +85,7 @@ if (empty($id)) {
   $stmt = $conn->prepare($sql);
   
   if (!$stmt) {
-      throw new Exception("Erro ao preparar a consulta para atualização no controle: " . $conn->error);
+      throw new Exception("Erro ao preparar a consulta para atualizaï¿½ï¿½o no controle: " . $conn->error);
   }
   
   if ($situacaoAtual === 'Enviado') {
@@ -95,7 +95,7 @@ if (empty($id)) {
   }
   
   if ($situacao === 'Concluido') {
-      $stmt->bind_param("sssssssi", $tag, $modelo, $problema, $data_envio, $situacao, $data_previsao, $data_retorno, $garantia, $id);
+    $stmt->bind_param("ssssssssi", $tag, $modelo, $problema, $data_envio, $situacao, $data_previsao, $data_retorno, $garantia, $id);
   }
   
   $stmt->execute();
