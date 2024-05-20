@@ -32,13 +32,13 @@ require_once('../config.php');
 <br>
 <button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#addMarca">Marca</button>
 <br>
-<button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#addProblema">Problema</button>
+<button type="button" class="btn-preto" data-bs-toggle="modal" data-bs-target="#modalProblema">Problema</button>
 <br>
 <a href="adm.php">Voltar</a>
 </div>
 
 
-
+<!-- Modal Equipamento -->
 <div class="modal fade" id="addEquipamento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -73,6 +73,7 @@ require_once('../config.php');
   </div>
 </div>
 
+<!-- Modal Marca -->
 <div class="modal fade" id="addMarca" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -107,19 +108,19 @@ require_once('../config.php');
   </div>
 </div>
 
-<div class="modal fade" id="addProblema" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Problema -->
+<div class="modal fade" id="modalProblema" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Adicionar Problema</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Problema</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
       <form id="formProblema">
           <div class="mb-3">
-            <label class="form-label">Cadastrar:</label>
-            <input name="nomeProblema" id="nomeProblema">
-            <button type="button" value="cadastrar" onclick="criarProblema()">Cadastrar</button>
+            <button type="button" value="cadastrar" data-bs-toggle='modal' data-bs-target='#modalAddProblema'>Cadastrar</button>
+            <br>
             <?php
                 $sql = "SELECT id, nome, tipo FROM chs_problema";
                 $resultado = $conn->query($sql);
@@ -128,8 +129,9 @@ require_once('../config.php');
                     $nomeProblema = $row["nome"];
                     $tipo = $row["tipo"];
                     echo "<br>";
-                    echo "<input type='text' id='newName' value='$nomeProblema'>";
-                    echo "<button type='button' data-bs-toggle='modal' data-bs-target='#modalAddProblema'>Alterar</button>";
+                    echo "<input type='text' id='' value='$nomeProblema'>";
+                    echo "&nbsp;";
+                    echo "<button type='button' data-bs-toggle='modal' data-bs-target='#modalAlterProblema' onclick='alterarProblema($idProblema, \"$nomeProblema\", \"$tipo\")'>Alterar</button>";
                     echo "&nbsp;";
                     echo "<button type='button' onclick='ctzExcluir($idProblema, \"$tipo\")'>Excluir</button>";
                   }
@@ -141,16 +143,44 @@ require_once('../config.php');
   </div>
 </div>
 
+<!-- Modal de Cadastro - Problema -->
 <div class="modal fade" id="modalAddProblema" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Adicionar Problema</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cadastrar Problema</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form id="formProblema">
+        <form id="formProblema">
           <div class="mb-3">
+              <label class="form-label">Nome:</label>
+              <input name="nomeProblema" id="nomeProblema"><br>
+              <button type="button" value="" onclick="criarProblema()">Cadastrar</button>
+              <button type="button" value="" data-bs-toggle='modal' data-bs-target='#modalProblema'>Voltar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Alteração - Problema-->
+<div class="modal fade" id="modalAlterProblema" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Alterar Problema</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form id="formProblema">
+          <input type="hidden" name="id" id="id">
+          <input type="hidden" name="tipo" id="tipo">
+          <div class="mb-3">
+            <label class="form-label">Nome:</label>
+            <input name="nome" id="nome">
+            <button type='button' onclick='alterar(this)'>Alterar</button>
           </div>
         </form>
       </div>

@@ -51,9 +51,17 @@ function excluir(id,tipo){
   });
 }
 
+function alterarProblema(id, nome, tipo){
+  document.getElementById("id").value = id;
+  document.getElementById("nome").value = nome;
+  document.getElementById("tipo").value = tipo;
+}
+
 function alterar(botao, id, tipo){
 
   var nome = botao.previousElementSibling.value;
+  var id = document.getElementById("id").value
+  var tipo = document.getElementById("tipo").value
 
   const form = new FormData();
   form.append('id', id);
