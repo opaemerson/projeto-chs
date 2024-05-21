@@ -51,7 +51,7 @@ function excluir(id,tipo){
   });
 }
 
-function alterarProblema(id, nome, tipo){
+function alterarElemento(id, nome, tipo){
   document.getElementById("id").value = id;
   document.getElementById("nome").value = nome;
   document.getElementById("tipo").value = tipo;
@@ -60,6 +60,11 @@ function alterarProblema(id, nome, tipo){
 function alterar(botao, id, tipo){
 
   var nome = botao.previousElementSibling.value;
+
+  if (nome == "" || nome == undefined) {
+    nome = document.getElementById("nome").value;
+  }
+
   var id = document.getElementById("id").value
   var tipo = document.getElementById("tipo").value
 
@@ -163,6 +168,7 @@ function criarMarca() {
 }
 
 function criarProblema() {
+
   const nomeProblema = $('#nomeProblema').val();
 
   const form = new FormData();
