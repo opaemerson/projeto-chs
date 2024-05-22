@@ -131,7 +131,7 @@ require_once('../config.php');
                     echo "<br>";
                     echo "<input type='text' id='' value='$nomeProblema' readonly>";
                     echo "&nbsp;";
-                    echo "<button type='button' data-bs-toggle='modal' data-bs-target='#modalAlter' onclick='alterarProblema($idProblema, \"$nomeProblema\", \"$tipo\")'>Alterar</button>";
+                    echo "<button type='button' data-bs-toggle='modal' data-bs-target='#modalAlter' onclick='alterarElemento($idProblema, \"$nomeProblema\", \"$tipo\")'>Alterar</button>";
                     echo "&nbsp;";
                     echo "<button type='button' onclick='ctzExcluir($idProblema, \"$tipo\")'>Excluir</button>";
                   }
@@ -155,7 +155,7 @@ require_once('../config.php');
         <form id="">
           <div class="mb-3">
               <label class="form-label">Nome:</label>
-              <input name="nomeProblema" id="nomeProblema"><br>
+              <input name="nomeEquipamento" id="nomeEquipamento"><br>
               <button type="button" value="" onclick="criarEquipamento()">Cadastrar</button>
               <button type="button" value="" data-bs-toggle='modal' data-bs-target='#modalEquipamento'>Voltar</button>
           </div>
