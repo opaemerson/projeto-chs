@@ -7,7 +7,21 @@ $id = $_POST['id'];
 if(empty($id)){
     echo json_encode(["message" => "Sem ID válido"]);
 }else{
-    $sql = "SELECT ID, TAG, MODELO, PROBLEMA, DATA_ENVIO, SITUACAO FROM chs_controle WHERE id = '$id'";
+    $sql = "SELECT A.ID, 
+                A.TAG, 
+                A.MODELO, 
+                A.PROBLEMA, 
+                A.DATA_ENVIO,
+                A.SITUACAO, 
+                B.NOME as EQUIPAMENTO
+            FROM 
+                chs_controle A
+            LEFT JOIN 
+                chs_equipamento B
+            ON 
+                B.id = A.equipamento_id
+            WHERE 
+                A.id = '$id'";
 
     $response = $conn->query($sql);
     $rows = array();

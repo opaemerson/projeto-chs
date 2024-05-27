@@ -8,7 +8,22 @@ $modelo = $_POST['modelo'];
 $problema = $_POST['problema'];
 $data_envio = $_POST['data_envio'];
 $situacao = $_POST['situacao'];
+$idEquip = $_POST['idEquip'];
 
+function alterNameEquip($conn, $idEquip, $tag){
+  $sql = "UPDATE chs_controle SET
+    equipamento_id = ? 
+    WHERE tag = ?";
+
+  $stmt = $conn->prepare($sql);
+    
+  if (!$stmt) {
+      return false;
+  }
+
+  $stmt->bind_param("si", $idEquip, $tag);
+  $stmt->execute();
+}
 
 if (empty($id)) {
   echo json_encode(["message" => "Sem ID valido"]);
@@ -28,7 +43,6 @@ if (empty($id)) {
   $data_garantia = 'Nao';
   $manutencao = $rowEnviado['manutencao'];
   
-  // Preparando a consulta SQL com base na situa��o atual
   if ($situacaoAtual === 'Enviado') { 
       $sql = "UPDATE chs_controle SET 
       tag = ?, 
@@ -81,6 +95,8 @@ if (empty($id)) {
         garantia = ?
         WHERE id = ?";
   }
+
+  $alterName = alterNameEquip($conn, $idEquip, $tag);
   
   $stmt = $conn->prepare($sql);
   
@@ -108,4 +124,5 @@ if (empty($id)) {
   
   $stmt->close();
 }
+
 ?>

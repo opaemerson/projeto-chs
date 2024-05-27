@@ -12,11 +12,11 @@ Control Handling Sytem - CHS
 [11/05/24] Adicionar seguranca de usuario nao poder inserir tags
 [02/05/24] Se o filtrar estiver vazio, buscar todos dados
 
-[] Correção do Concluído no Editar.php
-[] Criar guias dentro do modal de Cadastro e Lista em inserir_categoria
-[] No cadastro do inserir_categoria colocar campos Nome e Tempo Estimado de Retorno.
-[] Adicionar no campo Editar o Equipamento
+[26/05/24] Correcoes do Concluido no Editar.php
+[26/05/24] Criar guias dentro do modal de Cadastro e Lista em inserir_categoria
+[26/05/24] No cadastro do inserir_categoria colocar campos Nome e Tempo Estimado de Retorno.
 
+[] Adicionar no campo Editar o Equipamento
 [] Fazer todos os ajustes no arquivo de importacao
 [] Adicionar modelo no campo de importacao
 [] Adicionar condicao de adicoes limitando a 03 registros na importacao

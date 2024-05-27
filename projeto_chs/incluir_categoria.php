@@ -156,6 +156,8 @@ require_once('../config.php');
           <div class="mb-3">
               <label class="form-label">Nome:</label>
               <input name="nomeEquipamento" id="nomeEquipamento"><br>
+              <label class="form-label">Tempo de retorno estimado:</label>
+              <input type="" name="" id="" readonly>
               <button type="button" value="" onclick="criarEquipamento()">Cadastrar</button>
               <button type="button" value="" data-bs-toggle='modal' data-bs-target='#modalEquipamento'>Voltar</button>
           </div>
@@ -209,7 +211,7 @@ require_once('../config.php');
   </div>
 </div>
 
-<!-- Modal de Alteração -->
+<!-- Modal de Alteraï¿½ï¿½o -->
 <div class="modal fade" id="modalAlter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

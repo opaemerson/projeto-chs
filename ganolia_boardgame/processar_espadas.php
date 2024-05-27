@@ -14,21 +14,21 @@ header('Access-Control-Allow-Origin: *');
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $tipo = $_POST['tipo'];
-    $id = $_POST['idEspada'];
-    $nomeEspada = $_POST['nomeEspada'];
-    $raridade = $_POST['nomeRaridade'];
-    $dados = $_POST['nomeDados'];
-    $damage = $_POST['nomeDamage'];
-    $habilidade = $_POST['nomeHabilidade'];
-    $taxaHabilidade = $_POST['nomeTaxahabilidade'];
-    $situacaoMercado = $_POST['situacaoMercado'];
-    $valor = $_POST['valor'];
-    $acc = $_POST['acc'];
-    $especial = empty($row['especial']) ? $row['especial'] : '';
-    $ranking = $_POST['ranking'];
-    $situacao = $_POST['situacao'];
-    $imagem = $_POST['imagem'];
+    $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : null;
+    $id = isset($_POST['idEspada']) ? $_POST['idEspada'] : null;
+    $nomeEspada = isset($_POST['nomeEspada']) ? $_POST['nomeEspada'] : null;
+    $raridade = isset($_POST['nomeRaridade']) ? $_POST['nomeRaridade'] : null;
+    $dados = isset($_POST['nomeDados']) ? $_POST['nomeDados'] : null;
+    $damage = isset($_POST['nomeDamage']) ? $_POST['nomeDamage'] : null;
+    $habilidade = isset($_POST['nomeHabilidade']) ? $_POST['nomeHabilidade'] : null;
+    $taxaHabilidade = isset($_POST['nomeTaxahabilidade']) ? $_POST['nomeTaxahabilidade'] : null;
+    $situacaoMercado = isset($_POST['situacaoMercado']) ? $_POST['situacaoMercado'] : null;
+    $valor = isset($_POST['valor']) ? $_POST['valor'] : null;
+    $acc = isset($_POST['acc']) ? $_POST['acc'] : null;    
+    $especial = isset($_POST['especial']) ? $_POST['especial'] : '';
+    $ranking = isset($_POST['ranking']) ? $_POST['ranking'] : null;
+    $situacao = isset($_POST['situacao']) ? $_POST['situacao'] : null;
+    $imagem = isset($_POST['imagem']) ? $_POST['imagem'] : null;
 
     if (empty($id)) {
         echo "<script>alert('Campo idEspada esta vazio');</script>";

@@ -121,6 +121,7 @@ function abrirModalEdicao() {
   var editProblemaInput = document.getElementById('editProblema');
   var editDataEnvio = document.getElementById('editDataEnvio');
   var editSituacao = $('select[name="editSituacao"]');
+  var editEquip = $('select[name="editEquipamento"]');
 
   editIdInput.value = userData[0]['ID'];
   editTagInput.value = userData[0]['TAG']; 
@@ -128,7 +129,9 @@ function abrirModalEdicao() {
   editProblemaInput.value = userData[0]['PROBLEMA'];
   editDataEnvio.value = userData[0]['DATA_ENVIO'];
   var selecionarSituacao = userData[0]['SITUACAO'];
+  var selecionarEquip = userData[0]['EQUIPAMENTO'];
 
+  editEquip.val(selecionarEquip);
   editSituacao.val(selecionarSituacao);
 }
 
@@ -138,14 +141,15 @@ function editarUsuario() {
   const opcao = document.getElementById('editModelo').value;
   const problema = document.getElementById('editProblema').value;
   const data_envio = document.getElementById('editDataEnvio').value;
+  const idEquip = $('select[name="editEquipamento"]').find(':selected').attr('data-id');
   const situacao = $('select[name="editSituacao"]').val();
-
 
   var form = new FormData();
   form.append('id', id);
   form.append('tag', tag);
   form.append('modelo', opcao);
   form.append('problema', problema);
+  form.append('idEquip', idEquip)
   form.append('data_envio', data_envio);
   form.append('situacao', situacao);
 
@@ -158,7 +162,6 @@ function editarUsuario() {
     processData: false,
     contentType: false,
     success: function (response) {
-      console.log("aaa" + response);
       location.reload();
     },
     error: function (xhr, status, error) {

@@ -174,12 +174,30 @@ require_once('../config.php');
             <div class="modal-body">
               <!-- Formulário de Edição -->
               <form id="editForm">
-                <input type="hidden" id="editId" value="">
+                <input type="hidden" id="editId">
                 <input type="hidden" id="editGarantia" >
                 <input type="hidden" id="editDataEnvio">
                 <div class="mb-3">
                   <label for="editTag" class="form-label">Tag</label>
                   <input type="text" class="form-control" id="editTag">
+                </div>
+                <div>
+                <label class="form-label">Equipamento</label>
+                  <select class="form-select" id="editEquipamento" name="editEquipamento" aria-label="Default select example">
+                      <?php
+                      $sql = "SELECT id, nome FROM chs_equipamento";
+                      $result = $conn->query($sql);
+                      if ($result) {
+                        while ($rowEquip = $result->fetch_assoc()) {
+                          $idEquipamento = $rowEquip["id"];
+                          $nomeEquipamento = $rowEquip["nome"];
+                          echo "<option  data-id='$idEquipamento' value='$nomeEquipamento'>$nomeEquipamento</option>";
+                        }
+                      } else {
+                        echo "Erro na consulta: " . $conn->error;
+                      }
+                      ?>
+                    </select>
                 </div>
                 <div class="mb-3">
                   <label for="editModelo" class="form-label">Marca</label>
