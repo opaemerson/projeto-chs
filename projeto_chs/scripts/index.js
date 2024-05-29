@@ -300,6 +300,7 @@ function filtrar() {
     contentType: false,
     success: function (resultado) {
       resultado = JSON.parse(resultado);
+      console.log(resultado);
 
       $('.listar_usuarios').empty();
 
@@ -325,10 +326,8 @@ function filtrar() {
 
         resultado.forEach(function (obj) {
           const tag = obj['tag'];
-          const marcaOption = $('select[name="modelo"]').find(`option[value="${obj['modelo']}"]`);
-          const marca = marcaOption.text();
-          const problemaOption = $('select[name="problema"]').find(`option[value="${obj['problema']}"]`);
-          const problema = problemaOption.text();
+          const marca = obj['modelo'];
+          const problema = obj['problema'];
           const data_envio = obj['data_envio'];
           let situacao = obj['situacao'];
           const previsao = obj['previsao'];
