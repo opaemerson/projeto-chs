@@ -147,7 +147,7 @@ require_once('../config.php');
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="processar_upload.php" method="POST" enctype="multipart/form-data">
+              <form action="" method="POST" enctype="multipart/form-data">
                 <input type="hidden" id="data_envio" class="form-control">
                 <input type="hidden" id="previsao" class="form-control">
                 <input type="hidden" id="retorno" class="form-control">
@@ -156,7 +156,7 @@ require_once('../config.php');
                   <label for="arquivo">Selecione um arquivo:</label>
                   <input type="file" id="arquivo" name="arquivo">
                 </div>
-                <button type="submit" class="btn btn-primary" value="cadastrar">Enviar</button>
+                <button type="button" class="btn btn-primary" value="cadastrar">Enviar</button>
               </form>
             </div>
           </div>

@@ -17,10 +17,11 @@ Control Handling Sytem - CHS
 [26/05/24] No cadastro do inserir_categoria colocar campos Nome e Tempo Estimado de Retorno.
 [26/05/24] Adicionar no campo Editar o Equipamento
 
-[] Fazer todos os ajustes no arquivo de importacao
-[] Adicionar modelo no campo de importacao
-[] Adicionar condicao de adicoes limitando a 03 registros na importacao
-[] Adicionar um icone de concluido que ao clicar ja conclui o recebimento do equipamento.
+[inativado] Fazer todos os ajustes no arquivo de importacao
+[inativado] Adicionar modelo no campo de importacao
+[inativado] Adicionar condicao de adicoes limitando a 03 registros na importacao
+
+[18/06/24] Adicionar um icone de concluido que ao clicar ja conclui o recebimento do equipamento.
 
 Upgrade CHS PRO -> futuro:
 

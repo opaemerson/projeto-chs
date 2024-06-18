@@ -64,7 +64,7 @@ function createUser() {
 
 function remove(id, idUsuario, usuarioSessao, permissaoSessao) {
   if (confirm('Deseja realmente excluir este item?')) {
-    const url = 'http://127.0.0.1/gobinc/projeto_chs/remove.php';
+    const url = 'http://127.0.0.1/gobinc/projeto_chs/servicos/remove.php';
 
     $.ajax({
       url: url,
@@ -394,5 +394,32 @@ function validaPermissaoCategoria(permissao) {
     window.location.href = "incluir_categoria.php";
   } else {
     alert("Voce nao tem permissao para executar esta acao.");
+  }
+}
+
+function concluirEvento(tagId) {
+  if (confirm('Deseja realmente concluir este item?')) {
+    const url = 'http://127.0.0.1/gobinc/projeto_chs/servicos/concluir.php';
+
+    $.ajax({
+      url: url,
+      method: 'POST',
+      data: {
+        tagId: tagId
+      },
+      dataType: 'json',
+      success: function (resultado) {
+        if (resultado.erro) {
+          alert(resultado.mensagem)
+        } else {
+          alert("Item concluido")
+          location.reload();
+        }
+
+      },
+      error: function (erro) {
+        console.log(erro);
+      }
+    });
   }
 }

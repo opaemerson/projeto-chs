@@ -41,7 +41,7 @@ if (!empty($pagina)) {
                         <th>Garantia</th>
                         <th>Manutencao</th>
                         <th>Usuario</th>
-                        <th>Ações</th>
+                        <th style='text-align: center'>Ações</th>
                     </tr>
                 </thead>
                 <tbody>";
@@ -69,9 +69,12 @@ if (!empty($pagina)) {
                     <td>$manutencao</td>
                     <td>$usuario</td>
                     <td class='td-center'>
-                        <div class='btn-center'>
+                        <div class='btn-center' style='text-align: center'>
                             <button type='button' class='btn btn-link' data-bs-toggle='modal' data-bs-target='#editModal' onclick=\"lerUsuario(" . $row_usuario["id"] . ")\">
                             <img src='../Images/CHS/editar.png' width='30' height='30'>
+                            </button>
+                            <button type='button' class='btn btn-link' onclick=\"concluirEvento(" . $row_usuario["id"] . ")\">
+                            <img src='../Images/CHS/concluido.png' width='30' height='30'>
                             </button>
                             <button type='button' class='btn btn-link' onclick=\"remove(" . $row_usuario["id"] . ", '" . $idUsuario .  "', '" . $usuarioSessao . "', '" . $permissaoSessao . "')\">
                             <img src='../Images/CHS/excluir.png' width='30' height='30'>
@@ -114,10 +117,12 @@ if (!empty($pagina)) {
     }
 
     $dados .= "<li class='page-item'><a class='btn-navegar' href='#' onclick='listarUsuarios($quantidade_pg)'>Última</a></li>";
-    $dados .=   '</ul></nav>';
+    $dados .= '</ul></nav>';
     
     echo $dados;
 } else {
     echo "<div class='alert alert-danger' role='alert'>Erro: Nenhum usuário encontrado!</div>";
 }
 ?>
+
+<script src="./scripts/index.js"></script>
