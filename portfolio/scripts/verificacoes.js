@@ -4,14 +4,10 @@ if (usuarioLogado) {
 
 function verificarLogin(projeto) {
     if (!usuarioLogado) {
-        window.location.href = 'gobinc/login.php';
+        window.location.href = 'portfolio/login.php';
     } else {
         if(projeto == 'chs'){
             window.location.href = 'projeto_chs/index.php';
-        }
-
-        if(projeto == 'ganolia'){
-            window.location.href = 'ganolia_boardgame/index.php';
         }
     }  
 }

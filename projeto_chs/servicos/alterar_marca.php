@@ -13,7 +13,7 @@ if(isset($nome) && $nome !== ''){
     if ($resultado->num_rows > 0){
         echo json_encode(['sucess' => false,'mensagem' => "Nome nao teve alteracao"]);
     } else{
-        $sql = "UPDATE gobinc.chs_marca
+        $sql = "UPDATE chs_marca
         SET nome = '$nome'
         WHERE id = $id";
         if ($conn->query($sql) === TRUE) {

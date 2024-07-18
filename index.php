@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/gobinc/styles.css">
+    <link rel="stylesheet" href="css/portfolio/styles.css">
     <link rel="stylesheet" href="css/chs/cabecalho.css">
-    <link rel="stylesheet" href="css/gobinc/template1.css">
-    <link rel="stylesheet" href="css/gobinc/caroussel.css">
+    <link rel="stylesheet" href="css/portfolio/template1.css">
+    <link rel="stylesheet" href="css/portfolio/caroussel.css">
     <title>Projeto</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -35,13 +35,13 @@
             <div class="menu">
                 <nav>
                     <a href="index.php">PROJETOS</a>
-                    <a href="gobinc/contato.php">SOBRE</a>
+                    <a href="portfolio/contato.php">SOBRE</a>
 
                     <?php
                     if (isset($_SESSION['nome'])) {
-                    echo '<a href="gobinc/sair.php">SAIR</a>';
+                    echo '<a href="portfolio/sair.php">SAIR</a>';
                     } else{
-                    echo '<a href="gobinc/login.php">ENTRAR</a>';
+                    echo '<a href="portfolio/login.php">ENTRAR</a>';
                     }
                     ?>
                 </nav>
@@ -60,19 +60,12 @@
 <br><br>
 <div class="carousel">
 <div class="slide">
-<img class="carousel-img" src="./Images/Gobinc/chs.jpg">
+<img class="carousel-img" src="./Images/portfolio/chs.jpg">
 <br>
 <p><b>Projeto:</b> Control Handling Sytem - CHS</p>
 <br><br>
 <button type="button" class="botao-carousel" onclick="verificarLogin('chs')">Acessar</button>
 </div>
-<div class="slide">
-<img class="carousel-img" src="./Images/Gobinc/ganolia.jpg">
-<br>
-<p><b>Projeto:</b> Ganolia</p>
-<br><br>
-<button type="button" class="botao-carousel" onclick="verificarLogin('ganolia')">Acessar</button>
-</div> 
             
 </div> 
 <button class="prev" onclick="plusSlides(-1)">Anterior</button>
@@ -83,7 +76,7 @@
         var usuarioLogado = <?php echo isset($_SESSION['nome']) ? 'true' : 'false'; ?>;
         var permissaoUsuario = <?php echo isset($_SESSION['permissao']) ? 'true' : 'false'; ?>;
 </script>
-<script src="./gobinc/scripts/verificacoes.js"></script>
-<script src="./gobinc/scripts/caroussel.js"></script>
+<script src="./portfolio/scripts/verificacoes.js"></script>
+<script src="./portfolio/scripts/caroussel.js"></script>
 </body>
 </html>

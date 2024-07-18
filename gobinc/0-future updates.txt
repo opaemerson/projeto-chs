@@ -1,4 +1,0 @@
-> [] gobinc - Criptografar senha dos usuarios.
-> [] gobinc - Encaminhar e-mail de verificação.
-> [] gobinc - evitar sqlinjection
-> [] 

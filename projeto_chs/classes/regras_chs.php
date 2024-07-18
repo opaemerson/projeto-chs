@@ -1,5 +1,5 @@
 <?php
-require_once('C:/xampp/htdocs/gobinc/config.php');
+require_once('C:/xampp/htdocs/portfolio/config.php');
 
 class Regras{
 
