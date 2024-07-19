@@ -409,6 +409,7 @@ function concluirEvento(tagId) {
       },
       dataType: 'json',
       success: function (resultado) {
+        console.log('a');
         if (resultado.erro) {
           alert(resultado.mensagem)
         } else {

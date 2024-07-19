@@ -1,7 +1,7 @@
 <?php
 session_start();
 header('Access-Control-Allow-Origin: *');
-require_once('../config.php');
+require_once('../../config.php');
 
 
 if (isset($_POST['id'])) {
@@ -41,7 +41,7 @@ if (isset($_POST['id'])) {
     }
 }
  else {
-    echo json_encode(['erro' => 1,'mensagem' => "deu ruim"]);
+    echo json_encode(['erro' => 1,'mensagem' => "Ocorreu um erro"]);
 }
 
 $conn->close();

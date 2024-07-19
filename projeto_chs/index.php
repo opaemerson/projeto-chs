@@ -62,7 +62,7 @@ require_once('../config.php');
                 <input type="hidden" id="previsao" class="form-control">
                 <input type="hidden" id="retorno" class="form-control">
                 <input type="hidden" id="garantia" class="form-control">
-                <input type="hidden" id="usuario" value="<?php echo isset($_SESSION['id']) ? $_SESSION['id'] : ''; ?>">
+                <input type="hidden" id="usuario" value="<?php echo $_SESSION['id'] ?>">
                 <div class="mb-3">
                   <label class="form-label">Equipamento</label>
                   <select class="form-select" id="id_equip" name="id_equip" aria-label="Default select example">

@@ -4,7 +4,6 @@ header('Access-Control-Allow-Origin: *');
 require_once('../../config.php');
 
 $tagId = $_POST['tagId'];
-$usuario = $usuarioSessao;
 $data_previsao = 'Concluido';
 $situacao = 'Concluido';
 $data_retorno = date('Y-m-d'); 
