@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $data_previsao = 'Concluido';
                         $data_retorno = date('d-m-Y');
                         $diferenca_dias = strtotime($data_retorno) - strtotime($data_envio);
-                        $diferenca_dias = floor($diferenca_dias / (60 * 60 * 24)); // converte para dias
+                        $diferenca_dias = floor($diferenca_dias / (60 * 60 * 24));
                         $garantia = ($diferenca_dias > 30) ? 'Nao' : 'Sim';
                         $updateQuery = "UPDATE chs_controle SET modelo = '$modelo', problema = '$problema', situacao = '$situacao', previsao = '$data_previsao', retorno = '$data_retorno', garantia = '$garantia' WHERE tag = '$tag'";
                         $conn->query($updateQuery);
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $data_previsao = 'Concluido';
                             $data_retorno = date('d-m-Y');
                             $diferenca_dias = strtotime($data_retorno) - strtotime($data_envio);
-                            $diferenca_dias = floor($diferenca_dias / (60 * 60 * 24)); // converte para dias
+                            $diferenca_dias = floor($diferenca_dias / (60 * 60 * 24));
                             $garantia = ($diferenca_dias > 30) ? 'Nao' : 'Sim';
                         }
     

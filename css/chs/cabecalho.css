@@ -1,17 +1,19 @@
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+
 .custom-square {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #fff; /* Cor de fundo inicial */
-  border: 1px solid #000; /* Cor da borda */
-  transition: background-color 0.3s; /* Transição suave da cor de fundo */
-  color: #000; /* Cor do texto */
-  text-decoration: none; /* Remover sublinhado dos links */
+  background-color: #fff; 
+  border: 1px solid #000; 
+  transition: background-color 0.3s; 
+  color: #000;
+  text-decoration: none; 
 }
 
-/* Estilo dos botões ao passar o mouse */
 .custom-square:hover {
-  background-color: #000; /* Cor de fundo ao passar o mouse */
-  color: #fff; /* Cor do texto ao passar o mouse */
+  background-color: #000; 
+  color: #fff;
 }
 
 a {

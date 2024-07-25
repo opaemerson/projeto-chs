@@ -23,6 +23,9 @@ Control Handling Sytem - CHS
 
 [18/06/24] Adicionar um icone de concluido que ao clicar ja conclui o recebimento do equipamento.
 
+[24/04/24] Refatoração - index.php
+[24/04/24] Refatoração - listar.php
+
 Upgrade CHS PRO -> futuro:
 
 > O funcionario identifica que o aparelho esta quebrado, pede uma solicitacao a lideranca para emissao da nota

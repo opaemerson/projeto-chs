@@ -1,17 +1,32 @@
 <?php
-    $host = "localhost";
-    $user = "root";
-    $password= "";
-    $dbname= "gobinc";
 
-    $conn = new mysqli($host, $user, $password, $dbname);
+class Config
+{
+    private $host = "localhost";
+    private $user = "root";
+    private $password = "";
+    private $dbname = "gobinc";
+    public $conn;
 
-    if($conn->connect_error){
-        die("Conexao Falha".$conn->connect_error);
+    public function __construct()
+    {
+        $this->conn = new mysqli($this->host, $this->user, $this->password, $this->dbname);
+
+        if ($this->conn->connect_error) {
+            die("Conexao Falhou: " . $this->conn->connect_error);
+        }
     }
 
-    if(isset($_SESSION['id'])){
-        $usuarioSessao = $_SESSION['id'];
-        $permissaoSessao = $_SESSION['permissao'];
+    public function pegaSessaoUsuario()
+    {
+        if (isset($_SESSION['id'])) {
+            return [
+                'usuarioSessao' => $_SESSION['id'],
+                'permissaoSessao' => $_SESSION['permissao']
+            ];
+        }
+
+        return null;
     }
+}
 ?>

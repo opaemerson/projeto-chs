@@ -1,14 +1,12 @@
 const tbody = document.querySelector(".listar_usuarios");
 
-const listarUsuarios = async (pagina) => {
-  const dados = await fetch("./listar.php?pagina=" + pagina, {
+const listarUsuarios = async () => {
+  const dados = await fetch("./listar.php", {
     method: "GET",
   });
   const resposta = await dados.text();
   tbody.innerHTML = resposta;
 };
-
-listarUsuarios(1);
 
 function formatarData(data) {
   const partes = data.split('-');
