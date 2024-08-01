@@ -2,52 +2,68 @@
 header('Access-Control-Allow-Origin: *');
 require_once('../config.php');
 
-function limparEntrada($entrada) {
-    global $conn;
-    return $conn->real_escape_string(strip_tags(trim($entrada)));
-}
+class Login
+{
+    private $conn;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['login'])) {
-        $email = limparEntrada($_POST['email']);
-        $senha = limparEntrada($_POST['senha']);
+    public function __construct()
+    {
+        $this->db = new Config();
+        $this->conn = $this->db->conn;
+    }
 
-        // para evitar SQL Injection
-        $stmt = $conn->prepare("SELECT u.id,
-        u.nome,
-        u.permissao,
-        u.personagem_ganolia,
-        gp.classe as personagem_classe
-        FROM usuarios u 
-        LEFT JOIN ganolia_personagem gp
-        ON gp.id = u.personagem_ganolia
-        WHERE email = ? AND senha = ?");
-        $stmt->bind_param("ss", $email, $senha);
-        $stmt->execute();
-        $resultado = $stmt->get_result();
-
-        if ($resultado->num_rows == 1) {
-            $row = $resultado->fetch_assoc();
-
-            session_start();
-
-            $_SESSION['id'] = $row['id'];
-            $_SESSION['nome'] = $row['nome'];
-            $_SESSION['permissao'] = $row['permissao'];
-            $_SESSION['personagem_ganolia'] = $row['personagem_ganolia'];
-            $_SESSION['personagem_classe'] = $row['personagem_classe'];
-
-            header('Location: ../index.php');
-            exit;
-        } else {
-            $erro_login = 'Credenciais inválidas. Por favor, tente novamente.';
-        }
-    } else {
-        $erro_cadastro = 'Erro ao cadastrar o usuário: ' . $conn->error;
+    public function limparEntrada($entrada) {
+        return $this->conn->real_escape_string(strip_tags(trim($entrada)));
+    }
+    
+    public function init()
+    {
+      if (isset($_POST['login'])) {
+          $email = $this->limparEntrada($_POST['email']);
+          $senha = $this->limparEntrada($_POST['senha']);
+    
+          $stmt = $this->conn->prepare("SELECT u.id,
+              u.nome,
+              u.permissao,
+              u.personagem_ganolia,
+              gp.classe as personagem_classe
+              FROM usuarios u 
+              LEFT JOIN ganolia_personagem gp
+              ON gp.id = u.personagem_ganolia
+              WHERE email = ? AND senha = ?");
+    
+          if ($stmt) {
+              $stmt->bind_param("ss", $email, $senha);
+              $stmt->execute();
+              $resultado = $stmt->get_result();
+    
+              if ($resultado->num_rows == 1) {
+                  $row = $resultado->fetch_assoc();
+    
+                  session_start();
+    
+                  $_SESSION['id'] = $row['id'];
+                  $_SESSION['nome'] = $row['nome'];
+                  $_SESSION['permissao'] = $row['permissao'];
+                  $_SESSION['personagem_ganolia'] = $row['personagem_ganolia'];
+                  $_SESSION['personagem_classe'] = $row['personagem_classe'];
+    
+                  header('Location: ../index.php');
+                  exit;
+              } else {
+                  echo 'Credenciais inválidas. Por favor, tente novamente.';
+              }
+          } else {
+              echo 'Erro ao preparar a declaração SQL: ' . $this->conn->error;
+          }
+      }
     }
 }
-?>
 
+$login = new Login();
+$login->init();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
