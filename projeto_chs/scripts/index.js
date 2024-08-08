@@ -4,8 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
   editModal.addEventListener('show.bs.modal', function(event) {
       var button = event.relatedTarget;
       var tagOriginal = button.getAttribute('data-tagOriginal');
+      var equipamentoId = button.getAttribute('data-equipamentoId');
       var editTag = document.getElementById('editTag');
 
+      $('select[id="editEquipamento"]').val(equipamentoId);
       editTag.value = tagOriginal;
 
   });

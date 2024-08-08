@@ -87,7 +87,7 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
           echo "<td>{$registro['usuario']}</td>";
           echo "<td class='td-center'>
                   <div class='btn-center' style='text-align: center'>
-                      <button type='button' class='btn btn-link' data-bs-toggle='modal' data-bs-target='#editModal' data-tagOriginal='{$registro['tag']}'>
+                      <button type='button' class='btn btn-link' data-bs-toggle='modal' data-bs-target='#editModal' data-tagOriginal='{$registro['tag']}' data-equipamentoId='{$registro['equipamento_id']}'>
                           <img src='../Images/CHS/editar.png' width='30' height='30'>
                       </button>
                       <button type='button' class='btn btn-link' onclick=\"concluirEvento({$registro['id']})\">
@@ -133,7 +133,7 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
           </div>
           <div class="mb-3">
             <label class="form-label">TAG</label>
-            <input type="text" class="form-control" id="tag">
+            <input type="text" class="form-control" id="tag" placeholder="Digite a tag aqui" style="font-style: italic;">
           </div>
           <div class="mb-3">
             <label class="form-label">Marca</label>
@@ -150,7 +150,8 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
 
             <div class="mb-3">
               <label class="form-label">Problema</label>
-              <select class="form-select" id="problema" name="problema" aria-label="Default select example">
+              <select class="form-select" id="problema" name="problema">
+              <option value=''>Selecione uma opcao</option>
               <?php 
                   $arrayProblema = $servico->buscaProblema();
 
@@ -161,7 +162,7 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
               </select>
             </div>
             <label class="form-label">Situacao</label>
-            <select class="form-select" id="situacao" name="situacao" aria-label="Default select example">
+            <select class="form-select" id="situacao" name="situacao">
               <option value="Pendente">Pendente</option>
               <option value="Enviado">Enviado</option>
             </select>
@@ -228,6 +229,7 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
           <div class="mb-3">
             <label for="editModelo" class="form-label">Marca</label>
             <select class="form-select" id="editModelo" name="editModelo">
+            <option value="0">Selecione uma Marca</option>
               <?php
               $arrayMarca = $servico->buscaMarca();
 
@@ -240,6 +242,7 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
           <div class="mb-3">
             <label class="form-label">Problema</label>
             <select class="form-select" id="editProblema" name="editProblema">
+              <option value="0">Selecione um Problema</option>
               <?php
               $arrayProblema = $servico->buscaProblema();
 
@@ -252,6 +255,7 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
           <div class="mb-3">
             <label class="form-label">Situação</label>
             <select class="form-select" id="editSituacao" name="editSituacao">
+              <option value="0">Selecione uma Situação</option>
               <option value="Pendente">Pendente</option>
               <option value="Enviado">Enviado</option>
               <option value="Concluido">Concluido</option>
