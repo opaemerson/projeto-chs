@@ -87,7 +87,7 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
           echo "<td>{$registro['usuario']}</td>";
           echo "<td class='td-center'>
                   <div class='btn-center' style='text-align: center'>
-                      <button type='button' class='btn btn-link' data-bs-toggle='modal' data-bs-target='#editModal' onclick=\"lerUsuario({$registro['id']})\">
+                      <button type='button' class='btn btn-link' data-bs-toggle='modal' data-bs-target='#editModal' data-tagOriginal='{$registro['tag']}'>
                           <img src='../Images/CHS/editar.png' width='30' height='30'>
                       </button>
                       <button type='button' class='btn btn-link' onclick=\"concluirEvento({$registro['id']})\">
@@ -102,218 +102,215 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
       }
     ?>
 
-      <!-- Modal de Cadastro -->
-      <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Formulario</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="myForm">
-                <input type="hidden" id="id" class="form-control">
-                <input type="hidden" id="data_envio" class="form-control">
-                <input type="hidden" id="previsao" class="form-control">
-                <input type="hidden" id="retorno" class="form-control">
-                <input type="hidden" id="garantia" class="form-control">
-                <input type="hidden" id="usuario" value="<?php echo $_SESSION['id'] ?>">
-                <div class="mb-3">
-                  <label class="form-label">Equipamento</label>
-                  <select class="form-select" id="id_equip" name="id_equip" aria-label="Default select example">
-                  <option value=''>Selecione uma opcao</option>
-                    <?php 
-                        $arrayEquipamentos = $servico->buscaEquipamento();
-
-                        foreach ($arrayEquipamentos as $equipamento) {
-                            echo "<option value='{$equipamento['id']}'> {$equipamento['nome']} </option>";
-                        }
-                    ?>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">TAG</label>
-                  <input type="text" class="form-control" id="tag">
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Marca</label>
-                  <select class="form-select" id="modelo" name="modelo" aria-label="Default select example">
-                  <option value=''>Selecione uma opcao</option>
-                    <?php 
-                        $arrayMarca = $servico->buscaMarca();
-
-                        foreach ($arrayMarca as $marca) {
-                            echo "<option value='{$marca['nome']}'> {$marca['nome']} </option>";
-                        }
-                    ?>
-                  </select>
-
-                  <div class="mb-3">
-                    <label class="form-label">Problema</label>
-                    <select class="form-select" id="problema" name="problema" aria-label="Default select example">
-                    <?php 
-                        $arrayProblema = $servico->buscaProblema();
-
-                        foreach ($arrayProblema as $problema) {
-                            echo "<option value='{$problema['nome']}'> {$problema['nome']} </option>";
-                        }
-                    ?>
-                    </select>
-                  </div>
-                  <label class="form-label">Situacao</label>
-                  <select class="form-select" id="situacao" name="situacao" aria-label="Default select example">
-                    <option value="Pendente">Pendente</option>
-                    <option value="Enviado">Enviado</option>
-                  </select>
-                </div>
-                <button type="submit" class="btn btn-primary" value="cadastrar" onclick="createUser()">Enviar</button>
-              </form>
-            </div>
-          </div>
-        </div>
+<!-- Modal de Cadastro -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Formulario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body">
+        <form id="myForm">
+          <input type="hidden" id="id" class="form-control">
+          <input type="hidden" id="data_envio" class="form-control">
+          <input type="hidden" id="previsao" class="form-control">
+          <input type="hidden" id="retorno" class="form-control">
+          <input type="hidden" id="garantia" class="form-control">
+          <input type="hidden" id="usuario" value="<?php echo $_SESSION['id'] ?>">
+          <div class="mb-3">
+            <label class="form-label">Equipamento</label>
+            <select class="form-select" id="id_equip" name="id_equip" aria-label="Default select example">
+            <option value=''>Selecione uma opcao</option>
+              <?php 
+                  $arrayEquipamentos = $servico->buscaEquipamento();
 
-      <!-- Modal de Cadastro Coletivo -->
-      <div class="modal fade" id="modalColetivo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Importar Arquivo</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form action="" method="POST" enctype="multipart/form-data">
-                <input type="hidden" id="data_envio" class="form-control">
-                <input type="hidden" id="previsao" class="form-control">
-                <input type="hidden" id="retorno" class="form-control">
-                <input type="hidden" id="garantia" class="form-control">
-                <div class="mb-3">
-                  <label for="arquivo">Selecione um arquivo:</label>
-                  <input type="file" id="arquivo" name="arquivo">
-                </div>
-                <button type="button" class="btn btn-primary" value="cadastrar">Enviar</button>
-              </form>
-            </div>
+                  foreach ($arrayEquipamentos as $equipamento) {
+                      echo "<option value='{$equipamento['id']}'> {$equipamento['nome']} </option>";
+                  }
+              ?>
+            </select>
           </div>
-        </div>
-      </div>
-
-      <!-- Modal de Edição -->
-      <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Editar Registro</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <!-- Formulário de Edição -->
-              <form id="editForm">
-                <input type="hidden" id="editId">
-                <input type="hidden" id="editGarantia" >
-                <input type="hidden" id="editDataEnvio">
-                <div class="mb-3">
-                  <label for="editTag" class="form-label">Tag</label>
-                  <input type="text" class="form-control" id="editTag">
-                </div>
-                <div>
-                <label class="form-label">Equipamento</label>
-                  <select class="form-select" id="editEquipamento" name="editEquipamento" aria-label="Default select example">
-                      <?php
-                        $arrayEquipamentos = $servico->buscaEquipamento();
-
-                        foreach ($arrayEquipamentos as $equipamento) {
-                            echo "<option value='{$equipamento['id']}'> {$equipamento['nome']} </option>";
-                        }
-                      ?>
-                    </select>
-                </div>
-                <div class="mb-3">
-                  <label for="editModelo" class="form-label">Marca</label>
-                  <select class="form-select" id="editModelo" name="editModelo" aria-label="Default select example">
-                    <?php
-                        $arrayMarca = $servico->buscaMarca();
-
-                        foreach ($arrayMarca as $marca) {
-                            echo "<option value='{$marca['nome']}'> {$marca['nome']} </option>";
-                        }
-                    ?>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Problema</label>
-                  <select class="form-select" id="editProblema" name="editProblema" aria-label="Default select example">
-                      <?php
-                        $arrayProblema = $servico->buscaProblema();
-
-                        foreach ($arrayProblema as $problema) {
-                            echo "<option value='{$problema['nome']}'> {$problema['nome']} </option>";
-                        }
-                      ?>
-                    </select>
-                </div>
-                <label class="form-label">Situacao</label>
-                <select class="form-select" id="editSituacao" name="editSituacao" aria-label="Default select example">
-                  <option value="Pendente">Pendente</option>
-                  <option value="Enviado">Enviado</option>
-                  <option value="Concluido">Concluido</option>
-                </select>
-            </div>
-            <!-- Botão de Salvar -->
-            <button type="submit" class="btn btn-primary" value="Atualizar" onclick="editarUsuario()">Salvar</button>
-            </form>
+          <div class="mb-3">
+            <label class="form-label">TAG</label>
+            <input type="text" class="form-control" id="tag">
           </div>
-        </div>
+          <div class="mb-3">
+            <label class="form-label">Marca</label>
+            <select class="form-select" id="modelo" name="modelo" aria-label="Default select example">
+            <option value=''>Selecione uma opcao</option>
+              <?php 
+                  $arrayMarca = $servico->buscaMarca();
+
+                  foreach ($arrayMarca as $marca) {
+                      echo "<option value='{$marca['nome']}'> {$marca['nome']} </option>";
+                  }
+              ?>
+            </select>
+
+            <div class="mb-3">
+              <label class="form-label">Problema</label>
+              <select class="form-select" id="problema" name="problema" aria-label="Default select example">
+              <?php 
+                  $arrayProblema = $servico->buscaProblema();
+
+                  foreach ($arrayProblema as $problema) {
+                      echo "<option value='{$problema['nome']}'> {$problema['nome']} </option>";
+                  }
+              ?>
+              </select>
+            </div>
+            <label class="form-label">Situacao</label>
+            <select class="form-select" id="situacao" name="situacao" aria-label="Default select example">
+              <option value="Pendente">Pendente</option>
+              <option value="Enviado">Enviado</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" value="cadastrar" onclick="createUser()">Enviar</button>
+        </form>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- Modal de Filtros -->
-    <div class="modal fade" id="filtroModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Filtrar Registros</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Modal de Cadastro Coletivo -->
+<div class="modal fade" id="modalColetivo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Importar Arquivo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST" enctype="multipart/form-data">
+          <input type="hidden" id="data_envio" class="form-control">
+          <input type="hidden" id="previsao" class="form-control">
+          <input type="hidden" id="retorno" class="form-control">
+          <input type="hidden" id="garantia" class="form-control">
+          <div class="mb-3">
+            <label for="arquivo">Selecione um arquivo:</label>
+            <input type="file" id="arquivo" name="arquivo">
           </div>
-          <div class="modal-body">
-            <!-- Formulário de Filtros -->
-            <form id="filtroModal">
-              <input type="hidden" id="filtroId" value="">
-              <div class="mb-3">
-                <label class="form-label">Marca</label>
-                <select class="form-select" id="editModeloFiltro" name="editModeloFiltro" aria-label="Default select example">
-                    <?php
-                        $arrayMarca = $servico->buscaMarca();
-
-                        foreach ($arrayMarca as $marca) {
-                            echo "<option value='{$marca['nome']}'> {$marca['nome']} </option>";
-                        }
-                    ?>
-                  </select>
-                <label class="form-label">Problema</label>
-                <select class="form-select" id="problemaFiltro" name="problemaFiltro" aria-label="Default select example">
-                      <?php
-                        $arrayProblema = $servico->buscaProblema();
-
-                        foreach ($arrayProblema as $problema) {
-                            echo "<option value='{$problema['nome']}'> {$problema['nome']} </option>";
-                        }
-                      ?>
-                    </select>
-                <label class="form-label">Situacao</label>
-                <select class="form-select" id="exampleSelect" name="situacaoFiltro">
-                  <option value="">Selecione uma opcao</option>
-                  <option value="Pendente">Pendente</option>
-                  <option value="Enviado">Enviado</option>
-                  <option value="Concluido">Concluido</option>
-                </select>
-                <br>
-                <button type="button" class="btn btn-primary" onclick="filtrar()">Filtrar</button>
-            </form>
-          </div>
-        </div>
+          <button type="button" class="btn btn-primary" value="cadastrar">Enviar</button>
+        </form>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Modal de Edição -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Registro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulário de Edição -->
+        <form method="post" action="servicos/editar.php">
+          <div class="mb-3">
+            <label class="form-label">Tag</label>
+            <input type="text" class="form-control" id="editTag" name="editTag">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Equipamento</label>
+            <select class="form-select" id="editEquipamento" name="editEquipamento">
+              <?php
+              $arrayEquipamentos = $servico->buscaEquipamento();
+
+              foreach ($arrayEquipamentos as $equipamento) {
+                  echo "<option value='{$equipamento['id']}'> {$equipamento['nome']} </option>";
+              }
+              ?>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="editModelo" class="form-label">Marca</label>
+            <select class="form-select" id="editModelo" name="editModelo">
+              <?php
+              $arrayMarca = $servico->buscaMarca();
+
+              foreach ($arrayMarca as $marca) {
+                  echo "<option value='{$marca['nome']}'> {$marca['nome']} </option>";
+              }
+              ?>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Problema</label>
+            <select class="form-select" id="editProblema" name="editProblema">
+              <?php
+              $arrayProblema = $servico->buscaProblema();
+
+              foreach ($arrayProblema as $problema) {
+                  echo "<option value='{$problema['nome']}'> {$problema['nome']} </option>";
+              }
+              ?>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Situação</label>
+            <select class="form-select" id="editSituacao" name="editSituacao">
+              <option value="Pendente">Pendente</option>
+              <option value="Enviado">Enviado</option>
+              <option value="Concluido">Concluido</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Filtros -->
+<div class="modal fade" id="filtroModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Filtrar Registros</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulário de Filtros -->
+        <form id="filtroModal">
+          <input type="hidden" id="filtroId" value="">
+          <div class="mb-3">
+            <label class="form-label">Marca</label>
+            <select class="form-select" id="editModeloFiltro" name="editModeloFiltro" aria-label="Default select example">
+                <?php
+                    $arrayMarca = $servico->buscaMarca();
+
+                    foreach ($arrayMarca as $marca) {
+                        echo "<option value='{$marca['nome']}'> {$marca['nome']} </option>";
+                    }
+                ?>
+              </select>
+            <label class="form-label">Problema</label>
+            <select class="form-select" id="problemaFiltro" name="problemaFiltro" aria-label="Default select example">
+                  <?php
+                    $arrayProblema = $servico->buscaProblema();
+
+                    foreach ($arrayProblema as $problema) {
+                        echo "<option value='{$problema['nome']}'> {$problema['nome']} </option>";
+                    }
+                  ?>
+                </select>
+            <label class="form-label">Situacao</label>
+            <select class="form-select" id="exampleSelect" name="situacaoFiltro">
+              <option value="">Selecione uma opcao</option>
+              <option value="Pendente">Pendente</option>
+              <option value="Enviado">Enviado</option>
+              <option value="Concluido">Concluido</option>
+            </select>
+            <br>
+            <button type="button" class="btn btn-primary" onclick="filtrar()">Filtrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./scripts/index.js"></script>

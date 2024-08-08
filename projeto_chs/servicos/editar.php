@@ -2,127 +2,95 @@
 header('Access-Control-Allow-Origin: *');
 require_once('../../config.php');
 
-$id = $_POST['id'];
-$tag = $_POST['tag'];
-$modelo = $_POST['modelo'];
-$problema = $_POST['problema'];
-$data_envio = $_POST['data_envio'];
-$situacao = $_POST['situacao'];
-$idEquip = $_POST['idEquip'];
+$tag = $_POST['editTag'];
+$modelo = $_POST['editModelo'];
+$problema = $_POST['editProblema'];
+$idEquip = $_POST['editEquipamento'];
+$situacao = $_POST['editSituacao'];
+$data_envio = date('d-m-Y');
+$data_previsao = date('d-m-Y', strtotime($data_envio . ' +7 days'));
+$data_retorno = 'Pendente';
+$data_garantia = 'Nao';
 
-function alterNameEquip($conn, $idEquip, $tag){
-  $sql = "UPDATE chs_controle SET
-    equipamento_id = ? 
-    WHERE tag = ?";
+$config = new Config();
 
-  $stmt = $conn->prepare($sql);
-    
-  if (!$stmt) {
-      return false;
-  }
-
-  $stmt->bind_param("si", $idEquip, $tag);
-  $stmt->execute();
-}
-
-if (empty($id)) {
-  echo json_encode(["message" => "Sem ID valido"]);
-} else {
-
-  if ($data_envio === 'undefined/undefined/') {
-    $data_envio = date('d-m-Y');
-  }
-  
   $queryEnviadoExiste = "SELECT situacao, manutencao FROM chs_controle WHERE tag = '$tag'";
-  $consultaEnviadoExiste = $conn->query($queryEnviadoExiste);
+  $consultaEnviadoExiste = $config->conn->query($queryEnviadoExiste);
   $rowEnviado = $consultaEnviadoExiste->fetch_assoc();
   $situacaoAtual = $rowEnviado['situacao'];
-  $data_envio = date('d-m-Y');
-  $data_previsao = date('d-m-Y', strtotime($data_envio . ' +7 days'));
-  $data_retorno = 'Pendente';
-  $data_garantia = 'Nao';
   $manutencao = $rowEnviado['manutencao'];
-  
-  if ($situacaoAtual === 'Enviado') { 
-      $sql = "UPDATE chs_controle SET 
-      tag = ?, 
-      modelo = ?, 
-      problema = ?, 
-      data_envio = ?, 
-      situacao = ?, 
-      previsao = ?, 
-      retorno = ?, 
-      garantia = ?
-      WHERE id = ?";
-  } else {
-      
-      $manutencao_novo = $manutencao + 1;
-  
-      $sql = "UPDATE chs_controle SET 
-      tag = ?, 
-      modelo = ?, 
-      problema = ?, 
-      data_envio = ?, 
-      situacao = ?, 
-      previsao = ?, 
-      retorno = ?, 
-      garantia = ?,
-      manutencao = ?
-      WHERE id = ?";
-  }
-  
-  if ($situacao === 'Concluido') {
-    $data_previsao = 'Concluido';
-    $data_retorno = date('Y-m-d'); 
-    $data_envio = $_POST['data_envio'];
 
-    if ($data_envio == 'Pendente') {
-        $data_envio = 'Nao obteve Envio';
-    }
-    
-    $diferenca_dias = strtotime($data_retorno) - strtotime($data_envio);
-    $diferenca_dias = floor($diferenca_dias / (60 * 60 * 24));
-    $garantia = ($diferenca_dias > 30) ? 'Nao' : 'Sim';
-
-    $sql = "UPDATE chs_controle SET 
-        tag = ?, 
+  switch($situacaoAtual){
+    case 'Pendente':
+        $sql = "UPDATE chs_controle SET 
         modelo = ?, 
         problema = ?, 
         data_envio = ?, 
         situacao = ?, 
         previsao = ?, 
         retorno = ?, 
-        garantia = ?
-        WHERE id = ?";
-  }
+        garantia = ?,
+        equipamento_id = ?
+        WHERE tag = ?";
 
-  $alterName = alterNameEquip($conn, $idEquip, $tag);
-  
-  $stmt = $conn->prepare($sql);
-  
-  if (!$stmt) {
-      throw new Exception("Erro ao preparar a consulta para atualiza��o no controle: " . $conn->error);
-  }
-  
-  if ($situacaoAtual === 'Enviado') {
-      $stmt->bind_param("ssssssssi", $tag, $modelo, $problema, $data_envio, $situacao, $data_previsao, $data_retorno, $data_garantia, $id);
-  } else {
-      $stmt->bind_param("sssssssssi", $tag, $modelo, $problema, $data_envio, $situacao, $data_previsao, $data_retorno, $data_garantia, $manutencao_novo, $id);
-  }
-  
-  if ($situacao === 'Concluido') {
-    $stmt->bind_param("ssssssssi", $tag, $modelo, $problema, $data_envio, $situacao, $data_previsao, $data_retorno, $garantia, $id);
+        $stmt = $config->conn->prepare($sql);
+        $stmt->bind_param("ssssssssi", $modelo, $problema, $data_envio, $situacao, $data_previsao, $data_retorno, $data_garantia, $idEquip, $tag);
+      break;
+
+    case 'Enviado':
+        $manutencao_novo = $manutencao + 1;
+
+        $sql = "UPDATE chs_controle SET 
+        modelo = ?, 
+        problema = ?, 
+        data_envio = ?, 
+        situacao = ?, 
+        previsao = ?, 
+        retorno = ?, 
+        garantia = ?,
+        manutencao = ?,
+        equipamento_id = ?
+        WHERE tag = ?";
+
+        $stmt = $config->conn->prepare($sql);
+        $stmt->bind_param("sssssssssi", $modelo, $problema, $data_envio, $situacao, $data_previsao, $data_retorno, $data_garantia, $manutencao_novo, $idEquip, $tag);
+      break;
+
+    case 'Concluido':
+        $data_previsao = 'Concluido';
+        $data_retorno = date('Y-m-d'); 
+        
+        $diferenca_dias = strtotime($data_retorno) - strtotime($data_envio);
+        $diferenca_dias = floor($diferenca_dias / (60 * 60 * 24));
+        $garantia = ($diferenca_dias > 30) ? 'Nao' : 'Sim';
+    
+        $sql = "UPDATE chs_controle SET  
+            modelo = ?, 
+            problema = ?, 
+            data_envio = ?, 
+            situacao = ?, 
+            previsao = ?, 
+            retorno = ?, 
+            garantia = ?,
+            equipamento_id = ?
+            WHERE tag = ?";
+
+        $stmt = $config->conn->prepare($sql);
+        $stmt->bind_param("ssssssssi", $modelo, $problema, $data_envio, $situacao, $data_previsao, $data_retorno, $garantia, $idEquip, $tag);
+
+      break;
   }
   
   $stmt->execute();
   
   if ($stmt->affected_rows > 0) {
-      echo json_encode(["message" => "Dado editado com sucesso"]);
+      $stmt->close();
+      header("Location: http://localhost/portfolio/projeto_chs/");
+      exit();      
   } else {
-      echo json_encode(["message" => "Erro ao editar o dado"]);
+      $stmt->close();
+      header("Location: http://localhost/portfolio/projeto_chs/");
+      exit();
   }
   
-  $stmt->close();
-}
-
 ?>

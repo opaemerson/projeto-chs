@@ -1,3 +1,16 @@
+document.addEventListener('DOMContentLoaded', function() {
+  var editModal = document.getElementById('editModal');
+
+  editModal.addEventListener('show.bs.modal', function(event) {
+      var button = event.relatedTarget;
+      var tagOriginal = button.getAttribute('data-tagOriginal');
+      var editTag = document.getElementById('editTag');
+
+      editTag.value = tagOriginal;
+
+  });
+});
+
 function formatarData(data) {
   const partes = data.split('-');
   const dia = partes[2];
@@ -78,49 +91,6 @@ function remove(id, idUsuario, usuarioSessao, permissaoSessao) {
       }
     });
   }
-}
-
-function lerUsuario(id) {
-  var form = new FormData();
-  form.append('id', id); 
-
-  const url = "http://127.0.0.1/portfolio/projeto_chs/ler.php"; 
-
-  $.ajax({
-    url: url, 
-    method: "POST", 
-    data: form,
-    processData: false, 
-    contentType: false,
-    success: function (data) { 
-      window.localStorage.setItem('user', JSON.stringify(data));
-      console.log(data);
-      abrirModalEdicao(); 
-    }
-  });
-}
-
-function abrirModalEdicao() {
-  var userData = JSON.parse(window.localStorage.getItem('user')); 
-  userData = JSON.parse(userData); 
-  var editIdInput = document.getElementById('editId'); 
-  var editTagInput = document.getElementById('editTag'); 
-  var editModeloInput = document.getElementById('editModelo'); 
-  var editProblemaInput = document.getElementById('editProblema');
-  var editDataEnvio = document.getElementById('editDataEnvio');
-  var editSituacao = $('select[name="editSituacao"]');
-  var editEquip = $('select[name="editEquipamento"]');
-
-  editIdInput.value = userData[0]['ID'];
-  editTagInput.value = userData[0]['TAG']; 
-  editModeloInput.value = userData[0]['MODELO'];
-  editProblemaInput.value = userData[0]['PROBLEMA'];
-  editDataEnvio.value = userData[0]['DATA_ENVIO'];
-  var selecionarSituacao = userData[0]['SITUACAO'];
-  var selecionarEquip = userData[0]['EQUIPAMENTO'];
-
-  editEquip.val(selecionarEquip);
-  editSituacao.val(selecionarSituacao);
 }
 
 function editarUsuario() {
