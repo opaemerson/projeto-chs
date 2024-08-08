@@ -90,6 +90,9 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
                       <button type='button' class='btn btn-link' data-bs-toggle='modal' data-bs-target='#editModal' data-tagOriginal='{$registro['tag']}' data-equipamentoId='{$registro['equipamento_id']}'>
                           <img src='../Images/CHS/editar.png' width='30' height='30'>
                       </button>
+                      <button type='button' class='btn btn-link' onclick=\"enviarEvento({$registro['id']})\">
+                          <img src='../Images/CHS/enviadow.png' width='30' height='30'>
+                      </button>
                       <button type='button' class='btn btn-link' onclick=\"concluirEvento({$registro['id']})\">
                           <img src='../Images/CHS/concluido.png' width='30' height='30'>
                       </button>
