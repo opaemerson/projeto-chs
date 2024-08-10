@@ -7,7 +7,7 @@ $servico = new Servico();
 $config = new Config();
 $usuario = $config->pegaSessaoUsuario();
 $queryRegistros = $servico->buscaDados();
-$permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
+$permissao = $usuario['permissaoSessao'] ? $usuario['permissaoSessao'] : '';
 
 
 ?>
@@ -41,28 +41,28 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
   <button style="width:10%;  line-height:30px;" type="button" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="pesquisar()">PESQUISAR</button>
 </div>
 
-      <!-- Campo Exibição -->
-      <div class="amarelo-papel">
-        <div class='table-responsive'>
-          <table class='table table-striped table-bordered amarelo-papel borda-preta'>
-              <thead>
-                  <tr>
-                      <th>Equipamento</th>
-                      <th>TAG</th>
-                      <th>Marca</th>
-                      <th>Problema</th>
-                      <th>Data de Envio</th>
-                      <th>Situacao</th>
-                      <th>Previsao de Retorno</th>
-                      <th>Data_Retorno</th>
-                      <th>Garantia</th>
-                      <th>Manutencao</th>
-                      <th>Usuario</th>
-                      <th style='text-align: center'>Ações</th>
-                  </tr>
-              </thead>
-          <tbody>
-      </div>
+<!-- Campo Exibição -->
+<div class="amarelo-papel">
+  <div class='table-responsive'>
+    <table class='table table-striped table-bordered amarelo-papel borda-preta'>
+        <thead>
+            <tr>
+                <th>Equipamento</th>
+                <th>TAG</th>
+                <th>Marca</th>
+                <th>Problema</th>
+                <th>Data de Envio</th>
+                <th>Situacao</th>
+                <th>Previsao de Retorno</th>
+                <th>Data_Retorno</th>
+                <th>Garantia</th>
+                <th>Manutencao</th>
+                <th>Usuario</th>
+                <th style='text-align: center'>Ações</th>
+            </tr>
+        </thead>
+    <tbody>
+</div>
     <?php
           foreach($queryRegistros as $registro){
           if ($registro['situacao'] === 'Enviado') {
@@ -115,13 +115,10 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="myForm">
-          <input type="hidden" id="id" class="form-control">
-          <input type="hidden" id="data_envio" class="form-control">
-          <input type="hidden" id="previsao" class="form-control">
-          <input type="hidden" id="retorno" class="form-control">
-          <input type="hidden" id="garantia" class="form-control">
-          <input type="hidden" id="usuario" value="<?php echo $_SESSION['id'] ?>">
+        <form method="post" action="servicos/cadastro.php" onsubmit="return validaCadastro()">
+          <input type="hidden" id="id" name="id">
+          <input type="hidden" id="data_envio" name="data_envio">
+          <input type="hidden" id="usuario" name="usuario" value="<?php echo $usuario['usuarioSessao'] ?>">
           <div class="mb-3">
             <label class="form-label">Equipamento</label>
             <select class="form-select" id="id_equip" name="id_equip" aria-label="Default select example">
@@ -137,7 +134,7 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
           </div>
           <div class="mb-3">
             <label class="form-label">TAG</label>
-            <input type="text" class="form-control" id="tag" placeholder="Digite a tag aqui" style="font-style: italic;">
+            <input type="text" class="form-control" id="tag" name="tag" placeholder="Digite a tag aqui" style="font-style: italic;">
           </div>
           <div class="mb-3">
             <label class="form-label">Marca</label>
@@ -171,7 +168,7 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
               <option value="Enviado">Enviado</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-primary" value="cadastrar" onclick="createUser()">Enviar</button>
+          <button type="submit" class="btn btn-primary" value="cadastrar">Enviar</button>
         </form>
       </div>
     </div>
@@ -187,7 +184,7 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="">
           <input type="hidden" id="data_envio" class="form-control">
           <input type="hidden" id="previsao" class="form-control">
           <input type="hidden" id="retorno" class="form-control">
@@ -196,7 +193,7 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
             <label for="arquivo">Selecione um arquivo:</label>
             <input type="file" id="arquivo" name="arquivo">
           </div>
-          <button type="button" class="btn btn-primary" value="cadastrar">Enviar</button>
+          <button type="button" class="btn btn-primary" onclick="mensagemErro('incompleto')" value="cadastrar">Enviar</button>
         </form>
       </div>
     </div>
@@ -213,7 +210,7 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
       </div>
       <div class="modal-body">
         <!-- Formulário de Edição -->
-        <form method="post" action="servicos/editar.php" onsubmit="return valida_edicao()" >
+        <form method="post" action="servicos/editar.php" onsubmit="return validaEdicao()">
           <div class="mb-3">
             <label class="form-label">Tag</label>
             <input type="text" class="form-control" id="editTag" name="editTag">

@@ -56,5 +56,12 @@ class Servico {
 
         return $dados;
     }
+
+    public function limiteCinco($usuario, $tabela)
+    {
+        $dados = $this->principal->limiteCinco($this->conn, $usuario, $tabela);
+
+        return $dados;
+    }
 }
 ?>

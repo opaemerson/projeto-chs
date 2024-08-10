@@ -26,6 +26,7 @@ Control Handling Sytem - CHS
 [24/07/24] Refatoração - index.php
 [24/07/24] Refatoração - listar.php
 [07/08/24] Refatoração - editar.php - Edição dos dados.
+[10/08/24] Refatoração - cadastro.php
 
 Upgrade CHS PRO -> futuro:
 

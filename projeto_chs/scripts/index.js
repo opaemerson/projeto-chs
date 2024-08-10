@@ -28,50 +28,6 @@ function formatarData(data) {
   return dia + '/' + mes + '/' + ano;
 }
 
-function createUser() {
-  const tag = $('#tag').val();
-  const opcao = $('select[name="modelo"]').val();
-  const problema = $('select[name="problema"]').val();
-  const data_envio = $('#data_envio').val();
-  const data_envio_formatada = formatarData(data_envio);
-  const situacao = $('select[name="situacao"]').val();
-  const previsao = $('#previsao').val();
-  const retorno = $('#retorno').val();
-  const garantia = $('#garantia').val();
-  const usuario = $('#usuario').val();
-  const id_equip = $('#id_equip').val();
-
-  const form = new FormData();
-  form.append('tag', tag);
-  form.append('modelo', opcao);
-  form.append('problema', problema);
-  form.append('data_envio', data_envio_formatada);
-  form.append('situacao', situacao);
-  form.append('previsao', previsao);
-  form.append('retorno', retorno);
-  form.append('garantia', garantia);
-  form.append('usuario', usuario);
-  form.append('id_equip', id_equip);
-
-  const url = "http://127.0.0.1/portfolio/projeto_chs/cadastro.php";
-
-  $.ajax({
-    url: url, // URL da requisição
-    method: 'POST', // Método HTTP usado na requisição
-    data: form, 
-    processData: false, 
-    contentType: false, 
-    success: function (resultado) { 
-      console.log(resultado); 
-      location.reload();
-    },
-    error: function (erro) { // Função de callback em caso de erro na requisição
-      console.log(erro); // Exibe o erro no console
-    }
-  });
-
-}
-
 function remove(id, idUsuario, usuarioSessao, permissaoSessao) {
   if (confirm('Deseja realmente excluir este item?')) {
     const url = 'http://127.0.0.1/portfolio/projeto_chs/servicos/remove.php';
@@ -392,7 +348,37 @@ function concluirEvento(tagId) {
   }
 }
 
-function valida_edicao(){
+function validaCadastro(){
+  var tag = document.getElementById('tag').value;
+  var modelo = document.getElementById('modelo').value;
+  var problema = document.getElementById('problema').value;
+  var situacao = $('select[name="situacao"]').val();
+  
+  if (!tag || tag == '') {
+      alert('Opção tag não pode ser vazia');
+      return false;
+  }
+
+  if (!modelo || modelo == 0) {
+      alert('Opção marca não pode ser vazia');
+      return false;
+  }
+  
+  if (!problema || problema == 0) {
+      alert('Opção problema não pode ser vazia');
+      return false;
+  }
+  
+  if (!situacao || situacao == 0) {
+      alert('Opção situação não pode ser vazia');
+      return false;
+  }
+
+  return true;
+  
+}
+
+function validaEdicao(){
   var tag = document.getElementById('editTag').value;
   var modelo = document.getElementById('editModelo').value;
   var problema = document.getElementById('editProblema').value;
@@ -420,4 +406,14 @@ function valida_edicao(){
 
   return true;
   
+}
+
+function mensagemErro(acao){
+  if(acao == 'incompleto'){
+    alert('Função ainda não implementada!');
+    return false;
+  }
+
+  return false;
+
 }
