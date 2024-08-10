@@ -27,5 +27,19 @@ class Principal
 
         return false;
     }
+
+    public function buscaGenerica($conn, $select, $from, $where)
+    {
+        $sql = "SELECT $select FROM $from WHERE $where";
+
+        $resultado = $conn->query($sql);
+
+        if ($resultado->num_rows > 0) {
+            $query = $resultado->fetch_all(MYSQLI_ASSOC);
+            return $query;
+        }
+
+        return false;
+    }
 }
 ?>

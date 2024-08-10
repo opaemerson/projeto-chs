@@ -4,11 +4,18 @@ document.addEventListener('DOMContentLoaded', function() {
   editModal.addEventListener('show.bs.modal', function(event) {
       var button = event.relatedTarget;
       var tagOriginal = button.getAttribute('data-tagOriginal');
+      var marcaOriginal = button.getAttribute('data-marcaOriginal');
+      var problemaOriginal = button.getAttribute('data-problemaOriginal');
+
       var equipamentoId = button.getAttribute('data-equipamentoId');
       var editTag = document.getElementById('editTag');
+      var editModelo = document.getElementById('editModelo');
+      var editProblema = document.getElementById('editProblema');
 
       $('select[id="editEquipamento"]').val(equipamentoId);
       editTag.value = tagOriginal;
+      editModelo.value = marcaOriginal;
+      editProblema.value = problemaOriginal;
 
   });
 });
@@ -383,4 +390,34 @@ function concluirEvento(tagId) {
       }
     });
   }
+}
+
+function valida_edicao(){
+  var tag = document.getElementById('editTag').value;
+  var modelo = document.getElementById('editModelo').value;
+  var problema = document.getElementById('editProblema').value;
+  var situacao = $('select[name="editSituacao"]').val();
+  
+  if (!tag || tag == '') {
+      alert('Opção tag não pode ser vazia');
+      return false;
+  }
+
+  if (!modelo || modelo == 0) {
+      alert('Opção modelo não pode ser vazia');
+      return false;
+  }
+  
+  if (!problema || problema == 0) {
+      alert('Opção problema não pode ser vazia');
+      return false;
+  }
+  
+  if (!situacao || situacao == 0) {
+      alert('Opção situação não pode ser vazia');
+      return false;
+  }
+
+  return true;
+  
 }

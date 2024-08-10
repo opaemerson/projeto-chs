@@ -87,7 +87,8 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
           echo "<td>{$registro['usuario']}</td>";
           echo "<td class='td-center'>
                   <div class='btn-center' style='text-align: center'>
-                      <button type='button' class='btn btn-link' data-bs-toggle='modal' data-bs-target='#editModal' data-tagOriginal='{$registro['tag']}' data-equipamentoId='{$registro['equipamento_id']}'>
+                      <button type='button' class='btn btn-link' data-bs-toggle='modal' data-bs-target='#editModal' data-tagOriginal='{$registro['tag']}' 
+                      data-equipamentoId='{$registro['equipamento_id']}' data-marcaOriginal='{$registro['modelo']}' data-problemaOriginal='{$registro['problema']}'>
                           <img src='../Images/CHS/editar.png' width='30' height='30'>
                       </button>
                       <button type='button' class='btn btn-link' onclick=\"enviarEvento({$registro['id']})\">
@@ -212,7 +213,7 @@ $permissao = isset($_SESSION['permissao']) ? $_SESSION['permissao'] : '';
       </div>
       <div class="modal-body">
         <!-- Formulário de Edição -->
-        <form method="post" action="servicos/editar.php">
+        <form method="post" action="servicos/editar.php" onsubmit="return valida_edicao()" >
           <div class="mb-3">
             <label class="form-label">Tag</label>
             <input type="text" class="form-control" id="editTag" name="editTag">

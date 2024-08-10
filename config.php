@@ -28,5 +28,22 @@ class Config
 
         return null;
     }
+
+    public function updateBd($sql, $parametros)
+    {
+        $types = str_repeat('s', count($parametros));
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param($types, ...$parametros);
+        $stmt->execute();
+
+        if ($stmt->affected_rows > 0) {
+            $stmt->close();
+            return true;
+        }
+
+        $stmt->close();
+        return false;
+    }
+    
 }
 ?>
