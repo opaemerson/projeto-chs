@@ -43,13 +43,12 @@ function remove(id, idUsuario, usuarioSessao, permissaoSessao) {
       },
       dataType: 'json',
       success: function (resultado) {
-        if (resultado.erro) {
-          alert(resultado.mensagem)
+        if(resultado.erro == 1){
+          alert(resultado.mensagem);
         } else {
-          alert("Item removido")
-          location.reload();
+          alert(resultado.mensagem);
+          window.location.reload();
         }
-
       },
       error: function (erro) {
         console.log(erro);
