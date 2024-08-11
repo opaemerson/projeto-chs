@@ -43,9 +43,36 @@ class Servico {
         return $problemas;
     }
 
-    public function buscaDados()
+    public function buscaDados($marca, $problema, $equipamento, $situacao, $tag)
     {
-        $dados = $this->principal->buscaDados($this->conn);
+        $where = [];
+        $whereClause = '';
+
+        if (!empty($marca)) {
+            $where[] = "a.modelo = '" . $marca . "'";
+        }
+
+        if(!empty($problema)){
+            $where[] = "a.problema = '" . $problema . "'";
+        }
+    
+        if (!empty($equipamento)) {
+            $where[] = 'a.equipamento_id = ' . $equipamento;
+        }
+    
+        if (!empty($situacao)) {
+            $where[] = "a.situacao = '" . $situacao . "'";
+        }
+    
+        if (!empty($tag)) {
+            $where[] = "a.tag = '" . $tag . "'";
+        }
+        
+        if (!empty($where)) {
+            $whereClause = 'WHERE ' . implode(' AND ', $where);
+        }
+
+        $dados = $this->principal->buscaDados($this->conn, $whereClause);
 
         return $dados;
     }

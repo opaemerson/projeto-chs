@@ -5,10 +5,16 @@ require_once('classes/servicoPrincipal.php');
 
 $servico = new Servico();
 $config = new Config();
-$usuario = $config->pegaSessaoUsuario();
-$queryRegistros = $servico->buscaDados();
-$permissao = $usuario['permissaoSessao'] ? $usuario['permissaoSessao'] : '';
 
+$filtroMarca = isset($_POST['marcaFiltro']) ? $_POST['marcaFiltro'] : null;
+$filtroProblema = isset($_POST['problemaFiltro']) ? $_POST['problemaFiltro'] : null;
+$filtroEquipamento = isset($_POST['equipamentoFiltro']) ? $_POST['equipamentoFiltro'] : null;
+$filtroSituacao = isset($_POST['situacaoFiltro']) ? $_POST['situacaoFiltro'] : null;
+$filtroTag = isset($_POST['tagFiltro']) ? $_POST['tagFiltro'] : null;
+
+$usuario = $config->pegaSessaoUsuario();
+$queryRegistros = $servico->buscaDados($filtroMarca, $filtroProblema, $filtroEquipamento, $filtroSituacao, $filtroTag);
+$permissao = $usuario['permissaoSessao'] ? $usuario['permissaoSessao'] : '';
 
 ?>
 
@@ -26,19 +32,21 @@ $permissao = $usuario['permissaoSessao'] ? $usuario['permissaoSessao'] : '';
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./scripts/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
 </head>
 
 <body class="amarelo-papel">
   <span id="conteudo"></span>
 
 <div class="w3-black">
-  <a style="width:14%; line-height:30px;" href="../index.php" class="w3-bar-item w3-button w3-hover-red w3-padding-large custom-square">VOLTAR </a>
-  <a style="width:14%; line-height:30px;" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#myModal">REGISTRO UNICO</a>
-  <a style="width:14%; line-height:30px;" class="w3-bar-item w3-button w3-padding-large custom-square" data-bs-toggle="modal" data-bs-target="#modalColetivo">IMPORTAR</a>
-  <a style="width:14%; line-height:30px;" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#filtroModal">FILTRAGEM</a>
-  <a style="width:14%; line-height:30px;" href="adm.php" class="w3-bar-item w3-button w3-hover-yellow w3-padding-large w3-hide-small custom-square">ADMINISTRACAO</a>
-  <input style="width:18%; line-height:30px;" type="text" class="w3-ripple w3-light-grey w3-padding-medium" id="searchInput" placeholder="Pesquise a tag">
-  <button style="width:10%;  line-height:30px;" type="button" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" onclick="pesquisar()">PESQUISAR</button>
+  <a style="width:18%; line-height:30px;" href="../index.php" class="w3-bar-item w3-button w3-hover-red w3-padding-large custom-square">VOLTAR </a>
+  <a style="width:20%; line-height:30px;" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#myModal">REGISTRO UNICO</a>
+  <a style="width:20%; line-height:30px;" class="w3-bar-item w3-button w3-padding-large custom-square" data-bs-toggle="modal" data-bs-target="#modalColetivo">IMPORTAR</a>
+  <a style="width:20%; line-height:30px;" class="w3-bar-item w3-button w3-padding-large w3-hide-small custom-square" data-bs-toggle="modal" data-bs-target="#filtroModal">FILTRAGEM</a>
+  <a style="width:20%; line-height:30px;" href="adm.php" class="w3-bar-item w3-button w3-hover-yellow w3-padding-large w3-hide-small custom-square">ADMINISTRACAO</a>
 </div>
 
 <!-- Campo Exibição -->
@@ -54,10 +62,10 @@ $permissao = $usuario['permissaoSessao'] ? $usuario['permissaoSessao'] : '';
                 <th>Data de Envio</th>
                 <th>Situacao</th>
                 <th>Previsao de Retorno</th>
-                <th>Data_Retorno</th>
+                <th>Data Retorno</th>
                 <th>Garantia</th>
-                <th>Manutencao</th>
-                <th>Usuario</th>
+                <th>Manutenção</th>
+                <th>Usuário</th>
                 <th style='text-align: center'>Ações</th>
             </tr>
         </thead>
@@ -281,11 +289,24 @@ $permissao = $usuario['permissaoSessao'] ? $usuario['permissaoSessao'] : '';
       </div>
       <div class="modal-body">
         <!-- Formulário de Filtros -->
-        <form id="filtroModal">
-          <input type="hidden" id="filtroId" value="">
+        <form id="filtroModal" method="post" action="">
           <div class="mb-3">
+          <label>Tag</label>
+          <input type="text" id="tagFiltro" name="tagFiltro" placeholder="Procure por tag"><br>
+          <label class="form-label">Equipamento</label>
+            <select class="form-select" id="equipamentoFiltro" name="equipamentoFiltro">
+                  <option value="">Selecione uma opcao</option>
+                  <?php
+                    $arrayProblema = $servico->buscaEquipamento();
+
+                    foreach ($arrayEquipamentos as $equipamento) {
+                        echo "<option value='{$equipamento['id']}'> {$equipamento['nome']} </option>";
+                    }
+                  ?>
+                </select>
             <label class="form-label">Marca</label>
-            <select class="form-select" id="editModeloFiltro" name="editModeloFiltro" aria-label="Default select example">
+            <select class="form-select" id="marcaFiltro" name="marcaFiltro">
+                <option value="">Selecione uma opcao</option>
                 <?php
                     $arrayMarca = $servico->buscaMarca();
 
@@ -295,7 +316,8 @@ $permissao = $usuario['permissaoSessao'] ? $usuario['permissaoSessao'] : '';
                 ?>
               </select>
             <label class="form-label">Problema</label>
-            <select class="form-select" id="problemaFiltro" name="problemaFiltro" aria-label="Default select example">
+            <select class="form-select" id="problemaFiltro" name="problemaFiltro">
+                  <option value="">Selecione uma opcao</option>
                   <?php
                     $arrayProblema = $servico->buscaProblema();
 
@@ -305,23 +327,19 @@ $permissao = $usuario['permissaoSessao'] ? $usuario['permissaoSessao'] : '';
                   ?>
                 </select>
             <label class="form-label">Situacao</label>
-            <select class="form-select" id="exampleSelect" name="situacaoFiltro">
+            <select class="form-select" id="situacaoFiltro" name="situacaoFiltro">
               <option value="">Selecione uma opcao</option>
               <option value="Pendente">Pendente</option>
               <option value="Enviado">Enviado</option>
               <option value="Concluido">Concluido</option>
             </select>
             <br>
-            <button type="button" class="btn btn-primary" onclick="filtrar()">Filtrar</button>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
         </form>
       </div>
     </div>
   </div>
 </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="./scripts/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 
 </html>

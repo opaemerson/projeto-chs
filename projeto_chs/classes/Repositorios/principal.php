@@ -2,7 +2,7 @@
 
 class Principal
 {
-    public function buscaDados($conn)
+    public function buscaDados($conn, $where)
     {
         $sql = "SELECT 
             a.*,
@@ -15,6 +15,7 @@ class Principal
             chs_equipamento e
         ON 
             e.id = a.equipamento_id
+            $where
         ORDER BY 
             a.id ASC";
         
