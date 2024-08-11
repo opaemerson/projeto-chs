@@ -15,7 +15,7 @@ $situacao = $_POST['situacao'];
 $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
 $id_equip = $_POST['id_equip'];
 
-$resultado = $servico->buscaGenerica('a.id, a.manutencao, a.situacao', 'chs_controle a', 'a.tag = ' . $tag);
+$resultado = $servico->buscaGenerica('a.id, a.manutencao, a.situacao', 'chs_controle a', 'WHERE a.tag = ' . $tag);
 
 if ($resultado !== false){
     $manutencao = $resultado['manutencao'];

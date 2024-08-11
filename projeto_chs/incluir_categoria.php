@@ -1,6 +1,12 @@
 <?php
 include('../protecao.php');
 require_once('../config.php');
+require_once('classes/servicoPrincipal.php');
+
+$config = new Config();
+$servico = new Servico();
+$usuario = $config->pegaSessaoUsuario();
+
 ?>
 
 <!DOCTYPE html>
@@ -47,24 +53,24 @@ require_once('../config.php');
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form id="">
+      <form>
+        <input type="hidden" id="usuarioId" name="usuarioId" value="<?php echo $usuario['usuarioSessao'] ?>">
           <div class="mb-3">
           <button type="button" value="cadastrar" data-bs-toggle='modal' data-bs-target='#modalAddEquipamento'>Cadastrar</button>
             <br>
             <?php
-                $sql = "SELECT id, nome, tipo FROM chs_equipamento";
-                $resultado = $conn->query($sql);
-                  while ($row = $resultado->fetch_assoc()) {
-                    $idEquip = $row["id"];
-                    $nomeEquip = $row["nome"];
-                    $tipo = $row["tipo"];
-                    echo "<br>";
-                    echo "<input type='text' id='' value='$nomeEquip' readonly>";
-                    echo "&nbsp;";
-                    echo "<button type='button' data-bs-toggle='modal' data-bs-target='#modalAlter' onclick='alterarElemento($idEquip, \"$nomeEquip\", \"$tipo\")'>Alterar</button>";
-                    echo "&nbsp;";
-                    echo "<button type='button' onclick='ctzExcluir($idEquip, \"$tipo\")'>Excluir</button>";
-                  }
+                $arrayEquipamentos = $servico->buscaEquipamento();
+                foreach($arrayEquipamentos as $equipamento){
+                  $idEquip = $equipamento["id"];
+                  $nomeEquip = $equipamento["nome"];
+                  $tipo = $equipamento["tipo"];
+                  echo "<br>";
+                  echo "<input type='text' id='' value='$nomeEquip' readonly>";
+                  echo "&nbsp;";
+                  echo "<button type='button' data-bs-toggle='modal' data-bs-target='#modalAlter' onclick='alterarElemento($idEquip, \"$nomeEquip\", \"$tipo\")'>Alterar</button>";
+                  echo "&nbsp;";
+                  echo "<button type='button' onclick='ctzExcluir($idEquip, \"$tipo\")'>Excluir</button>";
+                }
               ?>
           </div>
         </form>
@@ -82,24 +88,24 @@ require_once('../config.php');
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form id="">
+      <form>
+      <input type="hidden" id="usuarioId" name="usuarioId" value="<?php echo $usuario['usuarioSessao'] ?>">      
           <div class="mb-3">
           <button type="button" value="cadastrar" data-bs-toggle='modal' data-bs-target='#modalAddMarca'>Cadastrar</button>
             <br>
             <?php
-                $sql = "SELECT id, nome, tipo FROM chs_marca";
-                $resultado = $conn->query($sql);
-                  while ($row = $resultado->fetch_assoc()) {
-                    $idMarca = $row["id"];
-                    $nomeMarca = $row["nome"];
-                    $tipo = $row["tipo"];
-                    echo "<br>";
-                    echo "<input type='text' id='' value='$nomeMarca' readonly>";
-                    echo "&nbsp;";
-                    echo "<button type='button' data-bs-toggle='modal' data-bs-target='#modalAlter' onclick='alterarElemento($idMarca, \"$nomeMarca\", \"$tipo\")'>Alterar</button>";
-                    echo "&nbsp;";
-                    echo "<button type='button' onclick='ctzExcluir($idMarca, \"$tipo\")'>Excluir</button>";
-                  }
+                $arrayMarcas = $servico->buscaMarca();
+                foreach($arrayMarcas as $marca){
+                  $idMarca = $marca["id"];
+                  $nomeMarca = $marca["nome"];
+                  $tipo = $marca["tipo"];
+                  echo "<br>";
+                  echo "<input type='text' id='' value='$nomeMarca' readonly>";
+                  echo "&nbsp;";
+                  echo "<button type='button' data-bs-toggle='modal' data-bs-target='#modalAlter' onclick='alterarElemento($idMarca, \"$nomeMarca\", \"$tipo\")'>Alterar</button>";
+                  echo "&nbsp;";
+                  echo "<button type='button' onclick='ctzExcluir($idMarca, \"$tipo\")'>Excluir</button>";
+                }
               ?>
           </div>
         </form>
@@ -118,23 +124,23 @@ require_once('../config.php');
       </div>
       <div class="modal-body">
       <form id="formProblema">
+      <input type="hidden" id="usuarioId" name="usuarioId" value="<?php echo $usuario['usuarioSessao'] ?>">
           <div class="mb-3">
             <button type="button" value="cadastrar" data-bs-toggle='modal' data-bs-target='#modalAddProblema'>Cadastrar</button>
             <br>
             <?php
-                $sql = "SELECT id, nome, tipo FROM chs_problema";
-                $resultado = $conn->query($sql);
-                  while ($row = $resultado->fetch_assoc()) {
-                    $idProblema = $row["id"];
-                    $nomeProblema = $row["nome"];
-                    $tipo = $row["tipo"];
-                    echo "<br>";
-                    echo "<input type='text' id='' value='$nomeProblema' readonly>";
-                    echo "&nbsp;";
-                    echo "<button type='button' data-bs-toggle='modal' data-bs-target='#modalAlter' onclick='alterarElemento($idProblema, \"$nomeProblema\", \"$tipo\")'>Alterar</button>";
-                    echo "&nbsp;";
-                    echo "<button type='button' onclick='ctzExcluir($idProblema, \"$tipo\")'>Excluir</button>";
-                  }
+                $arrayProblemas = $servico->buscaProblema();
+                foreach($arrayProblemas as $problema){
+                  $idProblema = $problema["id"];
+                  $nomeProblema = $problema["nome"];
+                  $tipo = $problema["tipo"];
+                  echo "<br>";
+                  echo "<input type='text' id='' value='$nomeProblema' readonly>";
+                  echo "&nbsp;";
+                  echo "<button type='button' data-bs-toggle='modal' data-bs-target='#modalAlter' onclick='alterarElemento($idProblema, \"$nomeProblema\", \"$tipo\")'>Alterar</button>";
+                  echo "&nbsp;";
+                  echo "<button type='button' onclick='ctzExcluir($idProblema, \"$tipo\")'>Excluir</button>";
+                }
               ?>
           </div>
         </form>
@@ -153,6 +159,7 @@ require_once('../config.php');
       </div>
       <div class="modal-body">
         <form id="">
+        <input type="hidden" id="usuarioId" name="usuarioId" value="<?php echo $usuario['usuarioSessao'] ?>">
           <div class="mb-3">
               <label class="form-label">Nome:</label>
               <input name="nomeEquipamento" id="nomeEquipamento"><br>
@@ -177,6 +184,7 @@ require_once('../config.php');
       </div>
       <div class="modal-body">
         <form id="">
+        <input type="hidden" id="usuarioId" name="usuarioId" value="<?php echo $usuario['usuarioSessao'] ?>">
           <div class="mb-3">
               <label class="form-label">Nome:</label>
               <input name="nomeMarca" id="nomeMarca"><br>
@@ -199,6 +207,7 @@ require_once('../config.php');
       </div>
       <div class="modal-body">
         <form id="formProblema">
+        <input type="hidden" id="usuarioId" name="usuarioId" value="<?php echo $usuario['usuarioSessao'] ?>">
           <div class="mb-3">
               <label class="form-label">Nome:</label>
               <input type="text" name="nomeProblema" id="nomeProblema"><br>
@@ -211,7 +220,7 @@ require_once('../config.php');
   </div>
 </div>
 
-<!-- Modal de Altera��o -->
+<!-- Modal de Alteracao -->
 <div class="modal fade" id="modalAlter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -221,6 +230,7 @@ require_once('../config.php');
       </div>
       <div class="modal-body">
           <form id="formProblema">
+          <input type="hidden" id="usuarioId" name="usuarioId" value="<?php echo $usuario['usuarioSessao'] ?>">
           <input type="hidden" name="id" id="id">
           <input type="hidden" name="tipo" id="tipo">
           <div class="mb-3">

@@ -1,5 +1,11 @@
 <?php
+include('../protecao.php');
 require_once('../config.php');
+require_once('classes/servicoPrincipal.php');
+
+$config = new Config();
+$servico = new Servico();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,54 +21,41 @@ require_once('../config.php');
 </head>
 <body>
   <label for=""><b>Quantidade pela Categoria - Problemas</b></label>
-  <?php
-      $problema = "SELECT problema, count(problema) as quantidade FROM chs_controle GROUP BY problema";
-      $resultado = $conn->query($problema);
-      if ($resultado->num_rows > 0){
-        while ($row = $resultado->fetch_assoc()) {
-          $problema = $row["problema"];
-          $quantidade = $row["quantidade"];
-          echo "<br> Problema: $problema - Quantidade: $quantidade ";
-      }
-      } else{
-          echo "nao ha dados.";
-      }
-      ?>
-            <br>
-            <label for=""><b>Quantidade pela Categoria - Marcas</b></label>
+    <?php
+      $arrayProblemas = $servico->buscaGenerica('a.problema, count(a.problema) as quantidade', 'chs_controle a', 'GROUP BY a.problema');
 
-      <?php
-
-      $marca = "SELECT modelo, count(modelo) as quantidade_marca FROM chs_controle GROUP BY modelo";
-      $resultado_marca = $conn->query($marca);
-      if ($resultado_marca->num_rows > 0){
-        while ($row = $resultado_marca->fetch_assoc()) {
-          $marca = $row["modelo"];
-          $quantidade_marca = $row["quantidade_marca"];
-          echo "<br> Marca: $marca - Quantidade: $quantidade_marca ";
-      }
-      } else{
-        echo "nao ha dados.";
+      foreach($arrayProblemas as $problema){
+        $nome = $problema["problema"];
+        $quantidade = $problema["quantidade"];
+        echo "<br> Problema: $nome - Quantidade: $quantidade ";
       }
 
       ?>
-      <br>
-      <label for=""><b>Quantidade pela Categoria - Situacao</b></label>
+      <br><label for=""><b>Quantidade pela Categoria - Marcas</b></label>
+
+      <?php
+      $arrayMarcas = $servico->buscaGenerica('a.modelo, count(a.modelo) as quantidade', 'chs_controle a', 'GROUP BY a.modelo');
+
+      foreach($arrayMarcas as $marca){
+        $nome = $marca["modelo"];
+        $quantidade = $marca["quantidade"];
+        echo "<br> Marca: $nome - Quantidade: $quantidade ";
+      }
+
+      ?>
+      <br><label for=""><b>Quantidade pela Categoria - Situacao</b></label>
 
       <?php
 
-      $situacao = "SELECT situacao, count(situacao) as quantidade_situacao FROM chs_controle GROUP BY situacao";
-      $resultado_situacao = $conn->query($situacao);
-      if ($resultado_situacao->num_rows > 0){
-        while ($row = $resultado_situacao->fetch_assoc()) {
-          $situacao = $row["situacao"];
-          $quantidade_situacao = $row["quantidade_situacao"];
-          echo "<br> Situacao: $situacao - Quantidade: $quantidade_situacao ";
+      $arraySituacoes = $servico->buscaGenerica('a.situacao, count(a.situacao) as quantidade', 'chs_controle a', 'GROUP BY a.situacao');
+
+      foreach($arraySituacoes as $situacao){
+        $nome = $situacao["situacao"];
+        $quantidade = $situacao["quantidade"];
+        echo "<br> Situação: $nome - Quantidade: $quantidade ";
       }
-      } else{
-        echo "nao ha dados.";
-      }
-  ?>
+
+      ?>
   <br>
 <a href="adm.php" type="button" class="btn-preto">Voltar</a>
 </body>

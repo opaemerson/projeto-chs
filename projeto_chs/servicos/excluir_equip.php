@@ -1,6 +1,7 @@
 <?php
 require_once('../../config.php');
 
+$config = new Config();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
@@ -11,13 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ON cc.id = ch.tag_id
         WHERE cc.equipamento_id = $id;";
 
-        $resultado = $conn->query($select);
+        $resultado = $config->conn->query($select);
 
         if($resultado == FALSE){
             return false;
         }
 
-        $historico_id = array();
+        $historico_id = [];
 
         while ($row = $resultado->fetch_assoc()) {
             $historico_id[] = $row['id'];
@@ -26,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach($historico_id as $h){
             $delete = "DELETE FROM chs_historico WHERE id = $h";
 
-            $conexao = $conn->query($delete);
+            $conexao = $config->conn->query($delete);
 
             if($conexao == FALSE){
                 continue;
@@ -35,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $delete = "DELETE FROM chs_controle WHERE equipamento_id = $id";
 
-        $resultado = $conn->query($delete);
+        $resultado = $config->conn->query($delete);
 
         if ($resultado == FALSE){
             return false;
@@ -43,11 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $delete = "DELETE FROM chs_equipamento WHERE id = $id";
 
-        $resultado = $conn->query($delete);
+        $resultado = $config->conn->query($delete);
 
         if ($resultado !== FALSE) {
             $resposta['success'] = true;
-            $conn->close();
+            $config->conn->close();
             echo json_encode($resposta);
             return true;
         }

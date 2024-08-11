@@ -4,7 +4,7 @@ class Problema
 {
     public function buscaProblema($conn)
     {
-        $sql = "SELECT nome FROM chs_problema";
+        $sql = "SELECT id, nome, tipo FROM chs_problema";
         $resultado = $conn->query($sql);
 
         if ($resultado->num_rows > 0) {

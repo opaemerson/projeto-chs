@@ -38,14 +38,11 @@ function excluir(id,tipo){
     processData: false, 
     contentType: false,
     dataType: 'json',
-    success: function (resultado) { 
-      if (resultado.success) {
-          window.location.href = "incluir_categoria.php";
-      } else {
-          console.log('erro no js');
-      }
+    success: function () { 
+      window.location.href = "./incluir_categoria.php";
     },
     error: function (erro) {
+      window.location.href = "./incluir_categoria.php";
       console.log(erro); 
     }
   });
@@ -110,10 +107,12 @@ function alterar(botao, id, tipo){
 }
 
 function criarEquipamento() {
-    const nomeEquipamento = $('#nomeEquipamento').val();
+    var nomeEquipamento = $('#nomeEquipamento').val();
+    var usuarioId = $('#usuarioId').val();
   
     const form = new FormData();
     form.append('nomeEquipamento', nomeEquipamento);
+    form.append('usuarioId', usuarioId);
   
     const url = "http://127.0.0.1/portfolio/projeto_chs/servicos/incluir_equip.php";
   
@@ -139,10 +138,12 @@ function criarEquipamento() {
 }
 
 function criarMarca() {
-  const nomeMarca = $('#nomeMarca').val();
+  var nomeMarca = $('#nomeMarca').val();
+  var usuarioId = $('#usuarioId').val();
 
   const form = new FormData();
   form.append('nomeMarca', nomeMarca);
+  form.append('usuarioId', usuarioId);
 
   const url = "http://127.0.0.1/portfolio/projeto_chs/servicos/incluir_marca.php";
 
@@ -169,10 +170,12 @@ function criarMarca() {
 
 function criarProblema() {
 
-  const nomeProblema = $('#nomeProblema').val();
+  var nomeProblema = $('#nomeProblema').val();
+  var usuarioId = $('#usuarioId').val();
 
   const form = new FormData();
   form.append('nomeProblema', nomeProblema);
+  form.append('usuarioId', usuarioId);
 
   const url = "http://127.0.0.1/portfolio/projeto_chs/servicos/incluir_problema.php";
 

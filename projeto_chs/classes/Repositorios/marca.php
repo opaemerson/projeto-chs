@@ -4,7 +4,7 @@ class Marca
 {
     public function buscaMarca($conn)
     {
-        $sql = "SELECT nome FROM chs_marca";
+        $sql = "SELECT id, nome, tipo FROM chs_marca";
         $resultado = $conn->query($sql);
 
         if ($resultado->num_rows > 0) {

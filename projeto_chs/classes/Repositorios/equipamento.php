@@ -4,7 +4,7 @@ class Equipamento
 {
     public function buscaEquipamento($conn)
     {
-        $sql = "SELECT id, nome FROM chs_equipamento";
+        $sql = "SELECT id, nome, tipo FROM chs_equipamento";
         $resultado = $conn->query($sql);
 
         if ($resultado->num_rows > 0) {

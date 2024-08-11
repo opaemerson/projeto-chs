@@ -12,7 +12,7 @@ $usuario = $_POST['idUsuario'];
 $usuarioSessao = $_POST['usuarioSessao'];
 $permissaoSessao = $_POST['permissaoSessao'];
 
-$queryRegistros = $servico->buscaGenerica('a.*', 'chs_historico a', 'tag_id = ' . $id . ' order by id desc');
+$queryRegistros = $servico->buscaGenerica('a.*', 'chs_historico a', 'WHERE tag_id = ' . $id . ' order by id desc');
 
 $usuarioConsultado = $queryRegistros[0]['usuario_id'];
 $idHistorico= $queryRegistros[0]['id'];

@@ -29,9 +29,9 @@ class Principal
         return false;
     }
 
-    public function buscaGenerica($conn, $select, $from, $where)
+    public function buscaGenerica($conn, $select, $from, $where = '')
     {
-        $sql = "SELECT $select FROM $from WHERE $where";
+        $sql = "SELECT $select FROM $from $where";
 
         $resultado = $conn->query($sql);
 

@@ -77,7 +77,7 @@ class Servico {
         return $dados;
     }
 
-    public function buscaGenerica($select, $from, $where)
+    public function buscaGenerica($select, $from, $where = '')
     {
         $dados = $this->principal->buscaGenerica($this->conn, $select, $from, $where);
 
