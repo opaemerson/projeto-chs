@@ -320,24 +320,27 @@ function validaPermissaoCategoria(permissao) {
   }
 }
 
-function concluirEvento(tagId) {
-  if (confirm('Deseja realmente concluir este item?')) {
-    const url = 'http://127.0.0.1/portfolio/projeto_chs/servicos/concluir.php';
+function alterarEvento(tag, acao) {
+
+
+  if (confirm('Deseja realmente ' + acao + ' este item?')) {
+    const url = 'http://127.0.0.1/portfolio/projeto_chs/servicos/editar.php';
 
     $.ajax({
       url: url,
       method: 'POST',
       data: {
-        tagId: tagId
+        tag: tag,
+        editSituacao: acao,
+        ajax: 'ajax'
       },
       dataType: 'json',
       success: function (resultado) {
-        console.log('a');
         if (resultado.erro) {
           alert(resultado.mensagem)
         } else {
-          alert("Item concluido")
-          location.reload();
+          alert("Item alterado!")
+          window.location.reload();
         }
 
       },

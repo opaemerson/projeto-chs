@@ -91,10 +91,10 @@ $permissao = $usuario['permissaoSessao'] ? $usuario['permissaoSessao'] : '';
                       data-equipamentoId='{$registro['equipamento_id']}' data-marcaOriginal='{$registro['modelo']}' data-problemaOriginal='{$registro['problema']}'>
                           <img src='../Images/CHS/editar.png' width='30' height='30'>
                       </button>
-                      <button type='button' class='btn btn-link' onclick=\"enviarEvento({$registro['id']})\">
+                      <button type='button' class='btn btn-link' onclick=\"alterarEvento({$registro['tag']}, 'Enviar')\">
                           <img src='../Images/CHS/enviadow.png' width='30' height='30'>
                       </button>
-                      <button type='button' class='btn btn-link' onclick=\"concluirEvento({$registro['id']})\">
+                      <button type='button' class='btn btn-link' onclick=\"alterarEvento({$registro['tag']}, 'Concluir')\">
                           <img src='../Images/CHS/concluido.png' width='30' height='30'>
                       </button>
                       <button type='button' class='btn btn-link' onclick=\"remove({$registro['id']}, '{$registro['idUsuario']}', '{$usuario['usuarioSessao']}', '{$usuario['permissaoSessao']}')\">
