@@ -1,10 +1,13 @@
 <?php
+session_start();
 header('Access-Control-Allow-Origin: *');
 require_once('../../config.php');
 require_once('../classes/servicoPrincipal.php');
 
 $servico = new Servico();
 $config = new Config();
+$config->protecao();
+
 $tag = isset($_POST['editTag']) ? $_POST['editTag'] : (isset($_POST['tag']) ? $_POST['tag'] : null);
 $queryRegistros = $servico->buscaGenerica('a.data_envio, a.tag, a.modelo, a.problema, a.equipamento_id as equipamento, a.manutencao', 'chs_controle a', 'WHERE a.tag = ' . $tag);
 

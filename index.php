@@ -31,7 +31,7 @@
     ?>
     <header>
         <div class="container">
-        <div class="logo"><h3 style="color: #00ff00;">GOB</h3></div>
+        <div class="logo"><h3 style="color: #00ff00;">Portfólio</h3></div>
             <div class="menu">
                 <nav>
                     <a href="index.php">PROJETOS</a>

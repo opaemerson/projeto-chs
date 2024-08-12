@@ -15,6 +15,14 @@ class Config
         if ($this->conn->connect_error) {
             die("Conexao Falhou: " . $this->conn->connect_error);
         }
+
+    }
+
+    public function protecao()
+    {
+        if (!isset($_SESSION['id'])){
+            die("Faca login <p> <a href=\"../../portfolio/login.php\">Entrar</a></p>");
+        }
     }
 
     public function pegaSessaoUsuario()
