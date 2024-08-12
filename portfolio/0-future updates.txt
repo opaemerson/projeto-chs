@@ -1,4 +1,1 @@
-> [] portfolio - Criptografar senha dos usuarios.
-> [] portfolio - Encaminhar e-mail de verificação.
-> [] portfolio - evitar sqlinjection
-> [] 
+
