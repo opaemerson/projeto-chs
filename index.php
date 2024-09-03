@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/portfolio/styles.css">
+    <link rel="stylesheet" href="css/chs/styles.css">
     <link rel="stylesheet" href="css/chs/cabecalho.css">   
-    <link rel="stylesheet" href="css/portfolio/template1.css">
-    <link rel="stylesheet" href="css/portfolio/caroussel.css">
+    <link rel="stylesheet" href="css/chs/template1.css">
     <title>Projeto</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

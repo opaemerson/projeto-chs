@@ -102,12 +102,12 @@ if ($resultado !== false){
             throw new Exception("Erro ao inserir no historico");
         }
 
-        header("Location: http://localhost/portfolio/projeto_chs/");
+        header("Location: http://localhost/projeto_chs/projeto_chs/");
     
     } catch (Exception $e) {
         echo "<script type='text/javascript'>
                 alert('{$e->getMessage()}');
-                window.location.href = 'http://localhost/portfolio/projeto_chs/';
+                window.location.href = 'http://localhost/projeto_chs/projeto_chs/';
               </script>";
         exit;
     }

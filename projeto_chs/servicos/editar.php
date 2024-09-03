@@ -6,7 +6,6 @@ require_once('../classes/servicoPrincipal.php');
 
 $servico = new Servico();
 $config = new Config();
-$config->protecao();
 
 $tag = isset($_POST['editTag']) ? $_POST['editTag'] : (isset($_POST['tag']) ? $_POST['tag'] : null);
 $queryRegistros = $servico->buscaGenerica('a.data_envio, a.tag, a.modelo, a.problema, a.equipamento_id as equipamento, a.manutencao', 'chs_controle a', 'WHERE a.tag = ' . $tag);
@@ -50,7 +49,7 @@ switch ($situacao){
     break;
   
   default:
-    header("Location: http://localhost/portfolio/projeto_chs/");
+    header("Location: http://localhost/projeto_chs/projeto_chs/");
     break;
 }
 
@@ -82,7 +81,7 @@ switch ($situacao){
     $update = $config->updateBd($sql, $parametros);
 
     if(empty($ajax)){
-      header("Location: http://localhost/portfolio/projeto_chs/");
+      header("Location: http://localhost/projeto_chs/projeto_chs/");
     }
 
     echo json_encode([

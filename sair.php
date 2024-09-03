@@ -5,5 +5,5 @@ if(!isset($_SESSION)){
 
 session_destroy();
 
-header("Location: projeto_chs/index.php");
+header("Location: index.php");
 ?>

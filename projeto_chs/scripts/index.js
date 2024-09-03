@@ -30,7 +30,7 @@ function formatarData(data) {
 
 function remove(id, idUsuario, usuarioSessao, permissaoSessao) {
   if (confirm('Deseja realmente excluir este item?')) {
-    const url = 'http://127.0.0.1/portfolio/projeto_chs/servicos/remove.php';
+    const url = 'http://127.0.0.1/projeto_chs/projeto_chs/servicos/remove.php';
 
     $.ajax({
       url: url,
@@ -75,7 +75,7 @@ function editarUsuario() {
   form.append('data_envio', data_envio);
   form.append('situacao', situacao);
 
-  const url = "http://127.0.0.1/portfolio/projeto_chs/servicos/editar.php";
+  const url = "http://127.0.0.1/projeto_chs/projeto_chs/servicos/editar.php";
 
   $.ajax({
     url: url,
@@ -103,7 +103,7 @@ function validaPermissaoCategoria(permissao) {
 function alterarEvento(tag, acao) {
 
   if (confirm('Deseja realmente ' + acao + ' este item?')) {
-    const url = 'http://127.0.0.1/portfolio/projeto_chs/servicos/editar.php';
+    const url = 'http://127.0.0.1/projeto_chs/projeto_chs/servicos/editar.php';
 
     $.ajax({
       url: url,

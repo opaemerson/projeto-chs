@@ -21,7 +21,7 @@ class Config
     public function protecao()
     {
         if (!isset($_SESSION['id'])){
-            die("Faca login <p> <a href=\"../../login.php\">Entrar</a></p>");
+            die("Faca login <p> <a href=\"login.php\">Entrar</a></p>");
         }
     }
 
