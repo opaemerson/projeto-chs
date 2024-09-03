@@ -1,19 +1,10 @@
-::-webkit-scrollbar {
-  width: 4px; /* Largura da barra de rolagem */
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #5ffa5f; /* Cor da barra de rolagem */
-}
-
-::-webkit-scrollbar-track {
-  background-color: black; /* Cor do fundo da barra de rolagem */
-}
-
 .fundo-marrom {
   background-color: rgba(173, 82, 7, 0.7);
 }
 
+.centro{
+  text-align: center;
+}
 
 .amarelo-papel{
   background-color: rgb(255, 255, 255);
@@ -106,24 +97,15 @@ input{
 }
 
 .img-enviado {
-  width: 20px; /* Ajuste o valor conforme necessário */
-  height: auto; /* Mantém a proporção da imagem */
-}
-
-
-.pagination {
-  margin-top: 10px; /* Espaçamento acima da paginação */
-}
-
-.page-item {
-  margin: 0 5px; /* Espaçamento horizontal entre os itens da páginação */
+  width: 20px;
+  height: auto; 
 }
 
 .botao-sair {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #9c1515; /* Cor de fundo vermelha (altere conforme necessário) */
-  color: #ffffff; /* Cor do texto (altere conforme necessário) */
+  background-color: #9c1515; 
+  color: #ffffff;
   text-decoration: none;
   border: none;
   border-radius: 5px;
