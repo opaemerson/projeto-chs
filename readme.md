@@ -1,12 +1,4 @@
-**Projeto Portfolio**
-
-Este projeto foi criado para compartilhar meu conhecimento e currículo profissional, além de organizar de maneira eficiente os projetos que vou publicando no Git ou em outras plataformas ao longo do tempo. Minha intenção é vincular este portfólio a um domínio para facilitar o acesso.
-
-No Git, este projeto já conta com mais de 300 commits. Conforme fui evoluindo na programação, concentrei meus esforços neste projeto, e isso se reflete na qualidade do código e na organização ao longo do tempo. Ao revisar os commits, você perceberá a progressão na aplicação de clean code e estruturação. Sempre que possível, reestruturo e refatoro o código para manter a qualidade.
-
-O projeto Portfolio foi desenvolvido em PHP puro e atualmente trás informações sobre meu trabalho e dois projetos inclusos: Login e CHS.
-
-**Projeto Login**
+**Login**
 
 Este projeto apresenta uma tela de login simples, integrando funções de sessão e permissões que são utilizadas no projeto CHS.
 
