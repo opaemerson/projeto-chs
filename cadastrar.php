@@ -35,7 +35,7 @@ if (isset($_POST['cadastro'])) {
             } else {
                 $sql = "INSERT INTO usuarios (nome, email, senha, permissao, referencia, personagem_ganolia) VALUES ('$nome','$email', '$senha', '$permissao', '$referencia_select', 1)";
                 if ($conn->query($sql) === TRUE) {
-                    header('Location: ../portfolio/obrigado_cadastro.php');
+                    header('Location: ../obrigado_cadastro.php');
                     exit;
                 } else {
                     echo "<script>alert('Erro de conexao ao Banco de Dados, tente novamente mais tarde.');</script>";

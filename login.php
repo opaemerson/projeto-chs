@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-require_once('../config.php');
+require_once('config.php');
 
 class Login
 {
@@ -48,7 +48,7 @@ class Login
                   $_SESSION['personagem_ganolia'] = $row['personagem_ganolia'];
                   $_SESSION['personagem_classe'] = $row['personagem_classe'];
     
-                  header('Location: ../index.php');
+                  header('Location: index.php');
                   exit;
               } else {
                   echo 'Credenciais inválidas. Por favor, tente novamente.';
@@ -70,17 +70,9 @@ $login->init();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css//chs/login.css">
-    <link rel="stylesheet" href="../css/chs/erro.css">
+    <link rel="stylesheet" href="css/chs/login.css">
+    <link rel="stylesheet" href="css/chs/erro.css">
     <title>Login e Cadastro</title>
-    <style>
-  .link-container a {
-    display: inline-block;
-    margin-right: 10px;
-    text-align: center;
-    line-height: 50px;
-  }
-</style>
 </head>
 <body>
 <div class="container">
@@ -101,7 +93,7 @@ $login->init();
       <button type="submit" class="enterenter" name="login">Enter</button>
       <div class="link-container">
       <a class="enter" href="cadastrar.php">Cadastrar</a>
-      <a class="enter" href="../index.php">Voltar</a>
+      <a class="enter" href="index.php">Voltar</a>
       </div>
     </div>
   </form>

@@ -1,5 +1,5 @@
 <?php
-require_once('C:/xampp/htdocs/portfolio/config.php');
+require_once('C:/xampp/htdocs/projeto_chs/config.php');
 require_once('repositorios/equipamento.php');
 require_once('repositorios/marca.php');
 require_once('repositorios/problema.php');

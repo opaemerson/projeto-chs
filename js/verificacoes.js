@@ -4,7 +4,7 @@ if (usuarioLogado) {
 
 function verificarLogin(projeto) {
     if (!usuarioLogado) {
-        window.location.href = 'portfolio/login.php';
+        window.location.href = 'login.php';
     } else {
         if(projeto == 'chs'){
             window.location.href = 'projeto_chs/index.php';
