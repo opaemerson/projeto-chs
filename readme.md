@@ -6,7 +6,7 @@ No Git, este projeto já conta com mais de 300 commits. Conforme fui evoluindo n
 
 O projeto Portfolio foi desenvolvido em PHP puro e atualmente trás informações sobre meu trabalho e dois projetos inclusos: Login e CHS.
 
-**Projeto Login**
+**Login**
 
 Este projeto apresenta uma tela de login simples, integrando funções de sessão e permissões que são utilizadas no projeto CHS.
 
