@@ -134,6 +134,7 @@ function validaCadastro(){
   var tag = document.getElementById('tag').value;
   var modelo = document.getElementById('modelo').value;
   var problema = document.getElementById('problema').value;
+  var equipamento = document.getElementById('id_equip').value;
   var situacao = $('select[name="situacao"]').val();
   
   if (!tag || tag == '') {
@@ -154,6 +155,11 @@ function validaCadastro(){
   if (!situacao || situacao == 0) {
       alert('Opção situação não pode ser vazia');
       return false;
+  }
+
+  if(!equipamento || equipamento == 0){
+    alert('Opção situação não pode ser vazia');
+    return false;
   }
 
   return true;

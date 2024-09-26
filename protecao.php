@@ -4,7 +4,8 @@ if(!isset($_SESSION)){
     $usuarioExiste = true;
 }
 
-if (!isset($_SESSION['id'])){
-    die("Faca login <p> <a href=\"../login.php\">Entrar</a></p>");
+if (!isset($_SESSION['id'])) {
+    die('<a style="text-align:center;" href="../login.php">Entrar</a>');
 }
+
 ?>

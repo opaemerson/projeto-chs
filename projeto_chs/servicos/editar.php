@@ -8,7 +8,7 @@ $servico = new Servico();
 $config = new Config();
 
 $tag = isset($_POST['editTag']) ? $_POST['editTag'] : (isset($_POST['tag']) ? $_POST['tag'] : null);
-$queryRegistros = $servico->buscaGenerica('a.data_envio, a.tag, a.modelo, a.problema, a.equipamento_id as equipamento, a.manutencao', 'chs_controle a', 'WHERE a.tag = ' . $tag);
+$queryRegistros = $servico->buscaGenerica('a.data_envio, a.tag, a.modelo, a.problema, a.equipamento_id as equipamento, a.manutencao', 'chs_controle a', "WHERE a.tag = '" . $tag . "'");
 
 $modelo = !empty($_POST['editModelo']) ? $_POST['editModelo'] : $queryRegistros[0]['modelo'];
 $problema = !empty($_POST['editProblema']) ? $_POST['editProblema'] : $queryRegistros[0]['problema'];
