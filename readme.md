@@ -1,3 +1,7 @@
+**Configuração**
+1. Clone o projeto em seu repositório.
+2. Importe o banco de dados da pasta sql
+
 **Login**
 
 Este projeto apresenta uma tela de login simples, integrando funções de sessão e permissões que são utilizadas no projeto CHS.
