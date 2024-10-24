@@ -33,7 +33,7 @@ if (isset($_POST['cadastro'])) {
                 echo "<script>alert('Esse usuário já existe');</script>";
                 throw new Exception();
             } else {
-                $sql = "INSERT INTO usuarios (nome, email, senha, permissao, referencia, personagem_ganolia) VALUES ('$nome','$email', '$senha', '$permissao', '$referencia_select', 1)";
+                $sql = "INSERT INTO usuarios (nome, email, senha, permissao, referencia) VALUES ('$nome','$email', '$senha', '$permissao', '$referencia_select')";
                 if ($conn->query($sql) === TRUE) {
                     header('Location: ../obrigado_cadastro.php');
                     exit;

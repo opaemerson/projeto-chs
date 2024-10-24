@@ -24,12 +24,8 @@ class Login
     
           $stmt = $this->conn->prepare("SELECT u.id,
               u.nome,
-              u.permissao,
-              u.personagem_ganolia,
-              gp.classe as personagem_classe
+              u.permissao
               FROM usuarios u 
-              LEFT JOIN ganolia_personagem gp
-              ON gp.id = u.personagem_ganolia
               WHERE email = ? AND senha = ?");
     
           if ($stmt) {
